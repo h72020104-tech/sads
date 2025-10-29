@@ -1,209 +1,1861 @@
-  },
-  "999999999": {
-    "used": true,
-    "device": null
-  },
-  "1234567899": {
-    "used": true,
-    "device": null
-  },
-  "2Y15-LTNM-OYOS-7EES": {
+{
+  "A1B2-C3D4-E5F6-G7H8": {
     "used": false,
     "device": null
   },
-  "094G-AOTT-EWHT-P5LP": {
+  "I9J0-K1L2-M3N4-O5P6": {
     "used": false,
     "device": null
   },
-  "5IS6-3UV4-2ITW-NTKG": {
+  "Q7R8-S9T0-U1V2-W3X4": {
     "used": false,
     "device": null
   },
-  "3ZMM-DBTU-M83Q-KHUX": {
+  "Y5Z6-A7B8-C9D0-E1F2": {
     "used": false,
     "device": null
   },
-  "B368-GMQA-OBL5-G03A": {
+  "G3H4-I5J6-K7L8-M9N0": {
     "used": false,
     "device": null
   },
-  "EN7X-2NJM-6QNX-MUTZ": {
+  "O1P2-Q3R4-S5T6-U7V8": {
     "used": false,
     "device": null
   },
-  "QCAB-HFE9-5UQB-SVCJ": {
+  "W9X0-Y1Z2-A3B4-C5D6": {
     "used": false,
     "device": null
   },
-  "FKOR-SMEM-GM19-62HS": {
+  "E7F8-G9H0-I1J2-K3L4": {
     "used": false,
     "device": null
   },
-  "3MOH-1CX3-ZCTC-RWMW": {
+  "M5N6-O7P8-Q9R0-S1T2": {
     "used": false,
     "device": null
   },
-  "U4DE-D58D-WS4Y-B3UR": {
+  "U3V4-W5X6-Y7Z8-A9B0": {
     "used": false,
     "device": null
   },
-  "HT21-8OZX-CG2U-4QV3": {
+  "C1D2-E3F4-G5H6-I7J8": {
     "used": false,
     "device": null
   },
-  "OR91-Y7IC-NF53-WPY2": {
+  "K9L0-M1N2-O3P4-Q5R6": {
     "used": false,
     "device": null
   },
-  "0J0V-ZN9Z-9N6E-DZ1R": {
+  "S7T8-U9V0-W1X2-Y3Z4": {
     "used": false,
     "device": null
   },
-  "P8P1-H306-JNKK-EPGX": {
+  "A5B6-C7D8-E9F0-G1H2": {
     "used": false,
     "device": null
   },
-  "5VXD-ZY0E-RG78-KU3B": {
+  "I3J4-K5L6-M7N8-O9P0": {
     "used": false,
     "device": null
   },
-  "CO23-0V5U-FLYQ-T0UV": {
+  "Q1R2-S3T4-U5V6-W7X8": {
     "used": false,
     "device": null
   },
-  "Z7V3-2E1X-XNHA-NA17": {
+  "Y9Z0-A1B2-C3D4-E5F6": {
     "used": false,
     "device": null
   },
-  "LI7L-RQ24-6ZUY-VTTF": {
+  "G7H8-I9J0-K1L2-M3N4": {
     "used": false,
     "device": null
   },
-  "7IPL-WOLX-S3VW-09OA": {
+  "O5P6-Q7R8-S9T0-U1V2": {
     "used": false,
     "device": null
   },
-  "SXB7-UCOL-S8KK-ATFI": {
+  "W3X4-Y5Z6-A7B8-C9D0": {
     "used": false,
     "device": null
   },
-  "MNME-2QJ9-52XC-7OU6": {
+  "E1F2-G3H4-I5J6-K7L8": {
     "used": false,
     "device": null
   },
-  "DWJA-VK7F-ZXT1-UHIN": {
+  "M9N0-O1P2-Q3R4-S5T6": {
     "used": false,
     "device": null
   },
-  "DMPV-CFEN-VN7H-JHA1": {
+  "U7V8-W9X0-Y1Z2-A3B4": {
     "used": false,
     "device": null
   },
-  "1UUP-9QLN-FQKC-U0WF": {
+  "C5D6-E7F8-G9H0-I1J2": {
     "used": false,
     "device": null
   },
-  "4CTE-2WOC-749C-BN3R": {
+  "K3L4-M5N6-O7P8-Q9R0": {
     "used": false,
     "device": null
   },
-  "Z3OB-ZK6J-SCAH-E7S2": {
+  "S1T2-U3V4-W5X6-Y7Z8": {
     "used": false,
     "device": null
   },
-  "6YUE-AFNE-8HA2-13QQ": {
+  "A9B0-C1D2-E3F4-G5H6": {
     "used": false,
     "device": null
   },
-  "T2ZO-2A8C-CBGM-EHYO": {
+  "I7J8-K9L0-M1N2-O3P4": {
     "used": false,
     "device": null
   },
-  "8CMP-OF77-YKPX-0WIQ": {
+  "Q5R6-S7T8-U9V0-W1X2": {
     "used": false,
     "device": null
   },
-  "MLPX-C9T2-F7D6-U7Z3": {
+  "Y3Z4-A5B6-C7D8-E9F0": {
     "used": false,
     "device": null
   },
-  "HNX5-GSJC-AUU7-DFX8": {
+  "G1H2-I3J4-K5L6-M7N8": {
     "used": false,
     "device": null
   },
-  "D1GJ-7VQV-5E7E-SJFC": {
+  "O9P0-Q1R2-S3T4-U5V6": {
     "used": false,
     "device": null
   },
-  "Z5AX-4VQW-0F4T-RX2S": {
+  "W7X8-Y9Z0-A1B2-C3D4": {
     "used": false,
     "device": null
   },
-  "I8F7-CGXK-XJPR-PE3I": {
+  "E5F6-G7H8-I9J0-K1L2": {
     "used": false,
     "device": null
   },
-  "M4CP-VIA9-5IDR-GHWN": {
+  "M3N4-O5P6-Q7R8-S9T0": {
     "used": false,
     "device": null
   },
-  "IA63-PCL5-GSZF-6A3E": {
+  "U1V2-W3X4-Y5Z6-A7B8": {
     "used": false,
     "device": null
   },
-  "KL85-O0I3-9NN0-B8JP": {
+  "C9D0-E1F2-G3H4-I5J6": {
     "used": false,
     "device": null
   },
-  "QE4O-1U1P-F8GH-8VKJ": {
+  "K7L8-M9N0-O1P2-Q3R4": {
     "used": false,
     "device": null
   },
-  "YIE6-1BR3-IW6K-67PU": {
+  "S5T6-U7V8-W9X0-Y1Z2": {
     "used": false,
     "device": null
   },
-  "2EM3-XN1S-R2OJ-EHLW": {
+  "A3B4-C5D6-E7F8-G9H0": {
     "used": false,
     "device": null
   },
-  "66NL-1R9Y-JAEM-ZM8B": {
+  "I1J2-K3L4-M5N6-O7P8": {
     "used": false,
     "device": null
   },
-  "H1NP-TUPD-5DU4-APAD": {
+  "Q9R0-S1T2-U3V4-W5X6": {
     "used": false,
     "device": null
   },
-  "EFHU-55EO-GO5V-38SF": {
+  "Y7Z8-A9B0-C1D2-E3F4": {
     "used": false,
     "device": null
   },
-  "03FK-FMX7-NWQQ-IR78": {
+  "G5H6-I7J8-K9L0-M1N2": {
     "used": false,
     "device": null
   },
-  "N06O-J0W5-I1MJ-QKIU": {
+  "O3P4-Q5R6-S7T8-U9V0": {
     "used": false,
     "device": null
   },
-  "OSP6-BFI5-HGKR-T7QG": {
+  "W1X2-Y3Z4-A5B6-C7D8": {
     "used": false,
     "device": null
   },
-  "26Y0-JH23-LMOE-088N": {
+  "E9F0-G1H2-I3J4-K5L6": {
     "used": false,
     "device": null
   },
-  "89W6-2LP6-7OHT-S8J0": {
+  "M7N8-O9P0-Q1R2-S3T4": {
     "used": false,
     "device": null
   },
-  "K0B0-J94Y-G6J6-LST2": {
+  "U5V6-W7X8-Y9Z0-A1B2": {
     "used": false,
     "device": null
   },
-  "722Q-S3E7-9J8Y-VJ8K": {
+  "C3D4-E5F6-G7H8-I9J0": {
+    "used": false,
+    "device": null
+  },
+  "K1L2-M3N4-O5P6-Q7R8": {
+    "used": false,
+    "device": null
+  },
+  "S9T0-U1V2-W3X4-Y5Z6": {
+    "used": false,
+    "device": null
+  },
+  "A7B8-C9D0-E1F2-G3H4": {
+    "used": false,
+    "device": null
+  },
+  "I5J6-K7L8-M9N0-O1P2": {
+    "used": false,
+    "device": null
+  },
+  "Q3R4-S5T6-U7V8-W9X0": {
+    "used": false,
+    "device": null
+  },
+  "Y1Z2-A3B4-C5D6-E7F8": {
+    "used": false,
+    "device": null
+  },
+  "G9H0-I1J2-K3L4-M5N6": {
+    "used": false,
+    "device": null
+  },
+  "O7P8-Q9R0-S1T2-U3V4": {
+    "used": false,
+    "device": null
+  },
+  "W5X6-Y7Z8-A9B0-C1D2": {
+    "used": false,
+    "device": null
+  },
+  "E3F4-G5H6-I7J8-K9L0": {
+    "used": false,
+    "device": null
+  },
+  "M1N2-O3P4-Q5R6-S7T8": {
+    "used": false,
+    "device": null
+  },
+  "U9V0-W1X2-Y3Z4-A5B6": {
+    "used": false,
+    "device": null
+  },
+  "C7D8-E9F0-G1H2-I3J4": {
+    "used": false,
+    "device": null
+  },
+  "K5L6-M7N8-O9P0-Q1R2": {
+    "used": false,
+    "device": null
+  },
+  "S3T4-U5V6-W7X8-Y9Z0": {
+    "used": false,
+    "device": null
+  },
+  "A1B2-C3D4-E5F6-G7H9": {
+    "used": false,
+    "device": null
+  },
+  "I9J0-K1L2-M3N4-O5P7": {
+    "used": false,
+    "device": null
+  },
+  "Q7R8-S9T0-U1V2-W3X5": {
+    "used": false,
+    "device": null
+  },
+  "Y5Z6-A7B8-C9D0-E1F3": {
+    "used": false,
+    "device": null
+  },
+  "G3H4-I5J6-K7L8-M9N1": {
+    "used": false,
+    "device": null
+  },
+  "O1P2-Q3R4-S5T6-U7V9": {
+    "used": false,
+    "device": null
+  },
+  "W9X0-Y1Z2-A3B4-C5D7": {
+    "used": false,
+    "device": null
+  },
+  "E7F8-G9H0-I1J2-K3L5": {
+    "used": false,
+    "device": null
+  },
+  "M5N6-O7P8-Q9R0-S1T3": {
+    "used": false,
+    "device": null
+  },
+  "U3V4-W5X6-Y7Z8-A9B1": {
+    "used": false,
+    "device": null
+  },
+  "C1D2-E3F4-G5H6-I7J9": {
+    "used": false,
+    "device": null
+  },
+  "K9L0-M1N2-O3P4-Q5R7": {
+    "used": false,
+    "device": null
+  },
+  "S7T8-U9V0-W1X2-Y3Z5": {
+    "used": false,
+    "device": null
+  },
+  "A5B6-C7D8-E9F0-G1H3": {
+    "used": false,
+    "device": null
+  },
+  "I3J4-K5L6-M7N8-O9P1": {
+    "used": false,
+    "device": null
+  },
+  "Q1R2-S3T4-U5V6-W7X9": {
+    "used": false,
+    "device": null
+  },
+  "Y9Z0-A1B2-C3D4-E5F7": {
+    "used": false,
+    "device": null
+  },
+  "G7H8-I9J0-K1L2-M3N5": {
+    "used": false,
+    "device": null
+  },
+  "O5P6-Q7R8-S9T0-U1V3": {
+    "used": false,
+    "device": null
+  },
+  "W3X4-Y5Z6-A7B8-C9D1": {
+    "used": false,
+    "device": null
+  },
+  "E1F2-G3H4-I5J6-K7L9": {
+    "used": false,
+    "device": null
+  },
+  "M9N0-O1P2-Q3R4-S5T7": {
+    "used": false,
+    "device": null
+  },
+  "U7V8-W9X0-Y1Z2-A3B5": {
+    "used": false,
+    "device": null
+  },
+  "C5D6-E7F8-G9H0-I1J3": {
+    "used": false,
+    "device": null
+  },
+  "K3L4-M5N6-O7P8-Q9R1": {
+    "used": false,
+    "device": null
+  },
+  "S1T2-U3V4-W5X6-Y7Z9": {
+    "used": false,
+    "device": null
+  },
+  "A9B0-C1D2-E3F4-G5H7": {
+    "used": false,
+    "device": null
+  },
+  "I7J8-K9L0-M1N2-O3P5": {
+    "used": false,
+    "device": null
+  },
+  "Q5R6-S7T8-U9V0-W1X3": {
+    "used": false,
+    "device": null
+  },
+  "Y3Z4-A5B6-C7D8-E9F1": {
+    "used": false,
+    "device": null
+  },
+  "G1H2-I3J4-K5L6-M7N9": {
+    "used": false,
+    "device": null
+  },
+  "O9P0-Q1R2-S3T4-U5V7": {
+    "used": false,
+    "device": null
+  },
+  "W7X8-Y9Z0-A1B2-C3D5": {
+    "used": false,
+    "device": null
+  },
+  "E5F6-G7H8-I9J0-K1L3": {
+    "used": false,
+    "device": null
+  },
+  "M3N4-O5P6-Q7R8-S9T1": {
+    "used": false,
+    "device": null
+  },
+  "U1V2-W3X4-Y5Z6-A7B9": {
+    "used": false,
+    "device": null
+  },
+  "C9D0-E1F2-G3H4-I5J7": {
+    "used": false,
+    "device": null
+  },
+  "K7L8-M9N0-O1P2-Q3R5": {
+    "used": false,
+    "device": null
+  },
+  "S5T6-U7V8-W9X0-Y1Z3": {
+    "used": false,
+    "device": null
+  },
+  "A3B4-C5D6-E7F8-G9H1": {
+    "used": false,
+    "device": null
+  },
+  "I1J2-K3L4-M5N6-O7P9": {
+    "used": false,
+    "device": null
+  },
+  "Q9R0-S1T2-U3V4-W5X7": {
+    "used": false,
+    "device": null
+  },
+  "Y7Z8-A9B0-C1D2-E3F5": {
+    "used": false,
+    "device": null
+  },
+  "G5H6-I7J8-K9L0-M1N3": {
+    "used": false,
+    "device": null
+  },
+  "O3P4-Q5R6-S7T8-U9V1": {
+    "used": false,
+    "device": null
+  },
+  "W1X2-Y3Z4-A5B6-C7D9": {
+    "used": false,
+    "device": null
+  },
+  "E9F0-G1H2-I3J4-K5L7": {
+    "used": false,
+    "device": null
+  },
+  "M7N8-O9P0-Q1R2-S3T5": {
+    "used": false,
+    "device": null
+  },
+  "U5V6-W7X8-Y9Z0-A1B3": {
+    "used": false,
+    "device": null
+  },
+  "C3D4-E5F6-G7H8-I9J1": {
+    "used": false,
+    "device": null
+  },
+  "K1L2-M3N4-O5P6-Q7R9": {
+    "used": false,
+    "device": null
+  },
+  "S9T0-U1V2-W3X4-Y5Z7": {
+    "used": false,
+    "device": null
+  },
+  "A7B8-C9D0-E1F2-G3H5": {
+    "used": false,
+    "device": null
+  },
+  "I5J6-K7L8-M9N0-O1P3": {
+    "used": false,
+    "device": null
+  },
+  "Q3R4-S5T6-U7V8-W9X1": {
+    "used": false,
+    "device": null
+  },
+  "Y1Z2-A3B4-C5D6-E7F9": {
+    "used": false,
+    "device": null
+  },
+  "G9H0-I1J2-K3L4-M5N7": {
+    "used": false,
+    "device": null
+  },
+  "O7P8-Q9R0-S1T2-U3V5": {
+    "used": false,
+    "device": null
+  },
+  "W5X6-Y7Z8-A9B0-C1D3": {
+    "used": false,
+    "device": null
+  },
+  "E3F4-G5H6-I7J8-K9L1": {
+    "used": false,
+    "device": null
+  },
+  "M1N2-O3P4-Q5R6-S7T9": {
+    "used": false,
+    "device": null
+  },
+  "U9V0-W1X2-Y3Z4-A5B7": {
+    "used": false,
+    "device": null
+  },
+  "C7D8-E9F0-G1H2-I3J5": {
+    "used": false,
+    "device": null
+  },
+  "K5L6-M7N8-O9P0-Q1R3": {
+    "used": false,
+    "device": null
+  },
+  "S3T4-U5V6-W7X8-Y9Z1": {
+    "used": false,
+    "device": null
+  },
+  "A1B2-C3D4-E5F6-G7I0": {
+    "used": false,
+    "device": null
+  },
+  "I9J0-K1L2-M3N4-O5P8": {
+    "used": false,
+    "device": null
+  },
+  "Q7R8-S9T0-U1V2-W3X6": {
+    "used": false,
+    "device": null
+  },
+  "Y5Z6-A7B8-C9D0-E1F4": {
+    "used": false,
+    "device": null
+  },
+  "G3H4-I5J6-K7L8-M9N2": {
+    "used": false,
+    "device": null
+  },
+  "O1P2-Q3R4-S5T6-U8V0": {
+    "used": false,
+    "device": null
+  },
+  "W9X0-Y1Z2-A3B4-C5D8": {
+    "used": false,
+    "device": null
+  },
+  "E7F8-G9H0-I1J2-K3L6": {
+    "used": false,
+    "device": null
+  },
+  "M5N6-O7P8-Q9R0-S1T4": {
+    "used": false,
+    "device": null
+  },
+  "U3V4-W5X6-Y7Z8-A9B2": {
+    "used": false,
+    "device": null
+  },
+  "C1D2-E3F4-G5H6-I7J0": {
+    "used": false,
+    "device": null
+  },
+  "K9L0-M1N2-O3P4-Q5R8": {
+    "used": false,
+    "device": null
+  },
+  "S7T8-U9V0-W1X2-Y3Z6": {
+    "used": false,
+    "device": null
+  },
+  "A5B6-C7D8-E9F0-G1H4": {
+    "used": false,
+    "device": null
+  },
+  "I3J4-K5L6-M7N8-O9P2": {
+    "used": false,
+    "device": null
+  },
+  "Q1R2-S3T4-U5V6-W7X0": {
+    "used": false,
+    "device": null
+  },
+  "Y9Z0-A1B2-C3D4-E5F8": {
+    "used": false,
+    "device": null
+  },
+  "G7H8-I9J0-K1L2-M3N6": {
+    "used": false,
+    "device": null
+  },
+  "O5P6-Q7R8-S9T0-U1V4": {
+    "used": false,
+    "device": null
+  },
+  "W3X4-Y5Z6-A7B8-C9D2": {
+    "used": false,
+    "device": null
+  },
+  "E1F2-G3H4-I5J6-K7L0": {
+    "used": false,
+    "device": null
+  },
+  "M9N0-O1P2-Q3R4-S5T8": {
+    "used": false,
+    "device": null
+  },
+  "U7V8-W9X0-Y1Z2-A3B6": {
+    "used": false,
+    "device": null
+  },
+  "C5D6-E7F8-G9H0-I1J4": {
+    "used": false,
+    "device": null
+  },
+  "K3L4-M5N6-O7P8-Q9R2": {
+    "used": false,
+    "device": null
+  },
+  "S1T2-U3V4-W5X6-Y7Z0": {
+    "used": false,
+    "device": null
+  },
+  "A9B0-C1D2-E3F4-G5H8": {
+    "used": false,
+    "device": null
+  },
+  "I7J8-K9L0-M1N2-O3P6": {
+    "used": false,
+    "device": null
+  },
+  "Q5R6-S7T8-U9V0-W1X4": {
+    "used": false,
+    "device": null
+  },
+  "Y3Z4-A5B6-C7D8-E9F2": {
+    "used": false,
+    "device": null
+  },
+  "G1H2-I3J4-K5L6-M7N0": {
+    "used": false,
+    "device": null
+  },
+  "O9P0-Q1R2-S3T4-U5V8": {
+    "used": false,
+    "device": null
+  },
+  "W7X8-Y9Z0-A1B2-C3D6": {
+    "used": false,
+    "device": null
+  },
+  "E5F6-G7H8-I9J0-K1L4": {
+    "used": false,
+    "device": null
+  },
+  "M3N4-O5P6-Q7R8-S9T2": {
+    "used": false,
+    "device": null
+  },
+  "U1V2-W3X4-Y5Z6-A7B0": {
+    "used": false,
+    "device": null
+  },
+  "C9D0-E1F2-G3H4-I5J8": {
+    "used": false,
+    "device": null
+  },
+  "K7L8-M9N0-O1P2-Q3R6": {
+    "used": false,
+    "device": null
+  },
+  "S5T6-U7V8-W9X0-Y1Z4": {
+    "used": false,
+    "device": null
+  },
+  "A3B4-C5D6-E7F8-G9H2": {
+    "used": false,
+    "device": null
+  },
+  "I1J2-K3L4-M5N6-O7P0": {
+    "used": false,
+    "device": null
+  },
+  "Q9R0-S1T2-U3V4-W5X8": {
+    "used": false,
+    "device": null
+  },
+  "Y7Z8-A9B0-C1D2-E3F6": {
+    "used": false,
+    "device": null
+  },
+  "G5H6-I7J8-K9L0-M1N4": {
+    "used": false,
+    "device": null
+  },
+  "O3P4-Q5R6-S7T8-U9V2": {
+    "used": false,
+    "device": null
+  },
+  "W1X2-Y3Z4-A5B6-C7D0": {
+    "used": false,
+    "device": null
+  },
+  "E9F0-G1H2-I3J4-K5L8": {
+    "used": false,
+    "device": null
+  },
+  "M7N8-O9P0-Q1R2-S3T6": {
+    "used": false,
+    "device": null
+  },
+  "U5V6-W7X8-Y9Z0-A1B4": {
+    "used": false,
+    "device": null
+  },
+  "C3D4-E5F6-G7H8-I9J2": {
+    "used": false,
+    "device": null
+  },
+  "K1L2-M3N4-O5P6-Q7R0": {
+    "used": false,
+    "device": null
+  },
+  "S9T0-U1V2-W3X4-Y5Z8": {
+    "used": false,
+    "device": null
+  },
+  "A7B8-C9D0-E1F2-G3H6": {
+    "used": false,
+    "device": null
+  },
+  "I5J6-K7L8-M9N0-O1P4": {
+    "used": false,
+    "device": null
+  },
+  "Q3R4-S5T6-U7V8-W9X2": {
+    "used": false,
+    "device": null
+  },
+  "Y1Z2-A3B4-C5D6-E7F0": {
+    "used": false,
+    "device": null
+  },
+  "G9H0-I1J2-K3L4-M5N8": {
+    "used": false,
+    "device": null
+  },
+  "O7P8-Q9R0-S1T2-U3V6": {
+    "used": false,
+    "device": null
+  },
+  "W5X6-Y7Z8-A9B0-C1D4": {
+    "used": false,
+    "device": null
+  },
+  "E3F4-G5H6-I7J8-K9L2": {
+    "used": false,
+    "device": null
+  },
+  "M1N2-O3P4-Q5R6-S7T0": {
+    "used": false,
+    "device": null
+  },
+  "U9V0-W1X2-Y3Z4-A5B8": {
+    "used": false,
+    "device": null
+  },
+  "C7D8-E9F0-G1H2-I3J6": {
+    "used": false,
+    "device": null
+  },
+  "K5L6-M7N8-O9P0-Q1R4": {
+    "used": false,
+    "device": null
+  },
+  "S3T4-U5V6-W7X8-Y9Z2": {
+    "used": false,
+    "device": null
+  },
+  "A1B2-C3D4-E5F6-G8H0": {
+    "used": false,
+    "device": null
+  },
+  "I9J0-K1L2-M3N4-O5P9": {
+    "used": false,
+    "device": null
+  },
+  "Q7R8-S9T0-U1V2-W3X7": {
+    "used": false,
+    "device": null
+  },
+  "Y5Z6-A7B8-C9D0-E1F5": {
+    "used": false,
+    "device": null
+  },
+  "G3H4-I5J6-K7L8-M9N3": {
+    "used": false,
+    "device": null
+  },
+  "O1P2-Q3R4-S5T6-U8V1": {
+    "used": false,
+    "device": null
+  },
+  "W9X0-Y1Z2-A3B4-C5D9": {
+    "used": false,
+    "device": null
+  },
+  "E7F8-G9H0-I1J2-K3L7": {
+    "used": false,
+    "device": null
+  },
+  "M5N6-O7P8-Q9R0-S1T5": {
+    "used": false,
+    "device": null
+  },
+  "U3V4-W5X6-Y7Z8-A9B3": {
+    "used": false,
+    "device": null
+  },
+  "C1D2-E3F4-G5H6-I8J0": {
+    "used": false,
+    "device": null
+  },
+  "K9L0-M1N2-O3P4-Q5R9": {
+    "used": false,
+    "device": null
+  },
+  "S7T8-U9V0-W1X2-Y3Z7": {
+    "used": false,
+    "device": null
+  },
+  "A5B6-C7D8-E9F0-G1H5": {
+    "used": false,
+    "device": null
+  },
+  "I3J4-K5L6-M7N8-O9P3": {
+    "used": false,
+    "device": null
+  },
+  "Q1R2-S3T4-U5V6-W8X0": {
+    "used": false,
+    "device": null
+  },
+  "Y9Z0-A1B2-C3D4-E5F9": {
+    "used": false,
+    "device": null
+  },
+  "G7H8-I9J0-K1L2-M3N7": {
+    "used": false,
+    "device": null
+  },
+  "O5P6-Q7R8-S9T0-U1V5": {
+    "used": false,
+    "device": null
+  },
+  "W3X4-Y5Z6-A7B8-C9D3": {
+    "used": false,
+    "device": null
+  },
+  "E1F2-G3H4-I5J6-K8L0": {
+    "used": false,
+    "device": null
+  },
+  "M9N0-O1P2-Q3R4-S5T9": {
+    "used": false,
+    "device": null
+  },
+  "U7V8-W9X0-Y1Z2-A3B7": {
+    "used": false,
+    "device": null
+  },
+  "C5D6-E7F8-G9H0-I1J5": {
+    "used": false,
+    "device": null
+  },
+  "K3L4-M5N6-O7P8-Q9R3": {
+    "used": false,
+    "device": null
+  },
+  "S1T2-U3V4-W5X6-Y7Z1": {
+    "used": false,
+    "device": null
+  },
+  "A9B0-C1D2-E3F4-G5H9": {
+    "used": false,
+    "device": null
+  },
+  "I7J8-K9L0-M1N2-O3P7": {
+    "used": false,
+    "device": null
+  },
+  "Q5R6-S7T8-U9V0-W1X5": {
+    "used": false,
+    "device": null
+  },
+  "Y3Z4-A5B6-C7D8-E9F3": {
+    "used": false,
+    "device": null
+  },
+  "G1H2-I3J4-K5L6-M7N1": {
+    "used": false,
+    "device": null
+  },
+  "O9P0-Q1R2-S3T4-U5V9": {
+    "used": false,
+    "device": null
+  },
+  "W7X8-Y9Z0-A1B2-C3D7": {
+    "used": false,
+    "device": null
+  },
+  "E5F6-G7H8-I9J0-K1L5": {
+    "used": false,
+    "device": null
+  },
+  "M3N4-O5P6-Q7R8-S9T3": {
+    "used": false,
+    "device": null
+  },
+  "U1V2-W3X4-Y5Z6-A7B1": {
+    "used": false,
+    "device": null
+  },
+  "C9D0-E1F2-G3H4-I5J9": {
+    "used": false,
+    "device": null
+  },
+  "K7L8-M9N0-O1P2-Q3R7": {
+    "used": false,
+    "device": null
+  },
+  "S5T6-U7V8-W9X0-Y1Z5": {
+    "used": false,
+    "device": null
+  },
+  "A3B4-C5D6-E7F8-G9H3": {
+    "used": false,
+    "device": null
+  },
+  "I1J2-K3L4-M5N6-O7P1": {
+    "used": false,
+    "device": null
+  },
+  "Q9R0-S1T2-U3V4-W5X9": {
+    "used": false,
+    "device": null
+  },
+  "Y7Z8-A9B0-C1D2-E3F7": {
+    "used": false,
+    "device": null
+  },
+  "G5H6-I7J8-K9L0-M1N5": {
+    "used": false,
+    "device": null
+  },
+  "O3P4-Q5R6-S7T8-U9V3": {
+    "used": false,
+    "device": null
+  },
+  "W1X2-Y3Z4-A5B6-C7D1": {
+    "used": false,
+    "device": null
+  },
+  "E9F0-G1H2-I3J4-K5L9": {
+    "used": false,
+    "device": null
+  },
+  "M7N8-O9P0-Q1R2-S3T7": {
+    "used": false,
+    "device": null
+  },
+  "U5V6-W7X8-Y9Z0-A1B5": {
+    "used": false,
+    "device": null
+  },
+  "C3D4-E5F6-G7H8-I9J3": {
+    "used": false,
+    "device": null
+  },
+  "K1L2-M3N4-O5P6-Q8R0": {
+    "used": false,
+    "device": null
+  },
+  "S9T0-U1V2-W3X4-Y5Z9": {
+    "used": false,
+    "device": null
+  },
+  "A7B8-C9D0-E1F2-G3H7": {
+    "used": false,
+    "device": null
+  },
+  "I5J6-K7L8-M9N0-O1P5": {
+    "used": false,
+    "device": null
+  },
+  "Q3R4-S5T6-U7V8-W9X3": {
+    "used": false,
+    "device": null
+  },
+  "Y1Z2-A3B4-C5D6-E8F0": {
+    "used": false,
+    "device": null
+  },
+  "G9H0-I1J2-K3L4-M5N9": {
+    "used": false,
+    "device": null
+  },
+  "O7P8-Q9R0-S1T2-U3V7": {
+    "used": false,
+    "device": null
+  },
+  "W5X6-Y7Z8-A9B0-C1D5": {
+    "used": false,
+    "device": null
+  },
+  "E3F4-G5H6-I7J8-K9L3": {
+    "used": false,
+    "device": null
+  },
+  "M1N2-O3P4-Q5R6-S7T1": {
+    "used": false,
+    "device": null
+  },
+  "U9V0-W1X2-Y3Z4-A5B9": {
+    "used": false,
+    "device": null
+  },
+  "C7D8-E9F0-G1H2-I3J7": {
+    "used": false,
+    "device": null
+  },
+  "K5L6-M7N8-O9P0-Q1R5": {
+    "used": false,
+    "device": null
+  },
+  "S3T4-U5V6-W7X8-Y9Z3": {
+    "used": false,
+    "device": null
+  },
+  "A1B2-C3D4-E5F6-G8H1": {
+    "used": false,
+    "device": null
+  },
+  "I9J0-K1L2-M3N4-O6P0": {
+    "used": false,
+    "device": null
+  },
+  "Q7R8-S9T0-U1V2-W3X8": {
+    "used": false,
+    "device": null
+  },
+  "Y5Z6-A7B8-C9D0-E1F6": {
+    "used": false,
+    "device": null
+  },
+  "G3H4-I5J6-K7L8-M9N4": {
+    "used": false,
+    "device": null
+  },
+  "O1P2-Q3R4-S5T6-U8V2": {
+    "used": false,
+    "device": null
+  },
+  "W9X0-Y1Z2-A3B4-C6D0": {
+    "used": false,
+    "device": null
+  },
+  "E7F8-G9H0-I1J2-K3L8": {
+    "used": false,
+    "device": null
+  },
+  "M5N6-O7P8-Q9R0-S1T6": {
+    "used": false,
+    "device": null
+  },
+  "U3V4-W5X6-Y7Z8-A9B4": {
+    "used": false,
+    "device": null
+  },
+  "C1D2-E3F4-G5H6-I8J1": {
+    "used": false,
+    "device": null
+  },
+  "K9L0-M1N2-O3P4-Q6R0": {
+    "used": false,
+    "device": null
+  },
+  "S7T8-U9V0-W1X2-Y3Z8": {
+    "used": false,
+    "device": null
+  },
+  "A5B6-C7D8-E9F0-G1H6": {
+    "used": false,
+    "device": null
+  },
+  "I3J4-K5L6-M7N8-O9P4": {
+    "used": false,
+    "device": null
+  },
+  "Q1R2-S3T4-U5V6-W8X1": {
+    "used": false,
+    "device": null
+  },
+  "Y9Z0-A1B2-C3D4-E6F0": {
+    "used": false,
+    "device": null
+  },
+  "G7H8-I9J0-K1L2-M3N8": {
+    "used": false,
+    "device": null
+  },
+  "O5P6-Q7R8-S9T0-U1V6": {
+    "used": false,
+    "device": null
+  },
+  "W3X4-Y5Z6-A7B8-C9D4": {
+    "used": false,
+    "device": null
+  },
+  "E1F2-G3H4-I5J6-K8L1": {
+    "used": false,
+    "device": null
+  },
+  "M9N0-O1P2-Q3R4-S6T0": {
+    "used": false,
+    "device": null
+  },
+  "U7V8-W9X0-Y1Z2-A3B8": {
+    "used": false,
+    "device": null
+  },
+  "C5D6-E7F8-G9H0-I1J6": {
+    "used": false,
+    "device": null
+  },
+  "K3L4-M5N6-O7P8-Q9R4": {
+    "used": false,
+    "device": null
+  },
+  "S1T2-U3V4-W5X6-Y8Z0": {
+    "used": false,
+    "device": null
+  },
+  "A9B0-C1D2-E3F4-G6H0": {
+    "used": false,
+    "device": null
+  },
+  "I7J8-K9L0-M1N2-O3P8": {
+    "used": false,
+    "device": null
+  },
+  "Q5R6-S7T8-U9V0-W1X6": {
+    "used": false,
+    "device": null
+  },
+  "Y3Z4-A5B6-C7D8-E9F4": {
+    "used": false,
+    "device": null
+  },
+  "G1H2-I3J4-K5L6-M7N2": {
+    "used": false,
+    "device": null
+  },
+  "O9P0-Q1R2-S3T4-U6V0": {
+    "used": false,
+    "device": null
+  },
+  "W7X8-Y9Z0-A1B2-C3D8": {
+    "used": false,
+    "device": null
+  },
+  "E5F6-G7H8-I9J0-K1L6": {
+    "used": false,
+    "device": null
+  },
+  "M3N4-O5P6-Q7R8-S9T4": {
+    "used": false,
+    "device": null
+  },
+  "U1V2-W3X4-Y5Z6-A7B2": {
+    "used": false,
+    "device": null
+  },
+  "C9D0-E1F2-G3H4-I6J0": {
+    "used": false,
+    "device": null
+  },
+  "K7L8-M9N0-O1P2-Q3R8": {
+    "used": false,
+    "device": null
+  },
+  "S5T6-U7V8-W9X0-Y1Z6": {
+    "used": false,
+    "device": null
+  },
+  "A3B4-C5D6-E7F8-G9H4": {
+    "used": false,
+    "device": null
+  },
+  "I1J2-K3L4-M5N6-O7P2": {
+    "used": false,
+    "device": null
+  },
+  "Q9R0-S1T2-U3V4-W5X0": {
+    "used": false,
+    "device": null
+  },
+  "Y7Z8-A9B0-C1D2-E3F8": {
+    "used": false,
+    "device": null
+  },
+  "G5H6-I7J8-K9L0-M1N6": {
+    "used": false,
+    "device": null
+  },
+  "O3P4-Q5R6-S7T8-U9V4": {
+    "used": false,
+    "device": null
+  },
+  "W1X2-Y3Z4-A5B6-C8D0": {
+    "used": false,
+    "device": null
+  },
+  "E9F0-G1H2-I3J4-K6L0": {
+    "used": false,
+    "device": null
+  },
+  "M7N8-O9P0-Q1R2-S3T8": {
+    "used": false,
+    "device": null
+  },
+  "U5V6-W7X8-Y9Z0-A1B6": {
+    "used": false,
+    "device": null
+  },
+  "C3D4-E5F6-G7H8-I9J4": {
+    "used": false,
+    "device": null
+  },
+  "K1L2-M3N4-O5P6-Q8R1": {
+    "used": false,
+    "device": null
+  },
+  "S9T0-U1V2-W3X4-Y6Z0": {
+    "used": false,
+    "device": null
+  },
+  "A7B8-C9D0-E1F2-G3H8": {
+    "used": false,
+    "device": null
+  },
+  "I5J6-K7L8-M9N0-O1P6": {
+    "used": false,
+    "device": null
+  },
+  "Q3R4-S5T6-U7V8-W9X4": {
+    "used": false,
+    "device": null
+  },
+  "Y1Z2-A3B4-C5D6-E8F1": {
+    "used": false,
+    "device": null
+  },
+  "G9H0-I1J2-K3L4-M6N0": {
+    "used": false,
+    "device": null
+  },
+  "O7P8-Q9R0-S1T2-U3V8": {
+    "used": false,
+    "device": null
+  },
+  "W5X6-Y7Z8-A9B0-C1D6": {
+    "used": false,
+    "device": null
+  },
+  "E3F4-G5H6-I7J8-K9L4": {
+    "used": false,
+    "device": null
+  },
+  "M1N2-O3P4-Q5R6-S7T2": {
+    "used": false,
+    "device": null
+  },
+  "U9V0-W1X2-Y3Z4-A6B0": {
+    "used": false,
+    "device": null
+  },
+  "C7D8-E9F0-G1H2-I3J8": {
+    "used": false,
+    "device": null
+  },
+  "K5L6-M7N8-O9P0-Q1R6": {
+    "used": false,
+    "device": null
+  },
+  "S3T4-U5V6-W7X8-Y9Z4": {
+    "used": false,
+    "device": null
+  },
+  "A1B2-C3D4-E5F6-G8H2": {
+    "used": false,
+    "device": null
+  },
+  "I9J0-K1L2-M3N4-O6P1": {
+    "used": false,
+    "device": null
+  },
+  "Q7R8-S9T0-U1V2-W3X9": {
+    "used": false,
+    "device": null
+  },
+  "Y5Z6-A7B8-C9D0-E1F7": {
+    "used": false,
+    "device": null
+  },
+  "G3H4-I5J6-K7L8-M9N5": {
+    "used": false,
+    "device": null
+  },
+  "O1P2-Q3R4-S5T6-U8V3": {
+    "used": false,
+    "device": null
+  },
+  "W9X0-Y1Z2-A3B4-C6D1": {
+    "used": false,
+    "device": null
+  },
+  "E7F8-G9H0-I1J2-K3L9": {
+    "used": false,
+    "device": null
+  },
+  "M5N6-O7P8-Q9R0-S1T7": {
+    "used": false,
+    "device": null
+  },
+  "U3V4-W5X6-Y7Z8-A9B5": {
+    "used": false,
+    "device": null
+  },
+  "C1D2-E3F4-G5H6-I8J2": {
+    "used": false,
+    "device": null
+  },
+  "K9L0-M1N2-O3P4-Q6R1": {
+    "used": false,
+    "device": null
+  },
+  "S7T8-U9V0-W1X2-Y4Z0": {
+    "used": false,
+    "device": null
+  },
+  "A5B6-C7D8-E9F0-G1H7": {
+    "used": false,
+    "device": null
+  },
+  "I3J4-K5L6-M7N8-O9P5": {
+    "used": false,
+    "device": null
+  },
+  "Q1R2-S3T4-U5V6-W8X2": {
+    "used": false,
+    "device": null
+  },
+  "Y9Z0-A1B2-C3D4-E6F1": {
+    "used": false,
+    "device": null
+  },
+  "G7H8-I9J0-K1L2-M3N9": {
+    "used": false,
+    "device": null
+  },
+  "O5P6-Q7R8-S9T0-U1V7": {
+    "used": false,
+    "device": null
+  },
+  "W3X4-Y5Z6-A7B8-C9D5": {
+    "used": false,
+    "device": null
+  },
+  "E1F2-G3H4-I5J6-K8L2": {
+    "used": false,
+    "device": null
+  },
+  "M9N0-O1P2-Q3R4-S6T1": {
+    "used": false,
+    "device": null
+  },
+  "U7V8-W9X0-Y1Z2-A3B9": {
+    "used": false,
+    "device": null
+  },
+  "C5D6-E7F8-G9H0-I1J7": {
+    "used": false,
+    "device": null
+  },
+  "K3L4-M5N6-O7P8-Q9R5": {
+    "used": false,
+    "device": null
+  },
+  "S1T2-U3V4-W5X6-Y8Z1": {
+    "used": false,
+    "device": null
+  },
+  "A9B0-C1D2-E3F4-G6H1": {
+    "used": false,
+    "device": null
+  },
+  "I7J8-K9L0-M1N2-O3P9": {
+    "used": false,
+    "device": null
+  },
+  "Q5R6-S7T8-U9V0-W1X7": {
+    "used": false,
+    "device": null
+  },
+  "Y3Z4-A5B6-C7D8-E9F5": {
+    "used": false,
+    "device": null
+  },
+  "G1H2-I3J4-K5L6-M7N3": {
+    "used": false,
+    "device": null
+  },
+  "O9P0-Q1R2-S3T4-U6V1": {
+    "used": false,
+    "device": null
+  },
+  "W7X8-Y9Z0-A1B2-C3D9": {
+    "used": false,
+    "device": null
+  },
+  "E5F6-G7H8-I9J0-K1L7": {
+    "used": false,
+    "device": null
+  },
+  "M3N4-O5P6-Q7R8-S9T5": {
+    "used": false,
+    "device": null
+  },
+  "U1V2-W3X4-Y5Z6-A7B3": {
+    "used": false,
+    "device": null
+  },
+  "C9D0-E1F2-G3H4-I6J1": {
+    "used": false,
+    "device": null
+  },
+  "K7L8-M9N0-O1P2-Q3R9": {
+    "used": false,
+    "device": null
+  },
+  "S5T6-U7V8-W9X0-Y1Z7": {
+    "used": false,
+    "device": null
+  },
+  "A3B4-C5D6-E7F8-G9H5": {
+    "used": false,
+    "device": null
+  },
+  "I1J2-K3L4-M5N6-O7P3": {
+    "used": false,
+    "device": null
+  },
+  "Q9R0-S1T2-U3V4-W6X0": {
+    "used": false,
+    "device": null
+  },
+  "Y7Z8-A9B0-C1D2-E3F9": {
+    "used": false,
+    "device": null
+  },
+  "G5H6-I7J8-K9L0-M1N7": {
+    "used": false,
+    "device": null
+  },
+  "O3P4-Q5R6-S7T8-U9V5": {
+    "used": false,
+    "device": null
+  },
+  "W1X2-Y3Z4-A5B6-C8D1": {
+    "used": false,
+    "device": null
+  },
+  "E9F0-G1H2-I3J4-K6L1": {
+    "used": false,
+    "device": null
+  },
+  "M7N8-O9P0-Q1R2-S3T9": {
+    "used": false,
+    "device": null
+  },
+  "U5V6-W7X8-Y9Z0-A1B7": {
+    "used": false,
+    "device": null
+  },
+  "C3D4-E5F6-G7H8-I9J5": {
+    "used": false,
+    "device": null
+  },
+  "K1L2-M3N4-O5P6-Q8R2": {
+    "used": false,
+    "device": null
+  },
+  "S9T0-U1V2-W3X4-Y6Z1": {
+    "used": false,
+    "device": null
+  },
+  "A7B8-C9D0-E1F2-G3H9": {
+    "used": false,
+    "device": null
+  },
+  "I5J6-K7L8-M9N0-O1P7": {
+    "used": false,
+    "device": null
+  },
+  "Q3R4-S5T6-U7V8-W9X5": {
+    "used": false,
+    "device": null
+  },
+  "Y1Z2-A3B4-C5D6-E8F2": {
+    "used": false,
+    "device": null
+  },
+  "G9H0-I1J2-K3L4-M6N1": {
+    "used": false,
+    "device": null
+  },
+  "O7P8-Q9R0-S1T2-U3V9": {
+    "used": false,
+    "device": null
+  },
+  "W5X6-Y7Z8-A9B0-C1D7": {
+    "used": false,
+    "device": null
+  },
+  "E3F4-G5H6-I7J8-K9L5": {
+    "used": false,
+    "device": null
+  },
+  "M1N2-O3P4-Q5R6-S7T3": {
+    "used": false,
+    "device": null
+  },
+  "U9V0-W1X2-Y3Z4-A6B1": {
+    "used": false,
+    "device": null
+  },
+  "C7D8-E9F0-G1H2-I3J9": {
+    "used": false,
+    "device": null
+  },
+  "K5L6-M7N8-O9P0-Q1R7": {
+    "used": false,
+    "device": null
+  },
+  "S3T4-U5V6-W7X8-Y9Z5": {
+    "used": false,
+    "device": null
+  },
+  "A1B2-C3D4-E5F6-G8H3": {
+    "used": false,
+    "device": null
+  },
+  "I9J0-K1L2-M3N4-O6P2": {
+    "used": false,
+    "device": null
+  },
+  "Q7R8-S9T0-U1V2-W4X0": {
+    "used": false,
+    "device": null
+  },
+  "Y5Z6-A7B8-C9D0-E1F8": {
+    "used": false,
+    "device": null
+  },
+  "G3H4-I5J6-K7L8-M9N6": {
+    "used": false,
+    "device": null
+  },
+  "O1P2-Q3R4-S5T6-U8V4": {
+    "used": false,
+    "device": null
+  },
+  "W9X0-Y1Z2-A3B4-C6D2": {
+    "used": false,
+    "device": null
+  },
+  "E7F8-G9H0-I1J2-K4L0": {
+    "used": false,
+    "device": null
+  },
+  "M5N6-O7P8-Q9R0-S1T8": {
+    "used": false,
+    "device": null
+  },
+  "U3V4-W5X6-Y7Z8-A9B6": {
+    "used": false,
+    "device": null
+  },
+  "C1D2-E3F4-G5H6-I8J3": {
+    "used": false,
+    "device": null
+  },
+  "K9L0-M1N2-O3P4-Q6R2": {
+    "used": false,
+    "device": null
+  },
+  "S7T8-U9V0-W1X2-Y4Z1": {
+    "used": false,
+    "device": null
+  },
+  "A5B6-C7D8-E9F0-G1H8": {
+    "used": false,
+    "device": null
+  },
+  "I3J4-K5L6-M7N8-O9P6": {
+    "used": false,
+    "device": null
+  },
+  "Q1R2-S3T4-U5V6-W8X3": {
+    "used": false,
+    "device": null
+  },
+  "Y9Z0-A1B2-C3D4-E6F2": {
+    "used": false,
+    "device": null
+  },
+  "G7H8-I9J0-K1L2-M4N0": {
+    "used": false,
+    "device": null
+  },
+  "O5P6-Q7R8-S9T0-U1V8": {
+    "used": false,
+    "device": null
+  },
+  "W3X4-Y5Z6-A7B8-C9D6": {
+    "used": false,
+    "device": null
+  },
+  "E1F2-G3H4-I5J6-K8L3": {
+    "used": false,
+    "device": null
+  },
+  "M9N0-O1P2-Q3R4-S6T2": {
+    "used": false,
+    "device": null
+  },
+  "U7V8-W9X0-Y1Z2-A4B0": {
+    "used": false,
+    "device": null
+  },
+  "C5D6-E7F8-G9H0-I1J8": {
+    "used": false,
+    "device": null
+  },
+  "K3L4-M5N6-O7P8-Q9R6": {
+    "used": false,
+    "device": null
+  },
+  "S1T2-U3V4-W5X6-Y8Z2": {
+    "used": false,
+    "device": null
+  },
+  "A9B0-C1D2-E3F4-G6H2": {
+    "used": false,
+    "device": null
+  },
+  "I7J8-K9L0-M1N2-O4P0": {
+    "used": false,
+    "device": null
+  },
+  "Q5R6-S7T8-U9V0-W1X8": {
+    "used": false,
+    "device": null
+  },
+  "Y3Z4-A5B6-C7D8-E9F6": {
+    "used": false,
+    "device": null
+  },
+  "G1H2-I3J4-K5L6-M7N4": {
+    "used": false,
+    "device": null
+  },
+  "O9P0-Q1R2-S3T4-U6V2": {
+    "used": false,
+    "device": null
+  },
+  "W7X8-Y9Z0-A1B2-C4D0": {
+    "used": false,
+    "device": null
+  },
+  "E5F6-G7H8-I9J0-K1L8": {
+    "used": false,
+    "device": null
+  },
+  "M3N4-O5P6-Q7R8-S9T6": {
+    "used": false,
+    "device": null
+  },
+  "U1V2-W3X4-Y5Z6-A7B4": {
+    "used": false,
+    "device": null
+  },
+  "C9D0-E1F2-G3H4-I6J2": {
+    "used": false,
+    "device": null
+  },
+  "K7L8-M9N0-O1P2-Q4R0": {
+    "used": false,
+    "device": null
+  },
+  "S5T6-U7V8-W9X0-Y1Z8": {
+    "used": false,
+    "device": null
+  },
+  "A3B4-C5D6-E7F8-G9H6": {
+    "used": false,
+    "device": null
+  },
+  "I1J2-K3L4-M5N6-O7P4": {
+    "used": false,
+    "device": null
+  },
+  "Q9R0-S1T2-U3V4-W6X1": {
+    "used": false,
+    "device": null
+  },
+  "Y7Z8-A9B0-C1D2-E4F0": {
+    "used": false,
+    "device": null
+  },
+  "G5H6-I7J8-K9L0-M1N8": {
+    "used": false,
+    "device": null
+  },
+  "O3P4-Q5R6-S7T8-U9V6": {
+    "used": false,
+    "device": null
+  },
+  "W1X2-Y3Z4-A5B6-C8D2": {
+    "used": false,
+    "device": null
+  },
+  "E9F0-G1H2-I3J4-K6L2": {
+    "used": false,
+    "device": null
+  },
+  "M7N8-O9P0-Q1R2-S4T0": {
+    "used": false,
+    "device": null
+  },
+  "U5V6-W7X8-Y9Z0-A1B8": {
+    "used": false,
+    "device": null
+  },
+  "C3D4-E5F6-G7H8-I9J6": {
+    "used": false,
+    "device": null
+  },
+  "K1L2-M3N4-O5P6-Q8R3": {
+    "used": false,
+    "device": null
+  },
+  "S9T0-U1V2-W3X4-Y6Z2": {
+    "used": false,
+    "device": null
+  },
+  "A7B8-C9D0-E1F2-G4H0": {
+    "used": false,
+    "device": null
+  },
+  "I5J6-K7L8-M9N0-O1P8": {
+    "used": false,
+    "device": null
+  },
+  "Q3R4-S5T6-U7V8-W9X6": {
+    "used": false,
+    "device": null
+  },
+  "Y1Z2-A3B4-C5D6-E8F3": {
+    "used": false,
+    "device": null
+  },
+  "G9H0-I1J2-K3L4-M6N2": {
+    "used": false,
+    "device": null
+  },
+  "O7P8-Q9R0-S1T2-U4V0": {
+    "used": false,
+    "device": null
+  },
+  "W5X6-Y7Z8-A9B0-C1D8": {
+    "used": false,
+    "device": null
+  },
+  "E3F4-G5H6-I7J8-K9L6": {
+    "used": false,
+    "device": null
+  },
+  "M1N2-O3P4-Q5R6-S7T4": {
+    "used": false,
+    "device": null
+  },
+  "U9V0-W1X2-Y3Z4-A6B2": {
+    "used": false,
+    "device": null
+  },
+  "C7D8-E9F0-G1H2-I4J0": {
+    "used": false,
+    "device": null
+  },
+  "K5L6-M7N8-O9P0-Q1R8": {
+    "used": false,
+    "device": null
+  },
+  "S3T4-U5V6-W7X8-Y9Z6": {
+    "used": false,
+    "device": null
+  },
+  "A1B2-C3D4-E5F6-G8H4": {
+    "used": false,
+    "device": null
+  },
+  "I9J0-K1L2-M3N4-O6P3": {
+    "used": false,
+    "device": null
+  },
+  "Q7R8-S9T0-U1V2-W4X1": {
+    "used": false,
+    "device": null
+  },
+  "Y5Z6-A7B8-C9D0-E1F9": {
+    "used": false,
+    "device": null
+  },
+  "G3H4-I5J6-K7L8-M9N7": {
+    "used": false,
+    "device": null
+  },
+  "O1P2-Q3R4-S5T6-U8V5": {
+    "used": false,
+    "device": null
+  },
+  "W9X0-Y1Z2-A3B4-C6D3": {
+    "used": false,
+    "device": null
+  },
+  "E7F8-G9H0-I1J2-K4L1": {
+    "used": false,
+    "device": null
+  },
+  "M5N6-O7P8-Q9R0-S1T9": {
+    "used": false,
+    "device": null
+  },
+  "U3V4-W5X6-Y7Z8-A9B7": {
     "used": false,
     "device": null
   }
