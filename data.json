@@ -2,76 +2,107 @@
   "teachers": [
     {
       "id": 1,
-      "name": "حيدر الطائي",
-      "subject": "مادة اللغة الإنجليزية",
+      "name": "الدورة التجريبية المجانية",
+      "subject": "الوحدة الأولى (5 محاضرات)",
       "image": "https://f.top4top.io/p_3587jfhfg1.png",
+      "isPaid": false,
       "classes": [
         {
-          "name": "محاضرات تجريبية (مجانية)",
+          "name": "الوحدة الأولى - تجريبية",
           "lectures": [
             {
-              "title": "المحاضرة التجريبية 1",
+              "title": "المحاضرة 1 (تجريبية)",
               "url": "https://youtu.be/wEQ-hcXnHxo?si=yITk8bANia9gwkHd",
-              "description": "هذه محاضرة تجريبية مجانية للجميع.",
-              "isFree": true
+              "description": "وصف المحاضرة 1 في الوحدة الأولى."
             },
             {
-              "title": "المحاضرة التجريبية 2",
+              "title": "المحاضرة 2 (تجريبية)",
               "url": "https://youtu.be/QJQSDjCucu8?si=5any4TOG-Aa_Afio",
-              "description": "هذه محاضرة تجريبية مجانية للجميع.",
-              "isFree": true
+              "description": "وصف المحاضرة 2 في الوحدة الأولى."
             },
             {
-              "title": "المحاضرة التجريبية 3",
+              "title": "المحاضرة 3 (تجريبية)",
               "url": "https://example.com/free-video-3",
-              "description": "هذه محاضرة تجريبية مجانية للجميع.",
-              "isFree": true
+              "description": "وصف المحاضرة 3 في الوحدة الأولى."
             },
             {
-              "title": "المحاضرة التجريبية 4",
+              "title": "المحاضرة 4 (تجريبية)",
               "url": "https://example.com/free-video-4",
-              "description": "هذه محاضرة تجريبية مجانية للجميع.",
-              "isFree": true
+              "description": "وصف المحاضرة 4 في الوحدة الأولى."
             },
             {
-              "title": "المحاضرة التجريبية 5",
+              "title": "المحاضرة 5 (تجريبية)",
               "url": "https://example.com/free-video-5",
-              "description": "هذه محاضرة تجريبية مجانية للجميع.",
-              "isFree": true
+              "description": "وصف المحاضرة 5 في الوحدة الأولى."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "الدورة الالكترونية (المدفوعة)",
+      "subject": "للمشتركين فقط (الأساسيات + الوحدات الكاملة)",
+      "image": "https://f.top4top.io/p_3587jfhfg1.png",
+      "isPaid": true,
+      "classes": [
+        {
+          "name": "الأساسيات",
+          "lectures": [
+            {
+              "title": "المحاضرة 1: أساسيات",
+              "url": "https://example.com/paid-basics-1",
+              "description": "شرح المحاضرة 1 - الأساسيات (قابلة للزيادة)."
+            },
+            {
+              "title": "المحاضرة 2: أساسيات",
+              "url": "https://example.com/paid-basics-2",
+              "description": "شرح المحاضرة 2 - الأساسيات."
+            },
+            {
+              "title": "المحاضرة 3: أساسيات",
+              "url": "https://example.com/paid-basics-3",
+              "description": "شرح المحاضرة 3 - الأساسيات."
+            },
+            {
+              "title": "المحاضرة 4: أساسيات",
+              "url": "https://example.com/paid-basics-4",
+              "description": "شرح المحاضرة 4 - الأساسيات."
+            },
+            {
+              "title": "المحاضرة 5: أساسيات",
+              "url": "https://example.com/paid-basics-5",
+              "description": "شرح المحاضرة 5 - الأساسيات."
             }
           ]
         },
         {
-          "name": "الوحدة الأولى (الدورة المدفوعة)",
+          "name": "الوحدة الأولى (كاملة)",
           "lectures": [
             {
-              "title": "المحاضرة 1 (للمشتركين)",
-              "url": "https://example.com/paid-video-1",
-              "description": "شرح مفصل (خاص بالدورة المدفوعة).",
-              "isFree": false
+              "title": "المحاضرة 1 (كاملة)",
+              "url": "https://example.com/paid-unit1-1",
+              "description": "وصف المحاضرة 1 (كاملة)."
             },
             {
-              "title": "المحاضرة 2 (للمشتركين)",
-              "url": "https://example.com/paid-video-2",
-              "description": "شرح مفصل (خاص بالدورة المدفوعة).",
-              "isFree": false
+              "title": "المحاضرة 2 (كاملة)",
+              "url": "https://example.com/paid-unit1-2",
+              "description": "وصف المحاضرة 2 (كاملة)."
+            },
+            {
+              "title": "المحاضرة 3 (كاملة)",
+              "url": "https://example.com/paid-unit1-3",
+              "description": "وصف المحاضرة 3 (كاملة)."
             }
           ]
         },
         {
-          "name": "الوحدة الثانية (الدورة المدفوعة)",
+          "name": "الوحدة الثانية (كاملة)",
           "lectures": [
             {
-              "title": "المحاضرة 3 (للمشتركين)",
-              "url": "https://example.com/paid-video-3",
-              "description": "شرح مفصل (خاص بالدورة المدفوعة).",
-              "isFree": false
-            },
-            {
-              "title": "المحاضرة 4 (للمشتركين)",
-              "url": "https://example.com/paid-video-4",
-              "description": "شرح مفصل (خاص بالدورة المدفوعة).",
-              "isFree": false
+              "title": "المحاضرة 1",
+              "url": "https://example.com/paid-unit2-1",
+              "description": "وصف المحاضرة 1 - الوحدة الثانية."
             }
           ]
         }
