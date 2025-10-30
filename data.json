@@ -7,35 +7,46 @@
       "image": "https://f.top4top.io/p_3587jfhfg1.png",
       "classes": [
         {
-          "name": "الوحدة الأولى",
-          "basics": [
+          "name": "قسم الأساسيات",
+          "lectures": [
             {
-              "title": "الأساسيات 1: مقدمة الدورة الإلكترونية",
-              "url": "https://youtu.be/example_basics_url_1",
-              "description": "شرح تعريفي بالمنهاج وطريقة دراسة المادة."
+              "title": "محاضرة الأساسيات رقم 1",
+              "url": "#",
+              "description": "مقدمة ومفاهيم أساسية."
             },
             {
-              "title": "الأساسيات 2: مراجعة الأزمنة الماضية",
-              "url": "https://youtu.be/example_basics_url_2",
-              "description": "مراجعة شاملة للماضي البسيط والمستمر والتام."
+              "title": "محاضرة الأساسيات رقم 2",
+              "url": "#",
+              "description": "تغطية النقطة الأولى في الأساسيات."
             },
             {
-              "title": "الأساسيات 3: قواعد المفرد والجمع",
-              "url": "https://youtu.be/example_basics_url_3",
-              "description": "شرح لأساسيات تكوين المفرد والجمع في اللغة."
+              "title": "محاضرة الأساسيات رقم 3",
+              "url": "#",
+              "description": "تغطية النقطة الثانية في الأساسيات."
             },
             {
-              "title": "الأساسيات 4: أدوات التنكير والتعريف (a, an, the)",
-              "url": "https://youtu.be/example_basics_url_4",
-              "description": "متى نستخدم أدوات التنكير والتعريف ومتى نحذفها."
+              "title": "محاضرة الأساسيات رقم 4",
+              "url": "#",
+              "description": "تغطية النقطة الثالثة في الأساسيات."
             },
             {
-              "title": "الأساسيات 5: استخدام حروف الجر الأساسية (In, On, At)",
-              "url": "https://youtu.be/example_basics_url_5",
-              "description": "شرح مبسط لاستخدام حروف الجر الخاصة بالزمن والمكان."
+              "title": "محاضرة الأساسيات رقم 5",
+              "url": "#",
+              "description": "تغطية النقطة الرابعة في الأساسيات."
+            },
+            {
+              "title": "محاضرة الأساسيات رقم 6",
+              "url": "#",
+              "description": "ملخص الأساسيات والتحضير للمحاضرات الرئيسية."
             }
-            // يمكن إضافة المزيد من محاضرات الأساسيات هنا
-          ],
+          ]
+        },
+        {
+          "name": "قسم المحاضرات",
+          "lectures": []
+        },
+        {
+          "name": "الوحدة الأولى",
           "lectures": [
             {
               "title": "المحاضرة 1",
@@ -44,7 +55,7 @@
             },
             {
               "title": "المحاضرة 2",
-              "url": "https://youtu.be/QJQSDjCucu8?si=5any4TOG-Aa_Afio",
+              "url": "https://youtu.be/QJQSDjCucu8?si=5any4TOG-Aa_Afio", 
               "description": "وصف المحاضرة 2 في الوحدة الأولى."
             }
           ]
