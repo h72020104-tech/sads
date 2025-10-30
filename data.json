@@ -7,95 +7,53 @@
       "image": "https://f.top4top.io/p_3587jfhfg1.png",
       "classes": [
         {
-          "name": "محاضرات تجريبية (مجانية)",
+          "name": "الوحدة الأولى",
+          "basics": [
+            {
+              "title": "الأساسيات 1: مقدمة الدورة الإلكترونية",
+              "url": "https://youtu.be/example_basics_url_1",
+              "description": "شرح تعريفي بالمنهاج وطريقة دراسة المادة."
+            },
+            {
+              "title": "الأساسيات 2: مراجعة الأزمنة الماضية",
+              "url": "https://youtu.be/example_basics_url_2",
+              "description": "مراجعة شاملة للماضي البسيط والمستمر والتام."
+            },
+            {
+              "title": "الأساسيات 3: قواعد المفرد والجمع",
+              "url": "https://youtu.be/example_basics_url_3",
+              "description": "شرح لأساسيات تكوين المفرد والجمع في اللغة."
+            },
+            {
+              "title": "الأساسيات 4: أدوات التنكير والتعريف (a, an, the)",
+              "url": "https://youtu.be/example_basics_url_4",
+              "description": "متى نستخدم أدوات التنكير والتعريف ومتى نحذفها."
+            },
+            {
+              "title": "الأساسيات 5: استخدام حروف الجر الأساسية (In, On, At)",
+              "url": "https://youtu.be/example_basics_url_5",
+              "description": "شرح مبسط لاستخدام حروف الجر الخاصة بالزمن والمكان."
+            }
+            // يمكن إضافة المزيد من محاضرات الأساسيات هنا
+          ],
           "lectures": [
             {
-              "title": "المحاضرة التجريبية 1",
+              "title": "المحاضرة 1",
               "url": "https://youtu.be/wEQ-hcXnHxo?si=yITk8bANia9gwkHd",
-              "description": "هذه محاضرة تجريبية مجانية للجميع.",
-              "isFree": true
+              "description": "وصف المحاضرة 1 في الوحدة الأولى."
             },
             {
-              "title": "المحاضرة التجريبية 2",
+              "title": "المحاضرة 2",
               "url": "https://youtu.be/QJQSDjCucu8?si=5any4TOG-Aa_Afio",
-              "description": "هذه محاضرة تجريبية مجانية للجميع.",
-              "isFree": true
-            },
-            {
-              "title": "المحاضرة التجريبية 3",
-              "url": "https://example.com/free-video-3",
-              "description": "هذه محاضرة تجريبية مجانية للجميع.",
-              "isFree": true
-            },
-            {
-              "title": "المحاضرة التجريبية 4",
-              "url": "https://example.com/free-video-4",
-              "description": "هذه محاضرة تجريبية مجانية للجميع.",
-              "isFree": true
-            },
-            {
-              "title": "المحاضرة التجريبية 5",
-              "url": "https://example.com/free-video-5",
-              "description": "هذه محاضرة تجريبية مجانية للجميع.",
-              "isFree": true
-            }
-          ]
-        },
-        {
-          "name": "الوحدة الأولى (الدورة المدفوعة)",
-          "lectures": [
-            {
-              "title": "المحاضرة 1 (للمشتركين)",
-              "url": "https://example.com/paid-video-1",
-              "description": "شرح مفصل (خاص بالدورة المدفوعة).",
-              "isFree": false
-            },
-            {
-              "title": "المحاضرة 2 (للمشتركين)",
-              "url": "https://example.com/paid-video-2",
-              "description": "شرح مفصل (خاص بالدورة المدفوعة).",
-              "isFree": false
-            }
-          ]
-        },
-        {
-          "name": "الوحدة الثانية (الدورة المدفوعة)",
-          "lectures": [
-            {
-              "title": "المحاضرة 3 (للمشتركين)",
-              "url": "https://example.com/paid-video-3",
-              "description": "شرح مفصل (خاص بالدورة المدفوعة).",
-              "isFree": false
-            },
-            {
-              "title": "المحاضرة 4 (للمشتركين)",
-              "url": "https://example.com/paid-video-4",
-              "description": "شرح مفصل (خاص بالدورة المدفوعة).",
-              "isFree": false
+              "description": "وصف المحاضرة 2 في الوحدة الأولى."
             }
           ]
         }
       ]
     }
   ],
-  "materials": [
-    {
-      "id": 1,
-      "title": "ملزمة الوحدة الأولى (للمشتركين)",
-      "subject": "مادة اللغة الإنجليزية",
-      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/english-teacher.jpg?v=1710000000000",
-      "url": "https://example.com/paid-pdf-1"
-    }
-  ],
-  "exams": [
-    {
-      "id": 1,
-      "title": "امتحان الوحدة الأولى (للمشتركين)",
-      "subject": "مادة اللغة الإنجليزية",
-      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/english-teacher.jpg?v=1710000000000",
-      "url": "https://example.com/paid-exam-1"
-    }
-  ],
+  "materials": [],
+  "exams": [],
   "announcements": [
     {
       "id": 1,
