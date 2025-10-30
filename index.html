@@ -944,7 +944,7 @@
       <br>
       جميع حقوق المنصة محفوظة ومملوكة حصرياً.
       <br><br>
-      في حال محاولة **اختراق،او تخريب المنصة، أو التلاعب** بالمحتوى بأي شكل من الأشكال، فإنك تعرض نفسك للمسائلة القانونية أمام الجهات المختصة.
+      في حال محاولة **اختراق، تخريب المنصة، أو التلاعب** بالمحتوى بأي شكل من الأشكال، فإنك تعرض نفسك للمساءلة القانونية أمام الجهات المختصة.
     </p>
     
     <button onclick="closeModal('warningModal')" class="download-btn" style="margin-top: 1rem; background: var(--primary-dark);">
@@ -1088,14 +1088,14 @@
       <h3>تواصل مع الإدارة</h3>
       <p>للاستفسار أو حجز كود الدورة المدفوعة</p>
       
-      <a href="https://wa.me/964XXXXXXXXXX" target="_blank" style="background: #25D366; width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
+      <a href="https://wa.me/07709014600" target="_blank" style="background: #25D366; width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
          <i class="fab fa-whatsapp"></i> واتساب
       </a>
-      <a href="https://ig.me/m/USERNAME" target="_blank" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
+      <a href="https://ig.me/m/ferebells1987" target="_blank" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
          <i class="fab fa-instagram"></i> انستجرام
       </a>
       <a href="tel:+964XXXXXXXXXX" target="_blank" style="background: var(--text-secondary); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
-         <i class="fas fa-phone"></i> اتصال (07XX XXX XXXX)
+         <i class="fas fa-phone"></i> اتصال (07709014600)
       </a>
       <button onclick="closeModal('contactModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-check"></i> إغلاق</button>
      </div>
@@ -1600,12 +1600,14 @@
     }
 
     // منطق التحقق الدوري للطرد
-    const fiveMinutesInMs = 300000; 
-    
+    // تم تغيير فترة الفحص إلى 24 ساعة (86400000 ملي ثانية) لمنح الإدارة وقتاً لتفعيل الكود يدوياً
+    const oneDayInMs = 86400000; // 24 ساعة
+
     function checkRevocationStatus() {
         const userCode = localStorage.getItem('userAccessCode'); 
         if (!userCode || userCode === DEMO_CODE) return; 
 
+        // إضافة Date.now لتجاوز الكاش وضمان جلب أحدث نسخة من codes.json
         fetch('codes.json?t=' + Date.now())
             .then(response => {
                 if (!response.ok) throw new Error('Codes file not found');
@@ -1613,6 +1615,7 @@
             })
             .then(codesFromServer => {
                 const codeStatus = codesFromServer[userCode];
+                // إذا لم يتم العثور على الكود أو كانت حالته used: false
                 if (!codeStatus || codeStatus.used === false) { 
                     localStorage.removeItem('userAccessCode');     
                     alert('تم إلغاء صلاحية الوصول لهذا الرمز من قبل الإدارة.');
@@ -1627,8 +1630,8 @@
     let periodicCheckInterval;
     function startPeriodicCheck() {
         if(periodicCheckInterval) clearInterval(periodicCheckInterval);
-        checkRevocationStatus(); 
-        periodicCheckInterval = setInterval(checkRevocationStatus, fiveMinutesInMs);
+        // تم إزالة الفحص الأولي لمنع طرد الطالب فوراً بعد الدخول. الفحص سيبدأ بعد 24 ساعة.
+        periodicCheckInterval = setInterval(checkRevocationStatus, oneDayInMs);
     }
 
     // ** منطق الدخول المجاني/المدفوع **
@@ -1732,6 +1735,9 @@
 
             if (codeDetails.used === false) {
                 // الكود غير مُستخدم بعد أو تم تعطيله يدوياً
+                // هنا يجب أن لا يتم طرده، بل يتم السماح له بالدخول الأولي
+                // لكننا نعتمد على أن الطالب الذي يدخل بكود used: false للمرة الأولى سيأتي من checkAccessCode
+                // الطالب الذي يطرد هنا هو الذي لديه كود مخزّن محلياً وحالته used: false
                 localStorage.removeItem('userAccessCode');
                 alert('تم إلغاء تفعيل هذا الكود من قبل الإدارة. يرجى استخدام كود جديد.');
                 document.getElementById('loginModal').style.display = 'flex';
@@ -1756,6 +1762,7 @@
             return;
         }
 
+        // إضافة Date.now لتجاوز الكاش وضمان جلب أحدث نسخة من codes.json
         fetch('codes.json?t=' + Date.now())
             .then(response => {
                 if (!response.ok) {
@@ -1817,7 +1824,7 @@
                 startPeriodicCheck(); 
                 updateStudentCounter(accessCodeDatabase); 
                 console.warn(`تم تفعيل الكود: ${enteredCode}. يرجى تحديث ملف codes.json وجعل "used": true لهذا الكود.`);
-                alert(`تم تفعيل الكود بنجاح. تواصل مع المدرس لتأكيد التفعيل النهائي للكود.`);
+                alert(`تم تفعيل الكود بنجاح. أمامك 24 ساعة لتأكيد التفعيل النهائي للكود في ملف codes.json لتجنب طرد الطالب في الفحص الدوري التالي.`);
             }
         } else {
             errorElement.innerText = 'كود الدخول غير صحيح. حاول مرة أخرى.';
