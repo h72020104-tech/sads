@@ -1,14 +1,14 @@
 {
   "A1B2-C3D4-E5F6-G7H8": {
-    "used": true,
+    "used": false,
     "device": null
   },
   "11111": {
-    "used": true,
+    "used": false,
     "device": null
   },
   "99999": {
-    "used": true,
+    "used": false,
     "device": null
   },
   "123455431299": {
