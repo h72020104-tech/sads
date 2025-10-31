@@ -1094,7 +1094,6 @@
       <button onclick="closeModal('contactModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-check"></i> إغلاق</button>
      </div>
     </div>
-    
   </div> <button id="floatingContactBtn" onclick="openModal('contactModal')">
     <i class="fab fa-whatsapp"></i>
   </button>
@@ -1102,46 +1101,7 @@
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
   <script>
-    // *** كود الحماية ضد أدوات المطورين (DevTools) - تم إبقاء التعريف وإزالة الاستدعاء ***
-    function blockDevTools() {
-      let devtoolsOpen = false;
-      const threshold = 50; 
-
-      const check = () => {
-        const sizeCheck = window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100;
-
-        const start = performance.now();
-        try { new Function('debugger')(); } catch (e) {}
-        const end = performance.now();
-
-        if (sizeCheck || (end - start) > threshold) {
-          if (!devtoolsOpen) {
-            devtoolsOpen = true;
-            document.body.innerHTML = '<div style="background: black; color: red; font-size: 2rem; position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999;"><h1>! خطأ !</h1><p style="font-size: 1.2rem;">تم اكتشاف محاولة الوصول غير المصرح بها (DevTools).</p><p style="font-size: 1.2rem;">يرجى إغلاق أدوات المطورين.</p></div>';
-            
-            const preventExecution = setInterval(() => {
-              try { new Function('debugger')(); } catch (e) {
-                if (!window.outerWidth) clearInterval(preventExecution);
-              }
-            }, 100);
-          }
-        } else {
-          devtoolsOpen = false;
-        }
-      };
-      
-      setInterval(check, 1000);
-
-      document.onkeydown = function(e) {
-          if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) || (e.metaKey && e.altKey && e.key === 'i')) {
-              e.preventDefault();
-              check(); 
-              return false;
-          }
-      };
-      window.addEventListener('resize', check);
-    }
-    // blockDevTools(); <--- تم حذف سطر الاستدعاء هذا
+    // *** تم إزالة جميع أكواد الحماية ضد DevTools والنسخ والقص والنقر باليمين ***
 
     // إعداد الثيم الأولي
     function initializeTheme() {
@@ -1150,4 +1110,390 @@
       document.documentElement.setAttribute('data-theme', theme);
       updateThemeIcon(theme);
     }
-    //... (بقية الكود)
+
+    // تحديث أيقونة الثيم
+    function updateThemeIcon(theme) {
+      const icon = document.getElementById('themeToggle').querySelector('i');
+      if (theme === 'light') {
+        icon.className = 'fas fa-sun';
+      } else {
+        icon.className = 'fas fa-moon';
+      }
+    }
+
+    // تبديل الثيم
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+
+    // تهيئة المشغل
+    const player = new Plyr('#player', {
+      controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen', 'settings'],
+      speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2] },
+      quality: { default: '1080p', options: ['1080p', '720p', '480p'] }, // مثال للجودة، يجب تعديله حسب الحاجة
+      disableContextMenu: false  // تم تعطيل منع قائمة النقر باليمين
+    });
+
+    player.on('timeupdate', () => {
+      const currentTime = player.currentTime;
+      const duration = player.duration;
+      if (duration && currentTime > 0) {
+        const progress = (currentTime / duration) * 100;
+        localStorage.setItem('videoProgress:' + currentVideo.url, progress);
+      }
+    });
+
+    // البيانات (يجب استبدالها ببيانات حقيقية من الخادم)
+    const TEACHERS_DATA = [
+      { id: 1, name: "الأستاذ حيدر علي الطائي", subject: "اللغة العربية", imageUrl: "https://via.placeholder.com/180/1877F2/FFFFFF?text=ح.ط" },
+      { id: 2, name: "مدرس الرياضيات", subject: "الرياضيات", imageUrl: "https://via.placeholder.com/180/4caf50/FFFFFF?text=ر.ض" },
+      { id: 3, name: "مدرس الكيمياء", subject: "الكيمياء", imageUrl: "https://via.placeholder.com/180/ff9800/FFFFFF?text=ك.م" },
+      { id: 4, name: "مدرس الفيزياء", subject: "الفيزياء", imageUrl: "https://via.placeholder.com/180/f44336/FFFFFF?text=ف.ز" },
+    ];
+
+    const CLASSES_DATA = {
+      1: [ // مدرس اللغة العربية
+        { id: 101, title: "الفصل الأول: القواعد الأساسية", lectures: [
+          { id: 1, title: "المحاضرة 1: مقدمة النحو", url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", duration: "1:20:00" },
+          { id: 2, title: "المحاضرة 2: أقسام الكلمة", url: "http://sample.vodobox.com/skate_test/skate_test_30s.m3u8", duration: "0:45:30" },
+          { id: 3, title: "المحاضرة 3: المرفوعات", url: "http://sample.vodobox.com/skate_test/skate_test_30s.m3u8", duration: "1:00:00" }
+        ]},
+        { id: 102, title: "الفصل الثاني: الأدب والنصوص", lectures: [
+          { id: 4, title: "المحاضرة 1: مدرسة الإحياء", url: "http://sample.vodobox.com/skate_test/skate_test_30s.m3u8", duration: "0:50:00" },
+          { id: 5, title: "المحاضرة 2: الشاعر الجواهري", url: "http://sample.vodobox.com/skate_test/skate_test_30s.m3u8", duration: "0:30:00" }
+        ]}
+      ],
+      2: [ /* بيانات مدرس الرياضيات */ ],
+      3: [ /* بيانات مدرس الكيمياء */ ],
+      4: [ /* بيانات مدرس الفيزياء */ ]
+    };
+
+    const MATERIALS_DATA = [
+      { id: 1, title: "ملزمة القواعد الجزء الأول", subject: "اللغة العربية", imageUrl: "https://via.placeholder.com/350x200/1877F2/FFFFFF?text=ملزمة+قواعد+1", downloadUrl: "#" },
+      { id: 2, title: "كتاب الأدب كاملاً", subject: "اللغة العربية", imageUrl: "https://via.placeholder.com/350x200/4caf50/FFFFFF?text=ملزمة+أدب", downloadUrl: "#" },
+      { id: 3, title: "ملخص قوانين الفيزياء", subject: "الفيزياء", imageUrl: "https://via.placeholder.com/350x200/f44336/FFFFFF?text=ملزمة+فيزياء", downloadUrl: "#" },
+    ];
+
+    const EXAMS_DATA = [
+      { id: 1, title: "امتحان شامل الفصل الأول", subject: "اللغة العربية", imageUrl: "https://via.placeholder.com/350x200/1877F2/FFFFFF?text=امتحان+1", link: "#" },
+      { id: 2, title: "امتحان يومي الأفعال الخمسة", subject: "اللغة العربية", imageUrl: "https://via.placeholder.com/350x200/ff9800/FFFFFF?text=امتحان+يومي", link: "#" },
+      { id: 3, title: "امتحان نهاية الوحدة: الهندسة", subject: "الرياضيات", imageUrl: "https://via.placeholder.com/350x200/4caf50/FFFFFF?text=امتحان+رياضيات", link: "#" },
+    ];
+
+    let currentTeacherId = null;
+    let currentVideo = null;
+    let currentVideoURL = null;
+    let currentLectureTitle = null;
+    let accessMode = 'initial'; // 'initial', 'free', or 'paid'
+
+    // وظيفة لتحديث عداد الطلاب (بيانات عشوائية)
+    function updateStudentCounter() {
+      const countElement = document.getElementById('studentCounter').querySelector('span');
+      const randomCount = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000;
+      countElement.textContent = `${randomCount.toLocaleString('ar-IQ')} طالب مشترك`;
+    }
+
+    // وظيفة فتح نافذة التواصل
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    // وظيفة إغلاق نافذة التواصل
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // وظيفة الدخول للوضع التجريبي
+    function enterFreeMode() {
+      accessMode = 'free';
+      document.getElementById('selectionModal').style.display = 'none';
+      document.getElementById('appContent').style.display = 'block';
+      document.body.style.overflow = 'auto';
+      navigate('home');
+    }
+
+    // وظيفة طلب الدخول المدفوع
+    function enterPaidMode() {
+      document.getElementById('selectionModal').style.display = 'none';
+      document.getElementById('loginModal').style.display = 'flex';
+    }
+
+    // وظيفة التحقق من كود الدخول
+    function checkAccessCode() {
+      const code = document.getElementById('accessCodeInput').value.trim();
+      const errorElement = document.getElementById('accessError');
+      // مثال بسيط للتحقق، يجب استبداله بالتحقق من الخادم
+      const VALID_CODE = "Hayder2024";
+
+      if (code === VALID_CODE) {
+        accessMode = 'paid';
+        errorElement.style.display = 'none';
+        document.getElementById('loginModal').style.display = 'none';
+        document.getElementById('appContent').style.display = 'block';
+        document.body.style.overflow = 'auto';
+        navigate('home');
+      } else {
+        errorElement.style.display = 'block';
+      }
+    }
+
+    // وظيفة التنقل بين الصفحات
+    function navigate(pageId) {
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+        if (page.id === pageId + 'Page') {
+          page.classList.add('active');
+        }
+      });
+
+      // تحديث حالة أزرار التنقل الرئيسية
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      if (pageId === 'home') {
+        document.querySelector('.nav-btn').classList.add('active');
+      }
+    }
+
+    // وظيفة تحميل المحتوى الرئيسي (محاضرات، ملازم، امتحانات)
+    function loadContent(type) {
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        if (btn.textContent.includes(type === 'lectures' ? 'المحاضرات' : type === 'materials' ? 'الملازم' : 'الامتحانات')) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      
+      if (type === 'lectures') {
+        navigate('home'); // في هذا التصميم، صفحة المحاضرات هي الصفحة الرئيسية
+      } else if (type === 'materials') {
+        displayMaterials();
+        navigate('materials');
+      } else if (type === 'exams') {
+        displayExams();
+        navigate('exams');
+      }
+    }
+
+    // وظيفة عرض المدرسين (الدورات)
+    function displayTeachers(teachers) {
+      const grid = document.getElementById('teachersGrid');
+      grid.innerHTML = '';
+      teachers.forEach(teacher => {
+        const card = document.createElement('div');
+        card.className = 'teacher-card';
+        card.setAttribute('data-id', teacher.id);
+        card.onclick = () => showClasses(teacher.id);
+        card.innerHTML = `
+          <img src="${teacher.imageUrl}" alt="صورة المدرس" class="teacher-img">
+          <span class="teacher-name">${teacher.name}</span>
+          <span class="teacher-subject">${teacher.subject}</span>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // وظيفة البحث
+    document.getElementById('searchButton').addEventListener('click', performSearch);
+    document.getElementById('searchInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+
+    function performSearch() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const filteredTeachers = TEACHERS_DATA.filter(t =>
+        t.name.toLowerCase().includes(query) || t.subject.toLowerCase().includes(query)
+      );
+      displayTeachers(filteredTeachers);
+      navigate('home');
+    }
+
+    // وظيفة عرض الفصول الدراسية لمدرس معين
+    function showClasses(teacherId) {
+      currentTeacherId = teacherId;
+      const teacher = TEACHERS_DATA.find(t => t.id === teacherId);
+      const classes = CLASSES_DATA[teacherId] || [];
+
+      document.getElementById('teacherImage').src = teacher.imageUrl;
+      document.getElementById('teacherName').textContent = teacher.name;
+      document.getElementById('teacherSubject').textContent = teacher.subject;
+
+      const classesList = document.getElementById('classesList');
+      classesList.innerHTML = '';
+
+      classes.forEach(classData => {
+        const classCard = document.createElement('div');
+        classCard.className = 'class-card';
+
+        const header = document.createElement('div');
+        header.className = 'class-header';
+        header.innerHTML = `
+          <h3>${classData.title}</h3>
+          <span><i class="fas fa-chevron-down"></i></span>
+        `;
+        classCard.appendChild(header);
+
+        const lecturesList = document.createElement('div');
+        lecturesList.className = 'lectures-list';
+
+        classData.lectures.forEach(lecture => {
+          const item = document.createElement('div');
+          item.className = 'lecture-item';
+          item.onclick = () => showVideo(lecture, teacher);
+
+          const isCompleted = localStorage.getItem('lecture:' + lecture.id) === 'completed';
+          item.innerHTML = `
+            <div class="lecture-content">
+              <div class="lecture-checkbox ${isCompleted ? 'completed' : ''}" onclick="event.stopPropagation(); toggleLectureCompletion(${lecture.id}, this)">
+                ${isCompleted ? '<i class="fas fa-check"></i>' : ''}
+              </div>
+              <span class="lecture-title">${lecture.title}</span>
+            </div>
+            <span class="lecture-progress">${lecture.duration}</span>
+          `;
+          lecturesList.appendChild(item);
+        });
+
+        classCard.appendChild(lecturesList);
+        classesList.appendChild(classCard);
+
+        // وظيفة طي/فرد قائمة المحاضرات
+        header.addEventListener('click', () => {
+          const isExpanded = lecturesList.style.display === 'flex';
+          lecturesList.style.display = isExpanded ? 'none' : 'grid';
+          header.querySelector('span i').className = isExpanded ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
+        });
+      });
+
+      navigate('classes');
+    }
+
+    // وظيفة لتحديد المحاضرة كمكتملة
+    function toggleLectureCompletion(lectureId, element) {
+      const isCompleted = localStorage.getItem('lecture:' + lectureId) === 'completed';
+      if (isCompleted) {
+        localStorage.removeItem('lecture:' + lectureId);
+        element.classList.remove('completed');
+        element.innerHTML = '';
+      } else {
+        localStorage.setItem('lecture:' + lectureId, 'completed');
+        element.classList.add('completed');
+        element.innerHTML = '<i class="fas fa-check"></i>';
+      }
+    }
+
+    // وظيفة عرض الفيديو
+    function showVideo(lecture, teacher) {
+      if (accessMode === 'free' && lecture.id !== 1) { // مثال: السماح فقط بالمحاضرة الأولى في الوضع المجاني
+        alert('هذه المحاضرة مخصصة للمشتركين فقط. يرجى الاشتراك للدخول.');
+        openModal('contactModal');
+        return;
+      }
+
+      currentVideo = lecture;
+      currentVideoURL = lecture.url;
+      currentLectureTitle = lecture.title;
+
+      document.getElementById('videoTitle').textContent = lecture.title;
+      document.getElementById('videoDescription').textContent = `دورة: ${teacher.subject} - الأستاذ: ${teacher.name}`;
+      
+      // تفعيل العلامة المائية
+      const watermark = document.getElementById('videoWatermark');
+      watermark.textContent = `ID:${Math.floor(Math.random() * 90000) + 10000} | ${teacher.name}`; // علامة مائية عشوائية للمحاكاة
+
+      // تهيئة مشغل الفيديو
+      player.source = {
+        type: 'video',
+        sources: [
+          {
+            src: lecture.url,
+            type: lecture.url.includes('.m3u8') ? 'application/x-mpegURL' : 'video/mp4',
+            size: 1080 // مثال، يجب تعديله
+          }
+        ]
+      };
+      
+      // استعادة تقدم المشاهدة
+      const savedProgress = localStorage.getItem('videoProgress:' + lecture.url);
+      if (savedProgress) {
+        player.on('ready', () => {
+          const seekTime = (savedProgress / 100) * player.duration;
+          player.currentTime = seekTime;
+          player.play(); // تشغيل تلقائي من حيث توقف
+        });
+      } else {
+        player.play();
+      }
+
+      navigate('video');
+    }
+
+    // وظيفة نسخ رابط المحاضرة
+    function copyLectureLink() {
+      if (!currentVideo) return;
+      
+      const lectureLink = `رابط المحاضرة: ${currentLectureTitle}\n${currentVideoURL}\n\nيرجى عدم مشاركة هذا الرابط!`;
+      
+      navigator.clipboard.writeText(lectureLink)
+        .then(() => {
+          alert('تم نسخ رابط المحاضرة بنجاح.');
+        })
+        .catch(err => {
+          console.error('فشل في نسخ الرابط:', err);
+          alert('فشل في نسخ الرابط، يرجى النسخ يدوياً.');
+        });
+    }
+
+    // عرض الملازم
+    function displayMaterials() {
+      const grid = document.getElementById('materialsGrid');
+      grid.innerHTML = '';
+      MATERIALS_DATA.forEach(material => {
+        const card = document.createElement('div');
+        card.className = 'material-card';
+        card.innerHTML = `
+          <img src="${material.imageUrl}" alt="${material.title}" class="material-img">
+          <span class="material-subject">${material.subject}</span>
+          <h3 class="material-title">${material.title}</h3>
+          <a href="${material.downloadUrl}" target="_blank" class="download-btn"><i class="fas fa-download"></i> تحميل</a>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // عرض الامتحانات
+    function displayExams() {
+      const grid = document.getElementById('examsGrid');
+      grid.innerHTML = '';
+      EXAMS_DATA.forEach(exam => {
+        const card = document.createElement('div');
+        card.className = 'exam-card';
+        card.innerHTML = `
+          <img src="${exam.imageUrl}" alt="${exam.title}" class="exam-img">
+          <span class="exam-subject">${exam.subject}</span>
+          <h3 class="exam-title">${exam.title}</h3>
+          <a href="${exam.link}" target="_blank" class="download-btn" style="background: var(--warning);"><i class="fas fa-external-link-alt"></i> ابدأ الامتحان</a>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // تهيئة التطبيق عند التحميل
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeTheme();
+      updateStudentCounter();
+      displayTeachers(TEACHERS_DATA);
+
+      // إظهار نافذة الاختيار عند البداية
+      openModal('selectionModal');
+    });
+  </script>
+ </body>
+</html>
