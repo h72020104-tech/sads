@@ -939,9 +939,17 @@
  <body> 
   
   <div id="selectionModal" class="modal" style="display: none;"> 
-    <div class="modal-content" style="max-width: 500px;">
-        <i class="fas fa-graduation-cap" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
-        <h3>مرحباً بك في منصة التفوق</h3>
+    <div class="modal-content" style="max-width: 600px;">
+        <i class="fas fa-gavel" style="font-size: 3rem; color: var(--error); margin-bottom: 1rem;"></i>
+        <h3>مرحباً بك في منصة التفوق للاستاذ: حيدر علي الطائي</h3>
+        
+        <div style="text-align: center; background: var(--card-hover); padding: 1.5rem; border-radius: 10px; border: 2px solid var(--error); margin-bottom: 1.5rem;">
+            <h4 style="color: var(--primary); margin-bottom: 0.5rem;">الأستاذ: حيدر علي الطائي (Hayder Ali Al-Ta'ee)</h4>
+            <p style="font-weight: bold; color: var(--text-color); margin-bottom: 1rem;">جميع حقوق المنصة محفوظة.</p>
+            <p style="color: var(--error); font-weight: 600;">
+                تحذير قانوني: في حال محاولة اختراق أو تخريب المنصة أو التلاعب، فإنك تعرض نفسك للمسائلة القانونية أمام الجهات المختصة.
+            </p>
+        </div>
         <p>اختر طريقة الدخول:</p>
         
         <button id="freeAccessButton" class="download-btn" onclick="enterFreeMode()">
@@ -1525,8 +1533,8 @@
       
       // [جديد] تحديد أي قائمة دورات يتم البحث فيها (المجانية أو المدفوعة)
       const listToSearch = (document.getElementById('studentCounter').style.display === 'none') 
-          ? allTeachers.filter(t => t.isPaid === false) // البحث في المجاني
-          : allTeachers.filter(t => t.isPaid === true); // البحث في المدفوع
+          ? allTeachers.filter(t => !t.isPaid) // البحث في المجاني
+          : allTeachers.filter(t => t.isPaid); // البحث في المدفوع
 
       const filteredCourses = listToSearch.filter(t => 
         t.name.toLowerCase().includes(query) || 
