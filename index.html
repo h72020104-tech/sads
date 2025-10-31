@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title> منصة التفوق</title>
-  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght=300;400;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
@@ -1091,12 +1091,15 @@
       <a href="https://wa.me/07709014600" target="_blank" style="background: #25D366; width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
          <i class="fab fa-whatsapp"></i> واتساب
       </a>
+      
       <a href="https://ig.me/m/ferebells1987" target="_blank" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
          <i class="fab fa-instagram"></i> انستجرام
       </a>
-      <a href="tel:+964XXXXXXXXXX" target="_blank" style="background: var(--text-secondary); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
+      
+      <a href="tel:+9647709014600" target="_blank" style="background: var(--text-secondary); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
          <i class="fas fa-phone"></i> اتصال (07709014600)
       </a>
+      
       <button onclick="closeModal('contactModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-check"></i> إغلاق</button>
      </div>
     </div>
@@ -1111,7 +1114,15 @@
     // *** كود الحماية ضد أدوات المطورين (DevTools) ***
     function blockDevTools() {
       let devtoolsOpen = false;
-      const threshold = 160; 
+      
+      // ==========================================
+      // START: التعديل الرئيسي لتقليل التنبيهات الكاذبة
+      // تم تغيير القيمة من 160 إلى 50
+      // ==========================================
+      const threshold = 50; 
+      // ==========================================
+      // END: التعديل الرئيسي
+      // ==========================================
 
       const check = () => {
         const sizeCheck = window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100;
@@ -1206,7 +1217,7 @@
         const counterElement = document.querySelector('#studentCounter span');
         if (counterElement) {
           counterElement.textContent = `${activatedCount} طالب مفعل`;
-          document.getElementById('studentCounter').style.display = 'flex';
+          document.getElementById('studentCounter').style.display = 'flex'; // [مهم] إظهار العداد
         }
       } catch (e) {
         console.error('Failed to update student counter:', e);
@@ -1264,9 +1275,9 @@
     const searchButton = document.getElementById('searchButton');
     const navButtons = document.querySelectorAll('.nav-btn');
 
-    let allTeachers = [], 
-        allMaterials = [], 
-        allExams = [];
+    let teachers = [], 
+        materials = [], 
+        exams = [];
     
     let currentTeacher = null, 
         currentClassIndex = 0, 
@@ -1314,13 +1325,13 @@
       });
     }
 
-    // عرض الدورات
-    function renderTeachers(list = allTeachers) {
+    // عرض المدرسين (الدورات)
+    function renderTeachers(list = teachers) {
       if (!list.length) {
         teachersGrid.innerHTML = `
           <div class="teacher-card" style="grid-column: 1/-1; text-align: center; background: var(--card-color);">
-            <i class="fas fa-box-open" style="font-size: 3rem; color: var(--text-secondary); margin-bottom: 1rem;"></i>
-            <h3>لا توجد دورات متاحة</h3>
+            <i class="fas fa-user-slash" style="font-size: 3rem; color: var(--text-secondary); margin-bottom: 1rem;"></i>
+            <h3>لم يتم العثور على دورات</h3>
             <p>قد تكون هناك مشكلة في تحميل البيانات.</p>
           </div>
         `;
@@ -1338,9 +1349,9 @@
     
     // عرض صفحة الفصول
     function showTeacher(teacherId) {
-      const teacher = allTeachers.find(t => t.id == teacherId);
+      const teacher = teachers.find(t => t.id == teacherId);
       if (!teacher) return;
-      currentTeacher = teacher; 
+      currentTeacher = teacher;
 
       document.getElementById('teacherImage').src = teacher.image;
       document.getElementById('teacherImage').alt = teacher.name;
@@ -1351,7 +1362,7 @@
       navigate('classes');
     }
 
-    // عرض قائمة الفصول والمحاضرات
+    // عرض قائمة الفصول والمحاضرات (مع نظام القفل)
     function renderClasses(classes) {
       const listContainer = document.getElementById('classesList');
       listContainer.innerHTML = classes.map((cls, classIndex) => `
@@ -1364,6 +1375,25 @@
             ${cls.lectures.map((lecture, lectureIndex) => {
               
               const lectureUrl = lecture.url;
+              const isFreeLecture = lecture.isFree === true;
+              
+              if (window.isFreeMode && !isFreeLecture) {
+                return `
+                <div class="lecture-item" style="opacity: 0.6; cursor: pointer;" onclick="showUpgradeModal()">
+                  <div class="lecture-content">
+                    <div class="lecture-checkbox" style="cursor: not-allowed; border-color: var(--text-secondary);">
+                      <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="lecture-title">
+                      <h4>${lecture.title}</h4>
+                      <p class="lecture-progress">(للمشتركين فقط)</p>
+                    </div>
+                  </div>
+                  <i class="fas fa-lock" style="color: var(--warning);"></i>
+                </div>
+                `;
+              }
+
               const isCompleted = completedLectures[lectureUrl];
               const progress = getVideoProgress(lectureUrl);
               const progressText = progress > 0 ? `(تقدم: ${formatTime(progress)})` : '';
@@ -1375,7 +1405,7 @@
                       ${isCompleted ? '<i class="fas fa-check"></i>' : ''}
                     </div>
                     <div class="lecture-title">
-                      <h4>${lecture.title}</h4>
+                      <h4>${lecture.title} ${isFreeLecture ? '<span style="color: var(--success); font-size: 0.8rem;">(تجريبية)</span>' : ''}</h4>
                       <p class="lecture-progress">${progressText}</p>
                     </div>
                   </div>
@@ -1410,17 +1440,11 @@
       
       const videoElement = document.getElementById('player');
       
-      if (hls) { hls.destroy(); hls = null; }
-      
-      const watermark = document.getElementById('videoWatermark');
-      const userCode = localStorage.getItem('userAccessCode');
-      const showWatermark = userCode && currentTeacher && currentTeacher.isPaid;
-      
-      if (watermark) {
-          // يمكن تغيير هذا النص لاسم الطالب إذا كانت قاعدة البيانات تدعم ذلك
-          watermark.textContent = showWatermark ? userCode : ''; 
+      if (hls) {
+        hls.destroy();
+        hls = null;
       }
-
+      
       if (url.includes('youtube.com') || url.includes('youtu.be')) {
           const videoIdMatch = url.match(/(?:youtu\.be\/|v=|embed\/|watch\?v=|\/v\/)([^&?#]+)/);
           const videoId = videoIdMatch ? videoIdMatch[1] : null;
@@ -1428,10 +1452,22 @@
           if (videoId) {
             player.source = {
                 type: 'video',
-                sources: [{ src: videoId, provider: 'youtube' }]
+                sources: [{
+                    src: videoId,
+                    provider: 'youtube',
+                }]
             };
             player.currentTime = getVideoProgress(url);
             player.play();
+            
+            const watermark = document.getElementById('videoWatermark');
+            const userCode = localStorage.getItem('userAccessCode');
+            if (watermark && userCode && !window.isFreeMode) {
+                watermark.textContent = userCode;
+            } else {
+                watermark.textContent = '';
+            }
+            
             navigate('video');
             return;
           }
@@ -1442,11 +1478,11 @@
           hls = new Hls();
           hls.loadSource(url);
           hls.attachMedia(videoElement);
-          hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          hls.on(Hls.Events.MANIFEST_PARSED, function() {
             player.currentTime = getVideoProgress(url);
             player.play();
           });
-          hls.on(Hls.Events.ERROR, (event, data) => {
+          hls.on(Hls.Events.ERROR, function(event, data) {
             console.error('HLS Error:', data);
             videoElement.src = url;
             player.currentTime = getVideoProgress(url);
@@ -1454,7 +1490,7 @@
           });
         } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
           videoElement.src = url;
-          videoElement.addEventListener('loadedmetadata', () => {
+          videoElement.addEventListener('loadedmetadata', function() {
             player.currentTime = getVideoProgress(url);
             player.play();
           });
@@ -1465,38 +1501,43 @@
         player.play();
       }
       
+      const watermark = document.getElementById('videoWatermark');
+      const userCode = localStorage.getItem('userAccessCode');
+      if (watermark && userCode && !window.isFreeMode) {
+          watermark.textContent = userCode;
+      } else {
+          watermark.textContent = '';
+      }
+
       navigate('video');
     }
 
-    // تحميل المحتوى (الملازم والامتحانات)
+    // تحميل المحتوى للملازم والامتحانات (مع نظام القفل)
     function loadContent(type) {
-      if (type === 'materials' && allMaterials.length === 0 && localStorage.getItem('userAccessCode') !== 'DEMO') {
-        showUpgradeModal();
-        return;
-      }
-      if (type === 'exams' && allExams.length === 0 && localStorage.getItem('userAccessCode') !== 'DEMO') {
-        showUpgradeModal();
-        return;
+      if (window.isFreeMode && (type === 'materials' || type === 'exams')) {
+        showUpgradeModal(); 
+        return; 
       }
 
       navButtons.forEach(btn => btn.classList.remove('active'));
       document.querySelector(`.nav-btn[onclick="loadContent('${type}')"]`).classList.add('active');
       
       if (type === 'materials') {
-        renderMaterials(allMaterials);
+        renderMaterials();
         navigate('materials');
       } else if (type === 'exams') {
-        renderExams(allExams);
+        renderExams();
         navigate('exams');
       } else {
+        renderTeachers(teachers); // [تعديل] إعادة عرض المدرسين عند الضغط على "المحاضرات"
         navigate('home');
       }
     }
 
     // عرض الملازم
-    function renderMaterials(list = allMaterials) {
+    function renderMaterials(list = materials) {
       if (!list || list.length === 0) {
-        materialsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد ملازم متاحة في هذه الدورة.</p>`;
+        materialsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد ملازم متاحة حالياً.</p>`;
         return;
       }
       materialsGrid.innerHTML = list.map(item => `
@@ -1510,9 +1551,9 @@
     }
 
     // عرض الامتحانات
-    function renderExams(list = allExams) {
+    function renderExams(list = exams) {
       if (!list || list.length === 0) {
-        examsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد امتحانات متاحة في هذه الدورة.</p>`;
+        examsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد امتحانات متاحة حالياً.</p>`;
         return;
       }
       examsGrid.innerHTML = list.map(item => `
@@ -1529,18 +1570,32 @@
     searchButton.addEventListener('click', () => {
       const query = searchInput.value.trim().toLowerCase();
       
-      const isPaidMode = document.getElementById('studentCounter').style.display !== 'none';
-      const listToSearch = isPaidMode
-          ? allTeachers.filter(t => t.isPaid)
-          : allTeachers.filter(t => !t.isPaid); 
+      // تحديد أي قائمة بيانات يتم البحث فيها بناءً على التبويب النشط
+      const activeNav = document.querySelector('.nav-btn.active').getAttribute('onclick');
 
-      const filteredCourses = listToSearch.filter(t => 
-        t.name.toLowerCase().includes(query) || 
-        t.subject.toLowerCase().includes(query)
-      );
-      renderTeachers(filteredCourses);
-      navigate('home');
-      loadContent('lectures'); 
+      if (activeNav.includes('materials')) {
+          const filtered = materials.filter(m => 
+            m.title.toLowerCase().includes(query) || 
+            m.subject.toLowerCase().includes(query)
+          );
+          renderMaterials(filtered);
+          navigate('materials');
+      } else if (activeNav.includes('exams')) {
+          const filtered = exams.filter(e => 
+            e.title.toLowerCase().includes(query) || 
+            e.subject.toLowerCase().includes(query)
+          );
+          renderExams(filtered);
+          navigate('exams');
+      } else {
+          // البحث الافتراضي (المحاضرات/الدورات)
+          const filtered = teachers.filter(t => 
+            t.name.toLowerCase().includes(query) || 
+            t.subject.toLowerCase().includes(query)
+          );
+          renderTeachers(filtered);
+          navigate('home');
+      }
     });
 
     searchInput.addEventListener('keydown', (e) => {
@@ -1551,15 +1606,18 @@
 
     // تحميل البيانات
     function loadData() {
-        return fetch('data.json?t=' + Date.now())
+        fetch('data.json?t=' + Date.now())
         .then(response => {
           if (!response.ok) throw new Error('فشل تحميل البيانات');
           return response.json();
         })
         .then(data => {
-          allTeachers = data.teachers || [];
-          allMaterials = data.materials || [];
-          allExams = data.exams || [];
+          teachers = data.teachers || [];
+          materials = data.materials || [];
+          exams = data.exams || [];
+          renderTeachers();
+          renderMaterials();
+          renderExams();
           console.log('تم تحميل البيانات بنجاح:', data);
         })
         .catch(error => {
@@ -1578,36 +1636,28 @@
         });
     }
 
-    // دوال فتح وإغلاق النوافذ
+    // دوال فتح وإغلاق النوافذ المنبثقة
     function closeModal(modalId) {
         const modal = document.getElementById(modalId);
-        if (modal) modal.style.display = 'none';
+        if (modal) {
+            modal.style.display = 'none';
+        }
     }
 
     function openModal(modalId) {
         const modal = document.getElementById(modalId);
-        if (modal) modal.style.display = 'flex';
-    }
-    
-    // [مُضاف حديثاً] دالة لإظهار تحذير حقوق النشر
-    function showCopyrightWarning() {
-        // نستخدم sessionStorage لضمان ظهور التحذير مرة واحدة فقط *لكل جلسة* (session)
-        // إذا أردته أن يظهر *كل مرة* يدخل فيها، احذف هذا الشرط
-        if (!sessionStorage.getItem('warningShown')) {
-            openModal('warningModal');
-            sessionStorage.setItem('warningShown', 'true');
+        if (modal) {
+            modal.style.display = 'flex';
         }
     }
 
     // منطق التحقق الدوري للطرد
-    // تم تغيير فترة الفحص إلى 24 ساعة (86400000 ملي ثانية) لمنح الإدارة وقتاً لتفعيل الكود يدوياً
-    const oneDayInMs = 86400000; // 24 ساعة
-
+    const fiveMinutesInMs = 300000; 
+    
     function checkRevocationStatus() {
         const userCode = localStorage.getItem('userAccessCode'); 
-        if (!userCode || userCode === DEMO_CODE) return; 
+        if (!userCode || window.isFreeMode) return; // [تعديل] لا تتحقق إذا كان في الوضع المجاني
 
-        // إضافة Date.now لتجاوز الكاش وضمان جلب أحدث نسخة من codes.json
         fetch('codes.json?t=' + Date.now())
             .then(response => {
                 if (!response.ok) throw new Error('Codes file not found');
@@ -1615,8 +1665,8 @@
             })
             .then(codesFromServer => {
                 const codeStatus = codesFromServer[userCode];
-                // إذا لم يتم العثور على الكود أو كانت حالته used: false
-                if (!codeStatus || codeStatus.used === false) { 
+                // [تعديل] الطرد إذا الكود غير موجود أو إذا كان مستخدماً (مستخدماً = محظوراً في هذا السياق)
+                if (!codeStatus || codeStatus.used === true) {
                     localStorage.removeItem('userAccessCode');     
                     alert('تم إلغاء صلاحية الوصول لهذا الرمز من قبل الإدارة.');
                     window.location.reload(); 
@@ -1630,77 +1680,58 @@
     let periodicCheckInterval;
     function startPeriodicCheck() {
         if(periodicCheckInterval) clearInterval(periodicCheckInterval);
-        // تم إزالة الفحص الأولي لمنع طرد الطالب فوراً بعد الدخول. الفحص سيبدأ بعد 24 ساعة.
-        periodicCheckInterval = setInterval(checkRevocationStatus, oneDayInMs);
+        checkRevocationStatus(); 
+        periodicCheckInterval = setInterval(checkRevocationStatus, fiveMinutesInMs);
     }
 
     // ** منطق الدخول المجاني/المدفوع **
+    
+    window.isFreeMode = true; 
 
-    // دالة الدخول للوضع المجاني
     function enterFreeMode() {
-        document.getElementById('selectionModal').style.display = 'none';
+        window.isFreeMode = true;
+        closeModal('selectionModal');
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
-        localStorage.removeItem('userAccessCode'); // إزالة أي كود مدفوع سابق
-        
-        loadData().then(() => {
-            const freeCourses = allTeachers.filter(t => t.isPaid === false);
-            renderTeachers(freeCourses);
-            renderMaterials([]);
-            renderExams([]);
-            allMaterials = [];
-            allExams = [];
-        });
-        
+        loadData();
         navigate('home');
         document.getElementById('studentCounter').style.display = 'none';
-        document.getElementById('floatingContactBtn').style.display = 'flex';
-        
-        showCopyrightWarning(); // <--- إظهار التحذير
+        document.getElementById('floatingContactBtn').style.display = 'flex'; 
     }
 
-    // دالة الدخول للوضع المدفوع
     function enterPaidMode() {
-        document.getElementById('selectionModal').style.display = 'none';
-        loadAccessCodes();
+        window.isFreeMode = false;
+        closeModal('selectionModal');
+        loadAccessCodes(); 
     }
     
-    // رسالة الترقية
     function showUpgradeModal() {
         alert('هذه الميزة خاصة بالدورة الالكترونية. يرجى التواصل مع الإدارة لحجز الكود الخاص بك.');
-        openModal('contactModal');
+        openModal('contactModal'); 
     }
 
     // ** منطق حماية الدخول (مرتبط بـ codes.json) **
 
     let accessCodeDatabase = {};
-    const DEMO_CODE = 'DEMO';
+    const DEMO_CODE = 'DEMO'; // كود تجريبي للتشغيل المحلي
 
-    // دالة تسجيل الدخول الناجح
-    function loginSuccess(code) {
-        document.getElementById('loginModal').style.display = 'none';
+    function loginSuccess() {
+        window.isFreeMode = false;
+        closeModal('loginModal');
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
         document.getElementById('accessError').style.display = 'none';
-        document.getElementById('floatingContactBtn').style.display = 'flex';
+        document.getElementById('floatingContactBtn').style.display = 'flex'; 
         
-        loadData().then(() => {
-            const paidCourses = allTeachers.filter(t => t.isPaid === true);
-            renderTeachers(paidCourses);
-            
-            // في وضع التجربة لا نعرض مواد الامتحانات الخاصة بالمدفوع
-            if (code === DEMO_CODE) {
-                renderMaterials([]);
-                renderExams([]);
-            } else {
-                renderMaterials(allMaterials);
-                renderExams(allExams);
-            }
-        });
-        
+        loadData();
         navigate('home');
         
-        showCopyrightWarning(); // <--- إظهار التحذير
+        // إظهار نافذة التحذير (التعهد)
+        // [تعديل] التحقق إذا كان المستخدم قد وافق سابقاً
+        if (!localStorage.getItem('userAgreedToWarning')) {
+            openModal('warningModal');
+            localStorage.setItem('userAgreedToWarning', 'true');
+        }
     }
     
     function checkAutoLogin() {
@@ -1710,44 +1741,43 @@
         if (isLocalFile) {
             if (savedCode === DEMO_CODE) {
                  console.log('دخول تلقائي بوضع التجربة المحلية.');
-                 loginSuccess(DEMO_CODE);
-                 startPeriodicCheck();
+                 loginSuccess();
+                 // لا تقم بتشغيل التحقق الدوري في الوضع المحلي
                  return;
             }
-            document.getElementById('loginModal').style.display = 'flex'; 
+            openModal('loginModal'); 
             return;
         }
 
         if (!savedCode) {
-            document.getElementById('loginModal').style.display = 'flex';
+            openModal('loginModal');
             return;
         }
 
+        // [تعديل] منطق التحقق التلقائي
+        // يجب أن يكون الكود موجوداً في قاعدة البيانات وأن يكون (used === false)
         if (accessCodeDatabase.hasOwnProperty(savedCode)) {
             const codeDetails = accessCodeDatabase[savedCode];
 
-            if (codeDetails.used === true) {
+            if (codeDetails.used === false) {
                 console.log('دخول تلقائي ناجح (مستخدم مُفعّل).');
-                loginSuccess(savedCode);
-                startPeriodicCheck();
+                loginSuccess();
+                startPeriodicCheck(); // بدء التحقق الدوري للطرد
                 return;
             }
 
-            if (codeDetails.used === false) {
-                // الكود غير مُستخدم بعد أو تم تعطيله يدوياً
-                // هنا يجب أن لا يتم طرده، بل يتم السماح له بالدخول الأولي
-                // لكننا نعتمد على أن الطالب الذي يدخل بكود used: false للمرة الأولى سيأتي من checkAccessCode
-                // الطالب الذي يطرد هنا هو الذي لديه كود مخزّن محلياً وحالته used: false
+            if (codeDetails.used === true) {
                 localStorage.removeItem('userAccessCode');
                 alert('تم إلغاء تفعيل هذا الكود من قبل الإدارة. يرجى استخدام كود جديد.');
-                document.getElementById('loginModal').style.display = 'flex';
+                openModal('loginModal');
                 return;
             }
 
         } else {
+            // الكود المحفوظ لم يعد موجوداً في codes.json
             localStorage.removeItem('userAccessCode');
             alert('تم إلغاء صلاحية الوصول لهذا الرمز من قبل الإدارة.');
-            document.getElementById('loginModal').style.display = 'flex';
+            openModal('loginModal');
         }
     }
 
@@ -1762,7 +1792,6 @@
             return;
         }
 
-        // إضافة Date.now لتجاوز الكاش وضمان جلب أحدث نسخة من codes.json
         fetch('codes.json?t=' + Date.now())
             .then(response => {
                 if (!response.ok) {
@@ -1773,15 +1802,15 @@
             .then(data => {
                 accessCodeDatabase = data;
                 console.log('تم تحميل ملف الأكواد بنجاح.');
-                updateStudentCounter(data);
-                checkAutoLogin();
+                updateStudentCounter(data); // تحديث عداد الطلاب
+                checkAutoLogin(); // التحقق من الدخول التلقائي
             })
             .catch(err => {
                 console.error('خطأ فادح في تحميل الأكواد:', err);
                 const errorElement = document.getElementById('accessError');
                 errorElement.innerText = 'خطأ: لا يمكن تحميل نظام الحماية. تأكد من رفع ملف codes.json بشكل صحيح.';
                 errorElement.style.display = 'block';
-                document.getElementById('loginModal').style.display = 'flex'; 
+                openModal('loginModal'); 
                 if (counterElement) counterElement.style.display = 'none';
             });
     }
@@ -1796,8 +1825,7 @@
         if (isLocalFile) {
             if (enteredCode === DEMO_CODE) {
                 localStorage.setItem('userAccessCode', DEMO_CODE);
-                loginSuccess(DEMO_CODE);
-                startPeriodicCheck();
+                loginSuccess();
             } else {
                 errorElement.innerText = 'أنت في وضع التجربة المحلية. استخدم الكود: DEMO';
                 errorElement.style.display = 'block';
@@ -1815,16 +1843,24 @@
         if (accessCodeDatabase.hasOwnProperty(enteredCode)) {
             const codeDetails = accessCodeDatabase[enteredCode];
 
-            if (codeDetails.used) {
-                errorElement.innerText = 'هذا الكود مستخدم بالفعل. تواصل مع المدرس.';
+            // [تعديل] منطق الدخول
+            // يجب أن يكون الكود (used: false)
+            if (codeDetails.used === true) {
+                errorElement.innerText = 'هذا الكود مستخدم بالفعل أو تم إيقافه. تواصل مع المدرس.';
                 errorElement.style.display = 'block';
-            } else {
+            } else if (codeDetails.used === false) {
+                // نجح الدخول
                 localStorage.setItem('userAccessCode', enteredCode); 
-                loginSuccess(enteredCode);
-                startPeriodicCheck(); 
+                loginSuccess();
+                startPeriodicCheck(); // بدء التحقق الدوري
                 updateStudentCounter(accessCodeDatabase); 
-                console.warn(`تم تفعيل الكود: ${enteredCode}. يرجى تحديث ملف codes.json وجعل "used": true لهذا الكود.`);
-                alert(`تم تفعيل الكود بنجاح. أمامك 24 ساعة لتأكيد التفعيل النهائي للكود في ملف codes.json لتجنب طرد الطالب في الفحص الدوري التالي.`);
+                
+                // [مهم جداً] رسالة تحذير للمدرس
+                console.warn(`تم تفعيل الكود: ${enteredCode}. يرجى تحديث ملف codes.json وجعل "used": true لهذا الكود في أقرب وقت.`);
+                alert(`تم تفعيل الكود بنجاح. تواصل مع المدرس لتأكيد التفعيل النهائي للكود.`);
+            } else {
+                 errorElement.innerText = 'هذا الكود غير صالح. تواصل مع المدرس.';
+                 errorElement.style.display = 'block';
             }
         } else {
             errorElement.innerText = 'كود الدخول غير صحيح. حاول مرة أخرى.';
@@ -1841,14 +1877,22 @@
       initializeTheme();
       document.getElementById('loginModal').style.display = 'none';
       document.getElementById('appContent').style.display = 'none';
-      document.getElementById('floatingContactBtn').style.display = 'none'; 
+      document.getElementById('floatingContactBtn').style.display = 'none'; // إخفاء الزر العائم أولاً
       document.body.style.overflow = 'hidden';
       
-      document.getElementById('selectionModal').style.display = 'flex';
+      // إظهار شاشة الاختيار أولاً
+      openModal('selectionModal');
     });
-    // نهاية التهيئة
     
+    // [جديد] التعامل مع تغيير الثيم
+    document.getElementById('themeToggle').addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+
   </script>
  </body>
 </html>
-
