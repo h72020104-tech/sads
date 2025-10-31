@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title> منصة التفوق</title>
+  <title> منصة التفوقQM</title>
   <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -302,7 +302,7 @@
     }
     /* ===================================== */
 
-    /* Teachers grid (Courses grid) */
+    /* Teachers grid */
     .teachers-section {
       margin-top: 2rem;
     }
@@ -324,7 +324,7 @@
       gap: 2rem;
       padding: 1rem 0;
     }
-    
+
     .teacher-card {
       background: var(--gradient-card);
       padding: 2rem;
@@ -334,11 +334,12 @@
       border: 1px solid var(--border-color);
       position: relative;
       overflow: hidden;
+      /* تنسيق توسيط الصورة فقط */
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      min-height: 300px;
-      justify-content: flex-start;
+      min-height: 250px;
     }
 
     .teacher-card::before {
@@ -369,7 +370,7 @@
       object-fit: cover;
       border: 4px solid var(--primary);
       display: block;
-      margin-bottom: 1.5rem;
+      margin: 0 auto; /* تم تعديل الهامش لإزالة الهامش السفلي */
       transition: all 0.3s;
       box-shadow: 0 8px 20px rgba(24,119,242,0.3); 
     }
@@ -379,8 +380,13 @@
       border-color: var(--primary-light);
     }
 
+    /* إخفاء الاسم والموضوع - التعديل المطلوب */
+    .teacher-card .teacher-name,
+    .teacher-card .teacher-subject {
+      display: none !important;
+    }
+    
     .teacher-name {
-      display: block !important;
       font-size: 1.4rem;
       font-weight: 700;
       text-align: center;
@@ -389,7 +395,6 @@
     }
 
     .teacher-subject {
-      display: block !important;
       text-align: center;
       color: var(--text-secondary);
       font-size: 1.1rem;
@@ -614,9 +619,10 @@
       justify-content: center;
       font-size: 1.5rem;
       font-weight: bold;
-      color: rgba(255, 255, 255, 0.2); 
-      pointer-events: none;
+      color: rgba(255, 255, 255, 0.2); /* لون رمادي شفاف */
+      pointer-events: none; /* هذا السطر مهم جداً ليسمح بالضغط على الفيديو */
       z-index: 10;
+      /* لمنع النسخ */
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -821,14 +827,14 @@
       100% { transform: rotate(360deg); }
     }
     
-    /* زر الاتصال العائم */
+    /* [جديد] زر الاتصال العائم */
     #floatingContactBtn {
       position: fixed;
       bottom: 20px;
-      left: 20px; 
+      left: 20px; /* في اليسار ليتناسب مع RTL */
       width: 60px;
       height: 60px;
-      background: var(--accent);
+      background: var(--accent); /* يمكنك تغييره إلى #25D366 للون واتساب */
       color: white;
       border: none;
       border-radius: 50%;
@@ -838,7 +844,7 @@
       justify-content: center;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       cursor: pointer;
-      z-index: 150; 
+      z-index: 150; /* أقل من النوافذ المنبثقة (200) */
       transition: all 0.3s;
     }
     #floatingContactBtn:hover {
@@ -935,36 +941,18 @@
  </head>
  <body> 
   
-  <div id="warningModal" class="modal" style="display: none;">
-   <div class="modal-content" style="max-width: 550px; border-top: 5px solid var(--warning);">
-    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--warning); margin-bottom: 1rem;"></i>
-    <h3>تحذير: تعهد حفظ حقوق المنصة</h3>
-    <p style="font-size: 1.1rem; line-height: 1.7; margin: 1rem 0;">
-      مرحباً بك في منصة التفوق للاستاذ: **حيدر علي الطائي**.
-      <br>
-      جميع حقوق المنصة محفوظة ومملوكة حصرياً.
-      <br><br>
-      في حال محاولة **اختراق، او تخريب المنصة، أو التلاعب** بالمحتوى بأي شكل من الأشكال، فإنك تعرض نفسك للمسائلة القانونية أمام الجهات المختصة.
-    </p>
-    
-    <button onclick="closeModal('warningModal')" class="download-btn" style="margin-top: 1rem; background: var(--primary-dark);">
-      <i class="fas fa-check"></i> أوافق وأتعهد
-    </button>
-   </div>
-  </div>
-
   <div id="selectionModal" class="modal" style="display: none;"> 
     <div class="modal-content" style="max-width: 500px;">
         <i class="fas fa-graduation-cap" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
-        <h3>مرحباً بك في منصة التفوق</h3>
+        <h3>مرحباً بك في منصة التفوقQM</h3>
         <p>اختر طريقة الدخول:</p>
         
         <button id="freeAccessButton" class="download-btn" onclick="enterFreeMode()">
-            <i class="fas fa-eye"></i> تصفح الدورة التجريبية (مجاني)
+            <i class="fas fa-eye"></i> تصفح المحاضرات التجريبية (مجاني)
         </button>
         
         <button id="paidAccessButton" class="download-btn" onclick="enterPaidMode()" style="margin-top: 1rem; background: var(--accent);">
-            <i class="fas fa-key"></i> دخول الدورة الالكترونية (للمشتركين)
+            <i class="fas fa-key"></i> لدي كود الدورة المدفوعة
         </button>
         
         <p style="margin-top: 1.5rem; font-size: 0.9rem;">
@@ -977,7 +965,7 @@
 
   <div id="loginModal" class="modal" style="display: none;"> <div class="modal-content" style="max-width: 500px;">
           <i class="fas fa-lock" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
-          <h3>الدورة الالكترونية</h3>
+          <h3>الدورة المدفوعة</h3>
           <p>الرجاء إدخال كود الدخول الخاص بك للمتابعة:</p>
           <input type="password" id="accessCodeInput" placeholder="أدخل كود الدخول هنا" style="width: 100%; padding: 1rem; margin: 1rem 0; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-color); font-size: 1.1rem; text-align: center;" onkeydown="if(event.key === 'Enter') checkAccessCode()">
           <button id="accessButton" class="download-btn" onclick="checkAccessCode()"><i class="fas fa-sign-in-alt"></i> الدخول للمنصة</button>
@@ -997,14 +985,14 @@
 
   <div id="appContent" style="display: none;">
     <header>
-     <h1 class="site-title" onclick="navigate('home')"><i class="fas fa-graduation-cap"></i> منصة التفوق</h1>
+     <h1 class="site-title" onclick="navigate('home')"><i class="fas fa-graduation-cap"></i> منصة التفوقQM</h1>
      <div class="nav-buttons">
       <button class="nav-btn active" onclick="loadContent('lectures')"><i class="fas fa-play-circle"></i> المحاضرات</button>
       <button class="nav-btn" onclick="loadContent('materials')"><i class="fas fa-book"></i> الملازم</button>
       <button class="nav-btn" onclick="loadContent('exams')"><i class="fas fa-clipboard-check"></i> الامتحانات</button>
      </div>
      <div class="search-container">
-      <input type="text" id="searchInput" placeholder="ابحث عن دورة أو مادة...">
+      <input type="text" id="searchInput" placeholder="ابحث عن مدرس أو مادة...">
       <button id="searchButton"><i class="fas fa-search"></i> بحث</button>
      </div>
      <div id="studentCounter" class="student-counter">
@@ -1014,7 +1002,7 @@
      <button id="themeToggle"><i class="fas fa-moon"></i></button>
      </header>
     <div id="homePage" class="page"> <div class="teachers-section">
-      <h2 class="section-title">اختر الدورة المطلوبة</h2>
+      <h2 class="section-title">اضغط على الصوره لدخول</h2>
       <div class="teachers-grid" id="teachersGrid">
        <div class="loading">
         <div class="spinner"></div>
@@ -1024,9 +1012,9 @@
     </div>
     <div id="classesPage" class="page">
      <div class="classes-page">
-      <button class="back-button" onclick="navigate('home')"><i class="fas fa-arrow-right"></i> الرجوع للدورات</button>
+      <button class="back-button" onclick="navigate('home')"><i class="fas fa-arrow-right"></i> الرجوع للمدرسين</button>
       <div class="teacher-info">
-       <img id="teacherImage" class="teacher-img-lg" alt="صورة الدورة">
+       <img id="teacherImage" class="teacher-img-lg" alt="صورة المدرس">
        <div class="teacher-details">
         <h2 id="teacherName"></h2>
         <p id="teacherSubject"></p>
@@ -1092,11 +1080,11 @@
          <i class="fab fa-whatsapp"></i> واتساب
       </a>
       
-      <a href="https://ig.me/m/ferebells1987" target="_blank" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
+      <a href="https://ig.me/m/fearbells1987" target="_blank" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
          <i class="fab fa-instagram"></i> انستجرام
       </a>
       
-      <a href="tel:+9647709014600" target="_blank" style="background: var(--text-secondary); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
+      <a href="tel:07709014600" target="_blank" style="background: var(--text-secondary); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
          <i class="fas fa-phone"></i> اتصال (07709014600)
       </a>
       
@@ -1115,20 +1103,22 @@
     function blockDevTools() {
       let devtoolsOpen = false;
       
-      // ==========================================
-      // START: التعديل الرئيسي لتقليل التنبيهات الكاذبة
+      // ===================================
+      // START: التعديل المطلوب
       // تم تغيير القيمة من 160 إلى 50
-      // ==========================================
+      // ===================================
       const threshold = 50; 
-      // ==========================================
-      // END: التعديل الرئيسي
-      // ==========================================
+      // ===================================
+      // END: التعديل المطلوب
+      // ===================================
 
       const check = () => {
         const sizeCheck = window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100;
 
         const start = performance.now();
-        try { new Function('debugger')(); } catch (e) {}
+        try {
+          new Function('debugger')(); 
+        } catch (e) {}
         const end = performance.now();
 
         if (sizeCheck || (end - start) > threshold) {
@@ -1137,7 +1127,9 @@
             document.body.innerHTML = '<div style="background: black; color: red; font-size: 2rem; position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999;"><h1>! خطأ !</h1><p style="font-size: 1.2rem;">تم اكتشاف محاولة الوصول غير المصرح بها (DevTools).</p><p style="font-size: 1.2rem;">يرجى إغلاق أدوات المطورين.</p></div>';
             
             const preventExecution = setInterval(() => {
-              try { new Function('debugger')(); } catch (e) {
+              try {
+                new Function('debugger')();
+              } catch (e) {
                 if (!window.outerWidth) clearInterval(preventExecution);
               }
             }, 100);
@@ -1325,13 +1317,13 @@
       });
     }
 
-    // عرض المدرسين (الدورات)
+    // عرض المدرسين
     function renderTeachers(list = teachers) {
       if (!list.length) {
         teachersGrid.innerHTML = `
           <div class="teacher-card" style="grid-column: 1/-1; text-align: center; background: var(--card-color);">
             <i class="fas fa-user-slash" style="font-size: 3rem; color: var(--text-secondary); margin-bottom: 1rem;"></i>
-            <h3>لم يتم العثور على دورات</h3>
+            <h3>لم يتم العثور على مدرسين</h3>
             <p>قد تكون هناك مشكلة في تحميل البيانات.</p>
           </div>
         `;
@@ -1405,7 +1397,7 @@
                       ${isCompleted ? '<i class="fas fa-check"></i>' : ''}
                     </div>
                     <div class="lecture-title">
-                      <h4>${lecture.title} ${isFreeLecture ? '<span style="color: var(--success); font-size: 0.8rem;">(تجريبية)</span>' : ''}</h4>
+                      <h4>${lecture.title} ${isFreeLecture ? '<span style="color: var(--success); font-size: 0.8rem;">(مجانية)</span>' : ''}</h4>
                       <p class="lecture-progress">${progressText}</p>
                     </div>
                   </div>
@@ -1529,7 +1521,6 @@
         renderExams();
         navigate('exams');
       } else {
-        renderTeachers(teachers); // [تعديل] إعادة عرض المدرسين عند الضغط على "المحاضرات"
         navigate('home');
       }
     }
@@ -1569,33 +1560,13 @@
     // البحث
     searchButton.addEventListener('click', () => {
       const query = searchInput.value.trim().toLowerCase();
-      
-      // تحديد أي قائمة بيانات يتم البحث فيها بناءً على التبويب النشط
-      const activeNav = document.querySelector('.nav-btn.active').getAttribute('onclick');
-
-      if (activeNav.includes('materials')) {
-          const filtered = materials.filter(m => 
-            m.title.toLowerCase().includes(query) || 
-            m.subject.toLowerCase().includes(query)
-          );
-          renderMaterials(filtered);
-          navigate('materials');
-      } else if (activeNav.includes('exams')) {
-          const filtered = exams.filter(e => 
-            e.title.toLowerCase().includes(query) || 
-            e.subject.toLowerCase().includes(query)
-          );
-          renderExams(filtered);
-          navigate('exams');
-      } else {
-          // البحث الافتراضي (المحاضرات/الدورات)
-          const filtered = teachers.filter(t => 
-            t.name.toLowerCase().includes(query) || 
-            t.subject.toLowerCase().includes(query)
-          );
-          renderTeachers(filtered);
-          navigate('home');
-      }
+      const filteredTeachers = teachers.filter(t => 
+        t.name.toLowerCase().includes(query) || 
+        t.subject.toLowerCase().includes(query)
+      );
+      renderTeachers(filteredTeachers);
+      navigate('home');
+      loadContent('lectures'); 
     });
 
     searchInput.addEventListener('keydown', (e) => {
@@ -1636,7 +1607,7 @@
         });
     }
 
-    // دوال فتح وإغلاق النوافذ المنبثقة
+    // *** [معدل] دوال فتح وإغلاق النوافذ المنبثقة ***
     function closeModal(modalId) {
         const modal = document.getElementById(modalId);
         if (modal) {
@@ -1650,13 +1621,14 @@
             modal.style.display = 'flex';
         }
     }
+    // *** نهاية التعديل ***
 
     // منطق التحقق الدوري للطرد
     const fiveMinutesInMs = 300000; 
     
     function checkRevocationStatus() {
         const userCode = localStorage.getItem('userAccessCode'); 
-        if (!userCode || window.isFreeMode) return; // [تعديل] لا تتحقق إذا كان في الوضع المجاني
+        if (!userCode) return;
 
         fetch('codes.json?t=' + Date.now())
             .then(response => {
@@ -1665,8 +1637,7 @@
             })
             .then(codesFromServer => {
                 const codeStatus = codesFromServer[userCode];
-                // [تعديل] الطرد إذا الكود غير موجود أو إذا كان مستخدماً (مستخدماً = محظوراً في هذا السياق)
-                if (!codeStatus || codeStatus.used === true) {
+                if (!codeStatus) {
                     localStorage.removeItem('userAccessCode');     
                     alert('تم إلغاء صلاحية الوصول لهذا الرمز من قبل الإدارة.');
                     window.location.reload(); 
@@ -1690,48 +1661,41 @@
 
     function enterFreeMode() {
         window.isFreeMode = true;
-        closeModal('selectionModal');
+        document.getElementById('selectionModal').style.display = 'none';
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
         loadData();
         navigate('home');
         document.getElementById('studentCounter').style.display = 'none';
-        document.getElementById('floatingContactBtn').style.display = 'flex'; 
+        document.getElementById('floatingContactBtn').style.display = 'flex'; // إظهار الزر العائم
     }
 
     function enterPaidMode() {
         window.isFreeMode = false;
-        closeModal('selectionModal');
+        document.getElementById('selectionModal').style.display = 'none';
         loadAccessCodes(); 
     }
     
     function showUpgradeModal() {
-        alert('هذه الميزة خاصة بالدورة الالكترونية. يرجى التواصل مع الإدارة لحجز الكود الخاص بك.');
-        openModal('contactModal'); 
+        alert('هذه الميزة خاصة بالدورة المدفوعة. يرجى التواصل مع الإدارة لحجز الكود الخاص بك.');
+        openModal('contactModal'); // [جديد] فتح نافذة الاتصال مباشرة
     }
 
     // ** منطق حماية الدخول (مرتبط بـ codes.json) **
 
     let accessCodeDatabase = {};
-    const DEMO_CODE = 'DEMO'; // كود تجريبي للتشغيل المحلي
+    const DEMO_CODE = 'DEMO';
 
     function loginSuccess() {
         window.isFreeMode = false;
-        closeModal('loginModal');
+        document.getElementById('loginModal').style.display = 'none';
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
         document.getElementById('accessError').style.display = 'none';
-        document.getElementById('floatingContactBtn').style.display = 'flex'; 
+        document.getElementById('floatingContactBtn').style.display = 'flex'; // إظهار الزر العائم
         
         loadData();
         navigate('home');
-        
-        // إظهار نافذة التحذير (التعهد)
-        // [تعديل] التحقق إذا كان المستخدم قد وافق سابقاً
-        if (!localStorage.getItem('userAgreedToWarning')) {
-            openModal('warningModal');
-            localStorage.setItem('userAgreedToWarning', 'true');
-        }
     }
     
     function checkAutoLogin() {
@@ -1742,42 +1706,39 @@
             if (savedCode === DEMO_CODE) {
                  console.log('دخول تلقائي بوضع التجربة المحلية.');
                  loginSuccess();
-                 // لا تقم بتشغيل التحقق الدوري في الوضع المحلي
+                 startPeriodicCheck();
                  return;
             }
-            openModal('loginModal'); 
+            document.getElementById('loginModal').style.display = 'flex'; 
             return;
         }
 
         if (!savedCode) {
-            openModal('loginModal');
+            document.getElementById('loginModal').style.display = 'flex';
             return;
         }
 
-        // [تعديل] منطق التحقق التلقائي
-        // يجب أن يكون الكود موجوداً في قاعدة البيانات وأن يكون (used === false)
         if (accessCodeDatabase.hasOwnProperty(savedCode)) {
             const codeDetails = accessCodeDatabase[savedCode];
 
-            if (codeDetails.used === false) {
+            if (codeDetails.used === true) {
                 console.log('دخول تلقائي ناجح (مستخدم مُفعّل).');
                 loginSuccess();
-                startPeriodicCheck(); // بدء التحقق الدوري للطرد
+                startPeriodicCheck();
                 return;
             }
 
-            if (codeDetails.used === true) {
+            if (codeDetails.used === false) {
                 localStorage.removeItem('userAccessCode');
                 alert('تم إلغاء تفعيل هذا الكود من قبل الإدارة. يرجى استخدام كود جديد.');
-                openModal('loginModal');
+                document.getElementById('loginModal').style.display = 'flex';
                 return;
             }
 
         } else {
-            // الكود المحفوظ لم يعد موجوداً في codes.json
             localStorage.removeItem('userAccessCode');
             alert('تم إلغاء صلاحية الوصول لهذا الرمز من قبل الإدارة.');
-            openModal('loginModal');
+            document.getElementById('loginModal').style.display = 'flex';
         }
     }
 
@@ -1802,15 +1763,15 @@
             .then(data => {
                 accessCodeDatabase = data;
                 console.log('تم تحميل ملف الأكواد بنجاح.');
-                updateStudentCounter(data); // تحديث عداد الطلاب
-                checkAutoLogin(); // التحقق من الدخول التلقائي
+                updateStudentCounter(data);
+                checkAutoLogin();
             })
             .catch(err => {
                 console.error('خطأ فادح في تحميل الأكواد:', err);
                 const errorElement = document.getElementById('accessError');
                 errorElement.innerText = 'خطأ: لا يمكن تحميل نظام الحماية. تأكد من رفع ملف codes.json بشكل صحيح.';
                 errorElement.style.display = 'block';
-                openModal('loginModal'); 
+                document.getElementById('loginModal').style.display = 'flex'; 
                 if (counterElement) counterElement.style.display = 'none';
             });
     }
@@ -1826,6 +1787,7 @@
             if (enteredCode === DEMO_CODE) {
                 localStorage.setItem('userAccessCode', DEMO_CODE);
                 loginSuccess();
+                startPeriodicCheck();
             } else {
                 errorElement.innerText = 'أنت في وضع التجربة المحلية. استخدم الكود: DEMO';
                 errorElement.style.display = 'block';
@@ -1843,24 +1805,16 @@
         if (accessCodeDatabase.hasOwnProperty(enteredCode)) {
             const codeDetails = accessCodeDatabase[enteredCode];
 
-            // [تعديل] منطق الدخول
-            // يجب أن يكون الكود (used: false)
-            if (codeDetails.used === true) {
-                errorElement.innerText = 'هذا الكود مستخدم بالفعل أو تم إيقافه. تواصل مع المدرس.';
+            if (codeDetails.used) {
+                errorElement.innerText = 'هذا الكود مستخدم بالفعل. تواصل مع المدرس.';
                 errorElement.style.display = 'block';
-            } else if (codeDetails.used === false) {
-                // نجح الدخول
+            } else {
                 localStorage.setItem('userAccessCode', enteredCode); 
                 loginSuccess();
-                startPeriodicCheck(); // بدء التحقق الدوري
+                startPeriodicCheck(); 
                 updateStudentCounter(accessCodeDatabase); 
-                
-                // [مهم جداً] رسالة تحذير للمدرس
-                console.warn(`تم تفعيل الكود: ${enteredCode}. يرجى تحديث ملف codes.json وجعل "used": true لهذا الكود في أقرب وقت.`);
+                console.warn(`تم تفعيل الكود: ${enteredCode}. يرجى تحديث ملف codes.json وجعل "used": true لهذا الكود.`);
                 alert(`تم تفعيل الكود بنجاح. تواصل مع المدرس لتأكيد التفعيل النهائي للكود.`);
-            } else {
-                 errorElement.innerText = 'هذا الكود غير صالح. تواصل مع المدرس.';
-                 errorElement.style.display = 'block';
             }
         } else {
             errorElement.innerText = 'كود الدخول غير صحيح. حاول مرة أخرى.';
@@ -1881,7 +1835,7 @@
       document.body.style.overflow = 'hidden';
       
       // إظهار شاشة الاختيار أولاً
-      openModal('selectionModal');
+      document.getElementById('selectionModal').style.display = 'flex';
     });
     
     // [جديد] التعامل مع تغيير الثيم
@@ -1892,7 +1846,7 @@
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
     });
-
+    
   </script>
  </body>
 </html>
