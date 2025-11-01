@@ -1087,7 +1087,7 @@
       <a href="https://ig.me/m/fearbells1987" target="_blank" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
          <i class="fab fa-instagram"></i> انستجرام
       </a>
-      <a href="tel:+964XXXXXXXXXX" target="_blank" style="background: var(--text-secondary); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
+      <a href="tel:+9647709014600" target="_blank" style="background: var(--text-secondary); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
          <i class="fas fa-phone"></i> اتصال (7709014600)
       </a>
       <button onclick="closeModal('contactModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-check"></i> إغلاق</button>
@@ -1702,8 +1702,6 @@
         const savedCode = localStorage.getItem('userAccessCode');
         const isLocalFile = window.location.protocol === 'file:';
         
-        // في checkAutoLogin، عند عدم وجود كود محفوظ، لا نحتاج لإظهار loginModal لأنه تم إظهاره في loadAccessCodes()
-        
         if (isLocalFile) {
             if (savedCode === DEMO_CODE) {
                  console.log('دخول تلقائي بوضع التجربة المحلية.');
@@ -1711,12 +1709,12 @@
                  startPeriodicCheck();
                  return;
             }
-            // إذا كان ملف محلي ولا يوجد كود DEMO محفوظ، الواجهة تظل جاهزة لإدخال الكود
+            document.getElementById('loginModal').style.display = 'flex'; 
             return;
         }
 
         if (!savedCode) {
-            // لا يوجد كود محفوظ، الواجهة تظل جاهزة لإدخال الكود (تم إظهارها في loadAccessCodes)
+            document.getElementById('loginModal').style.display = 'flex';
             return;
         }
 
@@ -1733,40 +1731,24 @@
             if (codeDetails.used === false) {
                 localStorage.removeItem('userAccessCode');
                 alert('تم إلغاء تفعيل هذا الكود من قبل الإدارة. يرجى استخدام كود جديد.');
-                // تبقى loginModal ظاهرة
+                document.getElementById('loginModal').style.display = 'flex';
                 return;
             }
 
         } else {
             localStorage.removeItem('userAccessCode');
             alert('تم إلغاء صلاحية الوصول لهذا الرمز من قبل الإدارة.');
-            // تبقى loginModal ظاهرة
+            document.getElementById('loginModal').style.display = 'flex';
         }
     }
 
     function loadAccessCodes() {
         const isLocalFile = window.location.protocol === 'file:';
         const counterElement = document.getElementById('studentCounter');
-        
-        // 🚨 التعديل الحاسم: إظهار المودال ورسالة التحميل فوراً
-        document.getElementById('loginModal').style.display = 'flex';
-        const inputElement = document.getElementById('accessCodeInput');
-        const buttonElement = document.getElementById('accessButton');
-        const errorElement = document.getElementById('accessError');
-        
-        inputElement.style.display = 'none'; 
-        buttonElement.style.display = 'none';
-        errorElement.innerText = 'جاري تحميل نظام الحماية... يرجى الانتظار.'; 
-        errorElement.style.display = 'block';
 
         if (isLocalFile) {
             console.warn('وضع التجربة المحلية مفعل. استخدم الكود: DEMO');
             if (counterElement) counterElement.style.display = 'none';
-            // في وضع التجربة المحلية، نجهز الواجهة لاستقبال الكود
-            inputElement.style.display = 'block'; 
-            buttonElement.style.display = 'block'; 
-            errorElement.innerText = 'أنت في وضع التجربة المحلية. استخدم الكود: DEMO';
-            errorElement.style.display = 'block';
             checkAutoLogin(); 
             return;
         }
@@ -1782,26 +1764,14 @@
                 accessCodeDatabase = data;
                 console.log('تم تحميل ملف الأكواد بنجاح.');
                 updateStudentCounter(data);
-                
-                // إظهار حقل الإدخال والزر وإخفاء رسالة التحميل
-                inputElement.style.display = 'block'; 
-                buttonElement.style.display = 'block'; 
-                errorElement.style.display = 'none'; // إخفاء رسالة "جاري التحميل"
-                
                 checkAutoLogin();
             })
             .catch(err => {
                 console.error('خطأ فادح في تحميل الأكواد:', err);
-                
-                // إظهار رسالة الخطأ الواضحة 
-                errorElement.innerText = 'خطأ: لا يمكن تحميل نظام الحماية. يرجى التأكد من رفع ملف codes.json بشكل صحيح.'; 
+                const errorElement = document.getElementById('accessError');
+                errorElement.innerText = 'خطأ: لا يمكن تحميل نظام الحماية. تأكد من رفع ملف codes.json بشكل صحيح.'; 
                 errorElement.style.display = 'block';
-                
-                // إظهار حقل الإدخال والزر للسماح بالمحاولة مجدداً
-                inputElement.style.display = 'block'; 
-                buttonElement.style.display = 'block';
-                
-                document.getElementById('loginModal').style.display = 'flex'; // تأكيد العرض
+                document.getElementById('loginModal').style.display = 'flex'; 
                 if (counterElement) counterElement.style.display = 'none';
             });
     }
@@ -1841,6 +1811,7 @@
             } else {
                 // ***** التغيير الرئيسي: بدلاً من تفعيل الكود فوراً، نفتح مودال التسجيل
                 document.getElementById('regCode').value = enteredCode;
+                closeModal('loginModal');
                 openModal('paidRegisterModal');
             }
         } else {
@@ -1863,6 +1834,12 @@
         alert('يرجى تعبئة الحقول كاملة.');
         return;
       }
+      
+      const button = document.querySelector('#paidRegisterModal .download-btn');
+      button.disabled = true;
+      const originalText = button.innerHTML;
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+
 
       const payload = { name, code, phone };
 
@@ -1874,8 +1851,11 @@
       })
       .then(resp => resp.json().catch(()=>({ok:false})))
       .then(data => {
+        button.disabled = false;
+        button.innerHTML = originalText;
+        
         if (data && (data.ok === true || data.success === true)) {
-          alert('تم إرسال طلب التفعيل. سيُتابع معك المشرف عبر التليجرام.');
+          alert('تم إرسال طلب التفعيل بنجاح. سيتم متابعة تفعيل الدورة لك عبر التليجرام. اضغط "موافق" للدخول للمنصة.');
           closeModal('paidRegisterModal');
 
           // حفظ الكود محلياً ومتابعة الدخول
@@ -1884,13 +1864,15 @@
 
           loginSuccess();
         } else {
-          const msg = (data && data.message) ? data.message : 'فشل إرسال الطلب. حاول لاحقاً.';
+          const msg = (data && data.message) ? data.message : 'فشل إرسال الطلب. يرجى التأكد من صحة رقم الموبايل والمحاولة لاحقاً، أو التواصل مباشرةً.';
           alert(msg);
         }
       })
       .catch(err => {
+        button.disabled = false;
+        button.innerHTML = originalText;
         console.error('Send registration error:', err);
-        alert('فشل الاتصال بالخادم. تأكد من عنوان SERVER_ENDPOINT وأن الخادم يعمل.');
+        alert('فشل الاتصال بالخادم. يرجى التواصل مباشرةً لحجز الكود.');
       });
     }
 
