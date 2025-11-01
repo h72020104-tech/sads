@@ -1087,7 +1087,7 @@
       <a href="https://ig.me/m/fearbells1987" target="_blank" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
          <i class="fab fa-instagram"></i> انستجرام
       </a>
-      <a href="tel:+9647709014600" target="_blank" style="background: var(--text-secondary); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
+      <a href="tel:+964XXXXXXXXXX" target="_blank" style="background: var(--text-secondary); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
          <i class="fas fa-phone"></i> اتصال (7709014600)
       </a>
       <button onclick="closeModal('contactModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-check"></i> إغلاق</button>
@@ -1102,6 +1102,17 @@
         <input id="regName" placeholder="الاسم الكامل" style="width: 100%; padding: 0.9rem; margin: 0.6rem 0; border-radius: 8px; border: 1px solid var(--border-color); background: var(--card-color); color: var(--text-color);">
         <input id="regCode" placeholder="الكود" readonly style="width: 100%; padding: 0.9rem; margin: 0.6rem 0; border-radius: 8px; border: 1px solid var(--border-color); background: var(--card-color); color: var(--text-color);">
         <input id="regPhone" placeholder="رقم الموبايل (مثال: 0770xxxxxxx)" style="width: 100%; padding: 0.9rem; margin: 0.6rem 0; border-radius: 8px; border: 1px solid var(--border-color); background: var(--card-color); color: var(--text-color);">
+        
+        <div style="text-align: right; margin: 1rem 0; padding: 0.8rem; background: var(--bg-secondary); border-radius: 8px; border-right: 3px solid var(--error);">
+            <p style="color: var(--error); font-weight: bold; margin-bottom: 0.5rem;">تحذير قانوني:</p>
+            <p style="font-size: 0.9rem; line-height: 1.5;">
+                في حال تخريب المنصة أو تسريب الكود أو المحاضرات، فإنك تعرض نفسك للمسائلة القانونية.
+            </p>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: flex-start; margin-bottom: 1rem; gap: 0.8rem; cursor: pointer;" onclick="document.getElementById('regAgree').click()">
+            <input type="checkbox" id="regAgree" style="width: 18px; height: 18px; cursor: pointer;">
+            <label for="regAgree" style="font-size: 0.9rem; cursor: pointer;">أوافق على التحذير والشروط.</label>
+        </div>
         <button class="download-btn" style="margin-top: 0.8rem; background: var(--gradient-primary);" onclick="sendRegistration()"><i class="fas fa-paper-plane"></i> إرسال وطلب التفعيل</button>
       </div>
     </div>
@@ -1117,7 +1128,9 @@
     // ====== IMPORTANT ========
     // -------------------------
     // ضع رابط سكربت السيرفر الآمن هنا (HTTPS) — السيرفر هو الوحيد الذي يحمل توكن البوت:
-    const SERVER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyuwVNj_Q7-qPO6U4mc_72NeUQuwKH6zCGmXHjPpZoUDVOOS_kmO_P4MohgY2ixsy37YQ/exec';
+    // === START: MODIFICATION ===
+    const SERVER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxOZquBJVXR4ecrdSm0ge26_o6ZUI6jHbPdI8xagMFE/dev';
+    // === END: MODIFICATION ===
     // -------------------------
 
     // *** كود الحماية ضد أدوات المطورين (DevTools) ***
@@ -1811,7 +1824,6 @@
             } else {
                 // ***** التغيير الرئيسي: بدلاً من تفعيل الكود فوراً، نفتح مودال التسجيل
                 document.getElementById('regCode').value = enteredCode;
-                closeModal('loginModal');
                 openModal('paidRegisterModal');
             }
         } else {
@@ -1830,16 +1842,19 @@
       const code = document.getElementById('regCode').value.trim();
       const phone = document.getElementById('regPhone').value.trim();
 
+      // === START: MODIFICATION ===
+      const agreed = document.getElementById('regAgree').checked;
+
       if (!name || !code || !phone) {
-        alert('يرجى تعبئة الحقول كاملة.');
+        alert('يرجى تعبئة الحقول كاملة (الاسم، الكود، ورقم الموبايل).');
         return;
       }
-      
-      const button = document.querySelector('#paidRegisterModal .download-btn');
-      button.disabled = true;
-      const originalText = button.innerHTML;
-      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
 
+      if (!agreed) {
+        alert('يجب الموافقة على التحذير القانوني للمتابعة.');
+        return;
+      }
+      // === END: MODIFICATION ===
 
       const payload = { name, code, phone };
 
@@ -1851,11 +1866,8 @@
       })
       .then(resp => resp.json().catch(()=>({ok:false})))
       .then(data => {
-        button.disabled = false;
-        button.innerHTML = originalText;
-        
         if (data && (data.ok === true || data.success === true)) {
-          alert('تم إرسال طلب التفعيل بنجاح. سيتم متابعة تفعيل الدورة لك عبر التليجرام. اضغط "موافق" للدخول للمنصة.');
+          alert('تم إرسال طلب التفعيل. سيُتابع معك المشرف عبر التليجرام.');
           closeModal('paidRegisterModal');
 
           // حفظ الكود محلياً ومتابعة الدخول
@@ -1864,15 +1876,13 @@
 
           loginSuccess();
         } else {
-          const msg = (data && data.message) ? data.message : 'فشل إرسال الطلب. يرجى التأكد من صحة رقم الموبايل والمحاولة لاحقاً، أو التواصل مباشرةً.';
+          const msg = (data && data.message) ? data.message : 'فشل إرسال الطلب. حاول لاحقاً.';
           alert(msg);
         }
       })
       .catch(err => {
-        button.disabled = false;
-        button.innerHTML = originalText;
         console.error('Send registration error:', err);
-        alert('فشل الاتصال بالخادم. يرجى التواصل مباشرةً لحجز الكود.');
+        alert('فشل الاتصال بالخادم. تأكد من عنوان SERVER_ENDPOINT وأن الخادم يعمل.');
       });
     }
 
