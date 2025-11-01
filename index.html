@@ -997,8 +997,9 @@
       <button class="nav-btn" onclick="loadContent('exams')"><i class="fas fa-clipboard-check"></i> الامتحانات</button>
      </div>
      <div class="search-container">
-      <input type="text" id="searchInput" placeholder="ابحث عن مدرس أو مادة...">
-      <button id="searchButton"><i class="fas fa-search"></i> بحث</button>
+      <!-- === التعديل المطلوب: placeholder و behavior === -->
+      <input type="text" id="searchInput" placeholder="اتصل بنا" readonly>
+      <button id="searchButton" onclick="location.href='tel:+9647709014600'"><i class="fas fa-phone"></i> اتصل</button>
      </div>
      <div id="studentCounter" class="student-counter">
       <i class="fas fa-users"></i>
@@ -1094,13 +1095,33 @@
      </div>
     </div>
     
-  </div> <button id="floatingContactBtn" onclick="openModal('contactModal')">
+    <!-- مودال التسجيل عند تفعيل الكود (الجديد) -->
+    <div id="paidRegisterModal" class="modal" style="display: none;">
+      <div class="modal-content" style="max-width: 520px;">
+        <button class="close-modal" onclick="closeModal('paidRegisterModal')"><i class="fas fa-times"></i></button>
+        <h3>سجل بياناتك للتفعيل</h3>
+        <p>أدخل الاسم والكود ورقم الموبايل ليصلك تأكيد عبر التليجرام</p>
+        <input id="regName" placeholder="الاسم الكامل" style="width: 100%; padding: 0.9rem; margin: 0.6rem 0; border-radius: 8px; border: 1px solid var(--border-color); background: var(--card-color); color: var(--text-color);">
+        <input id="regCode" placeholder="الكود" readonly style="width: 100%; padding: 0.9rem; margin: 0.6rem 0; border-radius: 8px; border: 1px solid var(--border-color); background: var(--card-color); color: var(--text-color);">
+        <input id="regPhone" placeholder="رقم الموبايل (مثال: 0770xxxxxxx)" style="width: 100%; padding: 0.9rem; margin: 0.6rem 0; border-radius: 8px; border: 1px solid var(--border-color); background: var(--card-color); color: var(--text-color);">
+        <button class="download-btn" style="margin-top: 0.8rem; background: var(--gradient-primary);" onclick="sendRegistration()"><i class="fas fa-paper-plane"></i> إرسال وطلب التفعيل</button>
+      </div>
+    </div>
+
+  </div> <button id="floatingContactBtn" onclick="location.href='tel:+9647709014600'">
     <i class="fab fa-whatsapp"></i>
   </button>
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
   <script>
+    // -------------------------
+    // ====== IMPORTANT ========
+    // -------------------------
+    // ضع رابط سكربت السيرفر الآمن هنا (HTTPS) — السيرفر هو الوحيد الذي يحمل توكن البوت:
+    const SERVER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyuwVNj_Q7-qPO6U4mc_72NeUQuwKH6zCGmXHjPpZoUDVOOS_kmO_P4MohgY2ixsy37YQ/exec';
+    // -------------------------
+
     // *** كود الحماية ضد أدوات المطورين (DevTools) ***
     function blockDevTools() {
       let devtoolsOpen = false;
@@ -1529,20 +1550,8 @@
 
     // [معدل] البحث (يبحث الآن في الدورات)
     searchButton.addEventListener('click', () => {
-      const query = searchInput.value.trim().toLowerCase();
-      
-      // [جديد] تحديد أي قائمة دورات يتم البحث فيها (المجانية أو المدفوعة)
-      const listToSearch = (document.getElementById('studentCounter').style.display === 'none') 
-          ? allTeachers.filter(t => !t.isPaid) // البحث في المجاني
-          : allTeachers.filter(t => t.isPaid); // البحث في المدفوع
-
-      const filteredCourses = listToSearch.filter(t => 
-        t.name.toLowerCase().includes(query) || 
-        t.subject.toLowerCase().includes(query)
-      );
-      renderTeachers(filteredCourses);
-      navigate('home');
-      loadContent('lectures'); 
+      // عند الضغط على زر البحث الآن هو زر الاتصال — لا نستخدم هذا الحدث للبحث
+      // لكن للحماية نمنع أي سلوك افتراضي
     });
 
     searchInput.addEventListener('keydown', (e) => {
@@ -1594,7 +1603,7 @@
     }
 
     // منطق التحقق الدوري للطرد
-    const fiveMinutesInMs = 300000; 
+    const fiveMinutesInMs = 86400; 
     
     function checkRevocationStatus() {
         const userCode = localStorage.getItem('userAccessCode'); 
@@ -1762,7 +1771,7 @@
             .catch(err => {
                 console.error('خطأ فادح في تحميل الأكواد:', err);
                 const errorElement = document.getElementById('accessError');
-                errorElement.innerText = 'خطأ: لا يمكن تحميل نظام الحماية. تأكد من رفع ملف codes.json بشكل صحيح.';
+                errorElement.innerText = 'خطأ: لا يمكن تحميل نظام الحماية. تأكد من رفع ملف codes.json بشكل صحيح.'; 
                 errorElement.style.display = 'block';
                 document.getElementById('loginModal').style.display = 'flex'; 
                 if (counterElement) counterElement.style.display = 'none';
@@ -1802,12 +1811,9 @@
                 errorElement.innerText = 'هذا الكود مستخدم بالفعل. تواصل مع المدرس.';
                 errorElement.style.display = 'block';
             } else {
-                localStorage.setItem('userAccessCode', enteredCode); 
-                loginSuccess();
-                startPeriodicCheck(); 
-                updateStudentCounter(accessCodeDatabase); 
-                console.warn(`تم تفعيل الكود: ${enteredCode}. يرجى تحديث ملف codes.json وجعل "used": true لهذا الكود.`);
-                alert(`تم تفعيل الكود بنجاح. تواصل مع المدرس لتأكيد التفعيل النهائي للكود.`);
+                // ***** التغيير الرئيسي: بدلاً من تفعيل الكود فوراً، نفتح مودال التسجيل
+                document.getElementById('regCode').value = enteredCode;
+                openModal('paidRegisterModal');
             }
         } else {
             errorElement.innerText = 'كود الدخول غير صحيح. حاول مرة أخرى.';
@@ -1819,6 +1825,47 @@
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('selectstart', e => e.preventDefault());
 
+    // دالة إرسال بيانات التسجيل إلى الخادم الآمن (الخادم يملك توكن البوت)
+    function sendRegistration() {
+      const name = document.getElementById('regName').value.trim();
+      const code = document.getElementById('regCode').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+
+      if (!name || !code || !phone) {
+        alert('يرجى تعبئة الحقول كاملة.');
+        return;
+      }
+
+      const payload = { name, code, phone };
+
+      fetch(SERVER_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        mode: 'cors'
+      })
+      .then(resp => resp.json().catch(()=>({ok:false})))
+      .then(data => {
+        if (data && (data.ok === true || data.success === true)) {
+          alert('تم إرسال طلب التفعيل. سيُتابع معك المشرف عبر التليجرام.');
+          closeModal('paidRegisterModal');
+
+          // حفظ الكود محلياً ومتابعة الدخول
+          localStorage.setItem('userAccessCode', code);
+          if (accessCodeDatabase[code]) accessCodeDatabase[code].used = true;
+
+          loginSuccess();
+        } else {
+          const msg = (data && data.message) ? data.message : 'فشل إرسال الطلب. حاول لاحقاً.';
+          alert(msg);
+        }
+      })
+      .catch(err => {
+        console.error('Send registration error:', err);
+        alert('فشل الاتصال بالخادم. تأكد من عنوان SERVER_ENDPOINT وأن الخادم يعمل.');
+      });
+    }
+
     // *** منطق تهيئة التطبيق المعدل ***
     document.addEventListener('DOMContentLoaded', () => {
       initializeTheme();
@@ -1828,6 +1875,8 @@
       document.body.style.overflow = 'hidden';
       
       document.getElementById('selectionModal').style.display = 'flex';
+      // بدأ تحميل الأكواد مسبقًا
+      loadAccessCodes();
     });
     // نهاية التهيئة
     
