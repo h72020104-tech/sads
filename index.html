@@ -1702,6 +1702,8 @@
         const savedCode = localStorage.getItem('userAccessCode');
         const isLocalFile = window.location.protocol === 'file:';
         
+        // في checkAutoLogin، عند عدم وجود كود محفوظ، لا نحتاج لإظهار loginModal لأنه تم إظهاره في loadAccessCodes()
+        
         if (isLocalFile) {
             if (savedCode === DEMO_CODE) {
                  console.log('دخول تلقائي بوضع التجربة المحلية.');
@@ -1709,12 +1711,12 @@
                  startPeriodicCheck();
                  return;
             }
-            document.getElementById('loginModal').style.display = 'flex'; 
+            // إذا كان ملف محلي ولا يوجد كود DEMO محفوظ، الواجهة تظل جاهزة لإدخال الكود
             return;
         }
 
         if (!savedCode) {
-            document.getElementById('loginModal').style.display = 'flex';
+            // لا يوجد كود محفوظ، الواجهة تظل جاهزة لإدخال الكود (تم إظهارها في loadAccessCodes)
             return;
         }
 
@@ -1731,24 +1733,40 @@
             if (codeDetails.used === false) {
                 localStorage.removeItem('userAccessCode');
                 alert('تم إلغاء تفعيل هذا الكود من قبل الإدارة. يرجى استخدام كود جديد.');
-                document.getElementById('loginModal').style.display = 'flex';
+                // تبقى loginModal ظاهرة
                 return;
             }
 
         } else {
             localStorage.removeItem('userAccessCode');
             alert('تم إلغاء صلاحية الوصول لهذا الرمز من قبل الإدارة.');
-            document.getElementById('loginModal').style.display = 'flex';
+            // تبقى loginModal ظاهرة
         }
     }
 
     function loadAccessCodes() {
         const isLocalFile = window.location.protocol === 'file:';
         const counterElement = document.getElementById('studentCounter');
+        
+        // 🚨 التعديل الحاسم: إظهار المودال ورسالة التحميل فوراً
+        document.getElementById('loginModal').style.display = 'flex';
+        const inputElement = document.getElementById('accessCodeInput');
+        const buttonElement = document.getElementById('accessButton');
+        const errorElement = document.getElementById('accessError');
+        
+        inputElement.style.display = 'none'; 
+        buttonElement.style.display = 'none';
+        errorElement.innerText = 'جاري تحميل نظام الحماية... يرجى الانتظار.'; 
+        errorElement.style.display = 'block';
 
         if (isLocalFile) {
             console.warn('وضع التجربة المحلية مفعل. استخدم الكود: DEMO');
             if (counterElement) counterElement.style.display = 'none';
+            // في وضع التجربة المحلية، نجهز الواجهة لاستقبال الكود
+            inputElement.style.display = 'block'; 
+            buttonElement.style.display = 'block'; 
+            errorElement.innerText = 'أنت في وضع التجربة المحلية. استخدم الكود: DEMO';
+            errorElement.style.display = 'block';
             checkAutoLogin(); 
             return;
         }
@@ -1764,14 +1782,26 @@
                 accessCodeDatabase = data;
                 console.log('تم تحميل ملف الأكواد بنجاح.');
                 updateStudentCounter(data);
+                
+                // إظهار حقل الإدخال والزر وإخفاء رسالة التحميل
+                inputElement.style.display = 'block'; 
+                buttonElement.style.display = 'block'; 
+                errorElement.style.display = 'none'; // إخفاء رسالة "جاري التحميل"
+                
                 checkAutoLogin();
             })
             .catch(err => {
                 console.error('خطأ فادح في تحميل الأكواد:', err);
-                const errorElement = document.getElementById('accessError');
-                errorElement.innerText = 'خطأ: لا يمكن تحميل نظام الحماية. تأكد من رفع ملف codes.json بشكل صحيح.'; 
+                
+                // إظهار رسالة الخطأ الواضحة 
+                errorElement.innerText = 'خطأ: لا يمكن تحميل نظام الحماية. يرجى التأكد من رفع ملف codes.json بشكل صحيح.'; 
                 errorElement.style.display = 'block';
-                document.getElementById('loginModal').style.display = 'flex'; 
+                
+                // إظهار حقل الإدخال والزر للسماح بالمحاولة مجدداً
+                inputElement.style.display = 'block'; 
+                buttonElement.style.display = 'block';
+                
+                document.getElementById('loginModal').style.display = 'flex'; // تأكيد العرض
                 if (counterElement) counterElement.style.display = 'none';
             });
     }
@@ -1823,7 +1853,7 @@
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('selectstart', e => e.preventDefault());
 
-    // 🌟 [التعديل الذي يحل مشكلة الإحساس بالتعليق وعدم اكتمال تسجيل الدخول]
+    // دالة إرسال بيانات التسجيل إلى الخادم الآمن (الخادم يملك توكن البوت)
     function sendRegistration() {
       const name = document.getElementById('regName').value.trim();
       const code = document.getElementById('regCode').value.trim();
@@ -1833,12 +1863,6 @@
         alert('يرجى تعبئة الحقول كاملة.');
         return;
       }
-
-      // 1. إضافة شاشة تحميل لزر الإرسال
-      const originalButton = document.querySelector('#paidRegisterModal button.download-btn');
-      const originalText = originalButton.innerHTML;
-      originalButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
-      originalButton.disabled = true;
 
       const payload = { name, code, phone };
 
@@ -1850,15 +1874,11 @@
       })
       .then(resp => resp.json().catch(()=>({ok:false})))
       .then(data => {
-        // 2. إعادة الزر لوضعه الطبيعي بعد الرد
-        originalButton.innerHTML = originalText;
-        originalButton.disabled = false;
-          
         if (data && (data.ok === true || data.success === true)) {
           alert('تم إرسال طلب التفعيل. سيُتابع معك المشرف عبر التليجرام.');
           closeModal('paidRegisterModal');
 
-          // حفظ الكود محلياً ومتابعة الدخول (منطق سليم)
+          // حفظ الكود محلياً ومتابعة الدخول
           localStorage.setItem('userAccessCode', code);
           if (accessCodeDatabase[code]) accessCodeDatabase[code].used = true;
 
@@ -1869,10 +1889,6 @@
         }
       })
       .catch(err => {
-        // 3. إعادة الزر لوضعه الطبيعي عند الخطأ
-        originalButton.innerHTML = originalText;
-        originalButton.disabled = false;
-          
         console.error('Send registration error:', err);
         alert('فشل الاتصال بالخادم. تأكد من عنوان SERVER_ENDPOINT وأن الخادم يعمل.');
       });
