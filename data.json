@@ -2,105 +2,33 @@
   "teachers": [
     {
       "id": 1,
-      "name": " الاستاذ حيدر علي الطائي ",
-      "subject": "الوحدة الأولى (5 محاضرات)",
-      "image": "https://k.top4top.io/p_35926h5fp1.png",
+      "name": "محاضرات تجريبية",
+      "subject": "دروس مجانية للتجربة",
+      "image": "https://b.top4top.io/p_35871m0441.jpg",
       "isPaid": false,
       "classes": [
         {
-          "name": "الوحدة الأولى - تجريبية",
+          "name": "الوحدة الأولى",
           "lectures": [
-            {
-              "title": "المحاضرة 1 (تجريبية)",
-              "url": "https://youtu.be/wEQ-hcXnHxo?si=yITk8bANia9gwkHd",
-              "description": "وصف المحاضرة 1 في الوحدة الأولى."
-            },
-            {
-              "title": "المحاضرة 2 (تجريبية)",
-              "url": "https://youtu.be/QJQSDjCucu8?si=5any4TOG-Aa_Afio",
-              "description": "وصف المحاضرة 2 في الوحدة الأولى."
-            },
-            {
-              "title": "المحاضرة 3 (تجريبية)",
-              "url": "https://example.com/free-video-3",
-              "description": "وصف المحاضرة 3 في الوحدة الأولى."
-            },
-            {
-              "title": "المحاضرة 4 (تجريبية)",
-              "url": "https://example.com/free-video-4",
-              "description": "وصف المحاضرة 4 في الوحدة الأولى."
-            },
-            {
-              "title": "المحاضرة 5 (تجريبية)",
-              "url": "https://example.com/free-video-5",
-              "description": "وصف المحاضرة 5 في الوحدة الأولى."
-            }
+            {"title": "المقدمة", "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", "description": "محاضرة تعريفية"}
           ]
         }
       ]
     },
     {
       "id": 2,
-      "name": "الدورة الالكترونية (المدفوعة)",
-      "subject": "للمشتركين فقط (الأساسيات والوحدة الأولى)",
-      "image": "https://k.top4top.io/p_35926h5fp1.png",
+      "name": "الدورة الإلكترونية الكاملة",
+      "subject": "الدروس المدفوعة",
+      "image": "https://b.top4top.io/p_35871m0441.jpg",
       "isPaid": true,
       "classes": [
         {
-          "name": "قسم الأساسيات",
+          "name": "الوحدة الأولى",
           "lectures": [
-            {
-              "title": "المحاضرة 1: أساسيات",
-              "url": "https://example.com/paid-basics-1",
-              "description": "شرح المحاضرة 1 - الأساسيات."
-            },
-            {
-              "title": "المحاضرة 2: أساسيات",
-              "url": "https://example.com/paid-basics-2",
-              "description": "شرح المحاضرة 2 - الأساسيات."
-            }
-          ]
-        },
-        {
-          "name": "قسم الوحدة الأولى",
-          "lectures": [
-            {
-              "title": "المحاضرة 1 (كاملة)",
-              "url": "https://example.com/paid-unit1-1",
-              "description": "وصف المحاضرة 1 (كاملة)."
-            },
-            {
-              "title": "المحاضرة 2 (كاملة)",
-              "url": "https://example.com/paid-unit1-2",
-              "description": "وصف المحاضرة 2 (كاملة)."
-            },
-            {
-              "title": "المحاضرة 3 (كاملة)",
-              "url": "https://example.com/paid-unit1-3",
-              "description": "وصف المحاضرة 3 (كاملة)."
-            }
+            {"title": "المحاضرة الأولى", "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", "description": "شرح مفصل"}
           ]
         }
       ]
     }
-  ],
-  "materials": [
-    {
-      "id": 1,
-      "title": "ملزمة الوحدة الأولى (للمشتركين)",
-      "subject": "مادة اللغة الإنجليزية",
-      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/english-teacher.jpg?v=1710000000000",
-      "url": "https://example.com/paid-pdf-1"
-    }
-  ],
-  "exams": [
-    {
-      "id": 1,
-      "title": "امتحان الوحدة الأولى (شامل)",
-      "subject": "مادة اللغة الإنجليزية",
-      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/exam.jpg?v=1710000000000",
-      "url": "https://example.com/paid-exam-1"
-    }
-  ],
-  "DEMO_CODE": "DEMO-1234"
+  ]
 }
