@@ -1,103 +1,162 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>منصة الأستاذ حيدر علي الطائي</title>
-<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-  body {
-    font-family: 'Almarai', sans-serif;
-    background: linear-gradient(180deg, #0a0a0a 0%, #121212 100%);
-    color: white;
-    margin: 0;
-    overflow-x: hidden;
-    min-height: 100vh;
-  }
-  .modal {
-    position: fixed;top:0;left:0;width:100%;height:100%;
-    background: rgba(0,0,0,0.9);display:flex;justify-content:center;align-items:center;z-index:9999;
-  }
-  .modal-content {
-    background: #1e1e1e;padding:2rem;border-radius:20px;text-align:center;max-width:400px;width:90%;
-    border:2px solid #f44336;
-  }
-  .modal-content button {
-    background: linear-gradient(135deg,#1877F2,#3B90F5);
-    color:white;border:none;border-radius:10px;padding:0.8rem 2rem;cursor:pointer;font-size:1.1rem;margin-top:1rem;
-  }
-  header {text-align:center;padding:1rem;font-size:0.9rem;color:#b0b0b0;}
-  .container {display:none;flex-direction:column;align-items:center;padding:2rem;}
-  .circles {display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;margin-top:2rem;}
-  .circle {
-    width:200px;height:200px;border-radius:50%;background:linear-gradient(145deg,#1e1e1e,#2a2a2a);
-    border:2px solid #1877F2;display:flex;align-items:center;justify-content:center;flex-direction:column;
-    cursor:pointer;transition:transform .3s;
-  }
-  .circle:hover {transform:scale(1.05);}
-  .circle img {width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:1rem;}
-  .form {display:none;flex-direction:column;align-items:center;gap:1rem;margin-top:2rem;}
-  input {
-    width:80%;padding:0.8rem;border-radius:8px;border:1px solid #333;background:#121212;color:white;text-align:center;
-  }
-  .sections {display:none;justify-content:center;gap:1rem;margin-top:2rem;}
-  .sec {
-    background:linear-gradient(135deg,#1877F2,#3B90F5);
-    padding:1rem 2rem;border-radius:12px;cursor:pointer;font-weight:700;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنصة قيد الصيانة 🛠️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* الألوان المستخدمة مستوحاة من تصميمك */
+        :root {
+            --bg-color: #0a0a0a;
+            --card-color: #1e1e1e;
+            --primary: #1877F2; /* الأزرق */
+            --error: #f44336; /* الأحمر */
+            --text-color: #ffffff;
+            --text-secondary: #b0b0b0;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* تنسيق عام للجسم */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Almarai', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow: hidden; /* لمنع ظهور أشرطة التمرير */
+        }
+
+        /* حاوية الرسالة الرئيسية */
+        .maintenance-container {
+            background: var(--card-color);
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            width: 90%;
+            border: 2px solid var(--primary);
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* تنسيق الأيقونة */
+        .icon-box {
+            font-size: 5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            animation: spin 3s linear infinite; /* حركة دوران */
+            display: inline-block;
+            text-shadow: 0 0 15px rgba(24, 119, 242, 0.5);
+        }
+        
+        /* تأثير النبض على الأيقونة */
+        .icon-pulse {
+             animation: pulse 2s infinite ease-in-out;
+        }
+
+        /* العنوان الرئيسي */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        /* الرسالة الفرعية */
+        p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        /* رابط التواصل */
+        .contact-link {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(24, 119, 242, 0.4);
+        }
+
+        .contact-link:hover {
+            background: #3B90F5;
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* تأثيرات الحركة (الأنيميشن) */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* الاستجابة للهواتف الصغيرة */
+        @media (max-width: 600px) {
+            .maintenance-container {
+                padding: 3rem 1.5rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .icon-box {
+                font-size: 4rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="modal" id="alertModal">
-  <div class="modal-content">
-    <h3>تنبيه قانوني</h3>
-    <p>في حال تسريب الكود او تخريب المنصه فانك تعرض نفسك للمسائله القانونيه</p>
-    <button onclick="agreeAlert()">موافق</button>
-  </div>
-</div>
-<header>الأستاذ حيدر علي الطائي</header>
-<div class="container" id="mainContent">
-  <div class="circles">
-    <div class="circle" onclick="showTrial()">
-      <img src="" alt="" id="trialImg">
-      <span>الدورات التجريبية</span>
+
+    <div class="maintenance-container">
+        
+        <div class="icon-box">
+            <i class="fas fa-tools icon-pulse"></i>
+        </div>
+
+        <h1>المنصة قيد الصيانة والتحديث 🚧</h1>
+
+        <p>
+            نعتذر عن توقف الخدمة بشكل مؤقت. نحن نعمل حالياً على إضافة ميزات جديدة وتحسين أداء المنصة لضمان أفضل تجربة تعليمية لك.
+        </p>
+
+        <p style="font-size: 1rem; color: var(--error); font-weight: 700;">
+            من المتوقع أن تعود المنصة للعمل خلال فترة وجيزة.
+        </p>
+
+        <a href="https://wa.me/9647709014600" target="_blank" class="contact-link">
+            <i class="fab fa-whatsapp"></i> تواصل معنا للاستفسار
+        </a>
+
+        <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-secondary);">
+            الأستاذ: حيدر علي الطائي
+        </p>
+
     </div>
-    <div class="circle" onclick="showPaid()">
-      <img src="" alt="" id="paidImg">
-      <span>الاشتراك في الدورة الإلكترونية</span>
-    </div>
-  </div>
-  <div class="form" id="form">
-    <input id="name" placeholder="الاسم الثلاثي">
-    <input id="phone" placeholder="رقم الهاتف">
-    <input id="code" placeholder="الكود">
-    <button onclick="sendData()">إرسال</button>
-  </div>
-  <div class="sections" id="sections">
-    <div class="sec">المحاضرات</div>
-    <div class="sec">الأدب</div>
-    <div class="sec">الأساسيات</div>
-  </div>
-</div>
-<script>
-  const SERVER_ENDPOINT='https://script.google.com/macros/s/AKfycbyuwVNj_Q7-qPO6U4mc_72NeUQuwKH6zCGmXHjPpZoUDVOOS_kmO_P4MohgY2ixsy37YQ/exec';
-  function agreeAlert(){document.getElementById('alertModal').style.display='none';document.getElementById('mainContent').style.display='flex';}
-  function showTrial(){document.getElementById('form').style.display='none';document.getElementById('sections').style.display='flex';}
-  function showPaid(){document.getElementById('form').style.display='flex';document.getElementById('sections').style.display='none';}
-  function sendData(){
-    const name=document.getElementById('name').value.trim();
-    const phone=document.getElementById('phone').value.trim();
-    const code=document.getElementById('code').value.trim();
-    if(!name||!phone||!code){alert('يرجى ملء جميع الحقول');return;}
-    fetch(SERVER_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,phone,code})})
-    .then(r=>r.json().catch(()=>({ok:false}))).then(d=>{
-      alert('تم إرسال البيانات بنجاح');
-      document.getElementById('form').style.display='none';
-      document.getElementById('sections').style.display='flex';
-    }).catch(()=>alert('فشل الإرسال'));
-  }
-</script>
+
 </body>
 </html>
