@@ -938,7 +938,7 @@
  </head>
  <body> 
   
-  <div id="legalWarningModal" class="modal" style="display: none;"> 
+  <div id="legalWarningModal" class="modal" style="display: flex;"> 
     <div class="modal-content" style="max-width: 600px;">
         <i class="fas fa-gavel" style="font-size: 3rem; color: var(--error); margin-bottom: 1rem;"></i>
         <h3><img src="https://k.top4top.io/p_3592t3ag71.jpg" alt="شعار" style="width: 30px; height: 30px; vertical-align: middle; margin-left: 10px; border-radius: 5px;"> مرحباً بك في منصة التفوق</h3>
@@ -1366,7 +1366,15 @@
 
     // فتح قائمة المحاضرات
     function toggleLecturesList(index) {
-        // ... (نفس المنطق) ...
+        const list = document.getElementById(`lecturesList-${index}`);
+        const icon = list.previousElementSibling.querySelector('span i');
+        if (list.style.display === 'flex') {
+            list.style.display = 'none';
+            icon.style.transform = 'rotate(0deg)';
+        } else {
+            list.style.display = 'flex';
+            icon.style.transform = 'rotate(180deg)';
+        }
     }
 
     // تشغيل المحاضرة (تعديل منطق العلامة المائية)
@@ -1403,7 +1411,7 @@
     function loadContent(type) {
       navButtons.forEach(btn => btn.classList.remove('active'));
       const btnMap = {
-          'lectures': 'lectures',
+          'lectures': 'classes',
           'literature': 'materials',
           'basics': 'exams'
       };
@@ -1462,13 +1470,19 @@
         });
     }
 
-    // دوال فتح وإغلاق النوافذ
+    // ** [تم التصحيح] دوال فتح وإغلاق النوافذ **
     function closeModal(modalId) {
-        // ... (نفس المنطق) ...
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'none';
+        }
     }
 
     function openModal(modalId) {
-        // ... (نفس المنطق) ...
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'flex';
+        }
     }
 
     // منطق التحقق الدوري للطرد
@@ -1536,8 +1550,8 @@
 
     // [معدل] دالة تسجيل الدخول الناجح (بعد تفعيل الكود)
     function loginSuccess(code) {
-        document.getElementById('codeEntryModal').style.display = 'none';
-        document.getElementById('registrationModal').style.display = 'none';
+        closeModal('codeEntryModal');
+        closeModal('registrationModal');
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
         document.getElementById('accessError').style.display = 'none';
