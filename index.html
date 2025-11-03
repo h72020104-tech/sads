@@ -1,132 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>منصة الأستاذ حيدر علي الطائي</title>
-<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   body {
     font-family: 'Almarai', sans-serif;
-    background: linear-gradient(180deg,#0a0a0a 0%,#121212 100%);
+    background: linear-gradient(180deg, #0a0a0a 0%, #121212 100%);
     color: white;
     margin: 0;
-    text-align: center;
+    overflow-x: hidden;
+    min-height: 100vh;
   }
-  .overlay {
-    position: fixed;
-    top: 0;left: 0;
-    width: 100%;height: 100%;
-    background: rgba(0,0,0,0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 9999;
+  .modal {
+    position: fixed;top:0;left:0;width:100%;height:100%;
+    background: rgba(0,0,0,0.9);display:flex;justify-content:center;align-items:center;z-index:9999;
   }
-  .alert-box {
-    background: #1e1e1e;
-    border: 2px solid #f44336;
-    border-radius: 15px;
-    padding: 2rem;
-    max-width: 400px;
+  .modal-content {
+    background: #1e1e1e;padding:2rem;border-radius:20px;text-align:center;max-width:400px;width:90%;
+    border:2px solid #f44336;
   }
-  button {
+  .modal-content button {
     background: linear-gradient(135deg,#1877F2,#3B90F5);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-    cursor: pointer;
+    color:white;border:none;border-radius:10px;padding:0.8rem 2rem;cursor:pointer;font-size:1.1rem;margin-top:1rem;
   }
-  h1 {font-size:1.4rem;margin-bottom:1rem;}
-  .main {
-    display:none;
-    padding:2rem;
-  }
-  .title {
-    font-size:0.9rem;
-    color:#ccc;
-    margin-bottom:1.5rem;
-  }
-  .options {
-    display:flex;
-    justify-content:center;
-    gap:2rem;
-    flex-wrap:wrap;
-  }
+  header {text-align:center;padding:1rem;font-size:0.9rem;color:#b0b0b0;}
+  .container {display:none;flex-direction:column;align-items:center;padding:2rem;}
+  .circles {display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;margin-top:2rem;}
   .circle {
-    width:200px;height:200px;
-    border-radius:50%;
-    background:linear-gradient(145deg,#1e1e1e,#2a2a2a);
-    display:flex;align-items:center;justify-content:center;
-    font-size:1.2rem;font-weight:700;
-    cursor:pointer;
-    border:2px solid #1877F2;
-    transition:transform .3s;
+    width:200px;height:200px;border-radius:50%;background:linear-gradient(145deg,#1e1e1e,#2a2a2a);
+    border:2px solid #1877F2;display:flex;align-items:center;justify-content:center;flex-direction:column;
+    cursor:pointer;transition:transform .3s;
   }
   .circle:hover {transform:scale(1.05);}
-  .form {
-    display:none;
-    flex-direction:column;
-    align-items:center;
-    gap:1rem;
-    margin-top:2rem;
-  }
+  .circle img {width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:1rem;}
+  .form {display:none;flex-direction:column;align-items:center;gap:1rem;margin-top:2rem;}
   input {
-    width:80%;padding:0.8rem;
-    border-radius:8px;
-    border:1px solid #333;
-    background:#121212;
-    color:white;
-    text-align:center;
+    width:80%;padding:0.8rem;border-radius:8px;border:1px solid #333;background:#121212;color:white;text-align:center;
   }
-  .sections {
-    display:none;
-    justify-content:center;
-    gap:1rem;
-    margin-top:2rem;
-  }
+  .sections {display:none;justify-content:center;gap:1rem;margin-top:2rem;}
   .sec {
     background:linear-gradient(135deg,#1877F2,#3B90F5);
-    padding:1rem 2rem;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:700;
+    padding:1rem 2rem;border-radius:12px;cursor:pointer;font-weight:700;
   }
 </style>
 </head>
 <body>
-  <div class="overlay" id="alert">
-    <div class="alert-box">
-      <h1>تنبيه قانوني</h1>
-      <p>في حال تسريب الكود او تخريب المنصه فانك تعرض نفسك للمسائله القانونيه</p>
-      <button onclick="agreeAlert()">موافق</button>
+<div class="modal" id="alertModal">
+  <div class="modal-content">
+    <h3>تنبيه قانوني</h3>
+    <p>في حال تسريب الكود او تخريب المنصه فانك تعرض نفسك للمسائله القانونيه</p>
+    <button onclick="agreeAlert()">موافق</button>
+  </div>
+</div>
+<header>الأستاذ حيدر علي الطائي</header>
+<div class="container" id="mainContent">
+  <div class="circles">
+    <div class="circle" onclick="showTrial()">
+      <img src="" alt="" id="trialImg">
+      <span>الدورات التجريبية</span>
+    </div>
+    <div class="circle" onclick="showPaid()">
+      <img src="" alt="" id="paidImg">
+      <span>الاشتراك في الدورة الإلكترونية</span>
     </div>
   </div>
-  <div class="main" id="main">
-    <div class="title">الأستاذ حيدر علي الطائي</div>
-    <div class="options">
-      <div class="circle" onclick="showTrial()">الدورات التجريبية</div>
-      <div class="circle" onclick="showPaid()">الاشتراك في الدورة الإلكترونية</div>
-    </div>
-    <div class="form" id="form">
-      <input id="name" placeholder="الاسم الثلاثي">
-      <input id="phone" placeholder="رقم الهاتف">
-      <input id="code" placeholder="الكود">
-      <button onclick="sendData()">إرسال</button>
-    </div>
-    <div class="sections" id="sections">
-      <div class="sec">المحاضرات</div>
-      <div class="sec">الأدب</div>
-      <div class="sec">الأساسيات</div>
-    </div>
+  <div class="form" id="form">
+    <input id="name" placeholder="الاسم الثلاثي">
+    <input id="phone" placeholder="رقم الهاتف">
+    <input id="code" placeholder="الكود">
+    <button onclick="sendData()">إرسال</button>
   </div>
+  <div class="sections" id="sections">
+    <div class="sec">المحاضرات</div>
+    <div class="sec">الأدب</div>
+    <div class="sec">الأساسيات</div>
+  </div>
+</div>
 <script>
   const SERVER_ENDPOINT='https://script.google.com/macros/s/AKfycbyuwVNj_Q7-qPO6U4mc_72NeUQuwKH6zCGmXHjPpZoUDVOOS_kmO_P4MohgY2ixsy37YQ/exec';
-  function agreeAlert(){document.getElementById('alert').style.display='none';document.getElementById('main').style.display='block';}
+  function agreeAlert(){document.getElementById('alertModal').style.display='none';document.getElementById('mainContent').style.display='flex';}
   function showTrial(){document.getElementById('form').style.display='none';document.getElementById('sections').style.display='flex';}
   function showPaid(){document.getElementById('form').style.display='flex';document.getElementById('sections').style.display='none';}
   function sendData(){
