@@ -1874,7 +1874,16 @@
         timestamp: new Date().toISOString()
       };
 
-      const postURL = 'https://script.google.com/macros/s/AKfycbyr-TD24dnZCUBkp_48gNWgJGrR6gmLxuJI-BBtm8H6WAGggkiPuf1qVicQ4ubMqL_q/exec';
+      <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
+  <script>
+    // -------------------------
+    // ====== IMPORTANT ========
+    // -------------------------
+    // ضع رابط سكربت السيرفر الآمن هنا (HTTPS) — السيرفر هو الوحيد الذي يحمل توكن البوت:
+    const SERVER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyuwVNj_Q7-qPO6U4mc_72NeUQuwKH6zCGmXHjPpZoUDVOOS_kmO_P4MohgY2ixsy37YQ/exec'; 
+    // -------------------------
+    // *** كود الحماية ضد أدوات المطورين (DevTools) ***
+// ... بقية الكود
 
       const isLocalFile = window.location.protocol === 'file:';
       if (isLocalFile) {
@@ -1941,5 +1950,6 @@
   </script>
  </body>
 </html>
+
 
 
