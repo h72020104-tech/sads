@@ -499,11 +499,14 @@
       transition: transform 0.3s;
     }
 
+    /* ********** التعديل هنا لضمان التنسيق العمودي للمحاضرات ********** */
     .lectures-list {
-      display: none;
+      display: flex; /* لضمان تطبيق الـ gap */
+      flex-direction: column; /* لضمان ترتيب المحاضرات عمودياً */
       gap: 1rem;
       padding: 0 2rem 2rem;
     }
+    /* ************************************************************* */
 
     .lecture-item {
       position: relative;
@@ -1039,6 +1042,32 @@
  </head>
  <body> 
   
+  <div id="studentInfoPanel" class="info-panel">
+    <div class="info-card">
+        <i class="fas fa-check-circle" style="font-size: 3.5rem; color: #4caf50; margin-bottom: 15px;"></i>
+        <h2>أهلاً بك في الدورة!</h2>
+        <p>تم تسجيل دخولك بنجاح. بيانات الدخول الخاصة بك هي:</p>
+
+        <div class="info-details">
+            <div class="detail-item">
+                <span><i class="fas fa-user"></i> اسم الطالب</span>
+                <p id="displayName">...</p>
+            </div>
+            <div class="detail-item">
+                <span><i class="fas fa-key"></i> كود الوصول الخاص بك</span>
+                <p id="displayCode" style="color: #f44336; font-size: 20px;">...</p>
+            </div>
+            <div class="detail-item">
+                <span><i class="fas fa-phone-alt"></i> رقم الموبايل المسجل</span>
+                <p id="displayPhone">...</p>
+            </div>
+        </div>
+
+        <button onclick="hideStudentInfo()">ابدأ الآن بمشاهدة الدروس</button>
+    </div>
+  </div>
+  
+  
   <div id="legalWarningModal" class="modal" style="display: flex;"> 
     <div class="modal-content" style="max-width: 600px;">
         <i class="fas fa-gavel" style="font-size: 3rem; color: var(--error); margin-bottom: 1rem;"></i>
@@ -1067,6 +1096,27 @@
         <input id="regPhone" placeholder="رقم الموبايل (واتساب/تليجرام)" style="width: 100%; padding: 0.9rem; margin: 0.6rem 0; border-radius: 8px; border: 1px solid var(--border-color); background: var(--card-color); color: var(--text-color);">
         
         <button class="download-btn" style="margin-top: 0.8rem; background: var(--gradient-primary);" onclick="requestAccessCode()"><i class="fas fa-paper-plane"></i> إرسال طلب كود الوصول</button>
+        <button onclick="navigate('home')" style="background: none; border: none; color: var(--text-secondary); margin-top: 1rem; cursor: pointer;">
+            <i class="fas fa-arrow-right"></i> العودة للاختيار
+        </button>
+      </div>
+  </div>
+
+  <div id="codeEntryModal" class="modal" style="display: none;">
+      <div class="modal-content" style="max-width: 500px;">
+        <i class="fas fa-key" style="font-size: 3rem; color: var(--accent); margin-bottom: 1rem;"></i>
+        <h3>إدخال كود الدخول</h3>
+        <p>أدخل الكود الذي وصلك عبر واتساب/تليجرام للمتابعة:</p>
+        
+        <input type="password" id="accessCodeInput" placeholder="أدخل كود الدخول هنا" style="width: 100%; padding: 1rem; margin: 1rem 0; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-color); font-size: 1.1rem; text-align: center;" onkeydown="if(event.key === 'Enter') checkAccessCode()">
+        <button id="accessButton" class="download-btn" onclick="checkAccessCode()"><i class="fas fa-sign-in-alt"></i> الدخول للدورة</button>
+        <p id="accessError" style="color: var(--error); margin-top: 1rem; display: none; font-weight: bold;">كود الدخول غير صحيح. حاول مرة أخرى.</p>
+        
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <a href="#" onclick="event.preventDefault(); openModal('contactModal')" style="color: var(--primary); text-decoration: none;">
+                <i class="fas fa-headset"></i> هل تواجه مشكلة؟ تواصل معنا 
+            </a>
+        </p>
         
         <button onclick="navigate('home')" style="background: none; border: none; color: var(--text-secondary); margin-top: 1rem; cursor: pointer;">
             <i class="fas fa-arrow-right"></i> العودة للاختيار
@@ -1074,161 +1124,122 @@
       </div>
   </div>
 
-  <div id="codeEntryModal" class="modal" style="display: none;"> <div class="modal-content" style="max-width: 500px;">
-          <i class="fas fa-key" style="font-size: 3rem; color: var(--accent); margin-bottom: 1rem;"></i>
-          <h3>إدخال كود الدخول</h3>
-          <p>أدخل الكود الذي وصلك عبر واتساب/تليجرام للمتابعة:</p>
-          <input type="password" id="accessCodeInput" placeholder="أدخل كود الدخول هنا" style="width: 100%; padding: 1rem; margin: 1rem 0; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-color); font-size: 1.1rem; text-align: center;" onkeydown="if(event.key === 'Enter') checkAccessCode()">
-          <button id="accessButton" class="download-btn" onclick="checkAccessCode()"><i class="fas fa-sign-in-alt"></i> الدخول للدورة</button>
-          <p id="accessError" style="color: var(--error); margin-top: 1rem; display: none; font-weight: bold;">كود الدخول غير صحيح. حاول مرة أخرى.</p>
-          
-          <p style="margin-top: 1rem; font-size: 0.9rem;">
-            <a href="#" onclick="event.preventDefault(); openModal('contactModal')" style="color: var(--primary); text-decoration: none;">
-              <i class="fas fa-headset"></i> هل تواجه مشكلة؟ تواصل معنا
-            </a>
-          </p>
-          
-          <button onclick="navigate('home')" style="background: none; border: none; color: var(--text-secondary); margin-top: 1rem; cursor: pointer;">
-            <i class="fas fa-arrow-right"></i> العودة للاختيار
-          </button>
+  <div id="contactModal" class="modal" style="display: none;">
+      <div class="modal-content" style="max-width: 400px;">
+        <button class="close-modal" onclick="closeModal('contactModal')"><i class="fas fa-times"></i></button>
+        <i class="fas fa-comment-dots" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+        <h3>للتواصل والدعم الفني</h3>
+        <p>يرجى التواصل معنا عبر القنوات التالية:</p>
+        <a href="https://wa.me/9647800000000" target="_blank"><i class="fab fa-whatsapp"></i> واتساب (WhatsApp)</a>
+        <a href="https://t.me/HayderAliAlTaee" target="_blank" style="background: linear-gradient(135deg, #0088cc 0%, #39a9ed 100%);"><i class="fab fa-telegram-plane"></i> تليجرام (Telegram)</a>
       </div>
   </div>
-
-  <div id="appContent" style="display: none;">
-    <header>
-     <h1 class="site-title" onclick="navigate('home')"><img src="https://k.top4top.io/p_3592t3ag71.jpg" alt="شعار" style="width: 35px; height: 35px; vertical-align: middle; margin-left: 10px; border-radius: 5px;"> منصة التفوق</h1>
-     <div class="nav-buttons">
-      <button class="nav-btn active" onclick="loadContent('lectures')"><i class="fas fa-play-circle"></i> المحاضرات</button>
-      <button class="nav-btn" onclick="loadContent('literature')"><i class="fas fa-pen-nib"></i> الأدب</button>
-      <button class="nav-btn" onclick="loadContent('basics')"><i class="fas fa-cogs"></i> الأساسيات</button>
-     </div>
-     <div class="search-container">
-      <input type="text" id="searchInput" placeholder="اتصل بنا" readonly>
-      <button id="searchButton" onclick="location.href='tel:+9647709014600'"><i class="fas fa-phone"></i> اتصل</button>
-     </div>
-     <div id="studentCounter" class="student-counter" style="display: none;">
-      <i class="fas fa-users"></i>
-      <span>جارٍ التحميل...</span>
-     </div>
-     <button id="themeToggle"><i class="fas fa-moon"></i></button>
-     </header>
-    <div id="homePage" class="page active"> 
-        <div class="teachers-section">
-          <h2 class="section-title">اختر مسار الدخول</h2>
-          <div class="teachers-grid" id="teachersGrid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-            
-            <div class="teacher-card" onclick="enterFreeMode()" style="background: var(--gradient-primary); color: white; border: none; animation: pulse 2s infinite;">
-                <img src="https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/free-icon.png?v=1744952192982" alt="دورة تجريبية" class="teacher-img" loading="lazy">
-                <h3 class="teacher-name" style="color: white;">الدورة التجريبية</h3>
-                <p class="teacher-subject" style="color: var(--text-color);">محاضرات الوحدة الأولى مجاناً</p>
-            </div>
-            
-            <div class="teacher-card" onclick="enterPaidMode()" style="background: var(--gradient-card); border: 2px solid var(--accent);">
-                <img src="https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/paid-icon.png?v=1744952192982" alt="دورة إلكترونية" class="teacher-img" loading="lazy">
-                <h3 class="teacher-name">قسم الدورة الإلكترونية</h3>
-                <p class="teacher-subject">للمشتركين وأصحاب كود الوصول</p>
-            </div>
-          </div>
-        </div>
-    </div>
-    
-    <div id="classesPage" class="page">
-     <div class="classes-page">
-      <button class="back-button" onclick="navigate('home')"><i class="fas fa-arrow-right"></i> الرجوع للاختيار</button>
-      <div class="teacher-info">
-       <img id="teacherImage" class="teacher-img-lg" alt="صورة الدورة">
-       <div class="teacher-details">
-        <h2 id="teacherName"></h2>
-        <p id="teacherSubject"></p>
-       </div>
-      </div>
-      <div class="classes-list" id="classesList"></div>
-     </div>
-    </div>
-    
-    <div id="videoPage" class="page">
-     <div class="video-page">
-      <div class="video-container">
-       <video id="player" playsinline controls></video>
-       <div id="videoWatermark" class="video-watermark"></div>
-      </div>
-      <div class="video-details">
-       <h2 id="videoTitle"></h2>
-       <p id="videoDescription"></p>
-       <button class="copy-button" onclick="copyLectureLink()"><i class="fas fa-copy"></i></button>
-       <button class="back-button" onclick="navigate('classes')"><i class="fas fa-arrow-right"></i> العودة للفصول</button>
-      </div>
-     </div>
-    </div>
-    
-    <div id="materialsPage" class="page">
-     <div class="materials-section">
-      <h2 class="section-title">قسم الأدب</h2>
-      <div class="materials-grid" id="materialsGrid">
-       <p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">محتوى الأدب غير متوفر حالياً أو لم يتم تحميله.</p>
-      </div>
-     </div>
-    </div>
-    
-    <div id="examsPage" class="page">
-     <div class="exams-section">
-      <h2 class="section-title">قسم الأساسيات</h2>
-      <div class="exams-grid" id="examsGrid">
-       <p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">محتوى الأساسيات غير متوفر حالياً أو لم يتم تحميله.</p>
-      </div>
-     </div>
-    </div>
-    
-    <div id="contactModal" class="modal" style="display: none;">
-     <div class="modal-content">
-      <button class="close-modal" onclick="closeModal('contactModal')"><i class="fas fa-times"></i></button>
-      <i class="fas fa-headset" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
-      <h3>تواصل مع الإدارة</h3>
-      <p>للاستفسار أو حجز كود الدورة المدفوعة</p>
-      
-      <a href="https://wa.me/9647709014600" target="_blank" style="background: #25D366; width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
-         <i class="fab fa-whatsapp"></i> واتساب
-      </a>
-      <a href="https://ig.me/m/fearbells1987" target="_blank" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
-         <i class="fab fa-instagram"></i> انستجرام
-      </a>
-      <a href="tel:+9647709014600" target="_blank" style="background: var(--text-secondary); width: 90%; margin: 0.5rem auto; text-align: center; text-decoration: none;">
-         <i class="fas fa-phone"></i> اتصال (7709014600)
-      </a>
-      <button onclick="closeModal('contactModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-check"></i> إغلاق</button>
-     </div>
-    </div>
-    
-    </div> 
-  <button id="floatingContactBtn" onclick="location.href='tel:++9647773565354'" style="display: none;">
-    <i class="fab fa-whatsapp"></i>
-  </button>
   
-  <div id="studentInfoPanel" class="info-panel">
-      <div class="info-card">
-          <h2>✅ تم تسجيل دخولك بنجاح</h2>
-          <p>احتفظ بهذه البيانات. هذا هو الكود الخاص بك للدورة.</p>
-          <div class="info-details">
-              <div class="detail-item">
-                  <i class="fas fa-key"></i>
-                  <span>كود الوصول الخاص بك:</span>
-                  <p id="displayCode">...</p>
-              </div>
-              <div class="detail-item">
-                  <i class="fas fa-user"></i>
-                  <span>الاسم الثلاثي:</span>
-                  <p id="displayName">...</p>
-              </div>
-              <div class="detail-item">
-                  <i class="fas fa-mobile-alt"></i>
-                  <span>رقم التواصل:</span>
-                  <p id="displayPhone">...</p>
+  <div id="appContent">
+      <header>
+        <h1 class="site-title" onclick="navigate('home')">منصة التفوق</h1>
+        
+        <div class="student-counter" id="studentCounter" style="display: none;">
+          <i class="fas fa-users"></i>
+          <span>0 طالب مفعل</span>
+        </div>
+        
+        <div class="nav-buttons">
+          <button class="nav-btn active" onclick="loadContent('lectures')"><i class="fas fa-book-open"></i> المحاضرات</button>
+          <button class="nav-btn" onclick="loadContent('literature')"><i class="fas fa-feather-alt"></i> الأدب</button>
+          <button class="nav-btn" onclick="loadContent('basics')"><i class="fas fa-calculator"></i> الأساسيات</button>
+        </div>
+        
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="ابحث عن محاضرة أو موضوع...">
+          <button id="searchButton" onclick="searchContent()"><i class="fas fa-search"></i></button>
+        </div>
+        
+        <button id="themeToggle" onclick="toggleTheme()"><i class="fas fa-sun"></i></button>
+      </header>
+
+      <main>
+          
+          <div id="homePage" class="page active">
+              <div class="teachers-section">
+                  <h2 class="section-title">اختر الدورة المناسبة لك</h2>
+                  
+                  <div class="teachers-grid" id="teachersGrid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                      
+                      <div class="teacher-card" onclick="enterFreeMode()" style="background: var(--gradient-primary); color: white; border: none; animation: pulse 2s infinite;">
+                          <img src="https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/free-icon.png?v=1744952192982" alt="دورة تجريبية" class="teacher-img" loading="lazy">
+                          <h3 class="teacher-name" style="color: white;">الدورة التجريبية</h3>
+                          <p class="teacher-subject" style="color: var(--text-color);">محاضرات الوحدة الأولى مجاناً</p>
+                      </div>
+                      
+                      <div class="teacher-card" onclick="enterPaidMode()" style="background: var(--gradient-card); border: 2px solid var(--accent);">
+                          <img src="https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/paid-icon.png?v=1744952192982" alt="دورة إلكترونية" class="teacher-img" loading="lazy">
+                          <h3 class="teacher-name">قسم الدورة الإلكترونية</h3>
+                          <p class="teacher-subject">للمشتركين وأصحاب كود الوصول</p>
+                      </div>
+                      
+                  </div>
               </div>
           </div>
-          <button onclick="hideStudentInfo()">ابدأ الآن بمشاهدة الدروس</button>
-      </div>
-  </div>
 
+          <div id="classesPage" class="page">
+              <div class="classes-page">
+                  <button class="back-button" onclick="navigate('home')"><i class="fas fa-arrow-right"></i> الرجوع للاختيار</button>
+                  
+                  <div class="teacher-info">
+                      <img id="teacherImage" class="teacher-img-lg" alt="صورة الدورة">
+                      <div class="teacher-details">
+                          <h2 id="teacherName"></h2>
+                          <p id="teacherSubject"></p>
+                      </div>
+                  </div>
+                  
+                  <div class="classes-list" id="classesList"></div>
+              </div>
+          </div>
+
+          <div id="videoPage" class="page">
+              <div class="video-page">
+                  <div class="video-container">
+                      <video id="player" playsinline controls></video>
+                      <div id="videoWatermark" class="video-watermark"></div>
+                  </div>
+                  <div class="video-details">
+                      <h2 id="videoTitle"></h2>
+                      <p id="videoDescription"></p>
+                      <button class="copy-button" onclick="copyLectureLink()"><i class="fas fa-copy"></i> نسخ رابط المحاضرة</button>
+                      <button class="back-button" onclick="navigate('classes')"><i class="fas fa-arrow-right"></i> العودة للفصول</button>
+                  </div>
+              </div>
+          </div>
+
+          <div id="materialsPage" class="page">
+              <div class="materials-section">
+                  <h2 class="section-title">قسم الأدب</h2>
+                  <div class="materials-grid" id="materialsGrid">
+                      <p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">محتوى الأدب غير متوفر حالياً أو لم يتم تحميله.</p>
+                  </div>
+              </div>
+          </div>
+
+          <div id="examsPage" class="page">
+              <div class="exams-section">
+                  <h2 class="section-title">قسم الأساسيات</h2>
+                  <div class="exams-grid" id="examsGrid">
+                      <p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">محتوى الأساسيات غير متوفر حالياً أو لم يتم تحميله.</p>
+                  </div>
+              </div>
+          </div>
+          
+      </main>
+      
+      <button id="floatingContactBtn" onclick="openModal('contactModal')" style="display: none;">
+          <i class="fas fa-headset"></i>
+      </button>
+      
+  </div>
+  
+  
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
   <script>
@@ -1237,91 +1248,83 @@
     // -------------------------
     // ضع رابط سكربت السيرفر الآمن هنا (HTTPS) — السيرفر هو الوحيد الذي يحمل توكن البوت:
     const SERVER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyuwVNj_Q7-qPO6U4mc_72NeUQuwKH6zCGmXHjPpZoUDVOOS_kmO_P4MohgY2ixsy37YQ/exec';
-    // -------------------------
     
     // ----------------------------------------------------------------------
     // ** الدوال الجديدة: لعرض وإخفاء لوحة معلومات الطالب المصممة **
     // ----------------------------------------------------------------------
-
     // دالة لعرض لوحة معلومات الطالب
     function displayStudentInfo() {
         const studentInfoPanel = document.getElementById('studentInfoPanel');
         const code = localStorage.getItem('accessCode') || 'N/A';
         const name = localStorage.getItem('studentName') || 'غير متوفر';
         const phone = localStorage.getItem('studentPhone') || 'N/A';
-
+        
         document.getElementById('displayCode').textContent = code;
         document.getElementById('displayName').textContent = name;
         document.getElementById('displayPhone').textContent = phone;
-
+        
         studentInfoPanel.style.display = 'flex';
         document.body.style.overflow = 'hidden'; // قفل الشاشة الخلفية
     }
-
+    
     // دالة لإخفاء لوحة معلومات الطالب وبدء الدورة
     function hideStudentInfo() {
         document.getElementById('studentInfoPanel').style.display = 'none';
         document.body.style.overflow = 'auto'; // السماح بالتمرير
-
+        
         // عرض محتوى التطبيق والانتقال إلى صفحة المحاضرات
         document.getElementById('appContent').style.display = 'block';
         document.getElementById('floatingContactBtn').style.display = 'flex';
         navigate('classes'); // الانتقال لصفحة المحاضرات (أو ما يناسب اسم صفحة المحاضرات لديك)
     }
 
-
     // *** كود الحماية ضد أدوات المطورين (DevTools) ***
     function blockDevTools() {
-      let devtoolsOpen = false;
-      const threshold = 160; 
+        let devtoolsOpen = false;
+        const threshold = 160;
+        const check = () => {
+            const sizeCheck = window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100;
+            const start = performance.now();
+            try { new Function('debugger')(); } catch (e) {}
+            const end = performance.now();
 
-      const check = () => {
-        const sizeCheck = window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100;
+            if (sizeCheck || (end - start) > threshold) {
+                if (!devtoolsOpen) {
+                    devtoolsOpen = true;
+                    document.body.innerHTML = '<div style="background: black; color: red; font-size: 2rem; position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999;"><h1>! خطأ !</h1><p style="font-size: 1.2rem;">تم اكتشاف محاولة فتح أدوات المطورين (Developer Tools).</p><p style="font-size: 1.2rem;">سيتم طردك تلقائيًا من المنصة.</p></div>';
+                    // توقف كل الفحوصات
+                    if (periodicCheckInterval) clearInterval(periodicCheckInterval);
+                    setTimeout(() => window.location.href = 'about:blank', 3000);
+                }
+            } else if (devtoolsOpen) {
+                devtoolsOpen = false;
+            }
+        };
 
-        const start = performance.now();
-        try { new Function('debugger')(); } catch (e) {}
-        const end = performance.now();
-
-        if (sizeCheck || (end - start) > threshold) {
-          if (!devtoolsOpen) {
-            devtoolsOpen = true;
-            document.body.innerHTML = '<div style="background: black; color: red; font-size: 2rem; position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999;"><h1>! خطأ !</h1><p style="font-size: 1.2rem;">تم اكتشاف محاولة الوصول غير المصرح بها (DevTools).</p><p style="font-size: 1.2rem;">يرجى إغلاق أدوات المطورين.</p></div>';
-            
-            const preventExecution = setInterval(() => {
-              try { new Function('debugger')(); } catch (e) {
-                if (!window.outerWidth) clearInterval(preventExecution);
-              }
-            }, 100);
-          }
-        } else {
-          devtoolsOpen = false;
-        }
-      };
-      
-      setInterval(check, 1000);
-
-      document.onkeydown = function(e) {
-          if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) || (e.metaKey && e.altKey && e.key === 'i')) {
-              e.preventDefault();
-              check(); 
-              return false;
-          }
-      };
-      window.addEventListener('resize', check);
+        setInterval(check, 1000);
+        check(); // فحص مبدئي
     }
     blockDevTools();
     
-    // إعداد الثيم الأولي
+    // إدارة وضع الإضاءة/الظلام
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    }
+
     function initializeTheme() {
-      const stored = localStorage.getItem('theme');
-      const theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-      document.documentElement.setAttribute('data-theme', theme);
-      updateThemeIcon(theme);
+        const stored = localStorage.getItem('theme');
+        const theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+        updateThemeIcon(theme);
     }
 
     function updateThemeIcon(theme) {
-      const icon = document.querySelector('#themeToggle i');
-      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        const icon = document.querySelector('#themeToggle i');
+        icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     }
 
     // إدارة حفظ تقدم المستخدم وموضع الفيديو
@@ -1329,34 +1332,34 @@
     let videoProgress = JSON.parse(localStorage.getItem('videoProgress') || '{}');
 
     function saveCompleted() {
-      localStorage.setItem('completedLectures', JSON.stringify(completedLectures));
+        localStorage.setItem('completedLectures', JSON.stringify(completedLectures));
     }
 
     function saveVideoProgress(url, currentTime) {
-      videoProgress[url] = currentTime;
-      localStorage.setItem('videoProgress', JSON.stringify(videoProgress));
+        videoProgress[url] = currentTime;
+        localStorage.setItem('videoProgress', JSON.stringify(videoProgress));
     }
 
     function getVideoProgress(url) {
-      return videoProgress[url] || 0;
+        return videoProgress[url] || 0;
     }
 
     function markLectureCompleted(url, completed = true) {
-      completedLectures[url] = completed;
-      saveCompleted();
-      if (currentCourse) renderClasses(currentCourse.classes); // استخدام currentCourse
+        completedLectures[url] = completed;
+        saveCompleted();
+        if (currentCourse) renderClasses(currentCourse.classes); // استخدام currentCourse
     }
 
     function toggleLectureCompletion(url, event) {
-      event.stopPropagation();
-      const isCompleted = completedLectures[url];
-      markLectureCompleted(url, !isCompleted);
+        event.stopPropagation();
+        const isCompleted = completedLectures[url];
+        markLectureCompleted(url, !isCompleted);
     }
 
     function formatTime(seconds) {
-      const minutes = Math.floor(seconds / 60);
-      const remainingSeconds = Math.floor(seconds % 60);
-      return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+        return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
     }
 
     /* ===== دالة عدّ الطلاب المفعلين (تم تبسيطها) ===== */
@@ -1376,255 +1379,310 @@
     }
     /* ========================================= */
 
-
     // إعداد مشغل الفيديو
     let hls;
-    const player = new Plyr('#player', {
-      controls: ['play-large', 'rewind', 'play', 'fast-forward', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'airplay', 'fullscreen'],
-      settings: ['speed', 'quality'],
-      speed: { selected: 1, options: [0.5, 1, 1.25, 1.5, 2] },
-      seekTime: 10
+    const player = new Plyr('#player', { 
+        controls: ['play-large', 'rewind', 'play', 'fast-forward', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'airplay', 'fullscreen'],
+        settings: ['speed', 'quality'],
+        speed: { selected: 1, options: [0.5, 1, 1.25, 1.5, 2] },
+        seekTime: 10 
     });
 
     // حفظ تقدم الفيديو كل 5 ثوان
     let progressSaveInterval;
-
     player.on('play', () => {
-      progressSaveInterval = setInterval(() => {
-        if (currentLectureLink && player.currentTime > 0) {
-          saveVideoProgress(currentLectureLink, player.currentTime);
-        }
-      }, 5000);
+        progressSaveInterval = setInterval(() => {
+            if (currentLectureLink && player.currentTime > 0) {
+                saveVideoProgress(currentLectureLink, player.currentTime);
+            }
+        }, 5000);
     });
-
+    
     player.on('pause', () => {
-      if (progressSaveInterval) {
-        clearInterval(progressSaveInterval);
-      }
-      if (currentLectureLink && player.currentTime > 0) {
-        saveVideoProgress(currentLectureLink, player.currentTime);
-      }
+        if (progressSaveInterval) {
+            clearInterval(progressSaveInterval);
+        }
+        if (currentLectureLink && player.currentTime > 0) {
+            saveVideoProgress(currentLectureLink, player.currentTime);
+        }
     });
 
     // متغيرات عامة
     const pages = {
-      home: document.getElementById('homePage'),
-      classes: document.getElementById('classesPage'),
-      video: document.getElementById('videoPage'),
-      materials: document.getElementById('materialsPage'), // الأدب
-      exams: document.getElementById('examsPage') // الأساسيات
+        home: document.getElementById('homePage'),
+        classes: document.getElementById('classesPage'),
+        video: document.getElementById('videoPage'),
+        materials: document.getElementById('materialsPage'),
+        exams: document.getElementById('examsPage')
     };
-
-    const teachersGrid = document.getElementById('teachersGrid'); // يستخدم لعرض الدورات في الـ Home
-    const materialsGrid = document.getElementById('materialsGrid'); // الأدب
-    const examsGrid = document.getElementById('examsGrid'); // الأساسيات
     const navButtons = document.querySelectorAll('.nav-btn');
+    const classesList = document.getElementById('classesList');
+    const materialsGrid = document.getElementById('materialsGrid');
+    const examsGrid = document.getElementById('examsGrid');
 
-    // [جديد] متغيرات لتخزين البيانات بعد جلبها
-    let allCourses = [], 
-        allLiterature = [], // [معدل]
-        allBasics = []; // [معدل]
-    
-    let currentCourse = null, // الدورة الحالية (تجريبية أو مدفوعة)
-        currentClassIndex = 0, 
-        currentLectureIndex = 0, 
-        currentLectureLink = '';
-
+    let allCourses = []; // لتخزين جميع الدورات
+    let allLiterature = [];
+    let allBasics = [];
+    let currentCourse = null; // الدورة الحالية (تجريبية أو مدفوعة)
+    let currentClassIndex = 0, currentLectureIndex = 0, currentLectureLink = '';
 
     // دالة التنقل بين الصفحات
     function navigate(page) {
-      window.scrollTo(0, 0);
-      if (page !== 'video') {
-        player.pause();
-        if (progressSaveInterval) {
-          clearInterval(progressSaveInterval);
+        window.scrollTo(0, 0);
+        
+        if (page !== 'video') {
+            player.pause();
+            if (progressSaveInterval) {
+                clearInterval(progressSaveInterval);
+            }
+            if (hls) {
+                hls.destroy();
+                hls = null;
+            }
+            const watermark = document.getElementById('videoWatermark');
+            if (watermark) {
+                watermark.textContent = '';
+            }
         }
-        if (hls) {
-          hls.destroy();
-          hls = null;
-        }
-        const watermark = document.getElementById('videoWatermark');
-        if (watermark) {
-            watermark.textContent = '';
-        }
-      }
-      Object.keys(pages).forEach(k => {
-        pages[k].classList.remove('active');
-      });
-      pages[page].classList.add('active');
-      
-      // تحديث زر التنقل النشط
-      navButtons.forEach(btn => btn.classList.remove('active'));
-      const activeBtn = document.querySelector(`.nav-btn[onclick*="${page === 'materials' ? 'literature' : page === 'exams' ? 'basics' : 'lectures'}"]`);
-      if (activeBtn) activeBtn.classList.add('active');
+
+        Object.keys(pages).forEach(k => {
+            pages[k].classList.remove('active');
+        });
+        pages[page].classList.add('active');
+
+        // تحديث زر التنقل النشط
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        const activeBtn = document.querySelector(`.nav-btn[onclick*="${page === 'materials' ? 'literature' : page === 'exams' ? 'basics' : 'lectures'}"]`);
+        if (activeBtn) activeBtn.classList.add('active');
     }
 
     // نسخ رابط المحاضرة
     function copyLectureLink() {
-      if (!currentLectureLink) return;
-      // ... (نفس منطق النسخ) ...
+        if (!currentLectureLink) return;
+        
+        const link = window.location.origin + window.location.pathname + `?v=${btoa(currentLectureLink)}`;
+        navigator.clipboard.writeText(link).then(() => {
+            const copyButton = document.querySelector('.copy-button');
+            const originalText = copyButton.innerHTML;
+            copyButton.innerHTML = '<i class="fas fa-check"></i> تم النسخ بنجاح!';
+            copyButton.style.background = var_accent;
+            setTimeout(() => {
+                copyButton.innerHTML = originalText;
+                copyButton.style.background = var_gradient_primary;
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy link: ', err);
+            alert('فشل في نسخ الرابط.');
+        });
     }
 
     // ** [معدل] - عرض محتوى الدورة (بعد الدخول) **
     function showCourseContent(course) {
-      if (!course) return;
-      currentCourse = course; 
+        if (!course) return;
+        currentCourse = course;
+        
+        document.getElementById('teacherImage').src = course.image;
+        document.getElementById('teacherImage').alt = course.name;
+        document.getElementById('teacherName').textContent = course.name;
+        document.getElementById('teacherSubject').textContent = course.subject;
 
-      document.getElementById('teacherImage').src = course.image;
-      document.getElementById('teacherImage').alt = course.name;
-      document.getElementById('teacherName').textContent = course.name;
-      document.getElementById('teacherSubject').textContent = course.subject;
-
-      // [جديد] عرض المحاضرات الافتراضية أولاً
-      renderClasses(course.classes);
-      renderMaterials(course.literature || []); // الأدب
-      renderExams(course.basics || []); // الأساسيات
-      
-      // navigate('classes'); // تم نقل هذا إلى دالة hideStudentInfo
-      loadContent('lectures'); // تفعيل زر المحاضرات في الـ Header
+        // [جديد] عرض المحاضرات الافتراضية أولاً
+        renderClasses(course.classes);
+        renderMaterials(course.literature || []); // الأدب
+        renderExams(course.basics || []); // الأساسيات
+        
+        // navigate('classes'); // تم نقل هذا إلى دالة hideStudentInfo
+        loadContent('lectures'); // تفعيل زر المحاضرات في الـ Header
     }
 
     // عرض قائمة الفصول والمحاضرات (تم تبسيطها)
     function renderClasses(classes) {
-      const listContainer = document.getElementById('classesList');
-      listContainer.innerHTML = classes.map((cls, classIndex) => `
-        <div class="class-card">
-          <div class="class-header" onclick="toggleLecturesList(${classIndex})">
-            <h3>${cls.name} (${cls.lectures.length} محاضرة)</h3>
-            <span><i class="fas fa-chevron-down"></i></span>
-          </div>
-          <div class="lectures-list" id="lecturesList-${classIndex}">
-            ${cls.lectures.map((lecture, lectureIndex) => {
-              
-              const lectureUrl = lecture.url;
-              const isCompleted = completedLectures[lectureUrl];
-              const progress = getVideoProgress(lectureUrl);
-              const progressText = progress > 0 ? `(تقدم: ${formatTime(progress)})` : '';
-              
-              return `
-                <div class="lecture-item" onclick="playLecture('${lectureUrl}', ${classIndex}, ${lectureIndex})">
-                  <div class="lecture-content">
-                    <div class="lecture-checkbox ${isCompleted ? 'completed' : ''}" onclick="toggleLectureCompletion('${lectureUrl}', event)">
-                      ${isCompleted ? '<i class="fas fa-check"></i>' : ''}
-                    </div>
-                    <div class="lecture-title">
-                      <h4>${lecture.title}</h4>
-                      <p class="lecture-progress">${progressText}</p>
-                    </div>
-                  </div>
-                  <i class="fas fa-video" style="color: var(--primary);"></i>
+        const listContainer = document.getElementById('classesList');
+        listContainer.innerHTML = classes.map((cls, classIndex) => `
+            <div class="class-card">
+                <div class="class-header" onclick="toggleLecturesList(${classIndex})">
+                    <h3>${cls.name} (${cls.lectures.length} محاضرة)</h3>
+                    <span><i class="fas fa-chevron-down"></i></span>
                 </div>
-              `;
-            }).join('')}
-          </div>
-        </div>
-      `).join('');
+                <div class="lectures-list" id="lecturesList-${classIndex}">
+                    ${cls.lectures.map((lecture, lectureIndex) => {
+                        const lectureUrl = lecture.url;
+                        const isCompleted = completedLectures[lectureUrl];
+                        const progress = getVideoProgress(lectureUrl);
+                        const progressText = progress > 0 ? `(تقدم: ${formatTime(progress)})` : '';
+                        
+                        return `
+                            <div class="lecture-item" onclick="playLecture('${lectureUrl}', ${classIndex}, ${lectureIndex})">
+                                <div class="lecture-content">
+                                    <div class="lecture-checkbox ${isCompleted ? 'completed' : ''}" onclick="toggleLectureCompletion('${lectureUrl}', event)">
+                                        ${isCompleted ? '<i class="fas fa-check"></i>' : ''}
+                                    </div>
+                                    <span class="lecture-title">${lecture.title}</span>
+                                </div>
+                                <span class="lecture-progress">${progressText}</span>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+        `).join('');
     }
 
-    // فتح قائمة المحاضرات
-    function toggleLecturesList(index) {
-        const list = document.getElementById(`lecturesList-${index}`);
+    // دالة إظهار/إخفاء المحاضرات
+    function toggleLecturesList(classIndex) {
+        const list = document.getElementById(`lecturesList-${classIndex}`);
         const icon = list.previousElementSibling.querySelector('span i');
-        if (list.style.display === 'flex') {
+        const isVisible = list.style.display === 'flex'; // تم تغيير 'block' إلى 'flex' بعد التعديل
+        
+        if (isVisible) {
             list.style.display = 'none';
             icon.style.transform = 'rotate(0deg)';
         } else {
-            list.style.display = 'flex';
+            // إخفاء كل القوائم الأخرى
+            document.querySelectorAll('.lectures-list').forEach(l => l.style.display = 'none');
+            document.querySelectorAll('.class-header span i').forEach(i => i.style.transform = 'rotate(0deg)');
+            
+            // عرض القائمة المطلوبة
+            list.style.display = 'flex'; // تم التغيير من 'block' إلى 'flex'
             icon.style.transform = 'rotate(180deg)';
         }
     }
 
-    // تشغيل المحاضرة (تعديل منطق العلامة المائية)
+    // دالة تشغيل المحاضرة
     function playLecture(url, classIndex, lectureIndex) {
-      currentLectureLink = url;
-      currentClassIndex = classIndex;
-      currentLectureIndex = lectureIndex;
-      
-      const lecture = currentCourse.classes[classIndex].lectures[lectureIndex]; // استخدام currentCourse
+        // ... (نفس المنطق السابق) ...
+        currentClassIndex = classIndex;
+        currentLectureIndex = lectureIndex;
+        currentLectureLink = url;
 
-      document.getElementById('videoTitle').textContent = lecture.title;
-      document.getElementById('videoDescription').textContent = lecture.description;
-      
-      const videoElement = document.getElementById('player');
-      
-      if (hls) { hls.destroy(); hls = null; }
-      
-      const watermark = document.getElementById('videoWatermark');
-      const userCode = localStorage.getItem('accessCode'); // تم تغيير userAccessCode إلى accessCode
-      
-      // [معدل] إظهار العلامة المائية إذا كان الكود موجوداً
-      const showWatermark = userCode; 
-      
-      if (watermark) {
-          watermark.textContent = showWatermark ? userCode : '';
-      }
+        const lecture = currentCourse.classes[classIndex].lectures[lectureIndex];
+        document.getElementById('videoTitle').textContent = lecture.title;
+        document.getElementById('videoDescription').textContent = lecture.description || '';
+        
+        // إيقاف المشغل الحالي
+        if (hls) {
+            hls.destroy();
+            hls = null;
+        }
 
-      // ... (منطق تشغيل الفيديو HLS/Youtube) ...
-      
-      navigate('video');
+        // إعداد الفيديو (HLS أو MP4 مباشر)
+        if (url.includes('.m3u8')) {
+            // HLS stream
+            if (Hls.isSupported()) {
+                hls = new Hls();
+                hls.loadSource(url);
+                hls.attachMedia(player.media);
+                hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                    player.play();
+                });
+            } else if (player.media.canPlayType('application/vnd.apple.mpegurl')) {
+                player.media.src = url;
+                player.play();
+            }
+        } else {
+            // MP4 direct link
+            player.media.src = url;
+            player.play();
+        }
+
+        // استئناف من آخر موضع
+        const savedProgress = getVideoProgress(url);
+        if (savedProgress > 0) {
+            player.once('loadedmetadata', () => {
+                player.currentTime = savedProgress;
+            });
+        }
+        
+        const watermark = document.getElementById('videoWatermark');
+        const userCode = localStorage.getItem('accessCode'); // تم تغيير userAccessCode إلى accessCode
+        
+        // [معدل] إظهار العلامة المائية إذا كان الكود موجوداً
+        const showWatermark = userCode;
+        if (watermark) {
+            watermark.textContent = showWatermark ? userCode : '';
+        }
+
+        // ... (منطق تشغيل الفيديو HLS/Youtube) ...
+        navigate('video');
     }
 
     // ** [معدل] - دالة تحميل المحتوى للأقسام الأفقية **
     function loadContent(type) {
-      navButtons.forEach(btn => btn.classList.remove('active'));
-      const btnMap = {
-          'lectures': 'classes',
-          'literature': 'materials',
-          'basics': 'exams'
-      };
-      const page = btnMap[type];
-      
-      document.querySelector(`.nav-btn[onclick="loadContent('${type}')"]`).classList.add('active');
-      
-      if (page === 'materials') {
-        navigate('materials');
-        // renderMaterials (تم استدعاؤها بالفعل في showCourseContent)
-      } else if (page === 'exams') {
-        navigate('exams');
-        // renderExams (تم استدعاؤها بالفعل في showCourseContent)
-      } else { // lectures
-        navigate('classes'); // المحاضرات تظهر في classesPage
-      }
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        
+        const btnMap = { 
+            'lectures': 'classes', 
+            'literature': 'materials', 
+            'basics': 'exams' 
+        };
+        const page = btnMap[type];
+
+        document.querySelector(`.nav-btn[onclick="loadContent('${type}')"]`).classList.add('active');
+
+        if (page === 'materials') {
+            navigate('materials'); // renderMaterials (تم استدعاؤها بالفعل في showCourseContent)
+        } else if (page === 'exams') {
+            navigate('exams'); // renderExams (تم استدعاؤها بالفعل في showCourseContent)
+        } else { 
+            // lectures
+            navigate('classes'); // المحاضرات تظهر في classesPage
+        }
     }
 
     // عرض الأدب (Materials)
     function renderMaterials(list = []) {
-      const literature = currentCourse ? currentCourse.literature : list;
-      if (!literature || literature.length === 0) {
-        materialsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">لا يوجد محتوى أدب متاح في هذه الدورة.</p>`;
-        return;
-      }
-      // ... (منطق عرض الملازم/الأدب) ...
+        const literature = currentCourse ? currentCourse.literature : list;
+        if (!literature || literature.length === 0) {
+            materialsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">لا يوجد محتوى أدب متاح في هذه الدورة.</p>`;
+            return;
+        }
+        
+        materialsGrid.innerHTML = literature.map(item => `
+            <div class="material-card">
+                <img src="${item.image}" alt="${item.title}" class="material-img" loading="lazy">
+                <h3 class="material-title">${item.title}</h3>
+                <p class="material-subject">مُلزمة الأدب</p>
+                <a href="${item.url}" target="_blank" class="download-btn"><i class="fas fa-download"></i> تحميل الملزمة</a>
+            </div>
+        `).join('');
     }
 
     // عرض الأساسيات (Exams)
     function renderExams(list = []) {
-      const basics = currentCourse ? currentCourse.basics : list;
-      if (!basics || basics.length === 0) {
-        examsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">لا يوجد محتوى أساسيات متاح في هذه الدورة.</p>`;
-        return;
-      }
-      // ... (منطق عرض الامتحانات/الأساسيات) ...
+        const basics = currentCourse ? currentCourse.basics : list;
+        if (!basics || basics.length === 0) {
+            examsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">لا يوجد محتوى أساسيات متاح في هذه الدورة.</p>`;
+            return;
+        }
+        
+        examsGrid.innerHTML = basics.map(item => `
+            <div class="exam-card">
+                <img src="${item.image}" alt="${item.title}" class="exam-img" loading="lazy">
+                <h3 class="exam-title">${item.title}</h3>
+                <p class="exam-subject">امتحان إلكتروني</p>
+                <a href="${item.url}" target="_blank" class="download-btn" style="background: linear-gradient(135deg, #ff9800 0%, #ffc107 100%);"><i class="fas fa-edit"></i> بدء الامتحان</a>
+            </div>
+        `).join('');
     }
 
     // ** [معدل] - تحميل البيانات **
     function loadData() {
-        return fetch('data.json?t=' + Date.now()) 
-        .then(response => {
-          if (!response.ok) throw new Error('فشل تحميل البيانات');
-          return response.json();
-        })
-        .then(data => {
-          // [جديد] يتم تخزين جميع محتويات الدورة الإلكترونية هنا
-          allCourses = data.courses || [];
-          allLiterature = data.literature || [];
-          allBasics = data.basics || [];
-          console.log('تم تحميل البيانات بنجاح:', data);
-        })
-        .catch(error => {
-          console.error('خطأ في تحميل البيانات:', error);
-          // ... (عرض رسالة خطأ) ...
-        });
+        return fetch('data.json?t=' + Date.now())
+            .then(response => {
+                if (!response.ok) throw new Error('فشل تحميل البيانات');
+                return response.json();
+            })
+            .then(data => {
+                // [جديد] يتم تخزين جميع محتويات الدورة الإلكترونية هنا
+                allCourses = data.courses || [];
+                allLiterature = data.literature || [];
+                allBasics = data.basics || [];
+                console.log('تم تحميل البيانات بنجاح:', data);
+            })
+            .catch(error => {
+                console.error('خطأ في تحميل البيانات:', error);
+                // ... (عرض رسالة خطأ) ...
+            });
     }
 
     // ** [تم التصحيح] دوال فتح وإغلاق النوافذ **
@@ -1643,26 +1701,43 @@
     }
 
     // منطق التحقق الدوري للطرد
-    const fiveMinutesInMs = 300000; // 5 minutes (تم إرجاعها للقيمة الأصلية)
+    const fiveMinutesInMs = 300000;
     
-    function checkRevocationStatus() {
-        // ... (نفس منطق التحقق الدوري) ...
-    }
-
-    let periodicCheckInterval;
     function startPeriodicCheck() {
-        // ... (نفس منطق بدء التحقق الدوري) ...
+        if (periodicCheckInterval) clearInterval(periodicCheckInterval);
+        
+        periodicCheckInterval = setInterval(() => {
+            const currentCode = localStorage.getItem('accessCode');
+            if (currentCode) {
+                // التحقق من صلاحية الكود من السيرفر (محاكاة)
+                fetch(SERVER_ENDPOINT + '?action=checkCode&code=' + currentCode)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'expired' || data.status === 'revoked' || data.status === 'not_found') {
+                            // طرد المستخدم
+                            localStorage.removeItem('accessCode');
+                            localStorage.removeItem('studentName');
+                            localStorage.removeItem('studentPhone');
+                            alert('تم إيقاف كود الدخول الخاص بك. سيتم تسجيل خروجك.');
+                            window.location.reload();
+                        }
+                    })
+                    .catch(e => console.error('فشل التحقق الدوري:', e));
+            }
+        }, fiveMinutesInMs);
     }
 
     // ** [جديد] - منطق الموافقة على الشروط **
     function agreeToTerms() {
         closeModal('legalWarningModal');
+        
         // *** التعديل: نحفظ أن المستخدم وافق حتى لا يظهر التحذير مرة ثانية ***
         try {
             localStorage.setItem('agreedToTerms', 'true');
         } catch (e) {
             console.warn('localStorage غير متاح:', e);
         }
+
         // الانتقال إلى شاشة الاختيار الرئيسية (الدائرتان)
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
@@ -1690,13 +1765,15 @@
             };
             showCourseContent(freeCourseData);
             document.getElementById('studentCounter').style.display = 'none';
+            // الانتقال مباشرة لصفحة المحاضرات في الوضع التجريبي
+            navigate('classes');
         });
     }
 
     // ** [معدل] - دالة الدخول للوضع المدفوع **
     function enterPaidMode() {
         // محاولة الدخول التلقائي إذا كان الكود محفوظاً
-        const savedCode = localStorage.getItem('userAccessCode');
+        const savedCode = localStorage.getItem('accessCode');
         if (savedCode) {
             openModal('codeEntryModal');
             document.getElementById('accessCodeInput').value = savedCode;
@@ -1705,60 +1782,25 @@
             openModal('registrationModal');
         }
     }
-    
+
     // ** منطق حماية الدخول (مرتبط بـ codes.json) **
-
     let accessCodeDatabase = {};
-    const DEMO_CODE = 'DEMO'; // تم إلغاء استخدامه
-
+    
     // [معدل] دالة تسجيل الدخول الناجح (بعد تفعيل الكود)
     function loginSuccess(code) {
         closeModal('codeEntryModal');
         closeModal('registrationModal');
-        document.getElementById('appContent').style.display = 'block';
-        document.body.style.overflow = 'auto';
-        document.getElementById('accessError').style.display = 'none';
-        document.getElementById('floatingContactBtn').style.display = 'flex';
         
-        localStorage.setItem('userAccessCode', code);
-
-        // [جديد] تحميل البيانات وعرض محتوى الدورة المدفوعة بالكامل
+        // جلب محتوى الدورة المدفوعة (نفترض أن الدورة هي الأولى في allCourses)
         loadData().then(() => {
-            const paidCourseData = {
-                id: 'paid',
-                name: 'الدورة الإلكترونية',
-                subject: 'الأستاذ: حيدر علي الطائي',
-                image: 'https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/paid-icon.png?v=1744952192982',
-                classes: allCourses, // جميع المحاضرات
-                literature: allLiterature, // الأدب
-                basics: allBasics // الأساسيات
-            };
+            const paidCourseData = allCourses[0]; 
             showCourseContent(paidCourseData);
+            startPeriodicCheck(); // بدء فحص الطرد الدوري
+            displayStudentInfo(); // <--- عرض لوحة المعلومات الأنيقة لمرة واحدة
         });
-        
-        startPeriodicCheck();
-    }
-    
-    function checkAutoLogin() {
-        const savedCode = localStorage.getItem('userAccessCode');
-        if (!savedCode) return;
-        
-        if (Object.keys(accessCodeDatabase).length === 0) {
-             // يجب الانتظار لتحميل الأكواد
-             return;
-        }
-
-        if (accessCodeDatabase.hasOwnProperty(savedCode) && accessCodeDatabase[savedCode].used === true) {
-            console.log('دخول تلقائي ناجح (مستخدم مُفعّل).');
-            loginSuccess(savedCode);
-            // [جديد] عرض لوحة معلومات الطالب مباشرة بعد الدخول التلقائي
-            displayStudentInfo(); 
-        } else {
-            localStorage.removeItem('userAccessCode');
-            console.log('فشل الدخول التلقائي أو الكود غير مُفعل/ملغى.');
-        }
     }
 
+    // تحميل ملف الأكواد (Access Codes)
     function loadAccessCodes() {
         fetch('codes.json?t=' + Date.now())
             .then(response => {
@@ -1783,41 +1825,41 @@
         const inputElement = document.getElementById('accessCodeInput');
         const errorElement = document.getElementById('accessError');
         const enteredCode = inputElement.value.trim().toUpperCase();
-        
+
         if (Object.keys(accessCodeDatabase).length === 0) {
-             errorElement.innerText = 'جاري تحميل الأكواد، يرجى الانتظار...';
-             errorElement.style.display = 'block';
-             loadAccessCodes();
-             return;
+            errorElement.innerText = 'جاري تحميل الأكواد، يرجى الانتظار...';
+            errorElement.style.display = 'block';
+            loadAccessCodes();
+            return;
         }
 
         if (accessCodeDatabase.hasOwnProperty(enteredCode)) {
             const codeDetails = accessCodeDatabase[enteredCode];
-
+            
             if (codeDetails.used) {
                 // الكود موجود ومفعل، دخول مباشر
-
+                
                 // ============ منطق حفظ وعرض البيانات (جديد) ============
                 // استرجاع البيانات المحفوظة مؤقتاً عند طلب الكود
                 const name = localStorage.getItem('temp_regName') || 'الاسم غير محفوظ';
                 const phone = localStorage.getItem('temp_regPhone') || 'الرقم غير محفوظ';
-
+                
                 // حفظ البيانات بشكل دائم كبيانات دخول
                 localStorage.setItem('accessCode', enteredCode);
                 localStorage.setItem('studentName', name);
                 localStorage.setItem('studentPhone', phone);
-
+                
                 // مسح البيانات المؤقتة بعد حفظها
                 localStorage.removeItem('temp_regName');
                 localStorage.removeItem('temp_regPhone');
-
+                
                 // إتمام عملية الدخول وعرض اللوحة المصممة
                 loginSuccess(enteredCode);
-                displayStudentInfo(); // <--- عرض اللوحة الأنيقة!
+                // displayStudentInfo(); <--- تم نقلها داخل loginSuccess
                 // ===============================================
-                
+
             } else {
-                errorElement.innerText = 'هذا الكود غير مُفعل بعد. يرجى الانتظار لتفعيل الإدارة له.';
+                errorElement.innerText = 'هذا الكود غير مُفعل بعد. يرجى التواصل مع الإدارة لتفعيله.';
                 errorElement.style.display = 'block';
             }
         } else {
@@ -1826,37 +1868,38 @@
         }
     }
 
-
-    // ** [المُعدَّل والنهائي] - إرسال الطلب عبر واتساب فقط + حفظ مؤقت للبيانات **
+    // دالة طلب كود الوصول (إرسال بيانات التسجيل)
     function requestAccessCode() {
         const name = document.getElementById('regName').value.trim();
         const phone = document.getElementById('regPhone').value.trim();
-        const adminPhoneNumber = '9647709014600'; // رقم الواتساب الخاص بك
 
         if (!name || !phone) {
-          alert('يرجى تعبئة الاسم ورقم الموبايل كاملين.');
-          return;
+            alert('الرجاء إدخال الاسم ورقم الموبايل بشكل صحيح.');
+            return;
         }
 
-        // ** حفظ الاسم ورقم الهاتف مؤقتاً في ذاكرة المتصفح (للعرض لاحقاً) **
+        // [جديد] حفظ البيانات مؤقتاً قبل الانتقال لشاشة الكود
         localStorage.setItem('temp_regName', name);
         localStorage.setItem('temp_regPhone', phone);
 
-        // 1. تجهيز الرسالة والتوجيه إلى واتساب (هنا يتم إرسال المعلومات إليك)
-        const encodedMessage = encodeURIComponent(
-            `🛑 طلب تسجيل دورة إلكترونية 🛑\n\nالاسم الكامل: ${name}\nرقم الموبايل: ${phone}\n\nالرجاء إرسال كود الوصول بعد التفعيل.`
-        );
-
-        const whatsappURL = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
-        window.open(whatsappURL, '_blank'); // فتح شات الواتساب إليك
-
-        // 2. إغلاق وإظهار شاشة انتظار الكود
-        alert('تم تجهيز رسالة الواتساب الخاصة بك. يرجى إرسالها الآن للمدير للمتابعة. (تم حفظ بياناتك مؤقتاً)');
+        // محاكاة إرسال البيانات
+        console.log(`Sending registration request: Name: ${name}, Phone: ${phone}`);
+        // هنا يمكن إضافة منطق إرسال البيانات عبر fetch إلى SERVER_ENDPOINT 
+        
+        // الانتقال إلى شاشة إدخال الكود
         closeModal('registrationModal');
         openModal('codeEntryModal');
     }
 
-
+    // دالة الدخول التلقائي
+    function checkAutoLogin() {
+        const savedCode = localStorage.getItem('accessCode');
+        if (savedCode && accessCodeDatabase.hasOwnProperty(savedCode) && accessCodeDatabase[savedCode].used) {
+            // كود محفوظ ومفعل، دخول مباشر
+            loginSuccess(savedCode);
+        }
+    }
+    
     // منع النقر بالزر الأيمن والتحديد
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('selectstart', e => e.preventDefault());
@@ -1877,18 +1920,57 @@
           document.getElementById('floatingContactBtn').style.display = 'flex';
           navigate('home');
           // بعد عرض التطبيق نحاول الدخول التلقائي لو عنده كود محفوظ
-          checkAutoLogin();
+          loadAccessCodes(); // تحميل الأكواد ثم checkAutoLogin
       } else {
           // لم يوافق => نعرض التحذير
           document.getElementById('legalWarningModal').style.display = 'flex';
       }
       
       // بدأ تحميل الأكواد والبيانات مسبقًا
-      loadData();
-      loadAccessCodes();
+      if (localStorage.getItem('agreedToTerms') !== 'true') {
+          // إذا لم يوافق، يتم التحميل فقط بعد الموافقة لتسريع التحميل الأولي
+          // أو يمكن تحميلها هنا إذا كانت صغيرة ولا تؤثر على الأداء
+          loadAccessCodes(); 
+      }
+      loadData(); // تحميل بيانات الدورات والمحتوى
+      
+      // معالجة رابط المشاركة (Deep Link) إذا وجد
+      const urlParams = new URLSearchParams(window.location.search);
+      const encodedUrl = urlParams.get('v');
+      if (encodedUrl) {
+          try {
+              const lectureUrl = atob(encodedUrl);
+              // محاولة الدخول أولاً قبل التشغيل
+              const savedCode = localStorage.getItem('accessCode');
+              if (savedCode && accessCodeDatabase.hasOwnProperty(savedCode) && accessCodeDatabase[savedCode].used) {
+                  // إذا كان مسجلاً، يجب تحميل بيانات الدورة المدفوعة قبل التشغيل
+                  loadData().then(() => {
+                      const paidCourseData = allCourses[0];
+                      showCourseContent(paidCourseData);
+                      // البحث عن المحاضرة وتشغيلها
+                      for (let c = 0; c < paidCourseData.classes.length; c++) {
+                          for (let l = 0; l < paidCourseData.classes[c].lectures.length; l++) {
+                              if (paidCourseData.classes[c].lectures[l].url === lectureUrl) {
+                                  playLecture(lectureUrl, c, l);
+                                  return;
+                              }
+                          }
+                      }
+                      alert('لم يتم العثور على المحاضرة.');
+                      navigate('home');
+                  });
+              } else {
+                  // إذا لم يكن مسجلاً، يتم نقله لشاشة الدخول أولاً
+                  alert('الرجاء إدخال كود الدخول للمتابعة.');
+                  enterPaidMode();
+              }
+          } catch (e) {
+              console.error('خطأ في معالجة رابط المشاركة:', e);
+              navigate('home');
+          }
+      }
     });
-    // نهاية التهيئة
-    
+
   </script>
  </body>
 </html>
