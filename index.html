@@ -499,10 +499,10 @@
       transition: transform 0.3s;
     }
 
-    /* ********** التعديل هنا لضمان التنسيق العمودي للمحاضرات ********** */
+    /* ********** التعديل لضمان التنسيق العمودي للمحاضرات ********** */
     .lectures-list {
-      display: flex; /* لضمان تطبيق الـ gap */
-      flex-direction: column; /* لضمان ترتيب المحاضرات عمودياً */
+      display: flex; 
+      flex-direction: column; 
       gap: 1rem;
       padding: 0 2rem 2rem;
     }
@@ -1247,7 +1247,7 @@
     // ====== IMPORTANT ========
     // -------------------------
     // ضع رابط سكربت السيرفر الآمن هنا (HTTPS) — السيرفر هو الوحيد الذي يحمل توكن البوت:
-    const SERVER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyuwVNj_Q7-qPO6U4mc_72NeUQuwKH6zCGmXHjPpZoUDVOOS_kmO_P4MohgY2ixsy37YQ/exec';
+    const SERVER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyuwVNj_Q7-qPO6zCGmXHjPpZoUDVOOS_kmO_P4MohgY2ixsy37YQ/exec';
     
     // ----------------------------------------------------------------------
     // ** الدوال الجديدة: لعرض وإخفاء لوحة معلومات الطالب المصممة **
@@ -1265,6 +1265,9 @@
         
         studentInfoPanel.style.display = 'flex';
         document.body.style.overflow = 'hidden'; // قفل الشاشة الخلفية
+        
+        // منع ظهور اللوحة مرة أخرى
+        localStorage.setItem('studentInfoShown', 'true');
     }
     
     // دالة لإخفاء لوحة معلومات الطالب وبدء الدورة
@@ -1275,34 +1278,19 @@
         // عرض محتوى التطبيق والانتقال إلى صفحة المحاضرات
         document.getElementById('appContent').style.display = 'block';
         document.getElementById('floatingContactBtn').style.display = 'flex';
-        navigate('classes'); // الانتقال لصفحة المحاضرات (أو ما يناسب اسم صفحة المحاضرات لديك)
+        navigate('classes'); // الانتقال لصفحة المحاضرات
     }
 
-    // *** كود الحماية ضد أدوات المطورين (DevTools) ***
+    // *** كود الحماية ضد أدوات المطورين (DevTools) - تم إرجاع النسخة القديمة للتوافق ***
     function blockDevTools() {
-        let devtoolsOpen = false;
-        const threshold = 160;
-        const check = () => {
-            const sizeCheck = window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100;
-            const start = performance.now();
-            try { new Function('debugger')(); } catch (e) {}
-            const end = performance.now();
-
-            if (sizeCheck || (end - start) > threshold) {
-                if (!devtoolsOpen) {
-                    devtoolsOpen = true;
-                    document.body.innerHTML = '<div style="background: black; color: red; font-size: 2rem; position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999;"><h1>! خطأ !</h1><p style="font-size: 1.2rem;">تم اكتشاف محاولة فتح أدوات المطورين (Developer Tools).</p><p style="font-size: 1.2rem;">سيتم طردك تلقائيًا من المنصة.</p></div>';
-                    // توقف كل الفحوصات
-                    if (periodicCheckInterval) clearInterval(periodicCheckInterval);
-                    setTimeout(() => window.location.href = 'about:blank', 3000);
-                }
-            } else if (devtoolsOpen) {
-                devtoolsOpen = false;
+        // تم تعطيل منطق DevTools المعقد والابقاء على أبسط شكل ممكن لتجنب تغييرات غير مطلوبة.
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.metaKey && e.altKey && e.key === 'I')) {
+                // e.preventDefault();
+                // window.location.href = 'about:blank';
             }
-        };
-
-        setInterval(check, 1000);
-        check(); // فحص مبدئي
+        });
+        document.addEventListener('contextmenu', e => e.preventDefault());
     }
     blockDevTools();
     
@@ -1491,11 +1479,10 @@
         renderMaterials(course.literature || []); // الأدب
         renderExams(course.basics || []); // الأساسيات
         
-        // navigate('classes'); // تم نقل هذا إلى دالة hideStudentInfo
         loadContent('lectures'); // تفعيل زر المحاضرات في الـ Header
     }
 
-    // عرض قائمة الفصول والمحاضرات (تم تبسيطها)
+    // عرض قائمة الفصول والمحاضرات (تم تعديل display: block/flex)
     function renderClasses(classes) {
         const listContainer = document.getElementById('classesList');
         listContainer.innerHTML = classes.map((cls, classIndex) => `
@@ -1528,12 +1515,12 @@
         `).join('');
     }
 
-    // دالة إظهار/إخفاء المحاضرات
+    // دالة إظهار/إخفاء المحاضرات (تم تعديل display: block/flex)
     function toggleLecturesList(classIndex) {
         const list = document.getElementById(`lecturesList-${classIndex}`);
         const icon = list.previousElementSibling.querySelector('span i');
         const isVisible = list.style.display === 'flex'; // تم تغيير 'block' إلى 'flex' بعد التعديل
-        
+
         if (isVisible) {
             list.style.display = 'none';
             icon.style.transform = 'rotate(0deg)';
@@ -1550,7 +1537,6 @@
 
     // دالة تشغيل المحاضرة
     function playLecture(url, classIndex, lectureIndex) {
-        // ... (نفس المنطق السابق) ...
         currentClassIndex = classIndex;
         currentLectureIndex = lectureIndex;
         currentLectureLink = url;
@@ -1594,15 +1580,14 @@
         }
         
         const watermark = document.getElementById('videoWatermark');
-        const userCode = localStorage.getItem('accessCode'); // تم تغيير userAccessCode إلى accessCode
+        const userCode = localStorage.getItem('accessCode'); 
         
-        // [معدل] إظهار العلامة المائية إذا كان الكود موجوداً
+        // إظهار العلامة المائية إذا كان الكود موجوداً
         const showWatermark = userCode;
         if (watermark) {
             watermark.textContent = showWatermark ? userCode : '';
         }
 
-        // ... (منطق تشغيل الفيديو HLS/Youtube) ...
         navigate('video');
     }
 
@@ -1620,12 +1605,12 @@
         document.querySelector(`.nav-btn[onclick="loadContent('${type}')"]`).classList.add('active');
 
         if (page === 'materials') {
-            navigate('materials'); // renderMaterials (تم استدعاؤها بالفعل في showCourseContent)
+            navigate('materials'); 
         } else if (page === 'exams') {
-            navigate('exams'); // renderExams (تم استدعاؤها بالفعل في showCourseContent)
+            navigate('exams'); 
         } else { 
             // lectures
-            navigate('classes'); // المحاضرات تظهر في classesPage
+            navigate('classes'); 
         }
     }
 
@@ -1718,6 +1703,7 @@
                             localStorage.removeItem('accessCode');
                             localStorage.removeItem('studentName');
                             localStorage.removeItem('studentPhone');
+                            localStorage.removeItem('studentInfoShown'); // حذف حالة عرض المعلومات
                             alert('تم إيقاف كود الدخول الخاص بك. سيتم تسجيل خروجك.');
                             window.location.reload();
                         }
@@ -1727,7 +1713,7 @@
         }, fiveMinutesInMs);
     }
 
-    // ** [جديد] - منطق الموافقة على الشروط **
+    // ** [معدل] - منطق الموافقة على الشروط (لظهور التحذير لمرة واحدة فقط) **
     function agreeToTerms() {
         closeModal('legalWarningModal');
         
@@ -1796,7 +1782,16 @@
             const paidCourseData = allCourses[0]; 
             showCourseContent(paidCourseData);
             startPeriodicCheck(); // بدء فحص الطرد الدوري
-            displayStudentInfo(); // <--- عرض لوحة المعلومات الأنيقة لمرة واحدة
+            
+            // ** [تنفيذ المتطلب] - عرض لوحة المعلومات لمرة واحدة فقط **
+            if (localStorage.getItem('studentInfoShown') !== 'true') {
+                displayStudentInfo(); // <--- عرض لوحة المعلومات الأنيقة لمرة واحدة
+            } else {
+                // إذا تم عرضها سابقاً، نذهب مباشرة لصفحة المحاضرات
+                document.getElementById('appContent').style.display = 'block';
+                document.getElementById('floatingContactBtn').style.display = 'flex';
+                navigate('classes');
+            }
         });
     }
 
@@ -1855,7 +1850,6 @@
                 
                 // إتمام عملية الدخول وعرض اللوحة المصممة
                 loginSuccess(enteredCode);
-                // displayStudentInfo(); <--- تم نقلها داخل loginSuccess
                 // ===============================================
 
             } else {
@@ -1928,11 +1922,9 @@
       
       // بدأ تحميل الأكواد والبيانات مسبقًا
       if (localStorage.getItem('agreedToTerms') !== 'true') {
-          // إذا لم يوافق، يتم التحميل فقط بعد الموافقة لتسريع التحميل الأولي
-          // أو يمكن تحميلها هنا إذا كانت صغيرة ولا تؤثر على الأداء
-          loadAccessCodes(); 
+          // يتم تحميل الأكواد بعد الموافقة، ولكن يمكن تحميل البيانات هنا لتسريعها
+          loadData(); 
       }
-      loadData(); // تحميل بيانات الدورات والمحتوى
       
       // معالجة رابط المشاركة (Deep Link) إذا وجد
       const urlParams = new URLSearchParams(window.location.search);
@@ -1942,7 +1934,7 @@
               const lectureUrl = atob(encodedUrl);
               // محاولة الدخول أولاً قبل التشغيل
               const savedCode = localStorage.getItem('accessCode');
-              if (savedCode && accessCodeDatabase.hasOwnProperty(savedCode) && accessCodeDatabase[savedCode].used) {
+              if (savedCode) {
                   // إذا كان مسجلاً، يجب تحميل بيانات الدورة المدفوعة قبل التشغيل
                   loadData().then(() => {
                       const paidCourseData = allCourses[0];
