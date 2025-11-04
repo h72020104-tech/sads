@@ -147,11 +147,21 @@
       transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       text-shadow: 0 2px 4px rgba(24,119,242,0.3); 
       position: relative;
+      display: flex; /* لدمج الشعار */
+      align-items: center; /* لدمج الشعار */
     }
 
     .site-title:hover {
       transform: scale(1.05);
       animation: pulse 2s infinite;
+    }
+
+    /* تنسيق الشعار المضاف */
+    .site-title img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px; 
+      border-radius: 5px;
     }
 
     .site-title::before {
@@ -863,6 +873,11 @@
       .site-title {
         font-size: 1.5rem;
       }
+      
+      .site-title img { /* تصغير الشعار في الوضع المتجاوب */
+        width: 25px;
+        height: 25px;
+      }
 
       .nav-buttons {
         width: 100%;
@@ -1128,7 +1143,7 @@
       <div class="modal-content" style="max-width: 400px;">
         <button class="close-modal" onclick="closeModal('contactModal')"><i class="fas fa-times"></i></button>
         <i class="fas fa-comment-dots" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
-        <h3>للتواصل والدعم الفني</h3>
+        <h3>للتواصل والدعم الفني (الاستفسارات)</h3>
         <p>يرجى التواصل معنا عبر القنوات التالية:</p>
         <a href="https://wa.me/9647800000000" target="_blank"><i class="fab fa-whatsapp"></i> واتساب (WhatsApp)</a>
         <a href="https://t.me/HayderAliAlTaee" target="_blank" style="background: linear-gradient(135deg, #0088cc 0%, #39a9ed 100%);"><i class="fab fa-telegram-plane"></i> تليجرام (Telegram)</a>
@@ -1137,7 +1152,10 @@
   
   <div id="appContent">
       <header>
-        <h1 class="site-title" onclick="navigate('home')">منصة التفوق</h1>
+        <h1 class="site-title" onclick="navigate('home')">
+            <img src="https://k.top4top.io/p_3592t3ag71.jpg" alt="شعار" style="width: 30px; height: 30px; margin-right: 10px; border-radius: 5px;">
+            منصة التفوق
+        </h1>
         
         <div class="student-counter" id="studentCounter" style="display: none;">
           <i class="fas fa-users"></i>
@@ -1146,8 +1164,8 @@
         
         <div class="nav-buttons">
           <button class="nav-btn active" onclick="loadContent('lectures')"><i class="fas fa-book-open"></i> المحاضرات</button>
-          <button class="nav-btn" onclick="loadContent('literature')"><i class="fas fa-feather-alt"></i> الأدب</button>
-          <button class="nav-btn" onclick="loadContent('basics')"><i class="fas fa-calculator"></i> الأساسيات</button>
+          <button class="nav-btn" onclick="loadContent('literature')"><i class="fas fa-feather-alt"></i> الملازم</button>
+          <button class="nav-btn" onclick="loadContent('basics')"><i class="fas fa-calculator"></i> الامتحانات</button>
         </div>
         
         <div class="search-container">
@@ -1215,18 +1233,18 @@
 
           <div id="materialsPage" class="page">
               <div class="materials-section">
-                  <h2 class="section-title">قسم الأدب</h2>
+                  <h2 class="section-title">قسم الملازم</h2>
                   <div class="materials-grid" id="materialsGrid">
-                      <p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">محتوى الأدب غير متوفر حالياً أو لم يتم تحميله.</p>
+                      <p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">محتوى الملازم غير متوفر حالياً أو لم يتم تحميله.</p>
                   </div>
               </div>
           </div>
 
           <div id="examsPage" class="page">
               <div class="exams-section">
-                  <h2 class="section-title">قسم الأساسيات</h2>
+                  <h2 class="section-title">قسم الامتحانات</h2>
                   <div class="exams-grid" id="examsGrid">
-                      <p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">محتوى الأساسيات غير متوفر حالياً أو لم يتم تحميله.</p>
+                      <p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">محتوى الامتحانات غير متوفر حالياً أو لم يتم تحميله.</p>
                   </div>
               </div>
           </div>
@@ -1440,7 +1458,13 @@
 
         // تحديث زر التنقل النشط
         navButtons.forEach(btn => btn.classList.remove('active'));
-        const activeBtn = document.querySelector(`.nav-btn[onclick*="${page === 'materials' ? 'literature' : page === 'exams' ? 'basics' : 'lectures'}"]`);
+        // التعديل: البحث عن الزر النشط بناءً على محتوى loadContent
+        let activeLoadType = '';
+        if (page === 'materials') activeLoadType = 'literature';
+        else if (page === 'exams') activeLoadType = 'basics';
+        else if (page === 'classes') activeLoadType = 'lectures';
+
+        const activeBtn = document.querySelector(`.nav-btn[onclick*="loadContent('${activeLoadType}')"]`);
         if (activeBtn) activeBtn.classList.add('active');
     }
 
@@ -1618,7 +1642,7 @@
     function renderMaterials(list = []) {
         const literature = currentCourse ? currentCourse.literature : list;
         if (!literature || literature.length === 0) {
-            materialsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">لا يوجد محتوى أدب متاح في هذه الدورة.</p>`;
+            materialsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">لا يوجد محتوى ملازم متاح في هذه الدورة.</p>`;
             return;
         }
         
@@ -1626,7 +1650,7 @@
             <div class="material-card">
                 <img src="${item.image}" alt="${item.title}" class="material-img" loading="lazy">
                 <h3 class="material-title">${item.title}</h3>
-                <p class="material-subject">مُلزمة الأدب</p>
+                <p class="material-subject">مُلزمة</p>
                 <a href="${item.url}" target="_blank" class="download-btn"><i class="fas fa-download"></i> تحميل الملزمة</a>
             </div>
         `).join('');
@@ -1636,7 +1660,7 @@
     function renderExams(list = []) {
         const basics = currentCourse ? currentCourse.basics : list;
         if (!basics || basics.length === 0) {
-            examsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">لا يوجد محتوى أساسيات متاح في هذه الدورة.</p>`;
+            examsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">لا يوجد محتوى امتحانات متاح في هذه الدورة.</p>`;
             return;
         }
         
@@ -1687,6 +1711,7 @@
 
     // منطق التحقق الدوري للطرد
     const fiveMinutesInMs = 300000;
+    let periodicCheckInterval;
     
     function startPeriodicCheck() {
         if (periodicCheckInterval) clearInterval(periodicCheckInterval);
