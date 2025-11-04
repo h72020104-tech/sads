@@ -1657,6 +1657,12 @@
     // ** [جديد] - منطق الموافقة على الشروط **
     function agreeToTerms() {
         closeModal('legalWarningModal');
+        // *** التعديل: نحفظ أن المستخدم وافق حتى لا يظهر التحذير مرة ثانية ***
+        try {
+            localStorage.setItem('agreedToTerms', 'true');
+        } catch (e) {
+            console.warn('localStorage غير متاح:', e);
+        }
         // الانتقال إلى شاشة الاختيار الرئيسية (الدائرتان)
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
@@ -1862,8 +1868,20 @@
       document.getElementById('floatingContactBtn').style.display = 'none'; 
       document.body.style.overflow = 'hidden';
       
-      // [جديد] - أول شاشة تظهر هي التحذير القانوني
-      document.getElementById('legalWarningModal').style.display = 'flex';
+      // [جديد] - أول شاشة تظهر هي التحذير القانوني إلا إذا وافق سابقاً
+      if (localStorage.getItem('agreedToTerms') === 'true') {
+          // المستخدم وافق سابقاً => لا نعرض التحذير، نفتح التطبيق فوراً
+          document.getElementById('legalWarningModal').style.display = 'none';
+          document.getElementById('appContent').style.display = 'block';
+          document.body.style.overflow = 'auto';
+          document.getElementById('floatingContactBtn').style.display = 'flex';
+          navigate('home');
+          // بعد عرض التطبيق نحاول الدخول التلقائي لو عنده كود محفوظ
+          checkAutoLogin();
+      } else {
+          // لم يوافق => نعرض التحذير
+          document.getElementById('legalWarningModal').style.display = 'flex';
+      }
       
       // بدأ تحميل الأكواد والبيانات مسبقًا
       loadData();
