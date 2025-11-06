@@ -877,6 +877,39 @@
         width: 100%;
       }
       
+      /* === التعديلات المطلوبة لتصغير الأيقونات === */
+      #searchButton {
+        padding: 0.8rem; /* تصغير التباعد */
+        width: 50px;    /* تثبيت العرض لزر الأيقونة فقط */
+        height: 50px;
+        justify-content: center;
+      }
+      /* إخفاء نص "بحث" */
+      #searchButton span {
+        display: none;
+      }
+      
+      #searchButton i {
+        font-size: 1.2rem; /* تصغير حجم أيقونة البحث */
+      }
+
+      /* تصغير حجم أيقونة تبديل الثيم */
+      #themeToggle i {
+        font-size: 1.2rem;
+      }
+      
+      /* تصغير عناصر قائمة المحاضرات */
+      .lecture-item {
+        padding: 0.8rem 1rem 0.8rem 2.5rem; /* تصغير التباعد الداخلي */
+        font-size: 0.9rem;
+      }
+      
+      .lecture-checkbox {
+          width: 18px;
+          height: 18px;
+      }
+      /* ========================================= */
+
       .student-counter {
          width: 100%;
          justify-content: center;
@@ -907,7 +940,7 @@
       #floatingContactBtn {
          width: 50px;
          height: 50px;
-         font-size: 1.3rem; /* تم التصغير من 1.5rem */
+         font-size: 1.5rem;
          bottom: 15px;
          left: 15px;
       }
@@ -922,29 +955,6 @@
         padding: 0.5rem 0.8rem;
         font-size: 0.8rem;
       }
-      
-      /* New: Shrink Icons and Action Buttons on Smallest Screens */
-      .nav-btn i { 
-        font-size: 0.8rem; /* تصغير أيقونات التنقل إذا وجدت */
-      }
-      .back-button, .copy-button {
-          padding: 0.7rem 1.2rem; /* تصغير حجم أزرار الإجراءات */
-          font-size: 0.8rem;
-      }
-      .back-button i, .copy-button i, #searchButton i, #themeToggle i {
-          font-size: 1rem; /* تصغير أيقونات الرأس */
-      }
-      .modal-content i {
-          font-size: 2rem !important; /* تصغير أيقونات النوافذ المنبثقة */
-      }
-      #floatingContactBtn {
-         width: 45px;
-         height: 45px;
-         font-size: 1.1rem; /* تصغير أيقونة الزر العائم */
-         bottom: 8px;
-         left: 8px;
-      }
-      /* End New Additions */
 
       #searchInput {
         padding: 0.8rem 1rem;
@@ -1183,7 +1193,7 @@
 
     <div class="search-container">
       <input type="text" id="searchInput" placeholder="ابحث عن محاضرة أو موضوع...">
-      <button id="searchButton"><i class="fas fa-search"></i></button>
+      <button id="searchButton"><i class="fas fa-search"></i> <span>بحث</span></button>
     </div>
     
     <button id="themeToggle"><i class="fas fa-sun"></i></button>
@@ -1271,7 +1281,7 @@
     // ====== IMPORTANT ========
     // -------------------------
     // ضع رابط سكربت السيرفر الآمن هنا (HTTPS) — السيرفر هو الوحيد الذي يحمل توكن البوت:
-    const SERVER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyuwVNj_Q7-qPO6U4mc_72NeUQuwKH6zCGmXHjPpZoUDVOOS_kmO_P4MohgY2ixsy37YQ/exec';
+    const SERVER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyuwVNj_Q7-qPO6zCGmXHjPpZoUDVOOS_kmO_P4MohgY2ixsy37YQ/exec';
     
     // ----------------------------------------------------------------------
     // ** الدوال الجديدة: لعرض وإخفاء لوحة معلومات الطالب المصممة **
