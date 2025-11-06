@@ -3,86 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المنصة تحت الصيانة</title>
+    <title>المنصة تحت الصيانة الآن</title>
     <style>
-        /* التنسيقات الأساسية */
+        /* التنسيقات لضمان سرعة التحميل وعرض الصورة كخلفية */
         body {
+            /* 1. استخدام الصورة كخلفية للصفحة بالكامل */
+            background-image: url('https://j.top4top.io/p_35975xwkj1.png');
+            background-size: cover; /* لضمان تغطية الصورة للصفحة بالكامل */
+            background-position: center; /* لمركزة الصورة */
+            background-repeat: no-repeat; /* عدم تكرار الصورة */
+            
+            /* 2. تنسيقات النص ليكون واضحاً فوق الخلفية */
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4; /* خلفية فاتحة */
-            color: #333; /* لون النص */
-            display: flex; /* لمركزة المحتوى */
+            color: #ffffff; /* لون أبيض للنص لتباين قوي */
+            text-align: center;
+            
+            /* 3. لمركزة النص في منتصف الشاشة */
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            text-align: center;
+            
+            /* 4. إضافة طبقة شفافة للتعتيم وجعل النص مقروءاً بوضوح */
+            position: relative;
         }
 
-        /* حاوية الرسالة والصورة */
-        .container {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            max-width: 90%;
-            width: 500px;
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* طبقة تعتيم سوداء شفافة بنسبة 60% */
+            z-index: 1; /* وضعها خلف النص */
+        }
+        
+        /* تنسيق محتوى الرسالة */
+        .content {
+            position: relative; /* لجعله فوق طبقة التعتيم (z-index: 2) */
+            z-index: 2;
+            padding: 20px;
         }
 
-        /* تنسيق الصورة */
-        .maintenance-image {
-            width: 100%; /* اجعل الصورة تتناسب مع عرض الحاوية */
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            border: 3px solid #007bff; /* إطار أزرق حول الصورة */
-        }
-
-        /* تنسيق العنوان */
         h1 {
-            color: #dc3545; /* لون أحمر للتنبيه */
-            margin-bottom: 15px;
-            font-size: 2.5em;
+            font-size: 3.5em; /* خط كبير جداً */
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px #000000; /* ظل لزيادة وضوح العنوان */
+            color: #ffc107; /* لون مميز (أصفر/ذهبي) */
         }
 
-        /* تنسيق النص */
         p {
-            font-size: 1.2em;
+            font-size: 1.5em;
             line-height: 1.6;
-            color: #6c757d;
+            max-width: 600px;
+            text-shadow: 1px 1px 2px #000000;
         }
 
-        /* لتمييز بعض النصوص */
         .highlight {
             font-weight: bold;
-            color: #007bff; /* لون أزرق للتركيز */
-        }
-
-        /* رسالة إضافية أسفل */
-        .footer-message {
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #999;
+            color: #17a2b8; /* لون ثانوي مميز */
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <img src="https://j.top4top.io/p_35975xwkj1.png" alt="صورة الأستاذ حيدر علي الطائي" class="maintenance-image">
-
-        <h1>عذراً، المنصة تحت الصيانة!</h1>
+    <div class="content">
+        <h1>🛠️ المنصة قيد التحديث والصيانة 🛠️</h1>
         <p>
-            نعمل حالياً على تطوير وتحسين <span class="highlight">المنصة التعليمية</span> لتقديم أفضل تجربة ممكنة.
+            نحن نعمل بجد لإطلاق <span class="highlight">أقوى وأحدث نسخة</span> من المنصة التعليمية. 
         </p>
         <p>
-            نعتذر عن أي إزعاج. يرجى المحاولة مرة أخرى قريباً.
+            سنعود في أقرب وقت ممكن مع تجربة تعلم مطورة. شكراً جزيلاً لصبركم!
         </p>
     </div>
-
-    <p class="footer-message">
-        شكراً لتفهمكم وصبركم.
-    </p>
 
 </body>
 </html>
