@@ -1240,7 +1240,7 @@
     // ====== IMPORTANT ========
     // -------------------------
     // ضع رابط سكربت السيرفر الآمن هنا (HTTPS) — السيرفر هو الوحيد الذي يحمل توكن البوت:
-    const SERVER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyuwVNj_Q7-qPO6z-qPO6U4mc_72NeUQuwKH6zCGmXHjPpZoUDVOOS_kmO_P4MohgY2ixsy37YQ/exec'; 
+    const SERVER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyuwVNj_Q7-qPO6z-qPO6U4mc_72NeUQuvKH6zCGmXHjPpZoUDVOOS_kmO_P4MohgY2ixsy37YQ/exec'; 
 
     // متغيرات التطبيق
     const pages = {
@@ -1452,19 +1452,24 @@
 
     // ** [التعديل 1]: منطق الموافقة على الشروط (مرة واحدة) **
     function agreeToTerms() {
-        closeModal('legalWarningModal');
-        // *** التعديل: نحفظ أن المستخدم وافق حتى لا يظهر التحذير مرة ثانية ***
+        // 1. إخفاء النافذة مباشرةً (الحل الذي يضمن الاختفاء الفوري)
+        document.getElementById('legalWarningModal').style.display = 'none'; 
+
+        // 2. حفظ الموافقة في التخزين المحلي (للتأكد من عدم ظهوره مجدداً عند تحديث الصفحة)
         try {
-            localStorage.setItem('agreedToTerms', 'true');
+            localStorage.setItem('agreedToTerms', 'true'); 
         } catch (e) {
             console.warn('localStorage غير متاح:', e);
         }
-        // الانتقال إلى شاشة الاختيار الرئيسية
+
+        // 3. عرض محتوى التطبيق الرئيسي (لبدء الاستخدام)
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
         document.getElementById('floatingContactBtn').style.display = 'flex';
+        
+        // 4. الانتقال للصفحة الرئيسية وتشغيل الدخول التلقائي
         navigate('home');
-        checkAutoLogin(); // محاولة الدخول التلقائي في الوضع المدفوع
+        checkAutoLogin(); 
     }
 
     // ** [التعديل 3]: دالة الدخول التلقائي (المرتبطة بالمرة الواحدة) **
