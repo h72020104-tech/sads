@@ -831,7 +831,7 @@
       left: 20px; 
       width: 60px;
       height: 60px;
-      background: var(--accent);
+      background: var(--accent); /* تم التأكد من استخدام اللون الأخضر */
       color: white;
       border: none;
       border-radius: 50%;
@@ -1042,7 +1042,7 @@
   <div id="legalWarningModal" class="modal" style="display: flex;"> 
     <div class="modal-content" style="max-width: 600px;">
         <i class="fas fa-gavel" style="font-size: 3rem; color: var(--error); margin-bottom: 1rem;"></i>
-        <h3><img src="https://k.top4top.io/p_3592t3ag71.jpg" alt="شعار" style="width: 30px; height: 30px; vertical-align: middle; margin-left: 10px; border-radius: 5px;"> مرحباً بك في منصة التفوق</h3>
+        <h3>مرحباً بك في منصة التفوق</h3>
         
         <div style="text-align: center; background: var(--card-hover); padding: 1.5rem; border-radius: 10px; border: 2px solid var(--error); margin-bottom: 1.5rem;">
             <h4 style="color: var(--primary); margin-bottom: 0.5rem;">الأستاذ: حيدر علي الطائي (Hayder Ali Al-Ta'ee)</h4>
@@ -1226,7 +1226,7 @@
     </div>
   </main>
 
-  <button id="floatingContactBtn" onclick="openModal('contactModal')" style="display: none;"><i class="fas fa-comment-alt"></i></button>
+  <button id="floatingContactBtn" onclick="openModal('contactModal')" style="display: none;"><i class="fab fa-whatsapp"></i></button>
 
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -1759,6 +1759,7 @@
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
         document.getElementById('floatingContactBtn').style.display = 'flex';
+        document.getElementById('appHeader').style.display = 'flex'; // إظهار الهيدر
         navigate('home');
         checkAutoLogin(); // محاولة الدخول التلقائي في الوضع المدفوع
     }
@@ -1812,6 +1813,7 @@
         document.body.style.overflow = 'auto';
         document.getElementById('accessError').style.display = 'none';
         document.getElementById('floatingContactBtn').style.display = 'flex';
+        document.getElementById('appHeader').style.display = 'flex'; // إظهار الهيدر
         localStorage.setItem('userAccessCode', code);
 
         // [جديد] تحميل البيانات وعرض محتوى الدورة المدفوعة بالكامل
@@ -1972,6 +1974,8 @@
         document.getElementById('legalWarningModal').style.display = 'flex';
       } else {
         document.getElementById('legalWarningModal').style.display = 'none';
+        
+        // إظهار العناصر إذا كان المستخدم وافق مسبقاً
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
         document.getElementById('floatingContactBtn').style.display = 'flex';
