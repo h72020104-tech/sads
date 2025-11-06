@@ -1155,10 +1155,10 @@
           <i class="fas fa-video"></i> المحاضرات
         </button>
         <button class="nav-btn" onclick="loadContent('literature')">
-          <i class="fas fa-book-open"></i> الملازم
+          <i class="fas fa-book-open"></i> الأدب
         </button>
         <button class="nav-btn" onclick="loadContent('basics')">
-          <i class="fas fa-pencil-alt"></i> الامتحانات
+          <i class="fas fa-pencil-alt"></i> الأساسيات والامتحانات
         </button>
       </div>
       
@@ -1283,18 +1283,18 @@
       
       <div id="materialsPage" class="page">
         <div class="materials-section">
-          <h2 class="section-title">قسم الملازم</h2>
+          <h2 class="section-title">قسم الأدب</h2>
           <div class="materials-grid" id="materialsGrid">
-            <p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">محتوى  غير متوفر حالياً أو لم يتم تحميله.</p>
+            <p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">محتوى الأدب غير متوفر حالياً أو لم يتم تحميله.</p>
           </div>
         </div>
       </div>
       
       <div id="examsPage" class="page">
         <div class="exams-section">
-          <h2 class="section-title">قسم  الامتحانات</h2>
+          <h2 class="section-title">قسم الأساسيات والامتحانات</h2>
           <div class="exams-grid" id="examsGrid">
-            <p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">محتوى  غير متوفر حالياً أو لم يتم تحميله.</p>
+            <p style="text-align: center; color: var(--text-secondary); grid-column: 1/-1;">محتوى الأساسيات غير متوفر حالياً أو لم يتم تحميله.</p>
           </div>
         </div>
       </div>
@@ -1940,8 +1940,8 @@
               subject: 'الأستاذ: حيدر علي الطائي',
               image: 'https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/paid-icon.png?v=1744952192982',
               classes: allCourses, // جميع المحاضرات
-              literature: allLiterature, // الملازم
-              basics: allBasics // الامتحانات
+              literature: allLiterature, // الأدب
+              basics: allBasics // الأساسيات
           };
           showCourseContent(paidCourseData);
       });
@@ -2089,6 +2089,8 @@
     // =========================================================================
     
     function blockDevTools() {
+      // تم تعطيل هذه الدالة بالكامل بناءً على طلب المستخدم لتقليل قيود الحماية.
+      /*
       // هذه الدالة مصممة لمحاولة منع الطالب من فتح أدوات المطور (F12)
       // وهي حماية واهية وليست مضمونة، لكنها تردع أغلب الطلاب العاديين.
 
@@ -2122,6 +2124,7 @@
       };
       
       window.addEventListener('resize', check);
+      */
     }
     
     // =========================================================================
@@ -2211,8 +2214,8 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       
-      // تطبيق حماية DevTools
-      blockDevTools(); 
+      // تطبيق حماية DevTools (تم تعطيله بناءً على طلب المستخدم)
+      // blockDevTools(); 
       
       // تطبيق الثيم
       initializeTheme(); 
