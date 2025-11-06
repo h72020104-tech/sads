@@ -1167,10 +1167,6 @@
           <span>0 طالب مفعل</span>
       </div>
       
-      <a href="tel:07833075253" id="callNowBtn" title="اتصل الآن">
-        <i class="fas fa-phone"></i> <span>اتصل بنا</span>
-      </a>
-      
       <style>
           #callNowBtn {
             background: var(--accent);
@@ -1302,10 +1298,6 @@
     </main>
   </div>
   
-  <button id="floatingContactBtn" onclick="openModal('contactModal')" style="display: none;">
-    <i class="fas fa-comment-dots"></i>
-  </button>
-
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
   
@@ -1865,7 +1857,7 @@
       // الانتقال إلى شاشة الاختيار الرئيسية (الدائرتان)
       document.getElementById('appContent').style.display = 'block';
       document.body.style.overflow = 'auto';
-      document.getElementById('floatingContactBtn').style.display = 'flex';
+      // تم التعليق عليه: document.getElementById('floatingContactBtn').style.display = 'flex';
       navigate('home');
       checkAutoLogin(); // محاولة الدخول التلقائي في الوضع المدفوع
     }
@@ -1928,7 +1920,7 @@
       document.getElementById('appContent').style.display = 'block';
       document.body.style.overflow = 'auto';
       document.getElementById('accessError').style.display = 'none';
-      document.getElementById('floatingContactBtn').style.display = 'flex';
+      // تم التعليق عليه: document.getElementById('floatingContactBtn').style.display = 'flex';
 
       localStorage.setItem('userAccessCode', code);
 
@@ -1983,7 +1975,7 @@
                 navigate('classes');
                 
                 // فتح أول قائمة محاضرات تلقائياً
-                const firstClassHeader = document.querySelector('.class-header');
+                const firstClassHeader = document.querySelector('.class-card .class-header');
                 if (firstClassHeader) {
                     const lecturesList = firstClassHeader.nextElementSibling;
                     toggleLecturesList(lecturesList);
@@ -2002,7 +1994,6 @@
         const hash = window.location.hash;
         if (hash.startsWith('#lecture=')) {
           const url = hash.substring(9).split('&')[0];
-          // يجب أن نجد الفصل والمحاضرة من الرابط
           if (url && currentCourse) {
             let found = false;
              currentCourse.classes.forEach((cls, classIndex) => {
@@ -2086,45 +2077,11 @@
     
     // =========================================================================
     // ** منطق منع أدوات المطور (DevTools) **
+    // تم إلغاء تفعيله بالكامل لمنع التحويل الخاطئ
     // =========================================================================
     
     function blockDevTools() {
-      // تم تعطيل هذه الدالة بالكامل بناءً على طلب المستخدم لتقليل قيود الحماية.
-      /*
-      // هذه الدالة مصممة لمحاولة منع الطالب من فتح أدوات المطور (F12)
-      // وهي حماية واهية وليست مضمونة، لكنها تردع أغلب الطلاب العاديين.
-
-      const check = () => {
-        if (window.outerWidth - window.innerWidth > 100 || 
-            window.outerHeight - window.innerHeight > 100 || 
-            (window.innerWidth > 1920 && window.innerHeight > 1080) || 
-            (new Date() - startTime) > 500) {
-            
-            if (window.location.hash.includes('bypass')) return;
-            
-            // إعادة توجيه لمنصة أخرى أو إغلاق الصفحة
-            document.body.innerHTML = '<h1 style="color: red; text-align: center; margin-top: 100px;">محاولة اختراق النظام. تم تسجيل محاولتك.</h1>';
-            document.body.style.backgroundColor = 'black';
-            window.location.replace("https://wa.me/9647833075253");
-        }
-      };
-
-      const startTime = new Date();
-      setInterval(check, 1000);
-
-      // منع فتح أدوات المطور ببعض الاختصارات
-      document.onkeydown = function(e) {
-        if (e.keyCode == 123 || // F12
-            (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
-            (e.ctrlKey && e.shiftKey && e.keyCode === 74)) { // Ctrl+Shift+J
-          e.preventDefault();
-          check();
-          return false;
-        }
-      };
-      
-      window.addEventListener('resize', check);
-      */
+      // تم تعطيل هذه الدالة بالكامل لضمان عدم حدوث تحويل خاطئ لصفحة واتساب
     }
     
     // =========================================================================
@@ -2215,14 +2172,14 @@
     document.addEventListener('DOMContentLoaded', () => {
       
       // تطبيق حماية DevTools (تم تعطيله بناءً على طلب المستخدم)
-      // blockDevTools(); 
+      // blockDevTools(); <--- تم حذف هذا السطر
       
       // تطبيق الثيم
       initializeTheme(); 
       
       // إخفاء المحتوى الرئيسي وزر الاتصال حتى يتم الموافقة أو الدخول
       document.getElementById('appContent').style.display = 'none';
-      document.getElementById('floatingContactBtn').style.display = 'none';
+      // document.getElementById('floatingContactBtn').style.display = 'none'; // تم التعليق عليه
       document.body.style.overflow = 'hidden'; 
 
       // ---------- التعديل: إظهار التحذير مرة واحدة فقط ----------
@@ -2238,7 +2195,7 @@
           document.getElementById('legalWarningModal').style.display = 'none';
           document.getElementById('appContent').style.display = 'block';
           document.body.style.overflow = 'auto';
-          document.getElementById('floatingContactBtn').style.display = 'flex';
+          // document.getElementById('floatingContactBtn').style.display = 'flex'; // تم التعليق عليه
           
           navigate('home');
           // محاولة الدخول التلقائي لو في كود محفوظ
