@@ -1519,8 +1519,11 @@
     }
 
     // [MODIFIED] دالة الدخول للوضع المدفوع (تبدأ بعملية التسجيل/إدخال الكود)
-    function enterPaidMode() {
+    async function enterPaidMode() { // <-- تم إضافة async هنا
         document.getElementById('selectionModal').style.display = 'none';
+        
+        // [الحل] تحميل ملف الأكواد أولاً وقبل كل شيء
+        await loadData(); 
         
         const savedCode = localStorage.getItem('userAccessCode');
         const savedName = localStorage.getItem('studentName');
@@ -1528,7 +1531,7 @@
 
         if (savedCode) {
              // إذا كان لدى المستخدم كود محفوظ، نعتمد على الدخول التلقائي
-             loadData().then(() => checkAutoLogin());
+             checkAutoLogin(); // <-- تم تعديل هذا السطر
         } else if (savedName && savedPhone) {
             // معلومات التسجيل موجودة، اذهب مباشرة لخطوة إدخال الكود
             document.getElementById('codeEntryModal').style.display = 'flex';
@@ -1765,4 +1768,3 @@
   </script>
  </body>
 </html>
-
