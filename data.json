@@ -1,57 +1,100 @@
 {
-  "courses": [
+  "teachers": [
     {
-      "name": "الوحدة الأولى: الاستفهام",
-      "lectures": [
+      "id": 1,
+      "name": "الدورة التجريبية المجانية",
+      "subject": "الوحدة الأولى (5 محاضرات)",
+      "image": "https://f.top4top.io/p_3587jfhfg1.png",
+      "isPaid": false,
+      "classes": [
         {
-          "title": "المحاضرة 1: أساسيات الاستفهام",
-          "description": "شرح مفصل",
-          "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+          "name": "الوحدة الأولى - تجريبية",
+          "lectures": [
+            {
+              "title": "المحاضرة 1 (تجريبية)",
+              "url": "https://youtu.be/wEQ-hcXnHxo?si=yITk8bANia9gwkHd",
+              "description": "وصف المحاضرة 1 في الوحدة الأولى."
+            },
+            {
+              "title": "المحاضرة 2 (تجريبية)",
+              "url": "https://youtu.be/QJQSDjCucu8?si=5any4TOG-Aa_Afio",
+              "description": "وصف المحاضرة 2 في الوحدة الأولى."
+            },
+            {
+              "title": "المحاضرة 3 (تجريبية)",
+              "url": "https://example.com/free-video-3",
+              "description": "وصف المحاضرة 3 في الوحدة الأولى."
+            },
+            {
+              "title": "المحاضرة 4 (تجريبية)",
+              "url": "https://example.com/free-video-4",
+              "description": "وصف المحاضرة 4 في الوحدة الأولى."
+            },
+            {
+              "title": "المحاضرة 5 (تجريبية)",
+              "url": "https://example.com/free-video-5",
+              "description": "وصف المحاضرة 5 في الوحدة الأولى."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "الدورة الالكترونية (كاملة)",
+      "subject": "مادة اللغة الإنجليزية",
+      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/english-teacher.jpg?v=1710000000000",
+      "isPaid": true,
+      "classes": [
+        {
+          "name": "الوحدة الأولى (كاملة)",
+          "lectures": [
+            {
+              "title": "المحاضرة 1 (كاملة)",
+              "url": "https://example.com/paid-unit1-1",
+              "description": "وصف المحاضرة 1 (كاملة)."
+            },
+            {
+              "title": "المحاضرة 2 (كاملة)",
+              "url": "https://example.com/paid-unit1-2",
+              "description": "وصف المحاضرة 2 (كاملة)."
+            },
+            {
+              "title": "المحاضرة 3 (كاملة)",
+              "url": "https://example.com/paid-unit1-3",
+              "description": "وصف المحاضرة 3 (كاملة)."
+            }
+          ]
         },
         {
-          "title": "المحاضرة 2: أنواع (أم) المعادلة",
-          "description": "شرح مفصل",
-          "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
-        }
-      ]
-    },
-    {
-      "name": "الوحدة الثانية: النفي",
-      "lectures": [
-        {
-          "title": "المحاضرة 1: أنواع (لا)",
-          "description": "شرح مفصل",
-          "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+          "name": "الوحدة الثانية (كاملة)",
+          "lectures": [
+            {
+              "title": "المحاضرة 1",
+              "url": "https://example.com/paid-unit2-1",
+              "description": "وصف المحاضرة 1 - الوحدة الثانية."
+            }
+          ]
         }
       ]
     }
   ],
-  "literature": [
+  "materials": [
     {
-      "title": "ملزمة الأدب - الجزء الأول",
-      "subject": "مدرسة الإحياء",
-      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/pdf-icon.png?v=1744952549234",
-      "url": "#"
-    },
-    {
-      "title": "ملزمة الأدب - الجزء الثاني",
-      "subject": "مدرسة المهجر",
-      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/pdf-icon.png?v=1744952549234",
-      "url": "#"
+      "id": 1,
+      "title": "ملزمة الوحدة الأولى (للمشتركين)",
+      "subject": "مادة اللغة الإنجليزية",
+      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/english-teacher.jpg?v=1710000000000",
+      "url": "https://example.com/paid-pdf-1"
     }
   ],
-  "basics": [
+  "exams": [
     {
-      "title": "أساسيات: الفعل والاسم",
-      "subject": "شرح الأساسيات",
-      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/basics-icon.png?v=1744952554625",
-      "url": "#"
-    },
-    {
-      "title": "أساسيات: الإعراب والبناء",
-      "subject": "شرح الأساسيات",
-      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/basics-icon.png?v=1744952554625",
-      "url": "#"
+      "id": 1,
+      "title": "امتحان الوحدة الأولى (للمشتركين)",
+      "subject": "اختبار تجريبي",
+      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/english-teacher.jpg?v=1710000000000",
+      "url": "https://example.com/paid-exam-1"
     }
   ]
 }
