@@ -2,38 +2,38 @@
   "teachers": [
     {
       "id": 1,
-      "name": "الدورة التجريبية المجانية",
-      "subject": "الوحدة الأولى (5 محاضرات)",
-      "image": "https://g.top4top.io/p_3598q5xt01.png",
+      "name": "الدورة المجانية",
+      "subject": "مقدمة مجانية (الوحدة الأولى)",
+      "image": "https://i.ibb.co/bF0N8tb/free-course.jpg",
       "isPaid": false,
       "classes": [
         {
-          "name": "الوحدة الأولى - تجريبية",
+          "name": "الوحدة الأولى (القسم المجاني)",
           "lectures": [
             {
-              "title": "المحاضرة 1 (تجريبية)",
-              "url": "https://youtu.be/wEQ-hcXnHxo?si=yITk8bANia9gwkHd",
-              "description": "وصف المحاضرة 1 في الوحدة الأولى."
+              "title": "المحاضرة 1: (مجانية)",
+              "description": "هذه محاضرة تجريبية مجانية.",
+              "url": "https://www.youtube.com/watch?v=_FEATURE_DISABLED_"
             },
             {
-              "title": "المحاضرة 2 (تجريبية)",
-              "url": "https://youtu.be/QJQSDjCucu8?si=5any4TOG-Aa_Afio",
-              "description": "وصف المحاضرة 2 في الوحدة الأولى."
+              "title": "المحاضرة 2: (مجانية)",
+              "description": "هذه محاضرة تجريبية مجانية.",
+              "url": "https://www.youtube.com/watch?v=_FEATURE_DISABLED_"
             },
             {
-              "title": "المحاضرة 3 (تجريبية)",
-              "url": "https://example.com/free-video-3",
-              "description": "وصف المحاضرة 3 في الوحدة الأولى."
+              "title": "المحاضرة 3: (مجانية)",
+              "description": "هذه محاضرة تجريبية مجانية.",
+              "url": "https://www.youtube.com/watch?v=_FEATURE_DISABLED_"
             },
             {
-              "title": "المحاضرة 4 (تجريبية)",
-              "url": "https://example.com/free-video-4",
-              "description": "وصف المحاضرة 4 في الوحدة الأولى."
+              "title": "المحاضرة 4: (مجانية)",
+              "description": "هذه محاضرة تجريبية مجانية.",
+              "url": "https://www.youtube.com/watch?v=_FEATURE_DISABLED_"
             },
             {
-              "title": "المحاضرة 5 (تجريبية)",
-              "url": "https://example.com/free-video-5",
-              "description": "وصف المحاضرة 5 في الوحدة الأولى."
+              "title": "المحاضرة 5: (مجانية)",
+              "description": "هذه محاضرة تجريبية مجانية.",
+              "url": "https://www.youtube.com/watch?v=_FEATURE_DISABLED_"
             }
           ]
         }
@@ -41,38 +41,81 @@
     },
     {
       "id": 2,
-      "name": "الدورة الالكترونية (كاملة)",
-      "subject": "الاستاذ حيدر علي الطائي",
-      "image": "https://g.top4top.io/p_3598q5xt01.png",
+      "name": "قسم المحاضرات (الدورة الالكترونية)",
+      "subject": "خاص بالطلاب المشتركين",
+      "image": "https://i.ibb.co/P9zYm8y/main-lectures.jpg",
       "isPaid": true,
       "classes": [
         {
           "name": "الوحدة الأولى (كاملة)",
           "lectures": [
             {
-              "title": "المحاضرة 1 (كاملة)",
-              "url": "https://example.com/paid-unit1-1",
-              "description": "وصف المحاضرة 1 (كاملة)."
+              "title": "المحاضرة 1: (مدفوع)",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://example.com/lecture1.m3u8"
             },
             {
-              "title": "المحاضرة 2 (كاملة)",
-              "url": "https://example.com/paid-unit1-2",
-              "description": "وصف المحاضرة 2 (كاملة)."
-            },
-            {
-              "title": "المحاضرة 3 (كاملة)",
-              "url": "https://example.com/paid-unit1-3",
-              "description": "وصف المحاضرة 3 (كاملة)."
+              "title": "المحاضرة 2: (مدفوع)",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://example.com/lecture2.m3u8"
             }
           ]
         },
         {
-          "name": "الوحدة الثانية (كاملة)",
+          "name": "الوحدة الثانية",
           "lectures": [
             {
-              "title": "المحاضرة 1",
-              "url": "https://example.com/paid-unit2-1",
-              "description": "وصف المحاضرة 1 - الوحدة الثانية."
+              "title": "المحاضرة 1: (مدفوع)",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://example.com/lecture3.m3u8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "قسم الأدب (الدورة الالكترونية)",
+      "subject": "خاص بالطلاب المشتركين",
+      "image": "https://i.ibb.co/nnhbW3X/literature.jpg",
+      "isPaid": true,
+      "classes": [
+        {
+          "name": "الأدب",
+          "lectures": [
+            {
+              "title": "محمد خضير (مدفوع)",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://example.com/lit1.m3u8"
+            },
+            {
+              "title": "المرجوحة (مدفوع)",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://example.com/lit2.m3u8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "قسم أساسيات اللغة (الدورة الالكترونية)",
+      "subject": "خاص بالطلاب المشتركين",
+      "image": "https://i.ibb.co/gJFqJdd/basics.jpg",
+      "isPaid": true,
+      "classes": [
+        {
+          "name": "الأساسيات",
+          "lectures": [
+            {
+              "title": "الدرس 1: الأزمنة (مدفوع)",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://example.com/basic1.m3u8"
+            },
+            {
+              "title": "الدرس 2: المبني للمجهول (مدفوع)",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://example.com/basic2.m3u8"
             }
           ]
         }
@@ -81,20 +124,30 @@
   ],
   "materials": [
     {
-      "id": 1,
-      "title": "ملزمة الوحدة الأولى (للمشتركين)",
-      "subject": "مادة اللغة الإنجليزية",
-      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/english-teacher.jpg?v=1710000000000",
-      "url": "https://example.com/paid-pdf-1"
+      "title": "ملزمة الوحدة الأولى",
+      "subject": "قسم المحاضرات",
+      "image": "https://i.ibb.co/P9zYm8y/main-lectures.jpg",
+      "url": "https://example.com/unit1.pdf"
+    },
+    {
+      "title": "ملزمة الأدب كاملة",
+      "subject": "قسم الأدب",
+      "image": "https://i.ibb.co/nnhbW3X/literature.jpg",
+      "url": "https://example.com/literature.pdf"
     }
   ],
   "exams": [
     {
-      "id": 1,
-      "title": "امتحان الوحدة الأولى (للمشتركين)",
-      "subject": "اختبار تجريبي",
-      "image": "https://cdn.glitch.global/d472cc04-f40d-483a-8a7d-67c6c1ddaaff/english-teacher.jpg?v=1710000000000",
-      "url": "https://example.com/paid-exam-1"
+      "title": "امتحان الوحدة الأولى",
+      "subject": "قسم المحاضرات",
+      "image": "https://i.ibb.co/P9zYm8y/main-lectures.jpg",
+      "url": "https://example.com/exam1"
+    },
+    {
+      "title": "امتحان الأدب (محمد خضير)",
+      "subject": "قسم الأدب",
+      "image": "https://i.ibb.co/nnhbW3X/literature.jpg",
+      "url": "https://example.com/exam2"
     }
   ]
 }
