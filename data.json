@@ -41,7 +41,7 @@
     },
     {
       "id": 2,
-      "name": "قسم المحاضرات (الدورة الالكترونية)",
+      "name": "قسم المحاضرات ",
       "subject": "خاص بالطلاب المشتركين",
       "image": "https://i.ibb.co/P9zYm8y/main-lectures.jpg",
       "isPaid": true,
@@ -50,12 +50,12 @@
           "name": "الوحدة الأولى (كاملة)",
           "lectures": [
             {
-              "title": "المحاضرة 1: (مدفوع)",
+              "title": "المحاضرة 1: ",
               "description": "محاضرة خاصة بالدورة المدفوعة",
               "url": "https://example.com/lecture1.m3u8"
             },
             {
-              "title": "المحاضرة 2: (مدفوع)",
+              "title": "المحاضرة 2: ",
               "description": "محاضرة خاصة بالدورة المدفوعة",
               "url": "https://example.com/lecture2.m3u8"
             }
@@ -75,21 +75,21 @@
     },
     {
       "id": 3,
-      "name": "قسم الأدب (الدورة الالكترونية)",
+      "name": "قسم الأدب ",
       "subject": "خاص بالطلاب المشتركين",
-      "image": "https://i.ibb.co/nnhbW3X/literature.jpg",
+      "image": "https://b.top4top.io/p_3598ea0jg1.png",
       "isPaid": true,
       "classes": [
         {
           "name": "الأدب",
           "lectures": [
             {
-              "title": "محمد خضير (مدفوع)",
+              "title": "محمد خضير ",
               "description": "محاضرة خاصة بالدورة المدفوعة",
               "url": "https://example.com/lit1.m3u8"
             },
             {
-              "title": "المرجوحة (مدفوع)",
+              "title": "المرجوحة ",
               "description": "محاضرة خاصة بالدورة المدفوعة",
               "url": "https://example.com/lit2.m3u8"
             }
@@ -99,7 +99,7 @@
     },
     {
       "id": 4,
-      "name": "قسم أساسيات اللغة (الدورة الالكترونية)",
+      "name": "قسم أساسيات اللغة ",
       "subject": "خاص بالطلاب المشتركين",
       "image": "https://i.ibb.co/gJFqJdd/basics.jpg",
       "isPaid": true,
@@ -108,12 +108,12 @@
           "name": "الأساسيات",
           "lectures": [
             {
-              "title": "الدرس 1: الأزمنة (مدفوع)",
+              "title": "الدرس 1: الأزمنة ",
               "description": "محاضرة خاصة بالدورة المدفوعة",
               "url": "https://example.com/basic1.m3u8"
             },
             {
-              "title": "الدرس 2: المبني للمجهول (مدفوع)",
+              "title": "الدرس 2: المبني للمجهول ",
               "description": "محاضرة خاصة بالدورة المدفوعة",
               "url": "https://example.com/basic2.m3u8"
             }
