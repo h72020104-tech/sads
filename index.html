@@ -1005,7 +1005,7 @@
           <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">يرجى إدخال اسمك ورقم هاتفك وكود التفعيل الخاص بك للدخول إلى الدورة.</p>
           <input type="text" id="studentNameInput" class="modal-input" placeholder="الاسم الرباعي" required>
           <input type="text" id="studentPhoneInput" class="modal-input" placeholder="رقم الهاتف" required>
-          <input type="text" id="codeInput" class="modal-input" placeholder="كود التفعيل (201133)" required>
+          <input type="text" id="codeInput" class="modal-input" placeholder="كود التفعيل " required>
           
           <p id="accessError" style="color: var(--error); margin-top: 1rem; display: none; font-weight: 600;">كود الدخول غير صحيح. حاول مرة أخرى.</p>
           
@@ -1552,40 +1552,43 @@
       navigate('video');
     }
 
-    // تحميل المحتوى (ملازم/امتحانات)
-    function loadContent(type) {
-        // التحقق إذا كان المستخدم مسجلاً
-        const isPaid = localStorage.getItem('isPaidUser') === 'true';
+    // [معدل] تحميل المحتوى (ملازم/امتحانات)
+function loadContent(type) {
+    // التحقق إذا كان المستخدم مسجلاً
+    const isPaid = localStorage.getItem('isPaidUser') === 'true';
 
-        // التعديل 5: تقييد جميع الأقسام (المحاضرات/الملازم/الامتحانات) في حال عدم الدفع
-        if ((type === 'materials' || type === 'exams' || type === 'lectures') && !isPaid) {
-            showUpgradeModal();
-            return;
-        }
-        
-        // إزالة تفعيل زر التنقل السابق
-        navButtons.forEach(btn => btn.classList.remove('active'));
-        // تفعيل زر التنقل الحالي
-        const activeBtn = document.querySelector(`.nav-btn[onclick="loadContent('${type}')"]`);
-        if (activeBtn) activeBtn.classList.add('active');
-
-        if (type === 'materials') {
-            renderMaterials(allMaterials);
-            navigate('materials');
-        } else if (type === 'exams') {
-            renderExams(allExams);
-            navigate('exams');
-        } else {
-            // إذا كان lectures (المحاضرات)، اذهب لصفحة المدرسين/الدورات
-            if (isPaid) {
-               renderTeachers(allTeachers); // عرض جميع الدورات للمشترك
-            } else {
-               // الوضع المجاني (يجب أن يتم تحويله هنا فقط في حال لم يتم عبر enterFreeMode)
-               renderTeachers(allTeachers.filter(t => t.isPaid === false));
-            }
-            navigate('home'); 
-        }
+    // تقييد جميع الصفحات ما عدا التواصل
+    if ((type === 'materials' || type === 'exams' || type === 'lectures') && !isPaid) {
+        showUpgradeModal();
+        return;
     }
+    
+    // إزالة تفعيل زر التنقل السابق
+    navButtons.forEach(btn => btn.classList.remove('active'));
+    // تفعيل زر التنقل الحالي
+    const activeBtn = document.querySelector(`.nav-btn[onclick="loadContent('${type}')"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+
+    if (type === 'materials') {
+        renderMaterials(allMaterials);
+        navigate('materials');
+    } else if (type === 'exams') {
+        renderExams(allExams);
+        navigate('exams');
+    } else {
+        // إذا كان lectures (المحاضرات)، اذهب لصفحة المدرسين/الدورات
+        if (isPaid) {
+           // [معدل] عرض الدورات المدفوعة فقط
+           const paidCourses = allTeachers.filter(t => t.isPaid !== false);
+           renderTeachers(paidCourses);
+        } else {
+           // الوضع المجاني
+           renderTeachers(allTeachers.filter(t => t.isPaid === false));
+        }
+        navigate('home'); 
+    }
+}
+
 
     // عرض الملازم
     function renderMaterials(list = allMaterials) {
@@ -1724,47 +1727,50 @@
     let accessCodeDatabase = {};
     const DEMO_CODE = 'DEMO'; // كود تجريبي للعمل المحلي
     
-    // التعديل 5: دالة تسجيل الدخول الناجح
-    function loginSuccess(code, name, phone) {
-        localStorage.setItem('userAccessCode', code);
-        localStorage.setItem('isPaidUser', 'true');
-        // [جديد]
-        localStorage.setItem('studentName', name);
-        // [جديد]
-        localStorage.setItem('studentPhone', phone);
-        
-        closeModal('loginModal');
-        document.getElementById('appContent').style.display = 'block';
-        document.body.style.overflow = 'auto';
-        document.getElementById('accessError').style.display = 'none';
-        document.getElementById('floatingContactBtn').style.display = 'flex';
+    // [معدل] دالة تسجيل الدخول الناجح
+function loginSuccess(code, name, phone) {
+    localStorage.setItem('userAccessCode', code);
+    localStorage.setItem('isPaidUser', 'true');
+    // [جديد]
+    localStorage.setItem('studentName', name);
+    // [جديد]
+    localStorage.setItem('studentPhone', phone);
+    
+    closeModal('loginModal');
+    document.getElementById('appContent').style.display = 'block';
+    document.body.style.overflow = 'auto';
+    document.getElementById('accessError').style.display = 'none';
+    document.getElementById('floatingContactBtn').style.display = 'flex';
 
-        loadData().then(() => {
-             // [معدل] إخفاء زر "لدي كود تفعيل"
-             document.getElementById('showLoginModalBtn').style.display = 'none';
-             // عرض جميع الدورات (مجانية ومدفوعة)
-             renderTeachers(allTeachers);
-             renderMaterials(allMaterials);
-             renderExams(allExams);
-             
-             // تفعيل زر المحاضرات واختيار الصفحة
-             navButtons.forEach(btn => btn.classList.remove('active'));
-             const activeBtn = document.querySelector('.nav-btn[onclick="loadContent(\'lectures\')]');
-             if (activeBtn) activeBtn.classList.add('active');
+    loadData().then(() => {
+         // إخفاء زر "لدي كود تفعيل"
+         document.getElementById('showLoginModalBtn').style.display = 'none';
+         
+         // [معدل] تصفية الدورات: عرض المدفوعة فقط
+         const paidCourses = allTeachers.filter(t => t.isPaid !== false);
+         renderTeachers(paidCourses);
+         
+         renderMaterials(allMaterials);
+         renderExams(allExams);
+         
+         // تفعيل زر المحاضرات واختيار الصفحة
+         navButtons.forEach(btn => btn.classList.remove('active'));
+         const activeBtn = document.querySelector('.nav-btn[onclick="loadContent(\'lectures\')]');
+         if (activeBtn) activeBtn.classList.add('active');
 
-             navigate('home');
-             
-             // [جديد] تحديث العلامة المائية في حالة تشغيل الفيديو
-             const watermark = document.getElementById('videoWatermark');
-             if (watermark) {
-                 watermark.textContent = `${name} - ${phone}`;
-             }
-             
-             // بدء التحقق الدوري للطرد
-             startPeriodicCheck();
-        });
-        
-    }
+         navigate('home');
+         
+         // تحديث العلامة المائية في حالة تشغيل الفيديو
+         const watermark = document.getElementById('videoWatermark');
+         if (watermark) {
+             watermark.textContent = `${name} - ${phone}`;
+         }
+         
+         // بدء التحقق الدوري للطرد
+         startPeriodicCheck();
+    });
+    
+}
     
     // [معدل] دالة التحقق من الدخول التلقائي عند بدء التشغيل
     function checkAutoLogin() {
