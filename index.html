@@ -1545,7 +1545,7 @@
         const userCode = localStorage.getItem('userAccessCode');
         if (!userCode) return; // لا يوجد مستخدم مسجل
 
-        // 👈 التعديل لتجنب الكاش في دالة التحقق الدوري
+        // 👈 التعديل رقم 1: منع الكاش في دالة التحقق الدوري
         fetch(`codes.json?v=${new Date().getTime()}`)
             .then(response => {
                 if (!response.ok) throw new Error('Codes file not found');
@@ -1679,7 +1679,7 @@
             return;
         }
 
-        // 👈 التعديل لتجنب الكاش في دالة التحميل الأولي
+        // 👈 التعديل رقم 2: منع الكاش في دالة التحميل الأولي
         fetch(`codes.json?v=${new Date().getTime()}`)
             .then(response => {
                 if (!response.ok) {
