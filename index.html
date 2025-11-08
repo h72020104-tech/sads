@@ -731,9 +731,9 @@
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* تم التعديل */
-      overflow-y: auto;       /* تم الإضافة */
-      padding: 20px 0;        /* تم الإضافة */
+      align-items: flex-start; /* التعديل 1: لحل مشكلة التمرير في الموبايل */
+      overflow-y: auto;       /* التعديل 2: لحل مشكلة التمرير في الموبايل */
+      padding: 20px 0;        /* التعديل 3: لحل مشكلة التمرير في الموبايل */
       z-index: 200;
       animation: fadeIn 0.3s;
     }
@@ -960,7 +960,7 @@
         font-size: 0.8rem;
       }
       
-      /* تم إضافته لتقليل الحشو في مودال التحذير على الموبايل */
+      /* التعديل 4: تقليل الحشو في مودال التحذير على الموبايل */
       .modal-content { 
           padding: 1rem; 
       }
@@ -1005,7 +1005,7 @@
           <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">يرجى إدخال اسمك ورقم هاتفك وكود التفعيل الخاص بك للدخول إلى الدورة.</p>
           <input type="text" id="studentNameInput" class="modal-input" placeholder="الاسم الرباعي" required>
           <input type="text" id="studentPhoneInput" class="modal-input" placeholder="رقم الهاتف" required>
-          <input type="text" id="codeInput" class="modal-input" placeholder="كود التفعيل " required>
+          <input type="text" id="codeInput" class="modal-input" placeholder="كود التفعيل (201133)" required>
           
           <p id="accessError" style="color: var(--error); margin-top: 1rem; display: none; font-weight: 600;">كود الدخول غير صحيح. حاول مرة أخرى.</p>
           
@@ -1067,7 +1067,7 @@
   <div id="appContent" style="display: none;">
 
     <header>
-      <h1 class="site-title" onclick="navigate('home')">
+      <h1 class="site-title" onclick="loadContent('lectures')">
         <img src="https://j.top4top.io/p_3598vdrdp1.jpg" alt="شعار المنصة" class="site-logo">
         منصة التفوق
       </h1>
@@ -1108,7 +1108,7 @@
 
     <div id="classesPage" class="page">
         <div class="classes-page">
-            <button class="back-button" onclick="navigate('home')"><i class="fas fa-arrow-right"></i> الرجوع للدورات</button>
+            <button class="back-button" onclick="loadContent('lectures')"><i class="fas fa-arrow-right"></i> الرجوع للدورات</button>
             <div class="teacher-info">
                 <img id="teacherImage" class="teacher-img-lg" alt="صورة الدورة">
                 <div class="teacher-details">
@@ -1554,33 +1554,37 @@
 
     // تحميل المحتوى (ملازم/امتحانات)
     function loadContent(type) {
-      // [معدل] التحقق إذا كان المستخدم مسجلاً
-      const isPaid = localStorage.getItem('isPaidUser') === 'true';
+        // التحقق إذا كان المستخدم مسجلاً
+        const isPaid = localStorage.getItem('isPaidUser') === 'true';
 
-      if (type === 'materials' && !isPaid) {
-        showUpgradeModal();
-        return;
-      }
-      if (type === 'exams' && !isPaid) {
-        showUpgradeModal();
-        return;
-      }
-      
-      navButtons.forEach(btn => btn.classList.remove('active'));
-      document.querySelector(`.nav-btn[onclick="loadContent('${type}')"]`).classList.add('active');
+        // التعديل 5: تقييد جميع الأقسام (المحاضرات/الملازم/الامتحانات) في حال عدم الدفع
+        if ((type === 'materials' || type === 'exams' || type === 'lectures') && !isPaid) {
+            showUpgradeModal();
+            return;
+        }
+        
+        // إزالة تفعيل زر التنقل السابق
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        // تفعيل زر التنقل الحالي
+        const activeBtn = document.querySelector(`.nav-btn[onclick="loadContent('${type}')"]`);
+        if (activeBtn) activeBtn.classList.add('active');
 
-      if (type === 'materials') {
-        renderMaterials(allMaterials); // عرض الملازم الكاملة للمشترك
-        navigate('materials');
-      } else if (type === 'exams') {
-        renderExams(allExams); // عرض الامتحانات الكاملة للمشترك
-        navigate('exams');
-      } else {
-        // العودة لصفحة الدورات (الوضع المجاني أو المدفوع)
-        const teachersToRender = isPaid ? allTeachers : allTeachers.filter(t => t.isPaid === false);
-        renderTeachers(teachersToRender);
-        navigate('home');
-      }
+        if (type === 'materials') {
+            renderMaterials(allMaterials);
+            navigate('materials');
+        } else if (type === 'exams') {
+            renderExams(allExams);
+            navigate('exams');
+        } else {
+            // إذا كان lectures (المحاضرات)، اذهب لصفحة المدرسين/الدورات
+            if (isPaid) {
+               renderTeachers(allTeachers); // عرض جميع الدورات للمشترك
+            } else {
+               // الوضع المجاني (يجب أن يتم تحويله هنا فقط في حال لم يتم عبر enterFreeMode)
+               renderTeachers(allTeachers.filter(t => t.isPaid === false));
+            }
+            navigate('home'); 
+        }
     }
 
     // عرض الملازم
@@ -1682,13 +1686,14 @@
     
     // ** [معدل] منطق الدخول المجاني/المدفوع **
     
-    // [معدل] دالة الدخول للوضع المجاني
+    // التعديل 5: دالة الدخول للوضع المجاني
     function enterFreeMode() {
         closeModal('warningModal'); // إغلاق مودال التحذير
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
 
         loadData().then(() => {
+             // عرض الدورات التي تم تحديدها كـ (مجانية) فقط
              const freeCourses = allTeachers.filter(t => t.isPaid === false);
              renderTeachers(freeCourses); 
              // المستخدم المجاني لا يرى الملازم أو الامتحانات
@@ -1698,11 +1703,15 @@
              allExams = []; 
         });
         
+        // تفعيل زر المحاضرات واختيار الصفحة
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        const activeBtn = document.querySelector('.nav-btn[onclick="loadContent(\'lectures\')]');
+        if (activeBtn) activeBtn.classList.add('active');
+
         navigate('home');
         document.getElementById('studentCounter').style.display = 'none';
         document.getElementById('floatingContactBtn').style.display = 'flex';
-        // إخفاء زر "لدي كود" في الوضع المجاني إذا أردت
-        // document.getElementById('showLoginModalBtn').style.display = 'none';
+        document.getElementById('showLoginModalBtn').style.display = 'block'; // التأكد من إظهار زر التفعيل
     }
 
     // [جديد] رسالة الترقية (عند الضغط على الملازم/الامتحانات في الوضع المجاني)
@@ -1715,7 +1724,7 @@
     let accessCodeDatabase = {};
     const DEMO_CODE = 'DEMO'; // كود تجريبي للعمل المحلي
     
-    // [معدل] دالة تسجيل الدخول الناجح
+    // التعديل 5: دالة تسجيل الدخول الناجح
     function loginSuccess(code, name, phone) {
         localStorage.setItem('userAccessCode', code);
         localStorage.setItem('isPaidUser', 'true');
@@ -1737,6 +1746,12 @@
              renderTeachers(allTeachers);
              renderMaterials(allMaterials);
              renderExams(allExams);
+             
+             // تفعيل زر المحاضرات واختيار الصفحة
+             navButtons.forEach(btn => btn.classList.remove('active'));
+             const activeBtn = document.querySelector('.nav-btn[onclick="loadContent(\'lectures\')]');
+             if (activeBtn) activeBtn.classList.add('active');
+
              navigate('home');
              
              // [جديد] تحديث العلامة المائية في حالة تشغيل الفيديو
@@ -1888,4 +1903,3 @@
   </script>
  </body>
 </html>
-
