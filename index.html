@@ -112,11 +112,22 @@
       }
     }
 
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200px 0; }
+      100% { background-position: calc(200px + 100%) 0; }
+    }
+
     /* Header styles */
     header {
       background: var(--gradient-card);
       backdrop-filter: blur(20px);
-      padding: 1rem 2rem; /* تقليل البادينج قليلاً */
+      padding: 1.5rem 2rem;
       display: flex;
       align-items: center;
       gap: 2rem;
@@ -130,29 +141,56 @@
 
     .site-title {
       color: var(--primary);
-      font-size: 1.6rem;
+      font-size: 2rem;
       font-weight: 800;
       cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      text-shadow: 0 2px 4px rgba(24,119,242,0.3); 
+      position: relative;
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
 
     .site-logo {
-      width: 35px;
-      height: 35px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--primary-light);
     }
 
+    .site-title:hover {
+      transform: scale(1.05);
+      animation: pulse 2s infinite;
+    }
+
+    .site-title::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: var(--gradient-primary);
+      border-radius: 8px;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s;
+    }
+
+    .site-title:hover::before {
+      opacity: 0.1;
+    }
+
     .nav-buttons {
       display: flex;
-      gap: 0.8rem;
+      gap: 1rem;
       margin: 0 1rem;
       background: var(--bg-secondary);
-      padding: 0.4rem;
+      padding: 0.5rem;
       border-radius: 12px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .nav-btn {
@@ -160,13 +198,12 @@
       color: var(--text-secondary);
       border: none;
       border-radius: 8px;
-      padding: 0.6rem 1.2rem;
+      padding: 0.8rem 1.5rem;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       font-weight: 600;
       position: relative;
       overflow: hidden;
-      font-size: 0.95rem;
     }
 
     .nav-btn::before {
@@ -181,23 +218,26 @@
       z-index: -1;
     }
 
-    .nav-btn:hover, .nav-btn.active {
+    .nav-btn:hover {
       color: white;
-    }
-    
-    .nav-btn.active {
-        background: var(--gradient-primary);
+      transform: translateY(-2px);
     }
 
     .nav-btn:hover::before {
       left: 0;
     }
 
+    .nav-btn.active {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: var(--shadow-hover);
+    }
+
     .subscription-container {
       flex-grow: 1;
       max-width: 600px;
       display: flex;
-      gap: 0.8rem;
+      gap: 1rem;
       position: relative;
       justify-content: flex-end;
     }
@@ -206,58 +246,80 @@
       background: var(--gradient-primary);
       color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
+      transition: all 0.3s;
       font-weight: 600;
-      padding: 0.8rem 1.2rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      padding: 1rem 1.5rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
       text-decoration: none;
-      font-size: 0.9rem;
     }
     
     .header-btn.contact-btn {
         background: var(--accent);
     }
 
+    .header-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
     #themeToggle {
       background: var(--gradient-primary);
       color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
-      padding: 0.8rem;
-      width: 40px;
-      height: 40px;
+      transition: all 0.3s;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      padding: 1rem;
+      width: 50px;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    #themeToggle:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
     }
     
     .student-counter {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.6rem 1rem;
+      padding: 0.8rem 1.2rem;
       background: var(--bg-secondary);
       color: var(--text-secondary);
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: 600;
-      font-size: 0.85rem;
-      white-space: nowrap;
+      font-size: 0.9rem;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
     
-    .student-counter i { color: var(--primary); }
+    .student-counter i {
+      color: var(--primary); 
+    }
 
-    /* Teachers grid (Courses grid) - DEFAULT (DESKTOP) */
-    .teachers-section { margin-top: 2rem; }
+    /* Courses grid */
+    .teachers-section {
+      margin-top: 2rem;
+    }
 
     .section-title {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       font-weight: 700;
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
       background: var(--gradient-primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -266,7 +328,7 @@
 
     .teachers-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 2rem;
       padding: 1rem 0;
     }
@@ -274,9 +336,9 @@
     .teacher-card {
       background: var(--gradient-card);
       padding: 2rem;
-      border-radius: 18px;
+      border-radius: 20px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       border: 1px solid var(--border-color);
       position: relative;
       overflow: hidden;
@@ -284,19 +346,24 @@
       flex-direction: column;
       align-items: center; 
       min-height: 300px; 
+      justify-content: flex-start; 
     }
 
     .teacher-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
       background: var(--gradient-primary);
       transform: scaleX(0);
       transition: transform 0.3s;
     }
 
     .teacher-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-hover);
     }
 
     .teacher-card:hover::before {
@@ -304,203 +371,364 @@
     }
 
     .teacher-img {
-      width: 160px;
-      height: 160px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--primary);
-      margin-bottom: 1.2rem; 
+      border: 4px solid var(--primary);
+      display: block;
+      margin-bottom: 1.5rem; 
       transition: all 0.3s;
+      box-shadow: 0 8px 20px rgba(24,119,242,0.3); 
     }
 
     .teacher-card:hover .teacher-img {
-      transform: scale(1.05);
+      transform: scale(1.1);
       border-color: var(--primary-light);
     }
 
     .teacher-name {
-      font-size: 1.3rem;
+      display: block !important;
+      font-size: 1.4rem;
       font-weight: 700;
       text-align: center;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
       color: var(--text-color);
     }
 
     .teacher-subject {
+      display: block !important;
       text-align: center;
       color: var(--text-secondary);
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
 
     /* Classes page */
-    .classes-page { display: grid; gap: 2rem; }
+    .classes-page {
+      display: grid;
+      gap: 2rem;
+    }
 
     .teacher-info {
       background: var(--gradient-card);
       padding: 2rem;
-      border-radius: 18px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       gap: 2rem;
+      box-shadow: var(--shadow);
       border: 1px solid var(--border-color);
     }
 
     .teacher-img-lg {
-      width: 140px;
-      height: 140px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      border: 3px solid var(--primary);
+      border: 4px solid var(--primary);
       object-fit: cover;
+      box-shadow: 0 8px 20px rgba(24,119,242,0.3); 
     }
 
-    .teacher-details h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-    .teacher-details p { font-size: 1.1rem; color: var(--text-secondary); }
+    .teacher-details h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .teacher-details p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+    }
 
     .back-button, .copy-button {
       background: var(--gradient-primary);
       color: white;
       border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 10px;
+      padding: 1rem 2rem;
+      border-radius: 12px;
       cursor: pointer;
+      transition: all 0.3s;
       font-weight: 600;
       margin-bottom: 1rem;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      box-shadow: var(--shadow);
     }
 
-    .classes-list { display: grid; gap: 1.5rem; }
+    .back-button:hover, .copy-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .classes-list {
+      display: grid;
+      gap: 2rem;
+    }
 
     .class-card {
       background: var(--gradient-card);
       border-radius: 15px;
       overflow: hidden;
+      box-shadow: var(--shadow);
       border: 1px solid var(--border-color);
+      transition: all 0.3s;
+    }
+
+    .class-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
     }
 
     .class-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 1.5rem;
+      padding: 1.5rem 2rem;
       border-right: 4px solid var(--primary);
       cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
     }
 
-    .class-header:hover { background: var(--card-hover); }
-    .class-header h3 { font-size: 1.2rem; font-weight: 600; }
+    .class-header:hover {
+      background: var(--card-hover);
+    }
+
+    .class-header h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .class-header span {
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+    }
 
     .lectures-list {
       display: none;
-      gap: 0.8rem;
-      padding: 0 1.5rem 1.5rem;
+      gap: 1rem;
+      padding: 0 2rem 2rem;
     }
 
     .lecture-item {
-      padding: 1rem;
+      position: relative;
+      padding: 1.2rem 1.5rem 1.2rem 3rem;
       background: var(--bg-secondary);
-      border-radius: 10px;
-      border-right: 2px solid var(--primary);
+      border-radius: 12px;
+      border-right: 3px solid var(--primary);
       cursor: pointer;
+      transition: all 0.3s;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .lecture-item:hover { background: var(--card-hover); }
+    .lecture-item:hover {
+      background: var(--card-hover);
+      transform: translateX(10px);
+      box-shadow: var(--shadow);
+    }
 
     .lecture-content {
       flex-grow: 1;
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 1rem;
     }
 
     .lecture-checkbox {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       border: 2px solid var(--primary);
       border-radius: 4px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all 0.3s;
+      background: transparent;
+      flex-shrink: 0;
     }
 
-    .lecture-checkbox.completed { background: var(--primary); color: white; }
+    .lecture-checkbox.completed {
+      background: var(--primary);
+      color: white;
+    }
 
-    .lecture-title h4 { font-size: 1rem; margin-bottom: 0.2rem; }
-    .lecture-progress { font-size: 0.8rem; color: var(--text-secondary); }
+    .lecture-checkbox:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(24,119,242,0.3); 
+    }
+
+    .lecture-title {
+      flex-grow: 1;
+    }
+
+    .lecture-progress {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-right: 1rem;
+    }
 
     /* Video page */
-    .video-page { display: flex; flex-direction: column; gap: 1.5rem; }
+    .video-page {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
     .video-container {
       position: relative;
       background: black;
       border-radius: 15px;
       overflow: hidden;
+      box-shadow: var(--shadow-hover);
     }
+
+    .plyr video {
+      width: 100%;
+      height: auto;
+    }
+
     .video-details {
       background: var(--gradient-card);
-      padding: 1.5rem;
+      padding: 2rem;
       border-radius: 15px;
       text-align: center;
+      box-shadow: var(--shadow);
       border: 1px solid var(--border-color);
+    }
+
+    .video-details h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .video-details p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
     }
     
     .video-watermark {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; font-weight: bold;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
       color: rgba(255, 255, 255, 0.2); 
-      pointer-events: none; z-index: 10; user-select: none;
+      pointer-events: none;
+      z-index: 10;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     /* Materials and Exams */
     .materials-grid, .exams-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 2rem;
       padding: 2rem 0;
     }
 
     .material-card, .exam-card {
       background: var(--gradient-card);
-      padding: 1.5rem;
-      border-radius: 15px;
+      padding: 2rem;
+      border-radius: 20px;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       border: 1px solid var(--border-color);
       position: relative;
+      overflow: hidden;
     }
-    
+
+    .material-card::before, .exam-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .material-card:hover, .exam-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .material-card:hover::before, .exam-card:hover::before {
+      transform: scaleX(1);
+    }
+
     .material-img, .exam-img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 1rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s;
     }
-    
+
+    .material-card:hover .material-img, .exam-card:hover .exam-img {
+      transform: scale(1.05);
+    }
+
+    .material-title, .exam-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .material-subject, .exam-subject {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
     .download-btn {
       display: block;
       width: 100%;
       background: var(--gradient-primary);
       color: white;
       text-align: center;
-      padding: 0.8rem;
-      border-radius: 10px;
+      padding: 1rem;
+      border-radius: 12px;
       text-decoration: none;
+      transition: all 0.3s;
       font-weight: 600;
-      font-size: 0.95rem;
+      box-shadow: var(--shadow);
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
     }
 
     /* Modal */
     .modal {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9); backdrop-filter: blur(5px);
-      display: flex; justify-content: center; align-items: flex-start;
-      overflow-y: auto; padding: 20px; z-index: 200;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow-y: auto;       
+      padding: 20px 0;        
+      z-index: 200;
+      animation: fadeIn 0.3s;
     }
 
     .modal-content {
@@ -510,192 +738,229 @@
       text-align: center;
       position: relative;
       max-width: 500px;
-      width: 100%;
-      margin-top: 50px;
+      width: 90%;
+      box-shadow: var(--shadow-hover);
+      animation: slideUp 0.3s;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
     
-    .modal-input {
-        width: 100%; padding: 0.8rem; margin: 0.5rem 0; 
-        border-radius: 8px; border: 1px solid var(--border-color); 
-        background: var(--bg-secondary); color: var(--text-color); 
-        font-size: 1rem; text-align: center;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 3px solid var(--primary);
+    }
+
+    .modal-content a {
+      display: inline-block;
+      background: var(--gradient-primary);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      margin: 1rem 0.5rem;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+
+    .modal-content a:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
     }
 
     .close-modal {
-      position: absolute; top: 1rem; left: 1rem;
-      background: transparent; border: none; font-size: 1.5rem;
-      cursor: pointer; color: var(--text-color);
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-color);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
     }
 
-    .loading { display: flex; justify-content: center; padding: 3rem; }
+    .close-modal:hover {
+      background: var(--error);
+      color: white;
+    }
+
+    .modal-input {
+        width: 100%; 
+        padding: 1rem; 
+        margin: 0.75rem 0; 
+        border-radius: 8px; 
+        border: 1px solid var(--border-color); 
+        background: var(--bg-secondary); 
+        color: var(--text-color); 
+        font-size: 1.1rem; 
+        text-align: center;
+    }
+
+    /* Loading states */
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem;
+    }
+
     .spinner {
-      width: 40px; height: 40px;
-      border: 3px solid var(--border-color);
-      border-top: 3px solid var(--primary);
+      width: 50px;
+      height: 50px;
+      border: 4px solid var(--border-color);
+      border-top: 4px solid var(--primary);
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
 
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
     
     #floatingContactBtn {
-      position: fixed; bottom: 20px; left: 20px; 
-      width: 55px; height: 55px;
-      background: var(--accent); color: white;
-      border: none; border-radius: 50%; font-size: 1.8rem;
-      display: flex; align-items: center; justify-content: center;
+      position: fixed;
+      bottom: 20px;
+      left: 20px; 
+      width: 60px;
+      height: 60px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      cursor: pointer; z-index: 150; 
+      cursor: pointer;
+      z-index: 150; 
+      transition: all 0.3s;
+    }
+    #floatingContactBtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
 
-    /* ================================================= */
-    /* *** التعديلات الجديدة للأبعاد (موبايل وآيباد) *** */
-    /* ================================================= */
-
-    /* 1. TABLET / iPAD (769px - 1024px) */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .page {
-          padding: 2rem; /* مساحة مناسبة للحواف */
-      }
-      
-      .teachers-grid, .materials-grid, .exams-grid {
-         grid-template-columns: repeat(2, 1fr); /* عمودين فقط */
-         gap: 2.5rem; /* زيادة المسافة بين الكروت لتقليل الزحمة */
-      }
-
-      .teacher-card {
-          padding: 1.5rem; /* تصغير حشوة الكارت قليلاً */
-          min-height: auto;
-      }
-      
-      .teacher-img {
-          width: 130px; /* تصغير الصورة قليلاً عن الحاسوب */
-          height: 130px;
-      }
-      
-      .site-title { font-size: 1.4rem; }
-    }
-
-    /* 2. MOBILE (Phones < 768px) */
+    /* Responsive design */
     @media (max-width: 768px) {
       header {
-        padding: 0.8rem 1rem;
-        gap: 0.8rem;
-        flex-direction: column; /* ترتيب العناصر عمودياً */
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
       }
 
       .site-title {
-        font-size: 1.3rem; /* تصغير العنوان */
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
       }
 
       .nav-buttons {
         width: 100%;
-        margin: 0;
-        gap: 0.5rem;
         justify-content: center;
+        margin: 0;
       }
 
       .nav-btn {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.8rem; /* خط أصغر للأزرار */
-        flex: 1; /* توزيع متساوي */
-        text-align: center;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
       }
       
       .subscription-container {
         width: 100%;
-        flex-direction: row; /* الأزرار بجانب بعضها لتقليل الطول */
-        gap: 0.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-between;
       }
-
       .header-btn {
-          flex: 1; /* أزرار متساوية */
+          flex-grow: 1;
           justify-content: center;
-          padding: 0.6rem;
-          font-size: 0.85rem;
-      }
-      
-      #themeToggle {
-          position: absolute;
-          top: 0.8rem;
-          left: 0.8rem;
-          width: 35px;
-          height: 35px;
-          padding: 0;
-      }
-
-      /* تنسيق الصفحة العامة للموبايل */
-      .page {
-        padding: 1.5rem 1rem; /* هوامش جانبية لكي لا يلتصق المحتوى بالحافة */
-      }
-
-      .section-title {
-        font-size: 1.6rem;
-        margin-bottom: 1.5rem;
-      }
-
-      /* شبكة الكروت للموبايل - تعديل "الهوسة" */
-      .teachers-grid, .materials-grid, .exams-grid {
-        grid-template-columns: 1fr; /* عمود واحد */
-        gap: 1.5rem; /* مسافة جيدة بين كل كارت وآخر */
-        padding: 0.5rem 0;
-      }
-
-      .teacher-card, .material-card, .exam-card {
-        padding: 1.2rem; /* تقليل الحشو الداخلي للكارت */
-        border-radius: 12px;
-        margin: 0 5px; /* إضافة هامش صغير جداً يمين ويسار الكارت */
-      }
-
-      .teacher-img {
-        width: 100px; /* تصغير الصورة بشكل ملحوظ للموبايل */
-        height: 100px;
-        margin-bottom: 0.8rem;
-        border-width: 2px;
-      }
-      
-      .teacher-name {
-          font-size: 1.1rem; /* تصغير اسم الأستاذ */
-      }
-      
-      .teacher-subject {
+          padding: 0.8rem;
           font-size: 0.9rem;
       }
+      
+      .student-counter {
+         width: 100%;
+         justify-content: center;
+      }
 
-      /* صفحة الفصول */
+      .teachers-grid, .materials-grid, .exams-grid {
+        grid-template-columns: 1fr;
+      }
+
       .teacher-info {
         flex-direction: column;
-        padding: 1.2rem;
-        gap: 1rem;
         text-align: center;
       }
 
-      .teacher-img-lg {
-        width: 100px;
-        height: 100px;
+      .teacher-img, .teacher-img-lg {
+        width: 120px;
+        height: 120px;
+      }
+
+      .page {
+        padding: 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
       }
       
-      .class-header {
-          padding: 1rem;
+      #floatingContactBtn {
+         width: 50px;
+         height: 50px;
+         font-size: 1.5rem;
+         bottom: 15px;
+         left: 15px;
       }
-      
-      .class-header h3 { font-size: 1rem; }
-      
-      /* تصغير الخطوط العامة */
-      h2, h3 { line-height: 1.3; }
     }
 
-    /* شاشات صغيرة جداً */
     @media (max-width: 480px) {
-       .subscription-container {
-           flex-direction: column; /* ارجعها عمودي للشاشات الصغيرة جداً */
-       }
-       .nav-btn { font-size: 0.75rem; }
+      .site-title {
+        font-size: 1.2rem;
+      }
+      
+      .site-logo {
+          width: 30px;
+          height: 30px;
+      }
+
+      .nav-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+      }
+      
+      .modal-content { 
+          padding: 1rem; 
+      }
+
+      .teacher-card, .material-card, .exam-card {
+        padding: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
     }
   </style>
  </head>
@@ -724,7 +989,7 @@
   <div id="loginModal" class="modal" style="display: none;"> 
       <div class="modal-content" style="max-width: 500px;">
           <button class="close-modal" onclick="closeModal('loginModal')"><i class="fas fa-times"></i></button>
-          <img src="https://j.top4top.io/p_3598vdrdp1.jpg" alt="شعار المنصة" style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 1rem;">
+          <img src="https://j.top4top.io/p_3598vdrdp1.jpg" alt="شعار المنصة">
           <h2>تسجيل الدخول - الدورة الإلكترونية</h2>
           <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">يرجى إدخال اسمك ورقم هاتفك وكود التفعيل الخاص بك للدخول إلى الدورة.</p>
           <input type="text" id="studentNameInput" class="modal-input" placeholder="الاسم الرباعي" required>
@@ -744,10 +1009,10 @@
         <i class="fas fa-headset" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
         <h2>للتواصل والدعم الفني</h2>
         <p style="margin-bottom: 2rem; color: var(--text-secondary);">إذا واجهت أي مشكلة أو للاشتراك في الدورة، يرجى التواصل عبر:</p>
-        <a href="https://wa.me/9647709014600" target="_blank" class="download-btn" style="background: var(--accent); margin-bottom: 1rem;">
+        <a href="https://wa.me/9647709014600" target="_blank" style="background: var(--accent); margin-bottom: 1rem;">
             <i class="fab fa-whatsapp"></i> واتساب (9647709014600)
         </a>
-        <a href="tel:+9647709014600" class="download-btn" style="background: var(--primary);">
+        <a href="tel:+9647709014600" style="background: var(--primary);">
             <i class="fas fa-phone"></i> اتصال (7709014600)
         </a>
         <button onclick="closeModal('contactModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-check"></i> إغلاق</button>
@@ -759,10 +1024,10 @@
         <i class="fas fa-lock" style="font-size: 3rem; color: var(--warning); margin-bottom: 1rem;"></i>
         <h2>قسم خاص</h2>
         <p style="margin-bottom: 2rem; color: var(--text-secondary);">هذا القسم مخصص للطلبة المشتركين في الدورة الإلكترونية.</p>
-        <a href="#" onclick="event.preventDefault(); openModal('loginModal')" class="download-btn" style="background: var(--primary); margin-bottom: 1rem;">
+        <a href="#" onclick="event.preventDefault(); openModal('loginModal')" style="background: var(--primary); margin-bottom: 1rem;">
             <i class="fas fa-key"></i> لدي كود تفعيل
         </a>
-        <a href="#" onclick="event.preventDefault(); openModal('contactModal')" class="download-btn" style="background: var(--accent);">
+        <a href="#" onclick="event.preventDefault(); openModal('contactModal')" style="background: var(--accent);">
             <i class="fas fa-phone"></i> اتصل للاشتراك
         </a>
         <button onclick="closeModal('upgradeModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-times"></i> إغلاق</button>
@@ -774,19 +1039,26 @@
           <i class="fas fa-ban" style="font-size: 3rem; color: var(--error); margin-bottom: 1rem;"></i>
           <h2>تم إلغاء صلاحية الوصول</h2>
           <p style="margin-bottom: 2rem; color: var(--text-secondary);">تم إلغاء كود التفعيل الخاص بك من قبل الإدارة. يرجى التواصل معهم للاستفسار.</p>
-          <a href="#" onclick="event.preventDefault(); openModal('contactModal')" class="download-btn" style="background: var(--accent);">
+          <a href="#" onclick="event.preventDefault(); openModal('contactModal')" style="background: var(--accent);">
               <i class="fas fa-phone"></i> اتصل للدعم
           </a>
           <button onclick="closeModal('revokedModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
       </div>
   </div>
   
+  <p style="text-align: center; color: var(--text-secondary); padding: 1rem 0; font-size: 0.9rem;">
+      <a href="#" onclick="event.preventDefault(); openModal('contactModal')" style="color: var(--primary); text-decoration: none;">
+          <i class="fas fa-headset"></i> هل تواجه مشكلة؟ تواصل معنا
+      </a>
+  </p>
+  
+
   <div id="appContent" style="display: none;">
 
     <header>
       <h1 class="site-title" onclick="loadContent('lectures')">
         <img src="https://j.top4top.io/p_3598vdrdp1.jpg" alt="شعار المنصة" class="site-logo">
-        منصة حيدر الطائي
+        منصة حيدر علي الطائي
       </h1>
       
       <div class="nav-buttons">
@@ -797,15 +1069,15 @@
       
       <div class="subscription-container">
         <button class="header-btn" onclick="openModal('loginModal')" id="showLoginModalBtn">
-          <i class="fas fa-key"></i> لدي كود
+          <i class="fas fa-key"></i> لدي كود تفعيل
         </button>
         <a href="tel:+9647709014600" class="header-btn contact-btn">
-          <i class="fas fa-phone"></i> اتصل بنا
+          <i class="fas fa-phone"></i> اتصل للاستفسار
         </a>
       </div>
 
       <div id="studentCounter" class="student-counter">
-        <i class="fas fa-users"></i> <span>...</span>
+        <i class="fas fa-users"></i> <span>جارٍ التحميل...</span>
       </div>
 
       <button id="themeToggle"><i class="fas fa-moon"></i></button>
@@ -814,7 +1086,7 @@
 
     <div id="homePage" class="page">
         <div class="teachers-section">
-            <h2 class="section-title">اضغط على الصوره للدخول</h2>
+            <h2 class="section-title">اضغط على الصوره للتصفح في الدوره </h2>
             <div class="teachers-grid" id="teachersGrid">
                 <div class="loading">
                     <div class="spinner"></div>
@@ -825,7 +1097,7 @@
 
     <div id="classesPage" class="page">
         <div class="classes-page">
-            <button class="back-button" onclick="loadContent('lectures')"><i class="fas fa-arrow-right"></i> الدورات</button>
+            <button class="back-button" onclick="loadContent('lectures')"><i class="fas fa-arrow-right"></i> الرجوع للدورات</button>
             <div class="teacher-info">
                 <img id="teacherImage" class="teacher-img-lg" alt="صورة الدورة">
                 <div class="teacher-details">
@@ -847,7 +1119,7 @@
                 <h2 id="videoTitle"></h2>
                 <p id="videoDescription"></p>
                 <button class="copy-button" onclick="copyLectureLink()"><i class="fas fa-copy"></i></button>
-                <button class="back-button" onclick="navigate('classes')"><i class="fas fa-arrow-right"></i> الفصول</button>
+                <button class="back-button" onclick="navigate('classes')"><i class="fas fa-arrow-right"></i> العودة للفصول</button>
             </div>
         </div>
     </div>
@@ -883,31 +1155,48 @@
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
   <script>
-    // *** كود الحماية المحسّن (Smart Security) ***
+    // *** كود الحماية ضد أدوات المطورين (DevTools) ***
     function blockDevTools() {
+      let devtoolsOpen = false;
+      const threshold = 160;
+      const check = () => {
+        const sizeCheck = window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100;
+        const start = performance.now();
+        try { new Function('debugger')(); } catch (e) {}
+        const end = performance.now();
+
+        if (sizeCheck || (end - start) > threshold) {
+          if (!devtoolsOpen) {
+            devtoolsOpen = true;
+            document.body.innerHTML = '<div style="background: black; color: red; font-size: 2rem; position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999;"><h1>! خطأ !</h1><p style="font-size: 1.2rem;">تم اكتشاف محاولة الوصول غير المصرح بها (DevTools).</p><p style="font-size: 1.2rem;">يرجى إغلاق أدوات المطورين.</p></div>';
+            
+            const preventExecution = setInterval(() => {
+                try { new Function('debugger')(); } catch (e) {
+                    if (!window.outerWidth) clearInterval(preventExecution);
+                }
+            }, 100);
+          }
+        } else {
+          devtoolsOpen = false;
+        }
+      };
+      
+      setInterval(check, 1000);
+
       document.onkeydown = function(e) {
-        if (
-          e.key === 'F12' || 
-          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) || 
-          (e.metaKey && e.altKey && e.key === 'i')
-        ) {
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) || (e.metaKey && e.altKey && e.key === 'i')) {
           e.preventDefault();
+          check();
           return false;
         }
       };
 
-      setInterval(function() {
-        const start = performance.now();
-        try { new Function('debugger')(); } catch (e) {}
-        const end = performance.now();
-        if (end - start > 100) {
-            document.body.innerHTML = '<div style="background: black; color: red; font-size: 2rem; position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999; text-align:center; padding: 20px;"><h1>! تنبيه أمني !</h1><p style="font-size: 1.2rem;">يرجى إغلاق أدوات المطورين للمتابعة.</p></div>';
-        }
-      }, 1000);
+      window.addEventListener('resize', check);
     }
     blockDevTools();
 
 
+    // إعداد الثيم الأولي
     function initializeTheme() {
       const stored = localStorage.getItem('theme');
       const theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -926,6 +1215,7 @@
       }
     }
 
+    // تبديل الثيم
     document.getElementById('themeToggle').addEventListener('click', () => {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -934,6 +1224,7 @@
       updateThemeIcon(newTheme);
     });
     
+    // دوال المودال
     function openModal(id) {
         document.getElementById(id).style.display = 'flex';
         document.body.style.overflow = 'hidden';
@@ -945,14 +1236,17 @@
         if (isAppContentVisible) {
              document.body.style.overflow = 'auto';
         }
+        
     }
 
+    // تحويل الثواني إلى تنسيق (دقيقة:ثانية)
     function formatTime(seconds) {
       const mins = Math.floor(seconds / 60);
       const secs = Math.floor(seconds % 60);
       return `${mins}:${secs.toString().padStart(2, '0')}`;
     }
 
+    // حفظ و جلب تقدم الفيديو
     const PROGRESS_KEY = 'video_progress';
     let videoProgress = JSON.parse(localStorage.getItem(PROGRESS_KEY) || '{}');
 
@@ -965,6 +1259,7 @@
       return videoProgress[url] || 0;
     }
 
+    // حفظ و جلب المحاضرات المكتملة
     const COMPLETED_KEY = 'completed_lectures';
     let completedLectures = JSON.parse(localStorage.getItem(COMPLETED_KEY) || '{}');
 
@@ -974,33 +1269,42 @@
     
     function toggleLectureCompletion(url, event) {
         event.stopPropagation();
+        
         if (completedLectures[url]) {
             delete completedLectures[url];
         } else {
             completedLectures[url] = true;
         }
         saveCompletedLectures();
+        
         if (currentTeacher) {
             renderClasses(currentTeacher.classes);
         }
     }
 
+    /* ===== دالة عدّ الطلاب المفعلين ===== */
     function updateStudentCounter(codes) {
         try {
             const allCodes = Object.keys(codes);
             const activatedCodes = allCodes.filter(code => codes[code] && codes[code].used === true);
             const activatedCount = activatedCodes.length;
+            
             const counterElement = document.querySelector('#studentCounter span');
             if (counterElement) {
-                counterElement.textContent = `${activatedCount} طالب`;
+                counterElement.textContent = `${activatedCount} طالب مفعل`;
                 document.getElementById('studentCounter').style.display = 'flex'; 
             }
         } catch (e) {
+            console.error('Failed to update student counter:', e);
             const counterElement = document.getElementById('studentCounter');
-            if (counterElement) counterElement.style.display = 'none';
+            if (counterElement) {
+                counterElement.style.display = 'none';
+            }
         }
     }
+    /* ========================================= */
 
+    // إعداد مشغل الفيديو
     let hls;
     const player = new Plyr('#player', {
       controls: ['play-large', 'rewind', 'play', 'fast-forward', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'airplay', 'fullscreen'],
@@ -1019,12 +1323,15 @@
     });
 
     player.on('pause', () => {
-      if (progressSaveInterval) clearInterval(progressSaveInterval);
+      if (progressSaveInterval) {
+        clearInterval(progressSaveInterval);
+      }
       if (currentLectureLink && player.currentTime > 0) {
         saveVideoProgress(currentLectureLink, player.currentTime);
       }
     });
 
+    // متغيرات عامة
     const pages = {
       home: document.getElementById('homePage'),
       classes: document.getElementById('classesPage'),
@@ -1039,42 +1346,62 @@
     let allTeachers = [], allMaterials = [], allExams = [];
     let currentTeacher = null, currentClassIndex = 0, currentLectureIndex = 0, currentLectureLink = '';
 
+    // دالة التنقل بين الصفحات
     function navigate(page) {
       window.scrollTo(0, 0);
 
       if (page !== 'video') {
         player.pause();
-        if (progressSaveInterval) clearInterval(progressSaveInterval);
-        if (hls) { hls.destroy(); hls = null; }
+        if (progressSaveInterval) {
+            clearInterval(progressSaveInterval);
+        }
+        if (hls) {
+          hls.destroy();
+          hls = null;
+        }
         const watermark = document.getElementById('videoWatermark');
-        if (watermark) watermark.textContent = '';
+        if (watermark) {
+          watermark.textContent = '';
+        }
       }
 
-      Object.keys(pages).forEach(k => pages[k].classList.remove('active'));
+      Object.keys(pages).forEach(k => {
+        pages[k].classList.remove('active');
+      });
       pages[page].classList.add('active');
     }
 
+    // نسخ رابط المحاضرة
     function copyLectureLink() {
         if (!currentLectureLink) return;
+
         navigator.clipboard.writeText(currentLectureLink).then(function() {
             const button = document.querySelector('.copy-button');
             const originalText = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-check"></i> تم';
+            button.innerHTML = '<i class="fas fa-check"></i> تم النسخ!';
             button.style.background = 'var(--success)';
+            button.style.boxShadow = '0 4px 15px rgba(139, 195, 74, 0.4)';
+
             setTimeout(() => {
                 button.innerHTML = originalText;
                 button.style.background = 'var(--gradient-primary)';
+                button.style.boxShadow = 'var(--shadow)';
             }, 2000);
+        }).catch(function(err) {
+            alert('فشل نسخ الرابط: ' + err);
         });
     }
 
+    // عرض قائمة المدرسين (الدورات)
     function renderTeachers(list = allTeachers) {
       if (!list || list.length === 0) {
         teachersGrid.innerHTML = `
         <div class="teacher-card" style="grid-column: 1/-1; text-align: center; background: var(--bg-secondary);">
-            <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: var(--warning); margin-bottom: 1rem;"></i>
-            <h3>لا توجد دورات</h3>
-        </div>`;
+            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--warning); margin-bottom: 1rem;"></i>
+            <h3>لا توجد دورات متاحة</h3>
+            <p>قد تكون هناك مشكلة في تحميل البيانات.</p>
+        </div>
+        `;
         return;
       }
 
@@ -1087,23 +1414,28 @@
       `).join('');
     }
 
+    // عرض صفحة الفصول
     function showTeacher(teacherId) {
       const teacher = allTeachers.find(t => t.id == teacherId);
       if (!teacher) return;
+      
       currentTeacher = teacher;
       document.getElementById('teacherImage').src = teacher.image;
+      document.getElementById('teacherImage').alt = teacher.name;
       document.getElementById('teacherName').textContent = teacher.name;
       document.getElementById('teacherSubject').textContent = teacher.subject;
+      
       renderClasses(teacher.classes);
       navigate('classes');
     }
 
+    // عرض قائمة الفصول والمحاضرات
     function renderClasses(classes) {
       const listContainer = document.getElementById('classesList');
       listContainer.innerHTML = classes.map((cls, classIndex) => `
         <div class="class-card">
           <div class="class-header" onclick="toggleLecturesList(${classIndex})">
-            <h3>${cls.name} (${cls.lectures.length})</h3>
+            <h3>${cls.name} (${cls.lectures.length} محاضرة)</h3>
             <span><i class="fas fa-chevron-down"></i></span>
           </div>
           <div class="lectures-list" id="lecturesList-${classIndex}">
@@ -1111,7 +1443,8 @@
                 const lectureUrl = lecture.url;
                 const isCompleted = completedLectures[lectureUrl];
                 const progress = getVideoProgress(lectureUrl);
-                const progressText = progress > 0 ? `(${formatTime(progress)})` : '';
+                const progressText = progress > 0 ? `(تقدم: ${formatTime(progress)})` : '';
+                
                 return `
                 <div class="lecture-item" onclick="playLecture('${lectureUrl}', ${classIndex}, ${lectureIndex})">
                     <div class="lecture-content">
@@ -1124,13 +1457,15 @@
                         </div>
                     </div>
                     <i class="fas fa-video" style="color: var(--primary);"></i>
-                </div>`;
+                </div>
+                `;
             }).join('')}
           </div>
         </div>
       `).join('');
     }
 
+    // فتح قائمة المحاضرات
     function toggleLecturesList(index) {
       const list = document.getElementById(`lecturesList-${index}`);
       const icon = list.previousElementSibling.querySelector('span i');
@@ -1139,25 +1474,42 @@
       icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
     }
 
+    // تشغيل المحاضرة
     function playLecture(url, classIndex, lectureIndex) {
       const isPaid = localStorage.getItem('isPaidUser') === 'true';
       const isFreeCourse = currentTeacher && currentTeacher.isPaid === false;
+
+      // حماية المحاضرات المدفوعة في الوضع المجاني
       if (!isPaid && !isFreeCourse) {
           showUpgradeModal();
           return;
       }
+      
       currentLectureLink = url;
       currentClassIndex = classIndex;
       currentLectureIndex = lectureIndex;
+      
       const lecture = currentTeacher.classes[classIndex].lectures[lectureIndex];
       document.getElementById('videoTitle').textContent = lecture.title;
       document.getElementById('videoDescription').textContent = lecture.description;
+
       const videoElement = document.getElementById('player');
-      const savedName = localStorage.getItem('studentName') || '';
-      const savedPhone = localStorage.getItem('studentPhone') || '';
+      
+      // إعداد العلامة المائية
+      const savedName = localStorage.getItem('studentName') || 'طالب منصة التفوق';
+      const savedPhone = localStorage.getItem('studentPhone') || '964770xxxxxxx';
       const watermark = document.getElementById('videoWatermark');
-      if (watermark) watermark.textContent = `${savedName} - ${savedPhone}`;
-      if (hls) { hls.destroy(); hls = null; }
+      if (watermark) {
+          watermark.textContent = `${savedName} - ${savedPhone}`;
+      }
+      
+      // إيقاف المشغل القديم
+      if (hls) {
+          hls.destroy();
+          hls = null;
+      }
+
+      // تهيئة HLS للمحتوى المشفر أو البث المباشر
       if (url.endsWith('.m3u8')) {
           if (Hls.isSupported()) {
               hls = new Hls();
@@ -1179,15 +1531,19 @@
           player.currentTime = getVideoProgress(url);
           player.play();
       }
+
       navigate('video');
     }
 
+    // تحميل المحتوى (ملازم/امتحانات)
     function loadContent(type) {
         const isPaid = localStorage.getItem('isPaidUser') === 'true';
+
         if ((type === 'materials' || type === 'exams' || type === 'lectures') && !isPaid) {
             showUpgradeModal();
             return;
         }
+        
         navButtons.forEach(btn => btn.classList.remove('active'));
         const activeBtn = document.querySelector(`.nav-btn[onclick="loadContent('${type}')"]`);
         if (activeBtn) activeBtn.classList.add('active');
@@ -1200,7 +1556,8 @@
             navigate('exams');
         } else {
             if (isPaid) {
-               renderTeachers(allTeachers.filter(t => t.isPaid !== false));
+               const paidCourses = allTeachers.filter(t => t.isPaid !== false);
+               renderTeachers(paidCourses);
             } else {
                renderTeachers(allTeachers.filter(t => t.isPaid === false));
             }
@@ -1208,9 +1565,11 @@
         }
     }
 
+
+    // عرض الملازم
     function renderMaterials(list = allMaterials) {
       if (!list || list.length === 0) {
-        materialsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد ملازم</p>`;
+        materialsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد ملازم متاحة في هذه الدورة.</p>`;
         return;
       }
       materialsGrid.innerHTML = list.map(item => `
@@ -1218,14 +1577,15 @@
           <img src="${item.image}" alt="${item.title}" class="material-img" loading="lazy">
           <h3 class="material-title">${item.title}</h3>
           <p class="material-subject">${item.subject}</p>
-          <a href="${item.url}" target="_blank" class="download-btn"><i class="fas fa-download"></i> تحميل</a>
+          <a href="${item.url}" target="_blank" class="download-btn"><i class="fas fa-download"></i> تحميل الملزمة</a>
         </div>
       `).join('');
     }
 
+    // عرض الامتحانات
     function renderExams(list = allExams) {
       if (!list || list.length === 0) {
-        examsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد امتحانات</p>`;
+        examsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد امتحانات متاحة في هذه الدورة.</p>`;
         return;
       }
       examsGrid.innerHTML = list.map(item => `
@@ -1233,35 +1593,48 @@
           <img src="${item.image}" alt="${item.title}" class="exam-img" loading="lazy">
           <h3 class="exam-title">${item.title}</h3>
           <p class="exam-subject">${item.subject}</p>
-          <a href="${item.url}" target="_blank" class="download-btn"><i class="fas fa-external-link-alt"></i> ابدأ</a>
+          <a href="${item.url}" target="_blank" class="download-btn"><i class="fas fa-external-link-alt"></i> ابدأ الامتحان</a>
         </div>
       `).join('');
     }
 
+    // دالة تحميل البيانات وربط ملف JSON
     function loadData() {
+      // هنا يتم الربط بملف data.json
+      // تأكد أن الملف اسمه data.json وفي نفس المجلد
       return fetch('data.json?t=' + Date.now())
         .then(response => {
-          if (!response.ok) throw new Error('فشل');
+          if (!response.ok) throw new Error('فشل تحميل البيانات - تأكد من رفع ملف data.json');
           return response.json();
         })
         .then(data => {
           allTeachers = data.teachers || [];
           allMaterials = data.materials || [];
           allExams = data.exams || [];
+          console.log('تم تحميل البيانات بنجاح:', data);
         })
         .catch(error => {
-          teachersGrid.innerHTML = `<div class="teacher-card" style="grid-column: 1/-1;"><h3>خطأ في التحميل</h3></div>`;
+          console.error('خطأ في تحميل البيانات:', error);
+          teachersGrid.innerHTML = `
+            <div class="teacher-card" style="grid-column: 1/-1; text-align: center; background: var(--bg-secondary);">
+                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--error); margin-bottom: 1rem;"></i>
+                <h3>خطأ في النظام</h3>
+                <p>فشل تحميل محتوى الدورات. تأكد من رفع ملف data.json بجانب ملف الاندكس.</p>
+            </div>
+          `;
         });
     }
 
     const fiveMinutesInMs = 5 * 60 * 1000;
 
+    // التحقق الدوري من حالة الكود
     function checkRevocationStatus() {
       const userCode = localStorage.getItem('userAccessCode');
-      if (!userCode) return;
+      if (!userCode) return; 
+
       fetch('codes.json?t=' + Date.now())
         .then(response => {
-          if (!response.ok) throw new Error('Codes error');
+          if (!response.ok) throw new Error('Codes file not found');
           return response.json();
         })
         .then(codesFromServer => {
@@ -1271,9 +1644,13 @@
               localStorage.removeItem('isPaidUser');
               localStorage.removeItem('studentName');
               localStorage.removeItem('studentPhone');
-              alert('تم إلغاء صلاحية الوصول.');
+              
+              alert('تم إلغاء صلاحية الوصول لهذا الرمز من قبل الإدارة. سيتم إخراجك.');
               window.location.reload();
           }
+        })
+        .catch(error => {
+          console.error('فشل في جلب ملف الرموز للتحقق الدوري:', error);
         });
     }
 
@@ -1283,28 +1660,37 @@
       periodicCheckInterval = setInterval(checkRevocationStatus, fiveMinutesInMs);
     }
     
+    // دالة الدخول للوضع المجاني
     function enterFreeMode() {
         closeModal('warningModal'); 
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
+
         loadData().then(() => {
-             renderTeachers(allTeachers.filter(t => t.isPaid === false)); 
+             // عرض الدورات المجانية فقط
+             const freeCourses = allTeachers.filter(t => t.isPaid === false);
+             renderTeachers(freeCourses); 
              renderMaterials([]);
              renderExams([]);
              allMaterials = []; 
              allExams = []; 
         });
+        
         navButtons.forEach(btn => btn.classList.remove('active'));
         const activeBtn = document.querySelector('.nav-btn[onclick="loadContent(\'lectures\')]');
         if (activeBtn) activeBtn.classList.add('active');
+
         navigate('home');
         document.getElementById('studentCounter').style.display = 'none';
         document.getElementById('floatingContactBtn').style.display = 'flex';
-        document.getElementById('showLoginModalBtn').style.display = 'block'; 
+        document.getElementById('showLoginModalBtn').style.display = 'block';
     }
 
-    function showUpgradeModal() { openModal('upgradeModal'); }
+    function showUpgradeModal() {
+        openModal('upgradeModal');
+    }
 
+    // منطق حماية الدخول
     let accessCodeDatabase = {};
     const DEMO_CODE = 'DEMO'; 
     
@@ -1313,57 +1699,98 @@
         localStorage.setItem('isPaidUser', 'true');
         localStorage.setItem('studentName', name);
         localStorage.setItem('studentPhone', phone);
+        
         closeModal('loginModal');
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
         document.getElementById('accessError').style.display = 'none';
         document.getElementById('floatingContactBtn').style.display = 'flex';
+
         loadData().then(() => {
              document.getElementById('showLoginModalBtn').style.display = 'none';
-             renderTeachers(allTeachers.filter(t => t.isPaid !== false));
+             
+             // تصفية الدورات: عرض المدفوعة فقط
+             const paidCourses = allTeachers.filter(t => t.isPaid !== false);
+             renderTeachers(paidCourses);
+             
              renderMaterials(allMaterials);
              renderExams(allExams);
+             
+             navButtons.forEach(btn => btn.classList.remove('active'));
+             const activeBtn = document.querySelector('.nav-btn[onclick="loadContent(\'lectures\')]');
+             if (activeBtn) activeBtn.classList.add('active');
+
              navigate('home');
+             
              const watermark = document.getElementById('videoWatermark');
-             if (watermark) watermark.textContent = `${name} - ${phone}`;
+             if (watermark) {
+                 watermark.textContent = `${name} - ${phone}`;
+             }
+             
              startPeriodicCheck();
         });
     }
     
+    // التحقق من الدخول التلقائي
     function checkAutoLogin() {
         const isPaid = localStorage.getItem('isPaidUser') === 'true';
         const savedCode = localStorage.getItem('userAccessCode');
+        
         if (isPaid && savedCode) {
             if (savedCode === DEMO_CODE && window.location.protocol === 'file:') {
+                 console.log('دخول تلقائي ناجح (وضع تجريبي).');
                  loginSuccess(savedCode, 'طالب تجريبي', '00000000000');
                  return;
             }
+            
             if (accessCodeDatabase.hasOwnProperty(savedCode)) {
                 const codeDetails = accessCodeDatabase[savedCode];
+                const savedName = localStorage.getItem('studentName') || 'N/A';
+                const savedPhone = localStorage.getItem('studentPhone') || 'N/A';
+
                 if (codeDetails.used === true) {
-                    loginSuccess(savedCode, localStorage.getItem('studentName'), localStorage.getItem('studentPhone'));
+                    console.log('دخول تلقائي ناجح (مستخدم مُفعّل).');
+                    loginSuccess(savedCode, savedName, savedPhone);
                     return; 
                 }
             }
         }
+        
         openModal('warningModal');
     }
     
     function loadAccessCodes() {
         const isLocalFile = window.location.protocol === 'file:';
+        const counterElement = document.getElementById('studentCounter');
+        
         if (isLocalFile) {
-            accessCodeDatabase = { [DEMO_CODE]: { used: true } };
+            console.warn('وضع التجربة المحلية مفعل. استخدم الكود: DEMO');
+            if (counterElement) counterElement.style.display = 'none';
+            accessCodeDatabase = {
+                [DEMO_CODE]: { used: true, device: "local", studentName: "طالب تجريبي", studentPhone: "00000000000" }
+            };
             checkAutoLogin();
             return;
         }
+
+        // محاولة جلب ملف الأكواد
         fetch('codes.json?t=' + Date.now())
-            .then(res => res.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('فشل تحميل ملف codes.json.');
+                }
+                return response.json();
+            })
             .then(data => {
                 accessCodeDatabase = data;
+                console.log('تم تحميل ملف الأكواد بنجاح.');
                 updateStudentCounter(data);
                 checkAutoLogin(); 
             })
             .catch(err => {
+                // في حال عدم وجود ملف الأكواد، نتجاهل الخطأ ونعرض المودال فقط
+                console.warn('ملف codes.json غير موجود أو فشل التحميل. سيتم استخدام الوضع الافتراضي.');
+                if (counterElement) counterElement.style.display = 'none';
                 openModal('warningModal');
             });
     }
@@ -1373,6 +1800,7 @@
         const phoneInput = document.getElementById('studentPhoneInput');
         const codeInput = document.getElementById('codeInput');
         const errorElement = document.getElementById('accessError');
+
         const studentName = nameInput.value.trim();
         const studentPhone = phoneInput.value.trim();
         const enteredCode = codeInput.value.trim().toUpperCase();
@@ -1382,21 +1810,27 @@
             errorElement.style.display = 'block';
             return;
         }
+
+        errorElement.style.display = 'none';
+        
         if (enteredCode === DEMO_CODE && window.location.protocol === 'file:') {
             loginSuccess(enteredCode, studentName, studentPhone);
             return;
         }
+        
         if (accessCodeDatabase.hasOwnProperty(enteredCode)) {
             const codeDetails = accessCodeDatabase[enteredCode];
+
             if (codeDetails.used === true) {
-                errorElement.innerText = 'الكود مُستخدَم بالفعل.';
+                errorElement.innerText = 'الكود مُستخدَم بالفعل على جهاز آخر.';
                 errorElement.style.display = 'block';
             } else {
+                console.warn(`تم تفعيل الكود: ${enteredCode} للطالب: ${studentName} (${studentPhone}).`);
                 loginSuccess(enteredCode, studentName, studentPhone);
-                alert(`تم تفعيل الكود بنجاح.`);
+                alert(`تم تفعيل الكود بنجاح. تواصل مع المدرس لتأكيد التفعيل النهائي للكود.`);
             }
         } else {
-            errorElement.innerText = 'الكود غير صحيح.';
+            errorElement.innerText = 'كود الدخول غير صحيح. حاول مرة أخرى.';
             errorElement.style.display = 'block';
         }
     }
@@ -1410,6 +1844,7 @@
       document.getElementById('appContent').style.display = 'none';
       document.getElementById('floatingContactBtn').style.display = 'none'; 
       document.body.style.overflow = 'hidden';
+      
       loadAccessCodes();
     });
   </script>
