@@ -411,7 +411,7 @@
       color: var(--text-secondary);
     }
 
-    .back-button, .copy-button {
+    .back-button {
       background: var(--gradient-primary);
       color: white;
       border: none;
@@ -427,7 +427,7 @@
       box-shadow: var(--shadow);
     }
 
-    .back-button:hover, .copy-button:hover {
+    .back-button:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-hover);
     }
@@ -1113,7 +1113,6 @@
             <div class="video-details">
                 <h2 id="videoTitle"></h2>
                 <p id="videoDescription"></p>
-                <button class="copy-button" onclick="copyLectureLink()"><i class="fas fa-copy"></i></button>
                 <button class="back-button" onclick="navigate('classes')"><i class="fas fa-arrow-right"></i> العودة للفصول</button>
             </div>
         </div>
@@ -1351,27 +1350,6 @@
       pages[page].classList.add('active');
     }
 
-    // نسخ رابط المحاضرة
-    function copyLectureLink() {
-        if (!currentLectureLink) return;
-
-        navigator.clipboard.writeText(currentLectureLink).then(function() {
-            const button = document.querySelector('.copy-button');
-            const originalText = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-check"></i> تم النسخ!';
-            button.style.background = 'var(--success)';
-            button.style.boxShadow = '0 4px 15px rgba(139, 195, 74, 0.4)';
-
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.style.background = 'var(--gradient-primary)';
-                button.style.boxShadow = 'var(--shadow)';
-            }, 2000);
-        }).catch(function(err) {
-            alert('فشل نسخ الرابط: ' + err);
-        });
-    }
-
     // عرض قائمة المدرسين (الدورات)
     function renderTeachers(list = allTeachers) {
       if (!list || list.length === 0) {
@@ -1478,8 +1456,8 @@
       const container = document.querySelector('.video-container');
 
       // إعداد العلامة المائية
-      const savedName = localStorage.getItem('studentName') || '';
-      const savedPhone = localStorage.getItem('studentPhone') || '';
+      const savedName = localStorage.getItem('studentName') || 'طالب منصة التفوق';
+      const savedPhone = localStorage.getItem('studentPhone') || '964770xxxxxxx';
       const watermark = document.getElementById('videoWatermark');
       if (watermark) {
           watermark.textContent = `${savedName} - ${savedPhone}`;
@@ -1916,4 +1894,3 @@
   </script>
  </body>
 </html>
-
