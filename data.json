@@ -1,13 +1,11 @@
-const cacheBuster = `?v=${Date.now()}`;
-
-const projectData = {
+{
   "teachers": [
     {
       "id": 1,
       "name": "الدورة المجانية",
       "subject": "مقدمة مجانية (الوحدة الأولى)",
-      "image": `https://k.top4top.io/p_3599yg6t41.png${cacheBuster}`,
-      "isPaid": false, // مفتوحة
+      "image": "https://k.top4top.io/p_3599yg6t41.png?v=1.1",
+      "isPaid": false,
       "classes": [
         {
           "name": "الوحدة الأولى (القسم المجاني)",
@@ -16,6 +14,26 @@ const projectData = {
               "title": "المحاضرة 1: (مجانية)",
               "description": "هذه محاضرة تجريبية مجانية.",
               "url": "https://dai.ly/k6THmYjd5cA8WXEQcXE"
+            },
+            {
+              "title": "المحاضرة 2: (مجانية)",
+              "description": "هذه محاضرة تجريبية مجانية.",
+              "url": "https://www.youtube.com/watch?v=QJQSDjCucu8"
+            },
+            {
+              "title": "المحاضرة 3: (مجانية)",
+              "description": "هذه محاضرة تجريبية مجانية.",
+              "url": "https://www.youtube.com/watch?v=QJQSDjCucu8"
+            },
+            {
+              "title": "المحاضرة 4: (مجانية)",
+              "description": "هذه محاضرة تجريبية مجانية.",
+              "url": "https://www.youtube.com/watch?v=QJQSDjCucu8"
+            },
+            {
+              "title": "المحاضرة 5: (مجانية)",
+              "description": "هذه محاضرة تجريبية مجانية.",
+              "url": "https://www.youtube.com/watch?v=QJQSDjCucu8"
             }
           ]
         }
@@ -25,23 +43,111 @@ const projectData = {
       "id": 2,
       "name": "قسم المحاضرات",
       "subject": "خاص بالطلاب المشتركين",
-      "image": `https://k.top4top.io/p_3599yg6t41.png${cacheBuster}`,
-      "isPaid": false, // تم تغييرها لـ false للتجربة
+      "image": "https://k.top4top.io/p_3599yg6t41.png?v=1.1",
+      "isPaid": false,
       "classes": [
         {
           "name": "الوحدة الأولى (كاملة)",
           "lectures": [
             {
               "title": "المحاضرة 1",
-              "description": "محاضرة خاصة بالدورة",
-              "url": "https://youtu.be/QJQSDjCucu8?si=1n78fQKoMH_dpMCd"
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
+            },
+            {
+              "title": "المحاضرة 2",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
+            }
+          ]
+        },
+        {
+          "name": "الوحدة الثانية",
+          "lectures": [
+            {
+              "title": "المحاضرة 1: (مدفوع)",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "قسم الأدب",
+      "subject": "خاص بالطلاب المشتركين",
+      "image": "https://b.top4top.io/p_3598ea0jg1.png?v=1.1",
+      "isPaid": false,
+      "classes": [
+        {
+          "name": "الأدب",
+          "lectures": [
+            {
+              "title": "محمد خضير",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
+            },
+            {
+              "title": "المرجوحة",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "قسم أساسيات اللغة الانكليزية",
+      "subject": "خاص بالطلاب المشتركين",
+      "image": "https://j.top4top.io/p_35986jxil1.jpg?v=1.1",
+      "isPaid": false,
+      "classes": [
+        {
+          "name": "الأساسيات",
+          "lectures": [
+            {
+              "title": "الدرس 1: الأزمنة",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
+            },
+            {
+              "title": "الدرس 2: المبني للمجهول",
+              "description": "محاضرة خاصة بالدورة المدفوعة",
+              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
             }
           ]
         }
       ]
     }
-    // يمكنك إكمال بقية الأقسام بنفس الطريقة (isPaid: false)
   ],
-  "materials": [], 
-  "exams": []
-};
+  "materials": [
+    {
+      "title": "ملزمة الوحدة الأولى",
+      "subject": "قسم المحاضرات",
+      "image": "https://i.ibb.co/P9zYm8y/main-lectures.jpg?v=1.1",
+      "url": "https://example.com/unit1.pdf?v=1.1"
+    },
+    {
+      "title": "ملزمة الأدب كاملة",
+      "subject": "قسم الأدب",
+      "image": "https://i.ibb.co/nnhbW3X/literature.jpg?v=1.1",
+      "url": "https://example.com/literature.pdf?v=1.1"
+    }
+  ],
+  "exams": [
+    {
+      "title": "امتحان الوحدة الأولى",
+      "subject": "قسم المحاضرات",
+      "image": "https://i.ibb.co/P9zYm8y/main-lectures.jpg?v=1.1",
+      "url": "https://example.com/exam1?v=1.1"
+    },
+    {
+      "title": "امتحان الأدب (محمد خضير)",
+      "subject": "قسم الأدب",
+      "image": "https://i.ibb.co/nnhbW3X/literature.jpg?v=1.1",
+      "url": "https://example.com/exam2?v=1.1"
+    }
+  ]
+}
