@@ -585,6 +585,24 @@
     .video-container.drive-mode #driveFrame {
         display: block;
     }
+    
+    /* --- The Drive Blocker (Transparent Mask) --- */
+    #driveMask {
+        position: absolute;
+        top: 0;
+        right: 0; /* Right because Drive controls are usually top-right */
+        width: 150px; /* Covers the top right area width */
+        height: 80px; /* Covers the top bar height */
+        z-index: 100; /* Must be on top of iframe */
+        display: none;
+        cursor: default; /* Doesn't show hand cursor */
+        /* background: rgba(255, 0, 0, 0.3); */ /* Uncomment to test position */
+    }
+
+    .video-container.drive-mode #driveMask {
+        display: block; /* Only show when Drive is active */
+    }
+    /* ------------------------------------------- */
 
     /* ==================================================== */
 
@@ -1107,8 +1125,9 @@
         <div class="video-page">
             <div class="video-container">
                 <video id="player" playsinline controls></video>
-                <iframe id="driveFrame" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe id="driveFrame" sandbox="allow-scripts allow-same-origin allow-presentation" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 <div id="videoWatermark" class="video-watermark"></div>
+                <div id="driveMask"></div>
             </div>
             <div class="video-details">
                 <h2 id="videoTitle"></h2>
