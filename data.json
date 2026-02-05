@@ -1,4 +1,4 @@
-{
+const projectData = {
   "teachers": [
     {
       "id": 1,
@@ -150,4 +150,4 @@
       "url": "https://example.com/exam2"
     }
   ]
-}
+};
