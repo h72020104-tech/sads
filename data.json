@@ -3,36 +3,26 @@
     {
       "id": 1,
       "name": "الدورة المجانية",
-      "subject": "مقدمة مجانية (الوحدة الأولى)",
-      "image": "https://k.top4top.io/p_3599yg6t41.png?v=1.1",
+      "subject": "الوحدة الأولى - كاملة",
+      "image": "https://k.top4top.io/p_3599yg6t41.png?v=1",
       "isPaid": false,
       "classes": [
         {
-          "name": "الوحدة الأولى (القسم المجاني)",
+          "name": "دروس الوحدة الأولى",
           "lectures": [
             {
-              "title": "المحاضرة 1: (مجانية)",
-              "description": "هذه محاضرة تجريبية مجانية.",
+              "title": "المحاضرة 1: مقدمة الوحدة",
+              "description": "شرح مفصل لبداية الوحدة الأولى - مجاني",
               "url": "https://dai.ly/k6THmYjd5cA8WXEQcXE"
             },
             {
-              "title": "المحاضرة 2: (مجانية)",
-              "description": "هذه محاضرة تجريبية مجانية.",
+              "title": "المحاضرة 2: القواعد الأساسية",
+              "description": "تكملة شرح القواعد - مجاني",
               "url": "https://www.youtube.com/watch?v=QJQSDjCucu8"
             },
             {
-              "title": "المحاضرة 3: (مجانية)",
-              "description": "هذه محاضرة تجريبية مجانية.",
-              "url": "https://www.youtube.com/watch?v=QJQSDjCucu8"
-            },
-            {
-              "title": "المحاضرة 4: (مجانية)",
-              "description": "هذه محاضرة تجريبية مجانية.",
-              "url": "https://www.youtube.com/watch?v=QJQSDjCucu8"
-            },
-            {
-              "title": "المحاضرة 5: (مجانية)",
-              "description": "هذه محاضرة تجريبية مجانية.",
+              "title": "المحاضرة 3: قطع الكتاب",
+              "description": "شرح القطع الاستيعابية - مجاني",
               "url": "https://www.youtube.com/watch?v=QJQSDjCucu8"
             }
           ]
@@ -42,22 +32,17 @@
     {
       "id": 2,
       "name": "قسم المحاضرات",
-      "subject": "خاص بالطلاب المشتركين",
-      "image": "https://k.top4top.io/p_3599yg6t41.png?v=1.1",
-      "isPaid": false,
+      "subject": "المنهج الكامل للطلاب المشتركين",
+      "image": "https://k.top4top.io/p_3599yg6t41.png?v=1",
+      "isPaid": true,
       "classes": [
         {
           "name": "الوحدة الأولى (كاملة)",
           "lectures": [
             {
               "title": "المحاضرة 1",
-              "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
-            },
-            {
-              "title": "المحاضرة 2",
-              "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
+              "description": "خاص بالمشتركين",
+              "url": "https://example.com/lecture1.m3u8"
             }
           ]
         },
@@ -65,9 +50,9 @@
           "name": "الوحدة الثانية",
           "lectures": [
             {
-              "title": "المحاضرة 1: (مدفوع)",
-              "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
+              "title": "المحاضرة 1",
+              "description": "خاص بالمشتركين",
+              "url": "https://example.com/lecture2.m3u8"
             }
           ]
         }
@@ -75,23 +60,18 @@
     },
     {
       "id": 3,
-      "name": "قسم الأدب",
-      "subject": "خاص بالطلاب المشتركين",
-      "image": "https://b.top4top.io/p_3598ea0jg1.png?v=1.1",
-      "isPaid": false,
+      "name": "قسم أساسيات اللغة الإنكليزية",
+      "subject": "تقوية الأساسيات من الصفر",
+      "image": "https://j.top4top.io/p_35986jxil1.jpg?v=1",
+      "isPaid": true,
       "classes": [
         {
-          "name": "الأدب",
+          "name": "الأساسيات",
           "lectures": [
             {
-              "title": "محمد خضير",
-              "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
-            },
-            {
-              "title": "المرجوحة",
-              "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
+              "title": "الدرس 1: الأزمنة",
+              "description": "خاص بالمشتركين",
+              "url": "https://example.com/basic1.m3u8"
             }
           ]
         }
@@ -99,23 +79,18 @@
     },
     {
       "id": 4,
-      "name": "قسم أساسيات اللغة الانكليزية",
-      "subject": "خاص بالطلاب المشتركين",
-      "image": "https://j.top4top.io/p_35986jxil1.jpg?v=1.1",
-      "isPaid": false,
+      "name": "قسم الأدب",
+      "subject": "شرح الأدب والقطع الأدبية",
+      "image": "https://b.top4top.io/p_3598ea0jg1.png?v=1",
+      "isPaid": true,
       "classes": [
         {
-          "name": "الأساسيات",
+          "name": "الأدب",
           "lectures": [
             {
-              "title": "الدرس 1: الأزمنة",
-              "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
-            },
-            {
-              "title": "الدرس 2: المبني للمجهول",
-              "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://youtu.be/QJQSDjCucu8?v=1.1"
+              "title": "محمد خضير",
+              "description": "خاص بالمشتركين",
+              "url": "https://example.com/lit1.m3u8"
             }
           ]
         }
@@ -124,30 +99,18 @@
   ],
   "materials": [
     {
-      "title": "ملزمة الوحدة الأولى",
-      "subject": "قسم المحاضرات",
-      "image": "https://i.ibb.co/P9zYm8y/main-lectures.jpg?v=1.1",
-      "url": "https://example.com/unit1.pdf?v=1.1"
-    },
-    {
-      "title": "ملزمة الأدب كاملة",
-      "subject": "قسم الأدب",
-      "image": "https://i.ibb.co/nnhbW3X/literature.jpg?v=1.1",
-      "url": "https://example.com/literature.pdf?v=1.1"
+      "title": "ملزمة المنهج الكاملة",
+      "subject": "قسم الملازم",
+      "image": "https://i.ibb.co/P9zYm8y/main-lectures.jpg",
+      "url": "https://example.com/book.pdf"
     }
   ],
   "exams": [
     {
-      "title": "امتحان الوحدة الأولى",
-      "subject": "قسم المحاضرات",
-      "image": "https://i.ibb.co/P9zYm8y/main-lectures.jpg?v=1.1",
-      "url": "https://example.com/exam1?v=1.1"
-    },
-    {
-      "title": "امتحان الأدب (محمد خضير)",
-      "subject": "قسم الأدب",
-      "image": "https://i.ibb.co/nnhbW3X/literature.jpg?v=1.1",
-      "url": "https://example.com/exam2?v=1.1"
+      "title": "امتحان المستوى",
+      "subject": "قسم الاختبارات",
+      "image": "https://i.ibb.co/nnhbW3X/literature.jpg",
+      "url": "https://example.com/exam"
     }
   ]
 }
