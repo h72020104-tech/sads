@@ -1049,7 +1049,7 @@
       <div class="modal-content" style="max-width: 400px;">
           <i class="fas fa-ban" style="font-size: 3rem; color: var(--error); margin-bottom: 1rem;"></i>
           <h2>تم إلغاء صلاحية الوصول</h2>
-          <p style="margin-bottom: 2rem; color: var(--text-secondary);">تم إلغاء صلاحية هذا الكود من قبل الإدارة. يرجى التواصل مع الدعم الفني.</p>
+          <p style="margin-bottom: 2rem; color: var(--text-secondary);">تم إلغاء كود التفعيل الخاص بك من قبل الإدارة. يرجى التواصل معهم للاستفسار.</p>
           <a href="#" onclick="event.preventDefault(); openModal('contactModal')" style="background: var(--accent);">
               <i class="fas fa-phone"></i> اتصل للدعم
           </a>
@@ -1301,8 +1301,7 @@
     function updateStudentCounter(codes) {
         try {
             const allCodes = Object.keys(codes);
-            // نحسب الطلاب المفعلين (Active: true)
-            const activatedCodes = allCodes.filter(code => codes[code] && codes[code].active === true);
+            const activatedCodes = allCodes.filter(code => codes[code] && codes[code].used === true);
             const activatedCount = activatedCodes.length;
             
             const counterElement = document.querySelector('#studentCounter span');
@@ -1650,7 +1649,7 @@ function loadContent(type) {
         });
     }
 
-    const fiveMinutesInMs = 5 * 1000; // تم ضبطها لـ 5 ثواني للتجربة، يمكنك إرجاعها لـ 5 دقائق
+    const fiveMinutesInMs = 5 * 60 * 1000;
 
     // التحقق الدوري من حالة الكود (للطرد)
     function checkRevocationStatus() {
@@ -1664,16 +1663,20 @@ function loadContent(type) {
         })
         .then(codesFromServer => {
           const codeStatus = codesFromServer[userCode];
-          // [معدل] يتم الطرد إذا الكود غير موجود أو إذا active = false
-          if (!codeStatus || codeStatus.active === false) { 
+          
+          // [تعديل هام] شرط الطرد: إذا تم حذف الكود نهائياً من الملف
+          // أو إذا لم يعد موجوداً في القائمة
+          if (!codeStatus) { 
               localStorage.removeItem('userAccessCode');
               localStorage.removeItem('isPaidUser');
               localStorage.removeItem('studentName');
               localStorage.removeItem('studentPhone');
               
-              // فتح نافذة الطرد بدلاً من الريلود المباشر
-              openModal('revokedModal');
+              alert('تم إلغاء صلاحية الوصول. تم إزالة الكود الخاص بك من النظام.');
+              window.location.reload();
           }
+          // ملاحظة: إذا كان used: true أو used: false لا نقوم بطرد الطالب الذي دخل بالفعل
+          // لأن used: true تعني أنه "مستخدم ونشط".
         })
         .catch(error => {
           console.error('فشل في جلب ملف الرموز للتحقق الدوري:', error);
@@ -1688,8 +1691,10 @@ function loadContent(type) {
     
     // ** [معدل] منطق الدخول المجاني/المدفوع **
     
-    // التعديل 5: دالة الدخول للوضع المجاني
+    // التعديل 5: دالة الدخول للوضع المجاني (مع حفظ الموافقة)
     function enterFreeMode() {
+        localStorage.setItem('freeModeAccepted', 'true'); // حفظ الموافقة لمرة واحدة
+        
         closeModal('warningModal'); // إغلاق مودال التحذير
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
@@ -1718,7 +1723,6 @@ function loadContent(type) {
 
     // [جديد] رسالة الترقية (عند الضغط على الملازم/الامتحانات في الوضع المجاني)
     function showUpgradeModal() {
-        //alert('هذه الميزة خاصة بالدورة الالكترونية. يرجى الضغط على زر "لدي كود تفعيل" أو "اتصل للاشتراك".');
         openModal('upgradeModal');
     }
 
@@ -1730,9 +1734,7 @@ function loadContent(type) {
 function loginSuccess(code, name, phone) {
     localStorage.setItem('userAccessCode', code);
     localStorage.setItem('isPaidUser', 'true');
-    // [جديد]
     localStorage.setItem('studentName', name);
-    // [جديد]
     localStorage.setItem('studentPhone', phone);
     
     closeModal('loginModal');
@@ -1775,6 +1777,7 @@ function loginSuccess(code, name, phone) {
     function checkAutoLogin() {
         const isPaid = localStorage.getItem('isPaidUser') === 'true';
         const savedCode = localStorage.getItem('userAccessCode');
+        const freeModeAccepted = localStorage.getItem('freeModeAccepted') === 'true'; // التحقق من الموافقة السابقة
         
         // إذا كان مسجلاً كمدفوع، حاول تسجيل الدخول التلقائي
         if (isPaid && savedCode) {
@@ -1786,23 +1789,28 @@ function loginSuccess(code, name, phone) {
                  return;
             }
             
+            // التحقق من وجود الكود في القاعدة الحالية
             if (accessCodeDatabase.hasOwnProperty(savedCode)) {
-                const codeDetails = accessCodeDatabase[savedCode];
-                const savedName = localStorage.getItem('studentName') || 'N/A';
-                const savedPhone = localStorage.getItem('studentPhone') || 'N/A';
-
-                // [معدل] الشرط هو أن يكون active = true
-                if (codeDetails.active === true) {
-                    console.log('دخول تلقائي ناجح (مستخدم مُفعّل).');
-                    loginSuccess(savedCode, savedName, savedPhone);
-                    return; // تم الدخول بنجاح
-                }
+                 // إذا كان الكود موجود، اسمح بالدخول حتى لو كان used: true (لأنه نفس المستخدم)
+                 // أو used: false (لم يتم قفله بعد)
+                 const savedName = localStorage.getItem('studentName') || 'طالب';
+                 const savedPhone = localStorage.getItem('studentPhone') || '00';
+                 loginSuccess(savedCode, savedName, savedPhone);
+                 return; 
+            } else {
+                // الكود غير موجود في القاعدة (تم حذفه) -> لا يتم تسجيل الدخول التلقائي
+                // سيظهر مودال التحذير أو الدخول المجاني
             }
         }
         
-        // إذا فشل الدخول التلقائي أو لم يكن مسجلاً كمدفوع، اعرض التحذير
-        // هذا هو المسار الافتراضي
-        openModal('warningModal');
+        // إذا لم يكن هناك دخول تلقائي:
+        // تحقق هل وافق المستخدم سابقاً على الوضع المجاني؟
+        if (freeModeAccepted) {
+            enterFreeMode(); // الدخول مباشرة للوضع المجاني دون إظهار التحذير
+        } else {
+            // أول مرة يفتح الموقع -> أظهر التحذير
+            openModal('warningModal');
+        }
     }
     
     function loadAccessCodes() {
@@ -1813,7 +1821,7 @@ function loginSuccess(code, name, phone) {
             console.warn('وضع التجربة المحلية مفعل. استخدم الكود: DEMO');
             if (counterElement) counterElement.style.display = 'none';
             accessCodeDatabase = {
-                [DEMO_CODE]: { active: true, studentName: "طالب تجريبي", studentPhone: "00000000000" }
+                [DEMO_CODE]: { used: true, device: "local", studentName: "طالب تجريبي", studentPhone: "00000000000" }
             };
             checkAutoLogin();
             return;
@@ -1834,13 +1842,13 @@ function loginSuccess(code, name, phone) {
             })
             .catch(err => {
                 console.error('خطأ فادح في تحميل الأكواد:', err);
-                // عرض التحذير الأولي حتى لو فشل تحميل الأكواد
-                openModal('warningModal');
+                // في حال الفشل، حاول الدخول حسب الحالة المحفوظة محلياً
+                checkAutoLogin();
                 if (counterElement) counterElement.style.display = 'none';
             });
     }
 
-    // [معدل] دالة التحقق من الكود
+    // [معدل] دالة التحقق من الكود (عند تسجيل الدخول الجديد)
     function checkAccessCode() {
         const nameInput = document.getElementById('studentNameInput');
         const phoneInput = document.getElementById('studentPhoneInput');
@@ -1869,20 +1877,21 @@ function loginSuccess(code, name, phone) {
         if (accessCodeDatabase.hasOwnProperty(enteredCode)) {
             const codeDetails = accessCodeDatabase[enteredCode];
 
-            // [معدل] التحقق بناءً على active
-            if (codeDetails.active === true) {
-                // الكود فعال، نسمح بالدخول
-                console.warn(`تم تفعيل الكود: ${enteredCode} للطالب: ${studentName} (${studentPhone}).`);
-                // نقوم بتسجيل دخوله افتراضياً
-                loginSuccess(enteredCode, studentName, studentPhone);
-                alert(`تم تفعيل الكود بنجاح.`);
-            } else {
-                // الكود غير فعال (active: false)
-                errorElement.innerText = 'هذا الكود غير فعال أو تم حظره.';
+            // [تعديل هام] شرط الدخول الجديد
+            if (codeDetails.used === true) {
+                // الكود مستخدم بالفعل -> منع الدخول الجديد
+                errorElement.innerText = 'عذراً، هذا الكود مستخدم بالفعل من قبل طالب آخر.';
                 errorElement.style.display = 'block';
+            } else {
+                // الكود used: false (جديد وغير مستخدم) -> اسمح بالدخول
+                // ملاحظة: يجب عليك لاحقاً تغيير used إلى true في ملف json يدوياً لقفل الكود على هذا الطالب
+                console.warn(`تم استخدام الكود: ${enteredCode}. يرجى من الأدمن تغيير حالته إلى used: true في الملف.`);
+                
+                loginSuccess(enteredCode, studentName, studentPhone);
+                alert(`تم تفعيل الكود بنجاح. أهلاً بك يا ${studentName}`);
             }
         } else {
-            errorElement.innerText = 'كود الدخول غير صحيح. حاول مرة أخرى.';
+            errorElement.innerText = 'كود الدخول غير صحيح أو تم إزالته.';
             errorElement.style.display = 'block';
         }
     }
@@ -1900,7 +1909,6 @@ function loginSuccess(code, name, phone) {
       document.body.style.overflow = 'hidden';
       
       // [معدل] بدء تحميل الأكواد أولاً، وعند الانتهاء ستقرر دالة checkAutoLogin
-      // ما إذا كانت ستعرض التحذير أو تسجل الدخول التلقائي
       loadAccessCodes();
     });
   </script>
