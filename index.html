@@ -1478,8 +1478,8 @@
       const container = document.querySelector('.video-container');
 
       // إعداد العلامة المائية
-      const savedName = localStorage.getItem('studentName') || 'طالب منصة التفوق';
-      const savedPhone = localStorage.getItem('studentPhone') || '964770xxxxxxx';
+      const savedName = localStorage.getItem('studentName') || '';
+      const savedPhone = localStorage.getItem('studentPhone') || '';
       const watermark = document.getElementById('videoWatermark');
       if (watermark) {
           watermark.textContent = `${savedName} - ${savedPhone}`;
@@ -1916,3 +1916,4 @@
   </script>
  </body>
 </html>
+
