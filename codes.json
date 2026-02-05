@@ -1,4452 +1,1471 @@
-  "1234554312": {
-    "used": true,
-    "device": null,
+{
+  "201133": {
+    "active": true,
+    "studentName": null,
+    "studentPhone": null
+  },
+  "123409876919": {
+    "active": true,
+    "studentName": null,
+    "studentPhone": null
+  },
+  "5IS6-3UV4-2ITW-NTKG": {
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "3ZMM-DBTU-M83Q-KHUX": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B368-GMQA-OBL5-G03A": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "EN7X-2NJM-6QNX-MUTZ": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "QCAB-HFE9-5UQB-SVCJ": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "FKOR-SMEM-GM19-62HS": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "3MOH-1CX3-ZCTC-RWMW": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "U4DE-D58D-WS4Y-B3UR": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "HT21-8OZX-CG2U-4QV3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "OR91-Y7IC-NF53-WPY2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "0J0V-ZN9Z-9N6E-DZ1R": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P8P1-H306-JNKK-EPGX": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "5VXD-ZY0E-RG78-KU3B": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "CO23-0V5U-FLYQ-T0UV": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z7V3-2E1X-XNHA-NA17": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "LI7L-RQ24-6ZUY-VTTF": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "7IPL-WOLX-S3VW-09OA": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "SXB7-UCOL-S8KK-ATFI": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "MNME-2QJ9-52XC-7OU6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "DWJA-VK7F-ZXT1-UHIN": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "DMPV-CFEN-VN7H-JHA1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "1UUP-9QLN-FQKC-U0WF": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "4CTE-2WOC-749C-BN3R": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z3OB-ZK6J-SCAH-E7S2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "6YUE-AFNE-8HA2-13QQ": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T2ZO-2A8C-CBGM-EHYO": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "8CMP-OF77-YKPX-0WIQ": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "MLPX-C9T2-F7D6-U7Z3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "HNX5-GSJC-AUU7-DFX8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D1GJ-7VQV-5E7E-SJFC": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z5AX-4VQW-0F4T-RX2S": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I8F7-CGXK-XJPR-PE3I": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M4CP-VIA9-5IDR-GHWN": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "IA63-PCL5-GSZF-6A3E": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "KL85-O0I3-9NN0-B8JP": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "QE4O-1U1P-F8GH-8VKJ": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "YIE6-1BR3-IW6K-67PU": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "2EM3-XN1S-R2OJ-EHLW": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "66NL-1R9Y-JAEM-ZM8B": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H1NP-TUPD-5DU4-APAD": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "EFHU-55EO-GO5V-38SF": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "03FK-FMX7-NWQQ-IR78": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N06O-J0W5-I1MJ-QKIU": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "OSP6-BFI5-HGKR-T7QG": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "26Y0-JH23-LMOE-088N": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "89W6-2LP6-7OHT-S8J0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "K0B0-J94Y-G6J6-LST2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "722Q-S3E7-9J8Y-VJ8K": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "5N6F-W3P9-7C2J-8L4H": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "G7XJ-D8A2-E4T9-B1QY": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M0V4-H2R6-P9C1-F7K3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T1W5-Y3Z7-X0Q8-N6B2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A9U0-B5S2-K4D6-J8E1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q3Z1-M9V8-C5N7-L2X4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H6J4-F0I7-E3G9-S2T5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R8K1-P6T0-Z4Y3-W9V7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C5B0-D2A4-F7E6-G8H9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I1J3-L5K7-M9N0-P2Q4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "O6S8-R0T2-V4U5-X7Z9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W2Y4-B6D8-A0C1-E3F5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "G7H9-J1K3-L5M0-N2P4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q6R8-T0V2-X4Z5-Y7W9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B3C5-D7E9-F1G3-H5I7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "J0L2-N4P6-R8S9-T1U3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "V5X7-Z9Y1-W3U4-S6R8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E9G1-I3K5-M7O0-Q2S4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P4R6-T8V0-X2Z3-Y5W7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A1B3-C5D7-E9F0-G2H4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "K8M0-O2Q4-S6U7-V9X1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z3Y5-W7U9-S1R3-P5O7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I2J4-L6N8-P0Q1-R3S5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T7V9-X1Z3-Y5W0-U2S4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D6F8-H0J2-L4M6-N8P9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q1S3-U5W7-Y9Z0-A2B4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C0E2-G4I6-K8M1-O3Q5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R5T7-V9X1-Z3Y4-W6U8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L9N1-P3R5-S7T0-V2X4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "F2H4-J6L8-N0P1-R3S5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W7Y9-A1C3-E5G6-I8K0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M4O6-Q8S0-U2V3-X5Z7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P1R3-T5V7-X9Y0-W2U4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B6D8-F0H2-J4K6-L8M9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N3P5-R7S9-T1V3-X5Z7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H0J2-L4N6-P8Q9-R1S3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T5V7-X9Y1-Z3W4-U6S8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E4G6-I8K0-M2O3-Q5S7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A9C1-E3F5-G7H9-J0K2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L7N9-P1R3-S5T7-V9X0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I4K6-M8O0-Q2S4-U6V8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D1F3-H5J7-L9M0-N2P4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q6R8-T0V2-X4Z5-Y7W9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C3E5-G7I9-K1M3-O5Q7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L2N4-P6R8-S0T1-V3X5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "F7H9-J1K3-L5M7-N9P0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W4Y6-A8C0-E2G3-I5K7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M9O1-Q3S5-U7V9-X1Z3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B1D3-F5H7-J9K0-L2M4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N8P0-R2S4-T6V8-X0Z1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H5J7-L9N1-P3Q5-R7S9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T0V2-X4Z6-Y8W1-U3S5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E9G1-I3K5-M7O9-Q0S2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A4C6-E8F0-G2H4-J6K8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L3N5-P7R9-S1T3-V5X7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z0Y2-W4U6-T8S9-R1Q3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I7K9-M1O3-Q5S7-U9V0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D4F6-H8J0-L2N4-P6Q8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q9R1-T3V5-X7Z9-Y0W2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C6E8-G0I2-K4M6-O8Q9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R3T5-V7X9-Z1Y2-W4U6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L7N9-P1R3-S5T7-V9X0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "F0H2-J4L6-N8P1-R3S5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W5Y7-A9C1-E3G4-I6K8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M2O4-Q6S8-U0V2-X4Z6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P7R9-T1V3-X5Z7-Y9W0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B2D4-F6H8-J0K1-L3M5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N9P1-R3S5-T7V9-X1Z3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H6J8-L0N2-P4Q6-R8S9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T1V3-X5Z7-Y9W0-U2S4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E0G2-I4K6-M8O9-Q1S3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A5C7-E9F1-G3H5-J7K9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z1Y3-W5U7-T9S0-R2Q4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I8K0-M2O4-Q6S8-U0V2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D5F7-H9J1-L3N5-P7Q9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q0R2-T4V6-X8Z1-Y3W5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C7E9-G1I3-K5M7-O9Q0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R4T6-V8X0-Z2Y3-W5U7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L1N3-P5R7-S9T0-V2X4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "F6H8-J0L2-N4P6-R8S9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W3Y5-A7C9-E1G2-I4K6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M8O0-Q2S4-U6V8-X0Z2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P5R7-T9V1-X3Z5-Y7W9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B0D2-F4H6-J8K9-L1M3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N7P9-R1S3-T5V7-X9Z1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H4J6-L8N0-P2Q4-R6S8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T9V1-X3Z5-Y7W8-U0S2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E3G5-I7K9-M1O3-Q5S7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A8C0-E2F4-G6H8-J0K2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I1K3-M5O7-Q9S0-U2V4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D8F0-H2J4-L6N8-P0Q2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q3R5-T7V9-X1Z3-Y5W7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C0E2-G4I6-K8M0-O2Q4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R7T9-V1X3-Z5Y6-W8U0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "F9H1-J3K5-L7M9-N1P3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W6Y8-A0C2-E4G5-I7K9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M3O5-Q7S9-U1V3-X5Z7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P0R2-T4V6-X8Z0-Y2W4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B5D7-F9H1-J3K5-L7M9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N2P4-R6S8-T0V2-X4Z6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H9J1-L3N5-P7Q9-R1S3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T4V6-X8Z0-Y2W3-U5S7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E2G4-I6K8-M0O2-Q4S6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A7C9-E1F3-G5H7-J9K1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L6N8-P0R2-S4T6-V8X0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z3Y5-W7U9-T1S3-R5Q7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I2K4-M6O8-Q0S2-U4V6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D9F1-H3J5-L7N9-P1Q3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q4R6-T8V0-X2Z4-Y6W8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C1E3-G5I7-K9M1-O3Q5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "F0H2-J4L6-N8P0-R2S4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W7Y9-A1C3-E5G6-I8K0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M4O6-Q8S0-U2V4-X6Z8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P1R3-T5V7-X9Z1-Y3W5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B6D8-F0H2-J4K6-L8M0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N3P5-R7S9-T1V3-X5Z7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H0J2-L4N6-P8Q0-R2S4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T5V7-X9Z1-Y3W4-U6S8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E4G6-I8K0-M2O4-Q6S8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A9C1-E3F5-G7H9-J0K2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L7N9-P1R3-S5T7-V9X1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I4K6-M8O0-Q2S4-U6V8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D1F3-H5J7-L9M0-N2P4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C3E5-G7I9-K1M3-O5Q7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L2N4-P6R8-S0T1-V3X5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "F7H9-J1K3-L5M7-N9P0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W4Y6-A8C0-E2G3-I5K7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M9O1-Q3S5-U7V9-X1Z3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B1D3-F5H7-J9K0-L2M4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N8P0-R2S4-T6V8-X0Z1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H5J7-L9N1-P3Q5-R7S9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T0V2-X4Z6-Y8W1-U3S5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E9G1-I3K5-M7O9-Q0S2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A4C6-E8F0-G2H4-J6K8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L3N5-P7R9-S1T3-V5X7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z0Y2-W4U6-T8S9-R1Q3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I7K9-M1O3-Q5S7-U9V0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D4F6-H8J0-L2N4-P6Q8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q9R1-T3V5-X7Z9-Y0W2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C6E8-G0I2-K4M6-O8Q9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R3T5-V7X9-Z1Y2-W4U6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L7N9-P1R3-S5T7-V9X0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "F0H2-J4L6-N8P1-R3S5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W5Y7-A9C1-E3G4-I6K8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M2O4-Q6S8-U0V2-X4Z6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P7R9-T1V3-X5Z7-Y9W0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B2D4-F6H8-J0K1-L3M5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N9P1-R3S5-T7V9-X1Z3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H6J8-L0N2-P4Q6-R8S9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T1V3-X5Z7-Y9W0-U2S4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E0G2-I4K6-M8O9-Q1S3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A5C7-E9F1-G3H5-J7K9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z1Y3-W5U7-T9S0-R2Q4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I8K0-M2O4-Q6S8-U0V2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D5F7-H9J1-L3N5-P7Q9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q0R2-T4V6-X8Z1-Y3W5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C7E9-G1I3-K5M7-O9Q0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R4T6-V8X0-Z2Y3-W5U7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L1N3-P5R7-S9T0-V2X4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "F6H8-J0L2-N4P6-R8S9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W3Y5-A7C9-E1G2-I4K6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M8O0-Q2S4-U6V8-X0Z2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P5R7-T9V1-X3Z5-Y7W9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B0D2-F4H6-J8K9-L1M3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N7P9-R1S3-T5V7-X9Z1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H4J6-L8N0-P2Q4-R6S8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T9V1-X3Z5-Y7W8-U0S2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E3G5-I7K9-M1O3-Q5S7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A8C0-E2F4-G6H8-J0K2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I1K3-M5O7-Q9S0-U2V4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D8F0-H2J4-L6N8-P0Q2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q3R5-T7V9-X1Z3-Y5W7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C0E2-G4I6-K8M0-O2Q4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R7T9-V1X3-Z5Y6-W8U0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "F9H1-J3K5-L7M9-N1P3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W6Y8-A0C2-E4G5-I7K9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M3O5-Q7S9-U1V3-X5Z7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P0R2-T4V6-X8Z0-Y2W4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B5D7-F9H1-J3K5-L7M9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N2P4-R6S8-T0V2-X4Z6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H9J1-L3N5-P7Q9-R1S3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T4V6-X8Z0-Y2W3-U5S7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E2G4-I6K8-M0O2-Q4S6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A7C9-E1F3-G5H7-J9K1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L6N8-P0R2-S4T6-V8X0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z3Y5-W7U9-T1S3-R5Q7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I2K4-M6O8-Q0S2-U4V6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D9F1-H3J5-L7N9-P1Q3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q4R6-T8V0-X2Z4-Y6W8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C1E3-G5I7-K9M1-O3Q5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "F0H2-J4L6-N8P0-R2S4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W7Y9-A1C3-E5G6-I8K0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M4O6-Q8S0-U2V4-X6Z8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P1R3-T5V7-X9Z1-Y3W5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B6D8-F0H2-J4K6-L8M0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N3P5-R7S9-T1V3-X5Z7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H0J2-L4N6-P8Q0-R2S4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T5V7-X9Z1-Y3W4-U6S8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E4G6-I8K0-M2O4-Q6S8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A9C1-E3F5-G7H9-J0K2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L7N9-P1R3-S5T7-V9X1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I4K6-M8O0-Q2S4-U6V8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D1F3-H5J7-L9M0-N2P4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C3E5-G7I9-K1M3-O5Q7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L2N4-P6R8-S0T1-V3X5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "F7H9-J1K3-L5M7-N9P0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "W4Y6-A8C0-E2G3-I5K7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "M9O1-Q3S5-U7V9-X1Z3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "P6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "B1D3-F5H7-J9K0-L2M4": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "N8P0-R2S4-T6V8-X0Z1": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "H5J7-L9N1-P3Q5-R7S9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "T0V2-X4Z6-Y8W1-U3S5": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "E9G1-I3K5-M7O9-Q0S2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "A4C6-E8F0-G2H4-J6K8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "L3N5-P7R9-S1T3-V5X7": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Z0Y2-W4U6-T8S9-R1Q3": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "I7K9-M1O3-Q5S7-U9V0": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "D4F6-H8J0-L2N4-P6Q8": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "Q9R1-T3V5-X7Z9-Y0W2": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "C6E8-G0I2-K4M6-O8Q9": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   },
   "R3T5-V7X9-Z1Y2-W4U6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L7N9-P1R3-S5T7-V9X0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F0H2-J4L6-N8P1-R3S5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W5Y7-A9C1-E3G4-I6K8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M2O4-Q6S8-U0V2-X4Z6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P7R9-T1V3-X5Z7-Y9W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B2D4-F6H8-J0K1-L3M5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N9P1-R3S5-T7V9-X1Z3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H6J8-L0N2-P4Q6-R8S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T1V3-X5Z7-Y9W0-U2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E0G2-I4K6-M8O9-Q1S3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A5C7-E9F1-G3H5-J7K9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z1Y3-W5U7-T9S0-R2Q4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I8K0-M2O4-Q6S8-U0V2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D5F7-H9J1-L3N5-P7Q9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q0R2-T4V6-X8Z1-Y3W5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C7E9-G1I3-K5M7-O9Q0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R4T6-V8X0-Z2Y3-W5U7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L1N3-P5R7-S9T0-V2X4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F6H8-J0L2-N4P6-R8S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W3Y5-A7C9-E1G2-I4K6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M8O0-Q2S4-U6V8-X0Z2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P5R7-T9V1-X3Z5-Y7W9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B0D2-F4H6-J8K9-L1M3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N7P9-R1S3-T5V7-X9Z1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H4J6-L8N0-P2Q4-R6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T9V1-X3Z5-Y7W8-U0S2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E3G5-I7K9-M1O3-Q5S7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A8C0-E2F4-G6H8-J0K2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I1K3-M5O7-Q9S0-U2V4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D8F0-H2J4-L6N8-P0Q2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q3R5-T7V9-X1Z3-Y5W7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C0E2-G4I6-K8M0-O2Q4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R7T9-V1X3-Z5Y6-W8U0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F9H1-J3K5-L7M9-N1P3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W6Y8-A0C2-E4G5-I7K9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M3O5-Q7S9-U1V3-X5Z7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P0R2-T4V6-X8Z0-Y2W4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B5D7-F9H1-J3K5-L7M9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N2P4-R6S8-T0V2-X4Z6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H9J1-L3N5-P7Q9-R1S3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T4V6-X8Z0-Y2W3-U5S7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E2G4-I6K8-M0O2-Q4S6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A7C9-E1F3-G5H7-J9K1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L6N8-P0R2-S4T6-V8X0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z3Y5-W7U9-T1S3-R5Q7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I2K4-M6O8-Q0S2-U4V6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D9F1-H3J5-L7N9-P1Q3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q4R6-T8V0-X2Z4-Y6W8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C1E3-G5I7-K9M1-O3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F0H2-J4L6-N8P0-R2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W7Y9-A1C3-E5G6-I8K0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M4O6-Q8S0-U2V4-X6Z8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P1R3-T5V7-X9Z1-Y3W5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B6D8-F0H2-J4K6-L8M0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N3P5-R7S9-T1V3-X5Z7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H0J2-L4N6-P8Q0-R2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T5V7-X9Z1-Y3W4-U6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E4G6-I8K0-M2O4-Q6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A9C1-E3F5-G7H9-J0K2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L7N9-P1R3-S5T7-V9X1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I4K6-M8O0-Q2S4-U6V8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D1F3-H5J7-L9M0-N2P4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C3E5-G7I9-K1M3-O5Q7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L2N4-P6R8-S0T1-V3X5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F7H9-J1K3-L5M7-N9P0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W4Y6-A8C0-E2G3-I5K7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M9O1-Q3S5-U7V9-X1Z3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B1D3-F5H7-J9K0-L2M4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N8P0-R2S4-T6V8-X0Z1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H5J7-L9N1-P3Q5-R7S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T0V2-X4Z6-Y8W1-U3S5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E9G1-I3K5-M7O9-Q0S2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A4C6-E8F0-G2H4-J6K8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L3N5-P7R9-S1T3-V5X7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z0Y2-W4U6-T8S9-R1Q3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I7K9-M1O3-Q5S7-U9V0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D4F6-H8J0-L2N4-P6Q8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q9R1-T3V5-X7Z9-Y0W2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C6E8-G0I2-K4M6-O8Q9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R3T5-V7X9-Z1Y2-W4U6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L7N9-P1R3-S5T7-V9X0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F0H2-J4L6-N8P1-R3S5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W5Y7-A9C1-E3G4-I6K8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M2O4-Q6S8-U0V2-X4Z6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P7R9-T1V3-X5Z7-Y9W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B2D4-F6H8-J0K1-L3M5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N9P1-R3S5-T7V9-X1Z3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H6J8-L0N2-P4Q6-R8S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T1V3-X5Z7-Y9W0-U2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E0G2-I4K6-M8O9-Q1S3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A5C7-E9F1-G3H5-J7K9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z1Y3-W5U7-T9S0-R2Q4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I8K0-M2O4-Q6S8-U0V2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D5F7-H9J1-L3N5-P7Q9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q0R2-T4V6-X8Z1-Y3W5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C7E9-G1I3-K5M7-O9Q0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R4T6-V8X0-Z2Y3-W5U7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L1N3-P5R7-S9T0-V2X4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F6H8-J0L2-N4P6-R8S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W3Y5-A7C9-E1G2-I4K6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M8O0-Q2S4-U6V8-X0Z2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P5R7-T9V1-X3Z5-Y7W9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B0D2-F4H6-J8K9-L1M3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N7P9-R1S3-T5V7-X9Z1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H4J6-L8N0-P2Q4-R6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T9V1-X3Z5-Y7W8-U0S2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E3G5-I7K9-M1O3-Q5S7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A8C0-E2F4-G6H8-J0K2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I1K3-M5O7-Q9S0-U2V4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D8F0-H2J4-L6N8-P0Q2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q3R5-T7V9-X1Z3-Y5W7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C0E2-G4I6-K8M0-O2Q4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R7T9-V1X3-Z5Y6-W8U0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F9H1-J3K5-L7M9-N1P3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W6Y8-A0C2-E4G5-I7K9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M3O5-Q7S9-U1V3-X5Z7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P0R2-T4V6-X8Z0-Y2W4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B5D7-F9H1-J3K5-L7M9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N2P4-R6S8-T0V2-X4Z6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H9J1-L3N5-P7Q9-R1S3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T4V6-X8Z0-Y2W3-U5S7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E2G4-I6K8-M0O2-Q4S6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A7C9-E1F3-G5H7-J9K1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L6N8-P0R2-S4T6-V8X0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z3Y5-W7U9-T1S3-R5Q7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I2K4-M6O8-Q0S2-U4V6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D9F1-H3J5-L7N9-P1Q3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q4R6-T8V0-X2Z4-Y6W8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C1E3-G5I7-K9M1-O3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F0H2-J4L6-N8P0-R2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W7Y9-A1C3-E5G6-I8K0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M4O6-Q8S0-U2V4-X6Z8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P1R3-T5V7-X9Z1-Y3W5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B6D8-F0H2-J4K6-L8M0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N3P5-R7S9-T1V3-X5Z7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H0J2-L4N6-P8Q0-R2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T5V7-X9Z1-Y3W4-U6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E4G6-I8K0-M2O4-Q6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A9C1-E3F5-G7H9-J0K2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L7N9-P1R3-S5T7-V9X1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I4K6-M8O0-Q2S4-U6V8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D1F3-H5J7-L9M0-N2P4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C3E5-G7I9-K1M3-O5Q7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L2N4-P6R8-S0T1-V3X5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F7H9-J1K3-L5M7-N9P0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W4Y6-A8C0-E2G3-I5K7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M9O1-Q3S5-U7V9-X1Z3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B1D3-F5H7-J9K0-L2M4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N8P0-R2S4-T6V8-X0Z1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H5J7-L9N1-P3Q5-R7S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T0V2-X4Z6-Y8W1-U3S5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E9G1-I3K5-M7O9-Q0S2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A4C6-E8F0-G2H4-J6K8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L3N5-P7R9-S1T3-V5X7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z0Y2-W4U6-T8S9-R1Q3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I7K9-M1O3-Q5S7-U9V0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D4F6-H8J0-L2N4-P6Q8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q9R1-T3V5-X7Z9-Y0W2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C6E8-G0I2-K4M6-O8Q9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R3T5-V7X9-Z1Y2-W4U6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L7N9-P1R3-S5T7-V9X0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F0H2-J4L6-N8P1-R3S5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W5Y7-A9C1-E3G4-I6K8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M2O4-Q6S8-U0V2-X4Z6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P7R9-T1V3-X5Z7-Y9W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B2D4-F6H8-J0K1-L3M5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N9P1-R3S5-T7V9-X1Z3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H6J8-L0N2-P4Q6-R8S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T1V3-X5Z7-Y9W0-U2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E0G2-I4K6-M8O9-Q1S3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A5C7-E9F1-G3H5-J7K9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z1Y3-W5U7-T9S0-R2Q4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I8K0-M2O4-Q6S8-U0V2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D5F7-H9J1-L3N5-P7Q9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q0R2-T4V6-X8Z1-Y3W5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C7E9-G1I3-K5M7-O9Q0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R4T6-V8X0-Z2Y3-W5U7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L1N3-P5R7-S9T0-V2X4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F6H8-J0L2-N4P6-R8S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W3Y5-A7C9-E1G2-I4K6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M8O0-Q2S4-U6V8-X0Z2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P5R7-T9V1-X3Z5-Y7W9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B0D2-F4H6-J8K9-L1M3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N7P9-R1S3-T5V7-X9Z1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H4J6-L8N0-P2Q4-R6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T9V1-X3Z5-Y7W8-U0S2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E3G5-I7K9-M1O3-Q5S7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A8C0-E2F4-G6H8-J0K2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I1K3-M5O7-Q9S0-U2V4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D8F0-H2J4-L6N8-P0Q2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q3R5-T7V9-X1Z3-Y5W7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C0E2-G4I6-K8M0-O2Q4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R7T9-V1X3-Z5Y6-W8U0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F9H1-J3K5-L7M9-N1P3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W6Y8-A0C2-E4G5-I7K9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M3O5-Q7S9-U1V3-X5Z7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P0R2-T4V6-X8Z0-Y2W4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B5D7-F9H1-J3K5-L7M9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N2P4-R6S8-T0V2-X4Z6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H9J1-L3N5-P7Q9-R1S3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T4V6-X8Z0-Y2W3-U5S7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E2G4-I6K8-M0O2-Q4S6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A7C9-E1F3-G5H7-J9K1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L6N8-P0R2-S4T6-V8X0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z3Y5-W7U9-T1S3-R5Q7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I2K4-M6O8-Q0S2-U4V6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D9F1-H3J5-L7N9-P1Q3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q4R6-T8V0-X2Z4-Y6W8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C1E3-G5I7-K9M1-O3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F0H2-J4L6-N8P0-R2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W7Y9-A1C3-E5G6-I8K0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M4O6-Q8S0-U2V4-X6Z8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P1R3-T5V7-X9Z1-Y3W5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B6D8-F0H2-J4K6-L8M0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N3P5-R7S9-T1V3-X5Z7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H0J2-L4N6-P8Q0-R2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T5V7-X9Z1-Y3W4-U6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E4G6-I8K0-M2O4-Q6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A9C1-E3F5-G7H9-J0K2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L7N9-P1R3-S5T7-V9X1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I4K6-M8O0-Q2S4-U6V8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D1F3-H5J7-L9M0-N2P4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C3E5-G7I9-K1M3-O5Q7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L2N4-P6R8-S0T1-V3X5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F7H9-J1K3-L5M7-N9P0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W4Y6-A8C0-E2G3-I5K7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M9O1-Q3S5-U7V9-X1Z3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B1D3-F5H7-J9K0-L2M4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N8P0-R2S4-T6V8-X0Z1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H5J7-L9N1-P3Q5-R7S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T0V2-X4Z6-Y8W1-U3S5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E9G1-I3K5-M7O9-Q0S2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A4C6-E8F0-G2H4-J6K8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L3N5-P7R9-S1T3-V5X7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z0Y2-W4U6-T8S9-R1Q3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I7K9-M1O3-Q5S7-U9V0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D4F6-H8J0-L2N4-P6Q8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q9R1-T3V5-X7Z9-Y0W2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C6E8-G0I2-K4M6-O8Q9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R3T5-V7X9-Z1Y2-W4U6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L7N9-P1R3-S5T7-V9X0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F0H2-J4L6-N8P1-R3S5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W5Y7-A9C1-E3G4-I6K8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M2O4-Q6S8-U0V2-X4Z6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P7R9-T1V3-X5Z7-Y9W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B2D4-F6H8-J0K1-L3M5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N9P1-R3S5-T7V9-X1Z3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H6J8-L0N2-P4Q6-R8S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T1V3-X5Z7-Y9W0-U2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E0G2-I4K6-M8O9-Q1S3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A5C7-E9F1-G3H5-J7K9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z1Y3-W5U7-T9S0-R2Q4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I8K0-M2O4-Q6S8-U0V2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D5F7-H9J1-L3N5-P7Q9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q0R2-T4V6-X8Z1-Y3W5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C7E9-G1I3-K5M7-O9Q0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R4T6-V8X0-Z2Y3-W5U7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L1N3-P5R7-S9T0-V2X4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F6H8-J0L2-N4P6-R8S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W3Y5-A7C9-E1G2-I4K6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M8O0-Q2S4-U6V8-X0Z2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P5R7-T9V1-X3Z5-Y7W9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B0D2-F4H6-J8K9-L1M3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N7P9-R1S3-T5V7-X9Z1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H4J6-L8N0-P2Q4-R6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T9V1-X3Z5-Y7W8-U0S2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E3G5-I7K9-M1O3-Q5S7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A8C0-E2F4-G6H8-J0K2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I1K3-M5O7-Q9S0-U2V4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D8F0-H2J4-L6N8-P0Q2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q3R5-T7V9-X1Z3-Y5W7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C0E2-G4I6-K8M0-O2Q4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R7T9-V1X3-Z5Y6-W8U0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F9H1-J3K5-L7M9-N1P3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W6Y8-A0C2-E4G5-I7K9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M3O5-Q7S9-U1V3-X5Z7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P0R2-T4V6-X8Z0-Y2W4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B5D7-F9H1-J3K5-L7M9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N2P4-R6S8-T0V2-X4Z6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H9J1-L3N5-P7Q9-R1S3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T4V6-X8Z0-Y2W3-U5S7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E2G4-I6K8-M0O2-Q4S6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A7C9-E1F3-G5H7-J9K1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L6N8-P0R2-S4T6-V8X0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z3Y5-W7U9-T1S3-R5Q7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I2K4-M6O8-Q0S2-U4V6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D9F1-H3J5-L7N9-P1Q3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q4R6-T8V0-X2Z4-Y6W8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C1E3-G5I7-K9M1-O3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F0H2-J4L6-N8P0-R2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W7Y9-A1C3-E5G6-I8K0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M4O6-Q8S0-U2V4-X6Z8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P1R3-T5V7-X9Z1-Y3W5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B6D8-F0H2-J4K6-L8M0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N3P5-R7S9-T1V3-X5Z7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H0J2-L4N6-P8Q0-R2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T5V7-X9Z1-Y3W4-U6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E4G6-I8K0-M2O4-Q6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A9C1-E3F5-G7H9-J0K2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L7N9-P1R3-S5T7-V9X1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I4K6-M8O0-Q2S4-U6V8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D1F3-H5J7-L9M0-N2P4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C3E5-G7I9-K1M3-O5Q7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L2N4-P6R8-S0T1-V3X5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F7H9-J1K3-L5M7-N9P0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W4Y6-A8C0-E2G3-I5K7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M9O1-Q3S5-U7V9-X1Z3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B1D3-F5H7-J9K0-L2M4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N8P0-R2S4-T6V8-X0Z1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H5J7-L9N1-P3Q5-R7S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T0V2-X4Z6-Y8W1-U3S5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E9G1-I3K5-M7O9-Q0S2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A4C6-E8F0-G2H4-J6K8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L3N5-P7R9-S1T3-V5X7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z0Y2-W4U6-T8S9-R1Q3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I7K9-M1O3-Q5S7-U9V0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D4F6-H8J0-L2N4-P6Q8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q9R1-T3V5-X7Z9-Y0W2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C6E8-G0I2-K4M6-O8Q9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R3T5-V7X9-Z1Y2-W4U6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L7N9-P1R3-S5T7-V9X0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F0H2-J4L6-N8P1-R3S5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W5Y7-A9C1-E3G4-I6K8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M2O4-Q6S8-U0V2-X4Z6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P7R9-T1V3-X5Z7-Y9W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B2D4-F6H8-J0K1-L3M5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N9P1-R3S5-T7V9-X1Z3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H6J8-L0N2-P4Q6-R8S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T1V3-X5Z7-Y9W0-U2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E0G2-I4K6-M8O9-Q1S3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A5C7-E9F1-G3H5-J7K9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z1Y3-W5U7-T9S0-R2Q4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I8K0-M2O4-Q6S8-U0V2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D5F7-H9J1-L3N5-P7Q9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q0R2-T4V6-X8Z1-Y3W5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C7E9-G1I3-K5M7-O9Q0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R4T6-V8X0-Z2Y3-W5U7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L1N3-P5R7-S9T0-V2X4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F6H8-J0L2-N4P6-R8S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W3Y5-A7C9-E1G2-I4K6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M8O0-Q2S4-U6V8-X0Z2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P5R7-T9V1-X3Z5-Y7W9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B0D2-F4H6-J8K9-L1M3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N7P9-R1S3-T5V7-X9Z1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H4J6-L8N0-P2Q4-R6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T9V1-X3Z5-Y7W8-U0S2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E3G5-I7K9-M1O3-Q5S7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A8C0-E2F4-G6H8-J0K2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I1K3-M5O7-Q9S0-U2V4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D8F0-H2J4-L6N8-P0Q2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q3R5-T7V9-X1Z3-Y5W7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C0E2-G4I6-K8M0-O2Q4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R7T9-V1X3-Z5Y6-W8U0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L4N6-P8R0-S2T4-V6X8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F9H1-J3K5-L7M9-N1P3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W6Y8-A0C2-E4G5-I7K9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M3O5-Q7S9-U1V3-X5Z7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P0R2-T4V6-X8Z0-Y2W4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B5D7-F9H1-J3K5-L7M9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N2P4-R6S8-T0V2-X4Z6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H9J1-L3N5-P7Q9-R1S3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T4V6-X8Z0-Y2W3-U5S7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E2G4-I6K8-M0O2-Q4S6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A7C9-E1F3-G5H7-J9K1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L6N8-P0R2-S4T6-V8X0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z3Y5-W7U9-T1S3-R5Q7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I2K4-M6O8-Q0S2-U4V6": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D9F1-H3J5-L7N9-P1Q3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q4R6-T8V0-X2Z4-Y6W8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C1E3-G5I7-K9M1-O3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L5N7-P9R1-S3T5-V7X9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F0H2-J4L6-N8P0-R2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W7Y9-A1C3-E5G6-I8K0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M4O6-Q8S0-U2V4-X6Z8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P1R3-T5V7-X9Z1-Y3W5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B6D8-F0H2-J4K6-L8M0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N3P5-R7S9-T1V3-X5Z7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H0J2-L4N6-P8Q0-R2S4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T5V7-X9Z1-Y3W4-U6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E4G6-I8K0-M2O4-Q6S8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A9C1-E3F5-G7H9-J0K2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L7N9-P1R3-S5T7-V9X1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z2Y4-W6U8-T0S1-R3Q5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I4K6-M8O0-Q2S4-U6V8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D1F3-H5J7-L9M0-N2P4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C3E5-G7I9-K1M3-O5Q7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R8T0-V2X4-Z6Y7-W9U1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L2N4-P6R8-S0T1-V3X5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "F7H9-J1K3-L5M7-N9P0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "W4Y6-A8C0-E2G3-I5K7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "M9O1-Q3S5-U7V9-X1Z3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "P6R8-T0V2-X4Z6-Y8W0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "B1D3-F5H7-J9K0-L2M4": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "N8P0-R2S4-T6V8-X0Z1": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "H5J7-L9N1-P3Q5-R7S9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "T0V2-X4Z6-Y8W1-U3S5": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "E9G1-I3K5-M7O9-Q0S2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "A4C6-E8F0-G2H4-J6K8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "L3N5-P7R9-S1T3-V5X7": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Z0Y2-W4U6-T8S9-R1Q3": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "I7K9-M1O3-Q5S7-U9V0": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "D4F6-H8J0-L2N4-P6Q8": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "Q9R1-T3V5-X7Z9-Y0W2": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "C6E8-G0I2-K4M6-O8Q9": {
-    "used": false,
-    "device": null,
-    "studentName": null,
-    "studentPhone": null
-  },
-  "R3T5-V7X9-Z1Y2-W4U6": {
-    "used": false,
-    "device": null,
+    "active": true,
     "studentName": null,
     "studentPhone": null
   }
