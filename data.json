@@ -1,4 +1,4 @@
-const projectData = {
+{
   "teachers": [
     {
       "id": 1,
@@ -13,7 +13,7 @@ const projectData = {
             {
               "title": "المحاضرة 1: (مجانية)",
               "description": "هذه محاضرة تجريبية مجانية.",
-              "url": "https://drive.google.com/file/d/1MBTn9R3-emYWTRnjJ5mqpeDcmCKnaLCQ/view?usp=drivesdk"
+              "url": "https://www.youtube.com/watch?v=_FEATURE_DISABLED_"
             },
             {
               "title": "المحاضرة 2: (مجانية)",
@@ -52,7 +52,7 @@ const projectData = {
             {
               "title": "المحاضرة 1: ",
               "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://youtu.be/QJQSDjCucu8?si=1n78fQKoMH_dpMCd"
+              "url": "https://example.com/lecture1.m3u8"
             },
             {
               "title": "المحاضرة 2: ",
@@ -150,4 +150,4 @@ const projectData = {
       "url": "https://example.com/exam2"
     }
   ]
-};
+}
