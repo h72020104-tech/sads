@@ -1,10 +1,13 @@
+// إضافة بصمة زمنية لضمان عدم التخزين (بدون كاش)
+const cacheBuster = `?v=${Date.now()}`;
+
 const projectData = {
   "teachers": [
     {
       "id": 1,
       "name": "الدورة المجانية",
       "subject": "مقدمة مجانية (الوحدة الأولى)",
-      "image": "https://k.top4top.io/p_3599yg6t41.png",
+      "image": `https://k.top4top.io/p_3599yg6t41.png${cacheBuster}`,
       "isPaid": false,
       "classes": [
         {
@@ -13,27 +16,27 @@ const projectData = {
             {
               "title": "المحاضرة 1: (مجانية)",
               "description": "هذه محاضرة تجريبية مجانية.",
-              "url": "https://dai.ly/k6THmYjd5cA8WXEQcXE"
+              "url": `https://dai.ly/k6THmYjd5cA8WXEQcXE`
             },
             {
               "title": "المحاضرة 2: (مجانية)",
               "description": "هذه محاضرة تجريبية مجانية.",
-              "url": "https://www.youtube.com/watch?v=_FEATURE_DISABLED_"
+              "url": `https://www.youtube.com/watch?v=VIDEO_ID_HERE` // استبدل VIDEO_ID_HERE بمعرف الفيديو
             },
             {
               "title": "المحاضرة 3: (مجانية)",
               "description": "هذه محاضرة تجريبية مجانية.",
-              "url": "https://www.youtube.com/watch?v=_FEATURE_DISABLED_"
+              "url": `https://www.youtube.com/watch?v=VIDEO_ID_HERE`
             },
             {
               "title": "المحاضرة 4: (مجانية)",
               "description": "هذه محاضرة تجريبية مجانية.",
-              "url": "https://www.youtube.com/watch?v=_FEATURE_DISABLED_"
+              "url": `https://www.youtube.com/watch?v=VIDEO_ID_HERE`
             },
             {
               "title": "المحاضرة 5: (مجانية)",
               "description": "هذه محاضرة تجريبية مجانية.",
-              "url": "https://www.youtube.com/watch?v=_FEATURE_DISABLED_"
+              "url": `https://www.youtube.com/watch?v=VIDEO_ID_HERE`
             }
           ]
         }
@@ -41,23 +44,23 @@ const projectData = {
     },
     {
       "id": 2,
-      "name": "قسم المحاضرات ",
+      "name": "قسم المحاضرات",
       "subject": "خاص بالطلاب المشتركين",
-      "image": "https://k.top4top.io/p_3599yg6t41.png",
+      "image": `https://k.top4top.io/p_3599yg6t41.png${cacheBuster}`,
       "isPaid": true,
       "classes": [
         {
           "name": "الوحدة الأولى (كاملة)",
           "lectures": [
             {
-              "title": "المحاضرة 1: ",
+              "title": "المحاضرة 1",
               "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://youtu.be/QJQSDjCucu8?si=1n78fQKoMH_dpMCd"
+              "url": `https://youtu.be/QJQSDjCucu8?si=1n78fQKoMH_dpMCd`
             },
             {
-              "title": "المحاضرة 2: ",
+              "title": "المحاضرة 2",
               "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://example.com/lecture2.m3u8"
+              "url": `https://example.com/lecture2.m3u8${cacheBuster}`
             }
           ]
         },
@@ -67,7 +70,7 @@ const projectData = {
             {
               "title": "المحاضرة 1: (مدفوع)",
               "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://example.com/lecture3.m3u8"
+              "url": `https://example.com/lecture3.m3u8${cacheBuster}`
             }
           ]
         }
@@ -75,23 +78,23 @@ const projectData = {
     },
     {
       "id": 3,
-      "name": "قسم الأدب ",
+      "name": "قسم الأدب",
       "subject": "خاص بالطلاب المشتركين",
-      "image": "https://b.top4top.io/p_3598ea0jg1.png",
+      "image": `https://b.top4top.io/p_3598ea0jg1.png${cacheBuster}`,
       "isPaid": true,
       "classes": [
         {
           "name": "الأدب",
           "lectures": [
             {
-              "title": "محمد خضير ",
+              "title": "محمد خضير",
               "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://example.com/lit1.m3u8"
+              "url": `https://example.com/lit1.m3u8${cacheBuster}`
             },
             {
-              "title": "المرجوحة ",
+              "title": "المرجوحة",
               "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://example.com/lit2.m3u8"
+              "url": `https://example.com/lit2.m3u8${cacheBuster}`
             }
           ]
         }
@@ -99,23 +102,23 @@ const projectData = {
     },
     {
       "id": 4,
-      "name": "قسم أساسيات اللغة الانكليزيه",
+      "name": "قسم أساسيات اللغة الانكليزية",
       "subject": "خاص بالطلاب المشتركين",
-      "image": "https://j.top4top.io/p_35986jxil1.jpg",
+      "image": `https://j.top4top.io/p_35986jxil1.jpg${cacheBuster}`,
       "isPaid": true,
       "classes": [
         {
           "name": "الأساسيات",
           "lectures": [
             {
-              "title": "الدرس 1: الأزمنة ",
+              "title": "الدرس 1: الأزمنة",
               "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://example.com/basic1.m3u8"
+              "url": `https://example.com/basic1.m3u8${cacheBuster}`
             },
             {
-              "title": "الدرس 2: المبني للمجهول ",
+              "title": "الدرس 2: المبني للمجهول",
               "description": "محاضرة خاصة بالدورة المدفوعة",
-              "url": "https://example.com/basic2.m3u8"
+              "url": `https://example.com/basic2.m3u8${cacheBuster}`
             }
           ]
         }
@@ -126,28 +129,28 @@ const projectData = {
     {
       "title": "ملزمة الوحدة الأولى",
       "subject": "قسم المحاضرات",
-      "image": "https://i.ibb.co/P9zYm8y/main-lectures.jpg",
-      "url": "https://example.com/unit1.pdf"
+      "image": `https://i.ibb.co/P9zYm8y/main-lectures.jpg${cacheBuster}`,
+      "url": `https://example.com/unit1.pdf${cacheBuster}`
     },
     {
       "title": "ملزمة الأدب كاملة",
       "subject": "قسم الأدب",
-      "image": "https://i.ibb.co/nnhbW3X/literature.jpg",
-      "url": "https://example.com/literature.pdf"
+      "image": `https://i.ibb.co/nnhbW3X/literature.jpg${cacheBuster}`,
+      "url": `https://example.com/literature.pdf${cacheBuster}`
     }
   ],
   "exams": [
     {
       "title": "امتحان الوحدة الأولى",
       "subject": "قسم المحاضرات",
-      "image": "https://i.ibb.co/P9zYm8y/main-lectures.jpg",
-      "url": "https://example.com/exam1"
+      "image": `https://i.ibb.co/P9zYm8y/main-lectures.jpg${cacheBuster}`,
+      "url": `https://example.com/exam1${cacheBuster}`
     },
     {
       "title": "امتحان الأدب (محمد خضير)",
       "subject": "قسم الأدب",
-      "image": "https://i.ibb.co/nnhbW3X/literature.jpg",
-      "url": "https://example.com/exam2"
+      "image": `https://i.ibb.co/nnhbW3X/literature.jpg${cacheBuster}`,
+      "url": `https://example.com/exam2${cacheBuster}`
     }
   ]
 };
