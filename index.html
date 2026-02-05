@@ -301,7 +301,6 @@
 
     .teachers-grid {
       display: grid;
-      /* Responsive Grid for all devices */
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 2rem;
       padding: 1rem 0;
@@ -549,18 +548,45 @@
       gap: 2rem;
     }
 
+    /* === Video Container Modifications for Drive & Plyr === */
     .video-container {
       position: relative;
       background: black;
       border-radius: 15px;
       overflow: hidden;
       box-shadow: var(--shadow-hover);
+      /* Force 16:9 Aspect Ratio to support iframe responsiveness */
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
     }
 
-    .plyr video {
-      width: 100%;
-      height: auto;
+    /* Make video and iframe fill the container */
+    .plyr, #driveFrame {
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
     }
+
+    /* Drive Iframe styling */
+    #driveFrame {
+        display: none;
+        border: none;
+        z-index: 5; /* Below watermark */
+    }
+
+    /* When Drive Mode is active */
+    .video-container.drive-mode .plyr {
+        display: none !important;
+    }
+    
+    .video-container.drive-mode #driveFrame {
+        display: block;
+    }
+
+    /* ==================================================== */
 
     .video-details {
       background: var(--gradient-card);
@@ -595,7 +621,7 @@
       font-weight: bold;
       color: rgba(255, 255, 255, 0.2); 
       pointer-events: none;
-      z-index: 10;
+      z-index: 10; /* Above everything */
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -1081,6 +1107,7 @@
         <div class="video-page">
             <div class="video-container">
                 <video id="player" playsinline controls></video>
+                <iframe id="driveFrame" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 <div id="videoWatermark" class="video-watermark"></div>
             </div>
             <div class="video-details">
@@ -1301,7 +1328,10 @@
       window.scrollTo(0, 0);
 
       if (page !== 'video') {
-        if(player) player.pause();
+        const driveFrame = document.getElementById('driveFrame');
+        if (driveFrame) driveFrame.src = ''; // Stop Drive audio
+        if (player) player.pause();
+        
         if (progressSaveInterval) {
             clearInterval(progressSaveInterval);
         }
@@ -1424,7 +1454,7 @@
       icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
     }
 
-    // تشغيل المحاضرة (محدث لدعم كافة الصيغ)
+    // تشغيل المحاضرة (محدث لدعم كافة الصيغ + Google Drive)
     function playLecture(url, classIndex, lectureIndex) {
       const isPaid = localStorage.getItem('isPaidUser') === 'true';
       const isFreeCourse = currentTeacher && currentTeacher.isPaid === false;
@@ -1444,7 +1474,9 @@
       document.getElementById('videoDescription').textContent = lecture.description;
 
       const videoElement = document.getElementById('player');
-      
+      const driveFrame = document.getElementById('driveFrame');
+      const container = document.querySelector('.video-container');
+
       // إعداد العلامة المائية
       const savedName = localStorage.getItem('studentName') || 'طالب منصة التفوق';
       const savedPhone = localStorage.getItem('studentPhone') || '964770xxxxxxx';
@@ -1453,65 +1485,92 @@
           watermark.textContent = `${savedName} - ${savedPhone}`;
       }
       
-      // إيقاف HLS القديم
+      // إيقاف أي فيديو سابق
       if (hls) {
           hls.destroy();
           hls = null;
       }
+      if (player) {
+          player.pause();
+      }
 
-      // التحقق من صيغة الرابط (YouTube, m3u8, mp4)
-      const isYouTube = url.includes('youtube.com') || url.includes('youtu.be');
-      
-      // إعادة تهيئة المشغل بناءً على النوع
-      initPlayer(isYouTube);
-
-      if (isYouTube) {
-          // التعامل مع يوتيوب
-          player.source = {
-              type: 'video',
-              sources: [
-                  {
-                      src: url,
-                      provider: 'youtube',
-                  },
-              ],
-          };
-      } else if (url.endsWith('.m3u8')) {
-          // التعامل مع البث المباشر أو HLS
-          if (Hls.isSupported()) {
-              hls = new Hls();
-              hls.loadSource(url);
-              hls.attachMedia(videoElement);
-              hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                  player.currentTime = getVideoProgress(url);
-                  player.play();
-              });
-          } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-              videoElement.src = url;
-              videoElement.addEventListener('loadedmetadata', () => {
-                  player.currentTime = getVideoProgress(url);
-                  player.play();
-              });
-          }
-      } else {
-          // التعامل مع MP4 وباقي الصيغ
-          player.source = {
-            type: 'video',
-            sources: [
-                {
-                    src: url,
-                    type: 'video/mp4', // افتراضي، Plyr ذكي بما يكفي لاكتشاف النوع
-                },
-            ],
-          };
+      // ** التحقق: هل الرابط Google Drive؟ **
+      if (url.includes('drive.google.com')) {
+          // 1. تفعيل وضع الدرايف (يخفي plyr ويظهر iframe)
+          container.classList.add('drive-mode');
           
-          // محاولة استعادة الوقت بعد التحميل
-          setTimeout(() => {
-              if(getVideoProgress(url) > 0) {
-                  player.currentTime = getVideoProgress(url);
+          // 2. معالجة الرابط ليكون Preview (أفضل للتضمين)
+          // يحول /view إلى /preview
+          let embedUrl = url.replace('/view', '/preview');
+          // في حال كان الرابط لا يحتوي على view/preview (مثل روابط المشاركة العادية)، نضيف preview
+          if (!embedUrl.includes('preview')) {
+               // إذا انتهى الرابط بـ / نضيف preview، وإذا لا نضيف /preview
+               embedUrl = embedUrl.endsWith('/') ? embedUrl + 'preview' : embedUrl + '/preview';
+          }
+
+          driveFrame.src = embedUrl;
+
+      } else {
+          // ** تشغيل باقي الصيغ (YouTube, MP4, HLS) **
+          
+          // 1. إيقاف وضع الدرايف (يخفي iframe ويظهر plyr)
+          container.classList.remove('drive-mode');
+          driveFrame.src = ''; // إيقاف صوت الدرايف إذا كان يعمل
+
+          // التحقق من صيغة الرابط (YouTube, m3u8, mp4)
+          const isYouTube = url.includes('youtube.com') || url.includes('youtu.be');
+          
+          // إعادة تهيئة المشغل بناءً على النوع
+          initPlayer(isYouTube);
+
+          if (isYouTube) {
+              // التعامل مع يوتيوب
+              player.source = {
+                  type: 'video',
+                  sources: [
+                      {
+                          src: url,
+                          provider: 'youtube',
+                      },
+                  ],
+              };
+          } else if (url.endsWith('.m3u8')) {
+              // التعامل مع البث المباشر أو HLS
+              if (Hls.isSupported()) {
+                  hls = new Hls();
+                  hls.loadSource(url);
+                  hls.attachMedia(videoElement);
+                  hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                      player.currentTime = getVideoProgress(url);
+                      player.play();
+                  });
+              } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+                  videoElement.src = url;
+                  videoElement.addEventListener('loadedmetadata', () => {
+                      player.currentTime = getVideoProgress(url);
+                      player.play();
+                  });
               }
-              player.play();
-          }, 500);
+          } else {
+              // التعامل مع MP4 وباقي الصيغ
+              player.source = {
+                type: 'video',
+                sources: [
+                    {
+                        src: url,
+                        type: 'video/mp4', // افتراضي، Plyr ذكي بما يكفي لاكتشاف النوع
+                    },
+                ],
+              };
+              
+              // محاولة استعادة الوقت بعد التحميل
+              setTimeout(() => {
+                  if(getVideoProgress(url) > 0) {
+                      player.currentTime = getVideoProgress(url);
+                  }
+                  player.play();
+              }, 500);
+          }
       }
 
       navigate('video');
@@ -1857,4 +1916,3 @@
   </script>
  </body>
 </html>
-
