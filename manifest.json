@@ -1,0 +1,21 @@
+{
+  "name": "منصتي",
+  "short_name": "منصتي",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://e.top4top.io/p_3692gqofg1.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://e.top4top.io/p_3692gqofg1.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
