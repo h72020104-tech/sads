@@ -979,7 +979,30 @@
   </style>
  </head>
  <body> 
-  
+  <button id="installBtn" style="display:none; padding:10px; background:#28a745; color:white; border:none; border-radius:5px;">
+  تثبيت التطبيق على الموبايل
+</button>
+
+<script>
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'block'; // أظهر الزر فقط إذا كان الموبايل يدعم التثبيت
+  });
+
+  installBtn.addEventListener('click', () => {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      }
+      installBtn.style.display = 'none';
+    });
+  });
+</script>
   <div id="warningModal" class="modal" style="display: none;"> 
     <div class="modal-content" style="max-width: 600px;">
         <i class="fas fa-gavel" style="font-size: 3rem; color: var(--error); margin-bottom: 1rem;"></i>
@@ -1920,5 +1943,6 @@ if ("serviceWorker" in navigator) {
 </script>
  </body>
 </html>
+
 
 
