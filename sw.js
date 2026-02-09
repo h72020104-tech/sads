@@ -1,5 +1,5 @@
-const cacheName = 'hayder-platform-v1';
-const assets = ['./'];
+const cacheName = 'hayder-v1';
+const assets = ['./', 'index.html'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(cacheName).then(cache => cache.addAll(assets)));
