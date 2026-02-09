@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
- <head>
+<head>
+ <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1877F2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="https://j.top4top.io/p_3598vdrdp1.jpg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title> منصة حيدر علي الطائي</title>
@@ -1911,5 +1916,13 @@
       loadAccessCodes();
     });
   </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js');
+      });
+    }
+  </script>
  </body>
 </html>
+
