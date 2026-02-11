@@ -975,7 +975,11 @@
       }
     }
   </style>
- </head>
+ 
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2563eb">
+
+</head>
  <body> 
   
   <div id="warningModal" class="modal" style="display: none;"> 
@@ -1911,5 +1915,87 @@
       loadAccessCodes();
     });
   </script>
- </body>
+ 
+<!-- PWA Install Button -->
+<button id="installBtn" style="position:fixed;bottom:20px;left:20px;z-index:9999;padding:10px 15px;border:none;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer;display:none;">
+تنزيل التطبيق
+</button>
+
+<!-- Install Message -->
+<div id="installMessage" style="
+position: fixed;
+bottom: 80px;
+left: 50%;
+transform: translateX(-50%);
+background: #222;
+color: white;
+padding: 12px 18px;
+border-radius: 10px;
+display: none;
+z-index: 9999;
+">
+ثبت التطبيق للحصول على تجربة أفضل
+<button onclick="closeInstallMsg()" style="margin-right:10px;">✖</button>
+</div>
+
+<script>
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+const installMessage = document.getElementById("installMessage");
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = "block";
+});
+
+installBtn.addEventListener('click', async () => {
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+  if (isIOS) {
+    alert("للتثبيت على الايفون:\nاضغط زر المشاركة ثم Add to Home Screen");
+    return;
+  }
+
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const choiceResult = await deferredPrompt.userChoice;
+
+    if (choiceResult.outcome === 'accepted') {
+      installBtn.innerText = "✅ التطبيق مثبت";
+      installBtn.disabled = true;
+      installMessage.style.display = "none";
+    }
+
+    deferredPrompt = null;
+  }
+});
+
+window.addEventListener('appinstalled', () => {
+  installBtn.innerText = "✅ التطبيق مثبت";
+  installBtn.disabled = true;
+  installMessage.style.display = "none";
+});
+
+if (!localStorage.getItem("installMsgClosed")) {
+  setTimeout(() => {
+    installMessage.style.display = "block";
+  }, 3000);
+}
+
+function closeInstallMsg() {
+  installMessage.style.display = "none";
+  localStorage.setItem("installMsgClosed", "true");
+}
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js');
+  });
+}
+</script>
+
+</body>
 </html>
