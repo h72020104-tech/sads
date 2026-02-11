@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
  <head>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2563eb">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title> منصة حيدر علي الطائي</title>
@@ -1988,7 +1990,6 @@ function closeInstallMsg() {
   localStorage.setItem("installMsgClosed", "true");
 }
 </script>
-
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -1996,6 +1997,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-
 </body>
 </html>
+
