@@ -985,24 +985,6 @@
  </head>
  <body> 
   
-  <div id="pwaInstallModal" class="modal" style="display: none;">
-      <div class="modal-content" style="max-width: 450px; border: 2px solid var(--primary);">
-          <i class="fas fa-mobile-alt" style="font-size: 3.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
-          <h2>تثبيت منصة حيدر الطائي</h2>
-          <p style="margin: 1.5rem 0; color: var(--text-secondary); line-height: 1.5;">
-              قم بتثبيت المنصة على شاشتك الرئيسية للوصول السريع للمحاضرات والملخصات في أي وقت وبضغطة واحدة!
-          </p>
-          <div style="display: flex; gap: 10px; flex-direction: column;">
-              <button id="pwaInstallBtn" class="download-btn" style="background: var(--gradient-primary); border: none;">
-                  <i class="fas fa-download"></i> تثبيت الآن (اختصار)
-              </button>
-              <button onclick="closeModal('pwaInstallModal')" class="download-btn" style="background: var(--bg-secondary); color: var(--text-color); border: 1px solid var(--border-color);">
-                  <i class="fas fa-times"></i> لاحقاً
-              </button>
-          </div>
-      </div>
-  </div>
-
   <div id="warningModal" class="modal" style="display: none;"> 
     <div class="modal-content" style="max-width: 600px;">
         <i class="fas fa-gavel" style="font-size: 3rem; color: var(--error); margin-bottom: 1rem;"></i>
@@ -1105,18 +1087,14 @@
       </div>
       
       <div class="subscription-container">
-        <button id="headerInstallBtn" class="header-btn" style="display: none; background: var(--accent);">
-            <i class="fas fa-download"></i> تثبيت
-        </button>
-
+       <button id="installAppBtn" class="header-btn" style="display: none; background: #28a745;">
+  <i class="fas fa-download"></i> تثبيت التطبيق
+</button>
         <button class="header-btn" onclick="openModal('loginModal')" id="showLoginModalBtn">
           <i class="fas fa-key"></i> لدي كود تفعيل
         </button>
         <a href="tel:+9647709014600" class="header-btn contact-btn">
-         <button id="installAppBtn" class="header-btn" style="display: none; background: var(--success);">
-  <i class="fas fa-download"></i> تثبيت التطبيق
-</button>
-         <i class="fas fa-phone"></i> اتصل للاستفسار
+          <i class="fas fa-phone"></i> اتصل للاستفسار
         </a>
       </div>
 
@@ -1243,52 +1221,6 @@
              document.body.style.overflow = 'auto';
         }
     }
-
-    // === كود تثبيت التطبيق PWA المنبثق ===
-    let deferredPrompt;
-    const pwaModal = document.getElementById('pwaInstallModal');
-    const pwaBtn = document.getElementById('pwaInstallBtn');
-    const headerInstallBtn = document.getElementById('headerInstallBtn');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      // منع ظهور النافذة التلقائية
-      e.preventDefault();
-      // حفظ الحدث لاستخدامه عند ضغط الزر
-      deferredPrompt = e;
-      
-      // إظهار المودال المنبثق أول ما يفتح المستخدم الموقع
-      // (نستخدم setTimeout للتأكد من ظهورها بعد تحميل الموقع بثانية واحدة)
-      setTimeout(() => {
-        if (!localStorage.getItem('pwaDismissed')) {
-           openModal('pwaInstallModal');
-        }
-      }, 1500);
-
-      // إظهار الزر في الهيدر كخيار بديل دائماً
-      if(headerInstallBtn) headerInstallBtn.style.display = 'flex';
-    });
-
-    const triggerInstall = async () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User Choice: ${outcome}`);
-        deferredPrompt = null;
-        closeModal('pwaInstallModal');
-        if(headerInstallBtn) headerInstallBtn.style.display = 'none';
-      }
-    };
-
-    if(pwaBtn) pwaBtn.addEventListener('click', triggerInstall);
-    if(headerInstallBtn) headerInstallBtn.addEventListener('click', triggerInstall);
-
-    // تسجيل Service Worker ليعمل التثبيت
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration failed: ', err));
-      });
-    }
-    // ======================================
 
     // تحويل الثواني إلى تنسيق (دقيقة:ثانية)
     function formatTime(seconds) {
@@ -1715,158 +1647,4 @@
           <img src="${item.image}" alt="${item.title}" class="exam-img" loading="lazy">
           <h3 class="exam-title">${item.title}</h3>
           <p class="exam-subject">${item.subject}</p>
-          <a href="${item.url}" target="_blank" class="download-btn"><i class="fas fa-file-alt"></i> دخول الامتحان</a>
-        </div>
-      `).join('');
-    }
-
-    // تهيئة عند التحميل
-    initializeTheme();
-
-    // جلب البيانات من Google Sheet (عبر API Script)
-    // ملاحظة: استبدل الرابط برابط الـ Web App الخاص بك
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyEwQh9F6lK8M075U-8G0-LwI8q9C8X1jI6z_9vJ0-X/exec'; 
-
-    async function fetchData() {
-      try {
-        const response = await fetch(SCRIPT_URL);
-        const data = await response.json();
-        
-        allTeachers = data.teachers || [];
-        allMaterials = data.materials || [];
-        allExams = data.exams || [];
-        
-        // تحديث العداد
-        if (data.codes) {
-            updateStudentCounter(data.codes);
-        }
-
-        // عرض المحتوى المبدئي (المجاني أو المدفوع حسب حالة المستخدم)
-        const isPaid = localStorage.getItem('isPaidUser') === 'true';
-        if (isPaid) {
-            renderTeachers(allTeachers.filter(t => t.isPaid !== false));
-        } else {
-            renderTeachers(allTeachers.filter(t => t.isPaid === false));
-        }
-        
-        // إخفاء شاشة التحميل
-        document.getElementById('appContent').style.display = 'block';
-        
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        alert('حدث خطأ في جلب البيانات. يرجى التأكد من الاتصال بالإنترنت.');
-      }
-    }
-
-    fetchData();
-
-    // دالة الدخول للوضع المجاني
-    function enterFreeMode() {
-        closeModal('warningModal');
-        localStorage.setItem('hasAgreed', 'true');
-        document.getElementById('appContent').style.display = 'block';
-        document.body.style.overflow = 'auto';
-        loadContent('lectures');
-    }
-
-    // التحقق من كود التفعيل
-    async function checkAccessCode() {
-        const code = document.getElementById('codeInput').value.trim();
-        const name = document.getElementById('studentNameInput').value.trim();
-        const phone = document.getElementById('studentPhoneInput').value.trim();
-        const errorMsg = document.getElementById('accessError');
-        
-        if (!code || !name || !phone) {
-            alert('يرجى ملء كافة الحقول!');
-            return;
-        }
-
-        try {
-            const response = await fetch(`${SCRIPT_URL}?code=${code}&name=${name}&phone=${phone}`);
-            const result = await response.json();
-            
-            if (result.status === 'success') {
-                localStorage.setItem('isPaidUser', 'true');
-                localStorage.setItem('accessCode', code);
-                localStorage.setItem('studentName', name);
-                localStorage.setItem('studentPhone', phone);
-                
-                closeModal('loginModal');
-                location.reload(); // إعادة تحميل لتحديث الصلاحيات
-            } else if (result.status === 'revoked') {
-                openModal('revokedModal');
-            } else {
-                errorMsg.style.display = 'block';
-            }
-        } catch (error) {
-            console.error('Login error:', error);
-            alert('حدث خطأ في الاتصال بالسيرفر.');
-        }
-    }
-
-    function showUpgradeModal() {
-        openModal('upgradeModal');
-    }
-
-    // التحقق من الجلسة عند الفتح
-    window.onload = () => {
-        const hasAgreed = localStorage.getItem('hasAgreed');
-        if (!hasAgreed) {
-            openModal('warningModal');
-        } else {
-            document.getElementById('appContent').style.display = 'block';
-        }
-        
-        // إذا كان مسجلاً، تحقق من حالة الكود بشكل دوري
-        const code = localStorage.getItem('accessCode');
-        if (code) {
-            // مخفي: زر الدخول
-            const loginBtn = document.getElementById('showLoginModalBtn');
-            if (loginBtn) loginBtn.style.display = 'none';
-        }
-    };
-// ==========================================
-//  كود تثبيت التطبيق (PWA Install Logic)
-// ==========================================
-
-let deferredPrompt;
-const installBtn = document.getElementById('installAppBtn');
-
-// 1. الاستماع لحدث "جاهزية التثبيت" من المتصفح
-window.addEventListener('beforeinstallprompt', (e) => {
-    // منع المتصفح من إظهار النافذة الافتراضية المزعجة
-    e.preventDefault();
-    // حفظ الحدث لاستدعائه عند الضغط على الزر
-    deferredPrompt = e;
-    // إظهار الزر للطالب الآن
-    installBtn.style.display = 'flex';
-});
-
-// 2. تفعيل الزر عند الضغط عليه
-installBtn.addEventListener('click', async () => {
-    if (deferredPrompt) {
-        // إظهار نافذة التثبيت الأصلية الخاصة بالمتصفح
-        deferredPrompt.prompt();
-        
-        // انتظار رد الطالب (موافقة أو رفض)
-        const { outcome } = await deferredPrompt.userChoice;
-        console.log(`استجابة الطالب للتثبيت: ${outcome}`);
-        
-        // مسح الحدث لأنه لا يعمل إلا مرة واحدة
-        deferredPrompt = null;
-        
-        // إخفاء الزر بعد التثبيت
-        installBtn.style.display = 'none';
-    }
-});
-
-// 3. إخفاء الزر إذا تم تثبيت التطبيق بنجاح
-window.addEventListener('appinstalled', () => {
-    installBtn.style.display = 'none';
-    alert('تم تثبيت تطبيق منصة حيدر علي الطائي بنجاح على جهازك!');
-});
-  </script>
- </body>
-</html>
-
-
+          <a href="${item.url}" tar
