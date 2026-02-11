@@ -1,7 +1,7 @@
 {
   "name": "منصة حيدر الطائي",
   "short_name": "حيدر الطائي",
-  "start_url": "index.html",
+  "start_url": "/sads/index.html",
   "display": "standalone",
   "background_color": "#1877F2",
   "theme_color": "#1877F2",
