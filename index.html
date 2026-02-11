@@ -5,14 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title> منصة حيدر علي الطائي</title>
   
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#1877F2">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="منصة الطائي">
   <link rel="apple-touch-icon" href="https://e.top4top.io/p_3692gqofg1.png">
-  <link rel="icon" type="image/png" href="https://e.top4top.io/p_3692gqofg1.png">
-
   <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -887,52 +882,6 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
 
-    /* ===== أنماط زر التثبيت الجديد ===== */
-    #installFloatBtn {
-      position: fixed;
-      bottom: 90px; /* فوق زر الواتساب */
-      left: 20px;
-      width: 60px;
-      height: 60px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      font-size: 1.8rem;
-      display: none; /* مخفي افتراضياً حتى التحقق */
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      cursor: pointer;
-      z-index: 150;
-      transition: all 0.3s;
-      animation: pulse 2s infinite;
-    }
-    #installFloatBtn:hover {
-      transform: scale(1.1);
-    }
-
-    .ios-steps {
-        text-align: right;
-        margin-top: 1rem;
-        background: var(--bg-secondary);
-        padding: 1rem;
-        border-radius: 12px;
-        border: 1px solid var(--border-color);
-    }
-    .ios-step {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 10px;
-        font-size: 1rem;
-        color: var(--text-color);
-    }
-    .ios-icon {
-        color: var(--primary);
-        font-size: 1.2rem;
-    }
-
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -993,14 +942,12 @@
         font-size: 2rem;
       }
       
-      #floatingContactBtn, #installFloatBtn {
+      #floatingContactBtn {
          width: 50px;
          height: 50px;
          font-size: 1.5rem;
+         bottom: 15px;
          left: 15px;
-      }
-      #installFloatBtn {
-         bottom: 75px;
       }
     }
 
@@ -1035,40 +982,6 @@
  </head>
  <body> 
   
-  <div id="installModal" class="modal" style="display: none;"> 
-    <div class="modal-content" style="max-width: 450px;">
-        <button class="close-modal" onclick="closeModal('installModal')"><i class="fas fa-times"></i></button>
-        <img src="https://e.top4top.io/p_3692gqofg1.png" alt="ايقونة التطبيق" style="border-radius: 20px; width: 100px; height: 100px;">
-        <h2>تثبيت التطبيق</h2>
-        
-        <div id="androidPcContent" style="display: none;">
-            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">قم بتثبيت المنصة على جهازك للوصول السريع والعمل بدون انترنت.</p>
-            <button onclick="installPWA()" class="download-btn">
-                <i class="fas fa-download"></i> تثبيت الآن
-            </button>
-        </div>
-
-        <div id="iosContent" style="display: none;">
-            <p style="color: var(--text-secondary); margin-bottom: 1rem;">لتثبيت التطبيق على الآيفون/الآيباد:</p>
-            <div class="ios-steps">
-                <div class="ios-step">
-                    <span class="ios-icon"><i class="fas fa-share-square"></i></span>
-                    <span>1. اضغط على زر "مشاركة" في أسفل المتصفح.</span>
-                </div>
-                <div class="ios-step">
-                    <span class="ios-icon"><i class="fas fa-plus-square"></i></span>
-                    <span>2. اختر "إضافة إلى الصفحة الرئيسية".</span>
-                </div>
-                <div class="ios-step">
-                    <span class="ios-icon"><i class="fas fa-check"></i></span>
-                    <span>3. اضغط على "إضافة" في الزاوية العلوية.</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-  </div>
-
   <div id="warningModal" class="modal" style="display: none;"> 
     <div class="modal-content" style="max-width: 600px;">
         <i class="fas fa-gavel" style="font-size: 3rem; color: var(--error); margin-bottom: 1rem;"></i>
@@ -1255,76 +1168,10 @@
   <button id="floatingContactBtn" onclick="openModal('contactModal')">
     <i class="fab fa-whatsapp"></i>
   </button>
-  
-  <button id="installFloatBtn" onclick="openInstallModal()">
-    <i class="fas fa-download"></i>
-  </button>
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
   <script>
-    // ===== PWA INSTALLATION LOGIC =====
-    let deferredPrompt;
-    const installBtn = document.getElementById('installFloatBtn');
-    const installModal = document.getElementById('installModal');
-    const androidPcContent = document.getElementById('androidPcContent');
-    const iosContent = document.getElementById('iosContent');
-
-    // كشف نوع الجهاز
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-
-    // تسجيل Service Worker
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js')
-                .then(registration => console.log('SW Registered'))
-                .catch(err => console.log('SW Failed', err));
-        });
-    }
-
-    // منطق التثبيت
-    if (isStandalone) {
-        // التطبيق مثبت بالفعل - إخفاء الزر
-        installBtn.style.display = 'none';
-    } else if (isIOS) {
-        // أجهزة آيفون - إظهار الزر دائماً لأنه لا يوجد حدث قبل التثبيت
-        installBtn.style.display = 'flex';
-    } else {
-        // أندرويد وحاسوب - ننتظر الحدث
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installBtn.style.display = 'flex';
-        });
-    }
-
-    function openInstallModal() {
-        openModal('installModal');
-        
-        if (isIOS) {
-            iosContent.style.display = 'block';
-            androidPcContent.style.display = 'none';
-        } else {
-            androidPcContent.style.display = 'block';
-            iosContent.style.display = 'none';
-        }
-    }
-
-    async function installPWA() {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log(`User response to the install prompt: ${outcome}`);
-            deferredPrompt = null;
-            if(outcome === 'accepted') {
-                closeModal('installModal');
-                installBtn.style.display = 'none';
-            }
-        }
-    }
-    // ==================================
-
     // إعداد الثيم الأولي
     function initializeTheme() {
       const stored = localStorage.getItem('theme');
@@ -1656,4 +1503,149 @@
           // 2. معالجة الرابط ليكون Preview (أفضل للتضمين)
           // يحول /view إلى /preview
           let embedUrl = url.replace('/view', '/preview');
-          // في حال كان الرابط لا يحتوي على view/preview (مثل روابط المشاركة العادية)، نضيف prev
+          // في حال كان الرابط لا يحتوي على view/preview (مثل روابط المشاركة العادية)، نضيف preview
+          if (!embedUrl.includes('preview')) {
+               // إذا انتهى الرابط بـ / نضيف preview، وإذا لا نضيف /preview
+               embedUrl = embedUrl.endsWith('/') ? embedUrl + 'preview' : embedUrl + '/preview';
+          }
+
+          driveFrame.src = embedUrl;
+
+      } else {
+          // ** تشغيل باقي الصيغ (YouTube, MP4, HLS) **
+          
+          // 1. إيقاف وضع الدرايف (يخفي iframe ويظهر plyr)
+          container.classList.remove('drive-mode');
+          driveFrame.src = ''; // إيقاف صوت الدرايف إذا كان يعمل
+
+          // التحقق من صيغة الرابط (YouTube, m3u8, mp4)
+          const isYouTube = url.includes('youtube.com') || url.includes('youtu.be');
+          
+          // إعادة تهيئة المشغل بناءً على النوع
+          initPlayer(isYouTube);
+
+          if (isYouTube) {
+              // التعامل مع يوتيوب
+              player.source = {
+                  type: 'video',
+                  sources: [
+                      {
+                          src: url,
+                          provider: 'youtube',
+                      },
+                  ],
+              };
+          } else if (url.endsWith('.m3u8')) {
+              // التعامل مع البث المباشر أو HLS
+              if (Hls.isSupported()) {
+                  hls = new Hls();
+                  hls.loadSource(url);
+                  hls.attachMedia(videoElement);
+                  hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                      player.currentTime = getVideoProgress(url);
+                      player.play();
+                  });
+              } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+                  videoElement.src = url;
+                  videoElement.addEventListener('loadedmetadata', () => {
+                      player.currentTime = getVideoProgress(url);
+                      player.play();
+                  });
+              }
+          } else {
+              // التعامل مع MP4 وباقي الصيغ
+              player.source = {
+                type: 'video',
+                sources: [
+                    {
+                        src: url,
+                        type: 'video/mp4', // افتراضي، Plyr ذكي بما يكفي لاكتشاف النوع
+                    },
+                ],
+              };
+              
+              // محاولة استعادة الوقت بعد التحميل
+              setTimeout(() => {
+                  if(getVideoProgress(url) > 0) {
+                      player.currentTime = getVideoProgress(url);
+                  }
+                  player.play();
+              }, 500);
+          }
+      }
+
+      navigate('video');
+    }
+
+    // تحميل المحتوى (ملازم/امتحانات)
+    function loadContent(type) {
+        // التحقق إذا كان المستخدم مسجلاً
+        const isPaid = localStorage.getItem('isPaidUser') === 'true';
+
+        // تقييد جميع الصفحات ما عدا التواصل
+        if ((type === 'materials' || type === 'exams' || type === 'lectures') && !isPaid) {
+            showUpgradeModal();
+            return;
+        }
+        
+        // إزالة تفعيل زر التنقل السابق
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        // تفعيل زر التنقل الحالي
+        const activeBtn = document.querySelector(`.nav-btn[onclick="loadContent('${type}')"]`);
+        if (activeBtn) activeBtn.classList.add('active');
+
+        if (type === 'materials') {
+            renderMaterials(allMaterials);
+            navigate('materials');
+        } else if (type === 'exams') {
+            renderExams(allExams);
+            navigate('exams');
+        } else {
+            // إذا كان lectures (المحاضرات)، اذهب لصفحة المدرسين/الدورات
+            if (isPaid) {
+               // [معدل] عرض الدورات المدفوعة فقط
+               const paidCourses = allTeachers.filter(t => t.isPaid !== false);
+               renderTeachers(paidCourses);
+            } else {
+               // الوضع المجاني
+               renderTeachers(allTeachers.filter(t => t.isPaid === false));
+            }
+            navigate('home'); 
+        }
+    }
+
+    // عرض الملازم
+    function renderMaterials(list = allMaterials) {
+      if (!list || list.length === 0) {
+        materialsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد ملازم متاحة في هذه الدورة.</p>`;
+        return;
+      }
+      materialsGrid.innerHTML = list.map(item => `
+        <div class="material-card">
+          <img src="${item.image}" alt="${item.title}" class="material-img" loading="lazy">
+          <h3 class="material-title">${item.title}</h3>
+          <p class="material-subject">${item.subject}</p>
+          <a href="${item.url}" target="_blank" class="download-btn"><i class="fas fa-download"></i> تحميل الملزمة</a>
+        </div>
+      `).join('');
+    }
+
+    // عرض الامتحانات
+    function renderExams(list = allExams) {
+      if (!list || list.length === 0) {
+        examsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد امتحانات متاحة في هذه الدورة.</p>`;
+        return;
+      }
+      examsGrid.innerHTML = list.map(item => `
+        <div class="exam-card">
+          <img src="${item.image}" alt="${item.title}" class="exam-img" loading="lazy">
+          <h3 class="exam-title">${item.title}</h3>
+          <p class="exam-subject">${item.subject}</p>
+          <a href="${item.url}" target="_blank" class="download-btn"><i class="fas fa-external-link-alt"></i> ابدأ الامتحان</a>
+        </div>
+      `).join('');
+    }
+
+    // تحميل البيانات
+    function loadData() {
+      return fetch('data.js
