@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title> منصة حيدر علي الطائي</title>
+  
+  <link rel="manifest" href="manifest.json">
+  
+  <meta name="theme-color" content="#1877F2">
+  <link rel="apple-touch-icon" href="https://j.top4top.io/p_3598vdrdp1.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -114,6 +119,13 @@
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
       100% { transform: scale(1); }
+    }
+    
+    /* أنيميشن زر التثبيت */
+    @keyframes pulse-green {
+      0% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(0, 200, 83, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
     }
 
     header {
@@ -237,6 +249,21 @@
     .header-btn.contact-btn {
         background: var(--accent);
     }
+
+    /* === تنسيق زر التثبيت PWA الجديد === */
+    #installAppBtn {
+        background: #00C853 !important; /* لون أخضر مثل المتجر */
+        border: none;
+        display: none; /* مخفي افتراضياً */
+        animation: pulse-green 2s infinite;
+        box-shadow: 0 4px 15px rgba(0, 200, 83, 0.4);
+    }
+    
+    #installAppBtn:hover {
+        background: #00E676 !important;
+        transform: translateY(-2px);
+    }
+    /* ================================== */
 
     .header-btn:hover {
       transform: translateY(-2px);
@@ -1057,6 +1084,20 @@
           <button onclick="closeModal('revokedModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
       </div>
   </div>
+
+  <div id="iosInstallModal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 400px;">
+      <i class="fab fa-apple" style="font-size: 3rem; color: #fff; margin-bottom: 1rem;"></i>
+      <h3>تثبيت التطبيق على الآيفون</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 1rem;">لتثبيت المنصة كتطبيق على جهازك:</p>
+      <ol style="text-align: right; margin-right: 20px; color: var(--text-color); line-height: 2;">
+        <li>اضغط على زر <strong>مشاركة (Share)</strong> <i class="fas fa-share-square"></i> في أسفل المتصفح.</li>
+        <li>اختر <strong>"إضافة إلى الشاشة الرئيسية" (Add to Home Screen)</strong>.</li>
+        <li>اضغط على <strong>إضافة (Add)</strong>.</li>
+      </ol>
+      <button onclick="closeModal('iosInstallModal')" class="download-btn" style="margin-top: 1.5rem;">حسناً</button>
+    </div>
+  </div>
   
   <p style="text-align: center; color: var(--text-secondary); padding: 1rem 0; font-size: 0.9rem;">
       <a href="#" onclick="event.preventDefault(); openModal('contactModal')" style="color: var(--primary); text-decoration: none;">
@@ -1080,6 +1121,10 @@
       </div>
       
       <div class="subscription-container">
+        <button id="installAppBtn" class="header-btn">
+          <i class="fab fa-google-play"></i> تثبيت التطبيق
+        </button>
+
         <button class="header-btn" onclick="openModal('loginModal')" id="showLoginModalBtn">
           <i class="fas fa-key"></i> لدي كود تفعيل
         </button>
@@ -1168,6 +1213,16 @@
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
   <script>
+    // ===== 1. تسجيل السيرفس ووركر (ضروري للـ PWA) =====
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+             navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('Service Worker registered', reg))
+                .catch(err => console.log('Service Worker failed', err));
+        });
+    }
+    // ====================================================
+
     // إعداد الثيم الأولي
     function initializeTheme() {
       const stored = localStorage.getItem('theme');
@@ -1591,325 +1646,4 @@
         if (activeBtn) activeBtn.classList.add('active');
 
         if (type === 'materials') {
-            renderMaterials(allMaterials);
-            navigate('materials');
-        } else if (type === 'exams') {
-            renderExams(allExams);
-            navigate('exams');
-        } else {
-            // إذا كان lectures (المحاضرات)، اذهب لصفحة المدرسين/الدورات
-            if (isPaid) {
-               // [معدل] عرض الدورات المدفوعة فقط
-               const paidCourses = allTeachers.filter(t => t.isPaid !== false);
-               renderTeachers(paidCourses);
-            } else {
-               // الوضع المجاني
-               renderTeachers(allTeachers.filter(t => t.isPaid === false));
-            }
-            navigate('home'); 
-        }
-    }
-
-    // عرض الملازم
-    function renderMaterials(list = allMaterials) {
-      if (!list || list.length === 0) {
-        materialsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد ملازم متاحة في هذه الدورة.</p>`;
-        return;
-      }
-      materialsGrid.innerHTML = list.map(item => `
-        <div class="material-card">
-          <img src="${item.image}" alt="${item.title}" class="material-img" loading="lazy">
-          <h3 class="material-title">${item.title}</h3>
-          <p class="material-subject">${item.subject}</p>
-          <a href="${item.url}" target="_blank" class="download-btn"><i class="fas fa-download"></i> تحميل الملزمة</a>
-        </div>
-      `).join('');
-    }
-
-    // عرض الامتحانات
-    function renderExams(list = allExams) {
-      if (!list || list.length === 0) {
-        examsGrid.innerHTML = `<p style="text-align: center; color: var(--text-secondary);">لا توجد امتحانات متاحة في هذه الدورة.</p>`;
-        return;
-      }
-      examsGrid.innerHTML = list.map(item => `
-        <div class="exam-card">
-          <img src="${item.image}" alt="${item.title}" class="exam-img" loading="lazy">
-          <h3 class="exam-title">${item.title}</h3>
-          <p class="exam-subject">${item.subject}</p>
-          <a href="${item.url}" target="_blank" class="download-btn"><i class="fas fa-external-link-alt"></i> ابدأ الامتحان</a>
-        </div>
-      `).join('');
-    }
-
-    // تحميل البيانات
-    function loadData() {
-      return fetch('data.json?t=' + Date.now())
-        .then(response => {
-          if (!response.ok) throw new Error('فشل تحميل البيانات');
-          return response.json();
-        })
-        .then(data => {
-          allTeachers = data.teachers || [];
-          allMaterials = data.materials || [];
-          allExams = data.exams || [];
-          console.log('تم تحميل البيانات بنجاح:', data);
-        })
-        .catch(error => {
-          console.error('خطأ في تحميل البيانات:', error);
-          teachersGrid.innerHTML = `
-            <div class="teacher-card" style="grid-column: 1/-1; text-align: center; background: var(--bg-secondary);">
-                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--error); margin-bottom: 1rem;"></i>
-                <h3>خطأ في النظام</h3>
-                <p>فشل تحميل محتوى الدورات. يرجى التواصل مع الدعم الفني.</p>
-            </div>
-          `;
-        });
-    }
-
-    const fiveMinutesInMs = 5 * 60 * 1000;
-
-    // التحقق الدوري من حالة الكود (للطرد)
-    function checkRevocationStatus() {
-      const userCode = localStorage.getItem('userAccessCode');
-      if (!userCode) return; // لا يوجد مستخدم مسجل
-
-      fetch('codes.json?t=' + Date.now())
-        .then(response => {
-          if (!response.ok) throw new Error('Codes file not found');
-          return response.json();
-        })
-        .then(codesFromServer => {
-          const codeStatus = codesFromServer[userCode];
-          // [معدل] يتم الطرد إذا الكود غير موجود أو إذا تم تعطيله (used: false)
-          if (!codeStatus || codeStatus.used === false) { 
-              localStorage.removeItem('userAccessCode');
-              localStorage.removeItem('isPaidUser');
-              localStorage.removeItem('studentName');
-              localStorage.removeItem('studentPhone');
-              
-              alert('تم إلغاء صلاحية الوصول لهذا الرمز من قبل الإدارة. سيتم إخراجك.');
-              window.location.reload();
-          }
-        })
-        .catch(error => {
-          console.error('فشل في جلب ملف الرموز للتحقق الدوري:', error);
-        });
-    }
-
-    let periodicCheckInterval;
-    function startPeriodicCheck() {
-      if(periodicCheckInterval) clearInterval(periodicCheckInterval);
-      periodicCheckInterval = setInterval(checkRevocationStatus, fiveMinutesInMs);
-    }
-    
-    // ** [معدل] منطق الدخول المجاني/المدفوع **
-    
-    // دالة الدخول للوضع المجاني
-    function enterFreeMode() {
-        // [تعديل] حفظ الموافقة على التحذير لمنع ظهوره مرة أخرى
-        localStorage.setItem('hasAgreedToWarning', 'true');
-
-        closeModal('warningModal'); // إغلاق مودال التحذير
-        document.getElementById('appContent').style.display = 'block';
-        document.body.style.overflow = 'auto';
-
-        loadData().then(() => {
-             // عرض الدورات التي تم تحديدها كـ (مجانية) فقط
-             const freeCourses = allTeachers.filter(t => t.isPaid === false);
-             renderTeachers(freeCourses); 
-             // المستخدم المجاني لا يرى الملازم أو الامتحانات
-             renderMaterials([]);
-             renderExams([]);
-             allMaterials = []; 
-             allExams = []; 
-        });
-        
-        // تفعيل زر المحاضرات واختيار الصفحة
-        navButtons.forEach(btn => btn.classList.remove('active'));
-        const activeBtn = document.querySelector('.nav-btn[onclick="loadContent(\'lectures\')]');
-        if (activeBtn) activeBtn.classList.add('active');
-
-        navigate('home');
-        document.getElementById('studentCounter').style.display = 'none';
-        document.getElementById('floatingContactBtn').style.display = 'flex';
-        document.getElementById('showLoginModalBtn').style.display = 'block'; // التأكد من إظهار زر التفعيل
-    }
-
-    // رسالة الترقية (عند الضغط على الملازم/الامتحانات في الوضع المجاني)
-    function showUpgradeModal() {
-        openModal('upgradeModal');
-    }
-
-    // ** منطق حماية الدخول (مرتبط بـ codes.json) **
-    let accessCodeDatabase = {};
-    const DEMO_CODE = 'DEMO'; 
-    
-    // دالة تسجيل الدخول الناجح
-    function loginSuccess(code, name, phone) {
-        localStorage.setItem('userAccessCode', code);
-        localStorage.setItem('isPaidUser', 'true');
-        localStorage.setItem('studentName', name);
-        localStorage.setItem('studentPhone', phone);
-        
-        closeModal('loginModal');
-        document.getElementById('appContent').style.display = 'block';
-        document.body.style.overflow = 'auto';
-        document.getElementById('accessError').style.display = 'none';
-        document.getElementById('floatingContactBtn').style.display = 'flex';
-
-        loadData().then(() => {
-             // إخفاء زر "لدي كود تفعيل"
-             document.getElementById('showLoginModalBtn').style.display = 'none';
-             
-             // تصفية الدورات: عرض المدفوعة فقط
-             const paidCourses = allTeachers.filter(t => t.isPaid !== false);
-             renderTeachers(paidCourses);
-             
-             renderMaterials(allMaterials);
-             renderExams(allExams);
-             
-             // تفعيل زر المحاضرات واختيار الصفحة
-             navButtons.forEach(btn => btn.classList.remove('active'));
-             const activeBtn = document.querySelector('.nav-btn[onclick="loadContent(\'lectures\')]');
-             if (activeBtn) activeBtn.classList.add('active');
-
-             navigate('home');
-             
-             // تحديث العلامة المائية في حالة تشغيل الفيديو
-             const watermark = document.getElementById('videoWatermark');
-             if (watermark) {
-                 watermark.textContent = `${name} - ${phone}`;
-             }
-             
-             // بدء التحقق الدوري للطرد
-             startPeriodicCheck();
-        });
-    }
-    
-    // دالة التحقق من الدخول التلقائي عند بدء التشغيل
-    function checkAutoLogin() {
-        const isPaid = localStorage.getItem('isPaidUser') === 'true';
-        const savedCode = localStorage.getItem('userAccessCode');
-        const hasAgreed = localStorage.getItem('hasAgreedToWarning') === 'true';
-        
-        // 1. إذا كان المستخدم مدفوعاً ولديه كود محفوظ
-        if (isPaid && savedCode) {
-            
-            if (savedCode === DEMO_CODE && window.location.protocol === 'file:') {
-                 console.log('دخول تلقائي ناجح (وضع تجريبي).');
-                 loginSuccess(savedCode, 'طالب تجريبي', '00000000000');
-                 return;
-            }
-            
-            if (accessCodeDatabase.hasOwnProperty(savedCode)) {
-                const codeDetails = accessCodeDatabase[savedCode];
-                const savedName = localStorage.getItem('studentName') || 'N/A';
-                const savedPhone = localStorage.getItem('studentPhone') || 'N/A';
-
-                if (codeDetails.used === true) {
-                    console.log('دخول تلقائي ناجح (مستخدم مُفعّل).');
-                    loginSuccess(savedCode, savedName, savedPhone);
-                    return; // تم الدخول بنجاح
-                }
-            }
-        }
-        
-        // 2. [جديد] إذا لم يكن مدفوعاً، لكنه وافق مسبقاً على التحذير -> ادخل للوضع المجاني مباشرة
-        if (hasAgreed) {
-            enterFreeMode();
-            return;
-        }
-
-        // 3. إذا لم يوافق مسبقاً ولم يكن مسجلاً -> اعرض التحذير
-        openModal('warningModal');
-    }
-    
-    function loadAccessCodes() {
-        const isLocalFile = window.location.protocol === 'file:';
-        const counterElement = document.getElementById('studentCounter');
-        
-        if (isLocalFile) {
-            console.warn('وضع التجربة المحلية مفعل. استخدم الكود: DEMO');
-            if (counterElement) counterElement.style.display = 'none';
-            accessCodeDatabase = {
-                [DEMO_CODE]: { used: true, device: "local", studentName: "طالب تجريبي", studentPhone: "00000000000" }
-            };
-            checkAutoLogin();
-            return;
-        }
-
-        fetch('codes.json?t=' + Date.now())
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('فشل تحميل ملف codes.json.');
-                }
-                return response.json();
-            })
-            .then(data => {
-                accessCodeDatabase = data;
-                console.log('تم تحميل ملف الأكواد بنجاح.');
-                updateStudentCounter(data);
-                checkAutoLogin();
-            })
-            .catch(err => {
-                console.error('خطأ فادح في تحميل الأكواد:', err);
-                // في حالة الخطأ، نعتمد على حالة الموافقة المحلية فقط
-                checkAutoLogin();
-                if (counterElement) counterElement.style.display = 'none';
-            });
-    }
-
-    // دالة التحقق من الكود
-    function checkAccessCode() {
-        const nameInput = document.getElementById('studentNameInput');
-        const phoneInput = document.getElementById('studentPhoneInput');
-        const codeInput = document.getElementById('codeInput');
-        const errorElement = document.getElementById('accessError');
-
-        const studentName = nameInput.value.trim();
-        const studentPhone = phoneInput.value.trim();
-        const enteredCode = codeInput.value.trim().toUpperCase();
-
-        if (!studentName || !studentPhone || !enteredCode) {
-            errorElement.innerText = 'يرجى ملء جميع الحقول.';
-            errorElement.style.display = 'block';
-            return;
-        }
-
-        errorElement.style.display = 'none';
-        
-        if (enteredCode === DEMO_CODE && window.location.protocol === 'file:') {
-            loginSuccess(enteredCode, studentName, studentPhone);
-            return;
-        }
-        
-        if (accessCodeDatabase.hasOwnProperty(enteredCode)) {
-            const codeDetails = accessCodeDatabase[enteredCode];
-
-            if (codeDetails.used === true) {
-                errorElement.innerText = 'الكود مُستخدَم بالفعل على جهاز آخر.';
-                errorElement.style.display = 'block';
-            } else {
-                
-                alert(`تم تفعيل الكود بنجاح. تواصل مع المدرس لتأكيد التفعيل النهائي للكود.`);
-                loginSuccess(enteredCode, studentName, studentPhone);
-            }
-        } else {
-            errorElement.innerText = 'كود الدخول غير صحيح. حاول مرة أخرى.';
-            errorElement.style.display = 'block';
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      initializeTheme();
-      document.getElementById('loginModal').style.display = 'none';
-      document.getElementById('appContent').style.display = 'none';
-      document.getElementById('floatingContactBtn').style.display = 'none'; 
-      document.body.style.overflow = 'hidden';
-      
-      loadAccessCodes();
-    });
-  </script>
- </body>
-</html>
+            renderMaterials(allM
