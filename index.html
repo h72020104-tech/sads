@@ -1082,9 +1082,6 @@
         <button class="nav-btn" onclick="loadContent('exams')"><i class="fas fa-clipboard-check"></i> الامتحانات</button>
       </div>
       <div class="subscription-container">
-       <button id="installAppBtn" class="header-btn" style="display: none; background: #28a745;">
-  <i class="fas fa-download"></i> تثبيت التطبيق
-</button>
         <button class="header-btn" onclick="openModal('loginModal')" id="showLoginModalBtn">
           <i class="fas fa-key"></i> لدي كود تفعيل
         </button>
@@ -1658,46 +1655,6 @@
         navigator.serviceWorker.register('sw.js')
           .then(reg => console.log('Service Worker registered'))
           .catch(err => console.log('Service Worker registration failed', err));
-// ==========================================
-//  كود تثبيت التطبيق (PWA Install Logic)
-// ==========================================
-
-let deferredPrompt;
-const installBtn = document.getElementById('installAppBtn');
-
-// 1. الاستماع لحدث "جاهزية التثبيت" من المتصفح
-window.addEventListener('beforeinstallprompt', (e) => {
-    // منع المتصفح من إظهار النافذة الافتراضية المزعجة
-    e.preventDefault();
-    // حفظ الحدث لاستدعائه عند الضغط على الزر
-    deferredPrompt = e;
-    // إظهار الزر للطالب الآن
-    installBtn.style.display = 'flex';
-});
-
-// 2. تفعيل الزر عند الضغط عليه
-installBtn.addEventListener('click', async () => {
-    if (deferredPrompt) {
-        // إظهار نافذة التثبيت الأصلية الخاصة بالمتصفح
-        deferredPrompt.prompt();
-        
-        // انتظار رد الطالب (موافقة أو رفض)
-        const { outcome } = await deferredPrompt.userChoice;
-        console.log(`استجابة الطالب للتثبيت: ${outcome}`);
-        
-        // مسح الحدث لأنه لا يعمل إلا مرة واحدة
-        deferredPrompt = null;
-        
-        // إخفاء الزر بعد التثبيت
-        installBtn.style.display = 'none';
-    }
-});
-
-// 3. إخفاء الزر إذا تم تثبيت التطبيق بنجاح
-window.addEventListener('appinstalled', () => {
-    installBtn.style.display = 'none';
-    alert('تم تثبيت تطبيق منصة حيدر علي الطائي بنجاح على جهازك!');
-});
       });
     }
   </script>
