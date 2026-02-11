@@ -1925,6 +1925,26 @@
     });
   }
 </script>
+  <button id="installBtn" style="display:none;">
+تنزيل التطبيق
+</button>
+
+<script>
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = 'block';
+});
+
+installBtn.addEventListener('click', async () => {
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+});
+</script>
   </script>
  </body>
 </html>
+
