@@ -3,14 +3,14 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  
+  <title> منصة حيدر علي الطائي</title>
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1877F2">
   <link rel="apple-touch-icon" href="https://e.top4top.io/p_3692gqofg1.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="منصة الطائي">
 
-  <title> منصة حيدر علي الطائي</title>
   <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -884,30 +884,48 @@
       transform: scale(1.1);
       box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
-
-    /* Install Button Style */
-    #installAppBtn {
-      position: fixed;
-      bottom: 90px; /* Above contact button */
-      left: 20px;
-      width: 60px;
-      height: 60px;
-      background: var(--gradient-primary);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      display: none; /* Hidden by default */
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      cursor: pointer;
-      z-index: 150;
-      transition: all 0.3s;
-      animation: pulse 3s infinite;
+    
+    /* PWA Install Button Style */
+    #pwaInstallBtn {
+        position: fixed;
+        bottom: 90px;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        display: none; /* Hidden by default */
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        cursor: pointer;
+        z-index: 150;
+        transition: all 0.3s;
+        animation: pulse 3s infinite;
     }
-    #installAppBtn:hover {
+    #pwaInstallBtn:hover {
         transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(24,119,242,0.4);
+    }
+    
+    /* iOS Instructions Style */
+    .ios-step {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 1rem 0;
+        padding: 1rem;
+        background: var(--bg-secondary);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        text-align: right;
+    }
+    .ios-step i {
+        font-size: 1.5rem;
+        color: var(--primary);
     }
 
     @media (max-width: 768px) {
@@ -977,13 +995,13 @@
          bottom: 15px;
          left: 15px;
       }
-
-      #installAppBtn {
+      
+      #pwaInstallBtn {
+          bottom: 75px;
+          left: 15px;
           width: 50px;
           height: 50px;
           font-size: 1.2rem;
-          bottom: 75px; /* Adjust based on contact btn */
-          left: 15px;
       }
     }
 
@@ -1070,6 +1088,29 @@
         <button onclick="closeModal('contactModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-check"></i> إغلاق</button>
     </div>
   </div>
+  
+  <div id="iosInstallModal" class="modal" style="display: none;"> 
+    <div class="modal-content" style="max-width: 400px;">
+        <i class="fab fa-apple" style="font-size: 3rem; color: var(--text-color); margin-bottom: 1rem;"></i>
+        <h2>تثبيت التطبيق على آيفون</h2>
+        <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">اتبع الخطوات التالية لإضافة المنصة لشاشتك الرئيسية:</p>
+        
+        <div class="ios-step">
+            <span>1. اضغط على زر المشاركة في الأسفل</span>
+            <i class="fas fa-share-from-square"></i>
+        </div>
+        <div class="ios-step">
+            <span>2. اختر "إضافة إلى الشاشة الرئيسية"</span>
+            <i class="fas fa-plus-square"></i>
+        </div>
+        <div class="ios-step">
+            <span>3. اضغط على "إضافة" في الزاوية العلوية</span>
+            <span style="font-weight: bold; color: var(--primary);">Add</span>
+        </div>
+
+        <button onclick="closeModal('iosInstallModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-check"></i> حسناً</button>
+    </div>
+  </div>
 
   <div id="upgradeModal" class="modal" style="display: none;"> 
     <div class="modal-content" style="max-width: 400px;">
@@ -1095,33 +1136,6 @@
               <i class="fas fa-phone"></i> اتصل للدعم
           </a>
           <button onclick="closeModal('revokedModal')" class="download-btn" style="margin-top: 1.5rem; background: var(--primary-dark);"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
-      </div>
-  </div>
-
-  <div id="pwaInstallModal" class="modal" style="display: none;">
-      <div class="modal-content" style="max-width: 400px;">
-          <i class="fas fa-download" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
-          <h2>تثبيت التطبيق</h2>
-          
-          <div id="pwaInstallBtnContainer" style="display: none;">
-              <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">قم بتثبيت التطبيق على جهازك لسهولة الوصول وتجربة أفضل.</p>
-              <button id="pwaConfirmInstallBtn" class="download-btn" style="margin-bottom: 1rem;">
-                  <i class="fas fa-plus-circle"></i> تثبيت التطبيق الآن
-              </button>
-          </div>
-
-          <div id="pwaIosInstructions" style="display: none; text-align: center;">
-             <p style="margin-bottom: 1rem; color: var(--text-secondary);">لتثبيت التطبيق على الايفون:</p>
-             <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; text-align: right;">
-                 <p>1. اضغط على زر "مشاركة" <i class="fas fa-share-square"></i> في الأسفل.</p>
-                 <p>2. اختر "إضافة إلى الصفحة الرئيسية" <i class="fas fa-plus-square"></i>.</p>
-                 <p>3. اضغط على "إضافة" في الزاوية العلوية.</p>
-             </div>
-          </div>
-
-          <button onclick="closeModal('pwaInstallModal')" class="download-btn" style="background: var(--card-hover); color: var(--text-secondary); margin-top: 0.5rem;">
-              ليس الآن
-          </button>
       </div>
   </div>
   
@@ -1228,82 +1242,80 @@
 
   </div>
 
-  <button id="installAppBtn" onclick="openPwaModal()">
-      <i class="fas fa-download"></i>
-  </button>
-
   <button id="floatingContactBtn" onclick="openModal('contactModal')">
     <i class="fab fa-whatsapp"></i>
+  </button>
+  
+  <button id="pwaInstallBtn">
+    <i class="fas fa-download"></i>
   </button>
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
   <script>
-    // --- PWA Logic Start ---
-    let deferredPrompt;
-    const installBtn = document.getElementById('installAppBtn');
-    const pwaModal = document.getElementById('pwaInstallModal');
-    const androidPcContent = document.getElementById('pwaInstallBtnContainer');
-    const iosContent = document.getElementById('pwaIosInstructions');
-
-    // Register Service Worker
+    // تسجيل Service Worker
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-          .then((reg) => console.log('Service worker registered.', reg))
-          .catch((err) => console.log('Service worker registration failed:', err));
-      });
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(registration => console.log('SW registered:', registration))
+                .catch(error => console.log('SW registration failed:', error));
+        });
     }
 
-    // Capture install prompt
+    // منطق تثبيت التطبيق (PWA Logic)
+    let deferredPrompt;
+    const installBtn = document.getElementById('pwaInstallBtn');
+    
+    // 1. الكشف عن الجهاز
+    const isIos = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      return /iphone|ipad|ipod/.test(userAgent);
+    };
+    
+    const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+    // 2. منطق أندرويد و الحاسوب (Chrome/Edge)
     window.addEventListener('beforeinstallprompt', (e) => {
+      // منع ظهور النافذة الافتراضية فوراً
       e.preventDefault();
       deferredPrompt = e;
-      installBtn.style.display = 'flex'; // Show floating button
+      // إظهار زر التثبيت وتغيير الأيقونة
+      installBtn.style.display = 'flex';
+      installBtn.innerHTML = '<i class="fas fa-download"></i>'; // أيقونة التحميل للحاسوب والاندرويد
     });
 
-    // Handle App Install Click
-    function openPwaModal() {
-        // Detect Device
-        const isIos = /iPhone|iPad|iPod/.test(navigator.userAgent);
-        const isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator.standalone);
-        
-        // Show Modal
-        pwaModal.style.display = 'flex';
-
-        if (isIos && !isInStandaloneMode) {
-             // iOS Logic
-             androidPcContent.style.display = 'none';
-             iosContent.style.display = 'block';
-        } else {
-             // Android / PC Logic
-             iosContent.style.display = 'none';
-             androidPcContent.style.display = 'block';
-        }
+    // 3. منطق الآيفون (iOS)
+    if (isIos() && !isInStandaloneMode()) {
+        installBtn.style.display = 'flex';
+        installBtn.innerHTML = '<i class="fab fa-apple"></i>'; // أيقونة أبل
     }
 
-    // Confirm Install Action (Android/PC)
-    document.getElementById('pwaConfirmInstallBtn').addEventListener('click', async () => {
-        if (deferredPrompt) {
+    // 4. عند الضغط على الزر
+    installBtn.addEventListener('click', (e) => {
+        // إذا كان آيفون
+        if (isIos()) {
+            openModal('iosInstallModal');
+        } 
+        // إذا كان أندرويد أو حاسوب
+        else if (deferredPrompt) {
             deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log(`User response to the install prompt: ${outcome}`);
-            deferredPrompt = null;
-            closeModal('pwaInstallModal');
-            installBtn.style.display = 'none';
-        } else {
-            // Fallback for PC if prompt is not available
-            alert('يرجى استخدام خيار "تثبيت التطبيق" من إعدادات المتصفح.');
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                    installBtn.style.display = 'none';
+                } else {
+                    console.log('User dismissed the install prompt');
+                }
+                deferredPrompt = null;
+            });
         }
     });
 
-    // Check if app is already installed
+    // إخفاء الزر إذا تم التثبيت بالفعل
     window.addEventListener('appinstalled', () => {
         installBtn.style.display = 'none';
-        closeModal('pwaInstallModal');
-        console.log('PWA was installed');
+        deferredPrompt = null;
     });
-    // --- PWA Logic End ---
 
 
     // إعداد الثيم الأولي
@@ -1648,4 +1660,6 @@
       } else {
           // ** تشغيل باقي الصيغ (YouTube, MP4, HLS) **
           
-          // 1. إيقاف وضع الدرا
+          // 1. إيقاف وضع الدرايف (يخفي iframe ويظهر plyr)
+          container.classList.remove('drive-mode');
+          driveFrame.src = ''; // إيقاف صوت الدرا
