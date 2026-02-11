@@ -1,27 +1,36 @@
-const CACHE_NAME = 'haider-platform-v1';
-const urlsToCache = [
-  './',
-  './index.html',
-  './manifest.json'
+const CACHE_NAME = 'hayder-platform-v1';
+const ASSETS_TO_CACHE = [
+  '/',
+  'index.html',
+  'manifest.json',
+  'https://e.top4top.io/p_3692gqofg1.png'
 ];
 
-self.addEventListener('install', function(event) {
+// Install Event
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(ASSETS_TO_CACHE);
+    })
   );
 });
 
-self.addEventListener('fetch', function(event) {
+// Activate Event (Cleanup old caches)
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
+      );
+    })
+  );
+});
+
+// Fetch Event (Network First, fallback to cache)
+self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      })
+    fetch(event.request).catch(() => {
+      return caches.match(event.request);
+    })
   );
 });
