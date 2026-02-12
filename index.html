@@ -1932,5 +1932,46 @@ if ("serviceWorker" in navigator) {
     .then(() => console.log("Service Worker Registered"));
 }
 </script>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAbtz6fVyk2x6cJ1APPJWIkcFkq5K-hJUo",
+    authDomain: "hode-20c42.firebaseapp.com",
+    projectId: "hode-20c42",
+    storageBucket: "hode-20c42.firebasestorage.app",
+    messagingSenderId: "132342750852",
+    appId: "1:132342750852:web:05af81e5baee8ad888acd1",
+    measurementId: "G-ELDRK5TZKG"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  async function checkAccessCode() {
+    const code = document.getElementById("codeInput").value.trim();
+
+    const docRef = doc(db, "codes", code);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      alert("الكود غير صحيح");
+      return;
+    }
+
+    const data = docSnap.data();
+
+    if (data.revoked) {
+      alert("تم إلغاء الاشتراك");
+      return;
+    }
+
+    alert("تم الدخول بنجاح ✅");
+  }
+
+  window.checkAccessCode = checkAccessCode;
+</script>
  </body>
 </html>
+
