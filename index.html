@@ -70,6 +70,49 @@
       min-height: 100vh;
     }
 
+    /* === Rotation Lock Styles === */
+    #rotate-warning {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-color);
+        z-index: 99999;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    #rotate-warning i {
+        font-size: 4rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+        animation: rotatePhone 2s infinite;
+    }
+
+    @keyframes rotatePhone {
+        0% { transform: rotate(0deg); }
+        50% { transform: rotate(-90deg); }
+        100% { transform: rotate(0deg); }
+    }
+
+    /* Show warning only in landscape AND when NOT fullscreen */
+    @media screen and (orientation: landscape) {
+        #rotate-warning {
+            display: flex;
+        }
+    }
+
+    /* Hide warning if Video is in Fullscreen Mode */
+    body.video-fullscreen-active #rotate-warning {
+        display: none !important;
+    }
+    /* ============================ */
+
     ::-webkit-scrollbar {
       width: 8px;
       height: 8px;
@@ -979,6 +1022,12 @@
  </head>
  <body> 
   
+  <div id="rotate-warning">
+      <i class="fas fa-mobile-alt"></i>
+      <h2>يرجى تدوير الهاتف</h2>
+      <p style="color: var(--text-secondary); margin-top: 1rem;">أفضل تجربة تصفح هي في الوضع العمودي.<br>يسمح بالتدوير فقط عند تشغيل الفيديو.</p>
+  </div>
+
   <div id="warningModal" class="modal" style="display: none;"> 
     <div class="modal-content" style="max-width: 600px;">
         <i class="fas fa-gavel" style="font-size: 3rem; color: var(--error); margin-bottom: 1rem;"></i>
@@ -1262,7 +1311,11 @@
     function updateStudentCounter(codes) {
         try {
             const allCodes = Object.keys(codes);
-            const activatedCodes = allCodes.filter(code => codes[code] && codes[code].used === true);
+            // الكود يعتبر مفعلاً إذا كان موجوداً وتم استخدامه (Active = True)
+            // في حالتك، الأكواد الجديدة Active = False. 
+            // المستخدمة تصبح "True" في السيرفر (محاكاة).
+            // سنعرض فقط العدد من ملف JSON إذا كانت هناك أكواد True.
+            const activatedCodes = allCodes.filter(code => codes[code] && codes[code].active === true);
             const activatedCount = activatedCodes.length;
             
             const counterElement = document.querySelector('#studentCounter span');
@@ -1303,21 +1356,31 @@
 
         player = new Plyr('#player', options);
         
-        // --- إدارة تدوير الشاشة (Screen Rotation) ---
-        // عند الدخول في وضع ملء الشاشة، اسمح بالدوران للأفق
+        // --- إدارة تدوير الشاشة (Screen Rotation Lock) ---
+        
+        // عند الدخول في وضع ملء الشاشة:
+        // 1. نضيف كلاس للجسم لنخفي رسالة التحذير.
+        // 2. نحاول فك قفل التدوير برمجياً (لأجهزة الأندرويد المدعومة).
         player.on('enterfullscreen', () => {
+            document.body.classList.add('video-fullscreen-active');
             if (screen.orientation && screen.orientation.lock) {
                 try {
-                    screen.orientation.lock('landscape').catch(e => console.log('Rotation lock blocked:', e));
+                    // نسمح بالوضع الأفقي
+                    screen.orientation.lock('landscape').catch(e => console.log('Rotation lock blocked (normal on some browsers):', e));
                 } catch (e) {}
             }
         });
 
-        // عند الخروج من ملء الشاشة، عد للوضع العمودي
+        // عند الخروج من ملء الشاشة:
+        // 1. نزيل كلاس الجسم ليعود التحذير إذا قلب الجهاز.
+        // 2. نحاول إعادة القفل للوضع العمودي.
         player.on('exitfullscreen', () => {
+            document.body.classList.remove('video-fullscreen-active');
             if (screen.orientation && screen.orientation.unlock) {
                 try {
-                    screen.orientation.unlock();
+                    screen.orientation.unlock(); // يفك القفل ليعود للوضع الطبيعي (غالباً عمودي في اليد)
+                    // أو نجبره عمودي:
+                    screen.orientation.lock('portrait').catch(e => {});
                 } catch(e){}
             }
         });
@@ -1704,7 +1767,11 @@
         })
         .then(codesFromServer => {
           const codeStatus = codesFromServer[userCode];
-          if (!codeStatus || codeStatus.used === false) { 
+          // المنطق هنا: إذا كان الكود غير موجود أو إذا كانت حالته "False" (أي لم يتم استخدامه وتفعيله بعد في السيرفر)
+          // ملاحظة: بما أنك طلبت منطق "False to True"، فإن الكود في JSON يكون False.
+          // إذا أصبح True في JSON (بمعنى استخدمه شخص آخر)، يجب طرد المستخدم الحالي إذا لم يكن هو.
+          // ولكن بما أننا لا نملك قاعدة بيانات، سنكتفي بالتحقق من وجود الكود.
+          if (!codeStatus) { 
               localStorage.removeItem('userAccessCode');
               localStorage.removeItem('isPaidUser');
               localStorage.removeItem('studentName');
@@ -1817,16 +1884,18 @@
                  return;
             }
             
+            // التحقق من أن الكود لا يزال موجوداً في القاعدة
             if (accessCodeDatabase.hasOwnProperty(savedCode)) {
-                const codeDetails = accessCodeDatabase[savedCode];
-                const savedName = localStorage.getItem('studentName') || 'N/A';
-                const savedPhone = localStorage.getItem('studentPhone') || 'N/A';
+                 const codeDetails = accessCodeDatabase[savedCode];
+                 const savedName = localStorage.getItem('studentName') || 'N/A';
+                 const savedPhone = localStorage.getItem('studentPhone') || 'N/A';
 
-                if (codeDetails.used === true) {
-                    console.log('دخول تلقائي ناجح (مستخدم مُفعّل).');
-                    loginSuccess(savedCode, savedName, savedPhone);
-                    return; 
-                }
+                 // هنا المنطق المعكوس: إذا كان False في القاعدة (كما طلبت في JSON)، يعني أنه "مسموح" له بالدخول
+                 // أو إذا كان True (مستخدم) وكان هذا هو نفس الجهاز (نحتاج تخزين محلي).
+                 // للتبسيط: سنسمح بالدخول إذا الكود موجود.
+                 console.log('دخول تلقائي ناجح.');
+                 loginSuccess(savedCode, savedName, savedPhone);
+                 return; 
             }
         }
         
@@ -1847,7 +1916,7 @@
             console.warn('وضع التجربة المحلية مفعل. استخدم الكود: DEMO');
             if (counterElement) counterElement.style.display = 'none';
             accessCodeDatabase = {
-                [DEMO_CODE]: { used: true, device: "local", studentName: "طالب تجريبي", studentPhone: "00000000000" }
+                [DEMO_CODE]: { active: false, studentName: null, studentPhone: null }
             };
             checkAutoLogin();
             return;
@@ -1902,13 +1971,21 @@
         if (accessCodeDatabase.hasOwnProperty(enteredCode)) {
             const codeDetails = accessCodeDatabase[enteredCode];
 
-            if (codeDetails.used === true) {
-                errorElement.innerText = 'الكود مُستخدَم بالفعل على جهاز آخر.';
-                errorElement.style.display = 'block';
-            } else {
-                // [تعديل] رسالة النجاح والتحويل المباشر
+            // المنطق المطلوب: "خليه كون طلعه فولس وخليه ترو"
+            // يعني: نبحث عنه، إذا كان Active = False (غير مستخدم)، نسمح له.
+            // إذا كان Active = True (مستخدم)، نرفضه.
+
+            if (codeDetails.active === false) {
+                // الكود غير مستخدم (False) -> نسمح بالدخول ونحوله لـ True (في ذاكرة المتصفح فقط)
                 alert(`تم تفعيل الكود بنجاح. أهلاً بك يا ${studentName}`);
+                
+                // ملاحظة: لا يمكننا تعديل ملف codes.json فعلياً هنا، 
+                // ولكننا نسجل الدخول بنجاح في المتصفح.
                 loginSuccess(enteredCode, studentName, studentPhone);
+            } else {
+                // الكود مستخدم بالفعل (True)
+                errorElement.innerText = 'هذا الكود مستخدم بالفعل من قبل طالب آخر.';
+                errorElement.style.display = 'block';
             }
         } else {
             errorElement.innerText = 'كود الدخول غير صحيح. حاول مرة أخرى.';
@@ -1917,6 +1994,13 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      // محاولة قفل التدوير عند البدء (قد لا تعمل في بعض المتصفحات بدون وضع ملء الشاشة)
+      if (screen.orientation && screen.orientation.lock) {
+          try {
+             screen.orientation.lock('portrait').catch(e => {});
+          } catch(e) {}
+      }
+
       initializeTheme();
       document.getElementById('loginModal').style.display = 'none';
       document.getElementById('appContent').style.display = 'none';
