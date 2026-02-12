@@ -560,22 +560,6 @@
       width: 100%;
       padding-bottom: 56.25%; /* 16:9 */
       height: 0;
-      transition: all 0.3s ease;
-    }
-
-    /* --- FIX: Fullscreen Support --- */
-    /* When in fullscreen, remove the ratio hack and force full width/height */
-    .video-container:fullscreen,
-    .video-container:-webkit-full-screen,
-    .video-container:-moz-full-screen,
-    .video-container:-ms-fullscreen {
-        padding-bottom: 0 !important;
-        height: 100vh !important;
-        width: 100vw !important;
-        border-radius: 0 !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
     /* Make video and iframe fill the container */
@@ -613,37 +597,11 @@
         z-index: 100; /* Must be on top of iframe */
         display: none;
         cursor: default; /* Doesn't show hand cursor */
+        /* background: rgba(255, 0, 0, 0.3); */ /* Uncomment to test position */
     }
 
     .video-container.drive-mode #driveMask {
         display: block; /* Only show when Drive is active */
-    }
-    
-    /* --- Custom Fullscreen Button for Drive --- */
-    #customFsBtn {
-        display: none; /* Hidden by default */
-        position: absolute;
-        bottom: 15px;
-        right: 15px;
-        z-index: 110;
-        background: rgba(0,0,0,0.6);
-        border: 2px solid rgba(255,255,255,0.5);
-        color: white;
-        padding: 8px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 1.2rem;
-        transition: all 0.3s;
-    }
-    
-    /* Only show custom button in Drive mode */
-    .video-container.drive-mode #customFsBtn {
-        display: block;
-    }
-    
-    #customFsBtn:hover {
-        background: var(--primary);
-        border-color: var(--primary);
     }
     /* ------------------------------------------- */
 
@@ -1017,51 +975,6 @@
         font-size: 1.5rem;
       }
     }
-
-    /* --- FIX: Screen Rotation (Landscape on Mobile) --- */
-    @media (orientation: landscape) and (max-height: 500px) {
-        header {
-            padding: 0.5rem 1rem;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        
-        .site-title {
-            font-size: 1.2rem;
-        }
-        .site-logo {
-            width: 30px;
-            height: 30px;
-        }
-        
-        /* Hide cluttered elements in landscape for better view */
-        .subscription-container, #studentCounter, .nav-buttons {
-            display: none;
-        }
-        
-        /* Adjust page padding */
-        .page {
-            padding: 1rem;
-        }
-        
-        /* Make Video Container fit the screen height better */
-        #videoPage .video-container {
-             /* Remove fixed aspect ratio for better fit */
-             padding-bottom: 0;
-             height: 80vh; /* Takes 80% of screen height */
-             width: 100%;
-        }
-        
-        /* Hide description to focus on video */
-        #videoPage .video-details {
-            display: none;
-        }
-        
-        .back-button {
-            margin-bottom: 0.5rem;
-            padding: 0.5rem 1rem;
-        }
-    }
   </style>
  </head>
  <body> 
@@ -1211,19 +1124,16 @@
 
     <div id="videoPage" class="page">
         <div class="video-page">
-            <div class="video-container" id="videoContainer">
+            <div class="video-container">
                 <video id="player" playsinline controls></video>
                 <iframe id="driveFrame" sandbox="allow-scripts allow-same-origin allow-presentation" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 <div id="videoWatermark" class="video-watermark"></div>
                 <div id="driveMask"></div>
-                <button id="customFsBtn" onclick="toggleCustomFullscreen()">
-                    <i class="fas fa-expand"></i>
-                </button>
             </div>
             <div class="video-details">
                 <h2 id="videoTitle"></h2>
                 <p id="videoDescription"></p>
-                <button class="back-button" onclick="navigate('classes')"><i class="fas fa-arrow-right"></i> العودة للفصول</button>
+                <button class="back-button" onclick="showTeacher(currentTeacher.id)"><i class="fas fa-arrow-right"></i> العودة للفصول</button>
             </div>
         </div>
     </div>
@@ -1370,43 +1280,6 @@
     }
     /* ========================================= */
 
-    // دالة تكبير الشاشة اليدوية لوضع Drive
-    function toggleCustomFullscreen() {
-        const container = document.getElementById('videoContainer');
-        const btnIcon = document.querySelector('#customFsBtn i');
-        
-        if (!document.fullscreenElement) {
-            if (container.requestFullscreen) {
-                container.requestFullscreen();
-            } else if (container.webkitRequestFullscreen) { /* Safari */
-                container.webkitRequestFullscreen();
-            } else if (container.msRequestFullscreen) { /* IE11 */
-                container.msRequestFullscreen();
-            }
-            btnIcon.classList.remove('fa-expand');
-            btnIcon.classList.add('fa-compress');
-        } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) { /* Safari */
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) { /* IE11 */
-                document.msExitFullscreen();
-            }
-            btnIcon.classList.remove('fa-compress');
-            btnIcon.classList.add('fa-expand');
-        }
-    }
-
-    // مراقبة تغيير حالة ملء الشاشة لتحديث الأيقونة
-    document.addEventListener('fullscreenchange', () => {
-         const btnIcon = document.querySelector('#customFsBtn i');
-         if (!document.fullscreenElement) {
-             btnIcon.classList.remove('fa-compress');
-             btnIcon.classList.add('fa-expand');
-         }
-    });
-
     // إعداد مشغل الفيديو
     let hls;
     let player;
@@ -1420,9 +1293,7 @@
             controls: ['play-large', 'rewind', 'play', 'fast-forward', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'airplay', 'fullscreen'],
             settings: ['speed', 'quality'],
             speed: { selected: 1, options: [0.5, 1, 1.25, 1.5, 2] },
-            seekTime: 10,
-            // هام: التأكد من أن Plyr يستخدم الحاوية الصحيحة للتكبير
-            fullscreen: { enabled: true, fallback: true, iosNative: true, container: '.video-container' }
+            seekTime: 10
         };
 
         // إعدادات إضافية لليوتيوب
@@ -1431,6 +1302,26 @@
         }
 
         player = new Plyr('#player', options);
+        
+        // --- إدارة تدوير الشاشة (Screen Rotation) ---
+        // عند الدخول في وضع ملء الشاشة، اسمح بالدوران للأفق
+        player.on('enterfullscreen', () => {
+            if (screen.orientation && screen.orientation.lock) {
+                try {
+                    screen.orientation.lock('landscape').catch(e => console.log('Rotation lock blocked:', e));
+                } catch (e) {}
+            }
+        });
+
+        // عند الخروج من ملء الشاشة، عد للوضع العمودي
+        player.on('exitfullscreen', () => {
+            if (screen.orientation && screen.orientation.unlock) {
+                try {
+                    screen.orientation.unlock();
+                } catch(e){}
+            }
+        });
+        // -------------------------------------------
 
         // حفظ تقدم الفيديو كل 5 ثوان
         player.on('play', () => {
@@ -1491,16 +1382,6 @@
         if (watermark) {
           watermark.textContent = '';
         }
-        
-        // إعادة أيقونة التكبير لحالتها الأصلية
-        const btnIcon = document.querySelector('#customFsBtn i');
-        if(btnIcon) {
-            btnIcon.classList.remove('fa-compress');
-            btnIcon.classList.add('fa-expand');
-        }
-        if (document.fullscreenElement) {
-             document.exitFullscreen().catch(err => {});
-        }
       }
 
       Object.keys(pages).forEach(k => {
@@ -1516,7 +1397,7 @@
         <div class="teacher-card" style="grid-column: 1/-1; text-align: center; background: var(--bg-secondary);">
             <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--warning); margin-bottom: 1rem;"></i>
             <h3>لا توجد دورات متاحة</h3>
-            <p>قد تكون هناك مشكلة في تحميل البيانات.</p>
+            <p>قد تكون هناك مشكلة في تحميل البيانات أو لا تتوفر دورات حالياً.</p>
         </div>
         `;
         return;
@@ -1718,8 +1599,8 @@
         // التحقق إذا كان المستخدم مسجلاً
         const isPaid = localStorage.getItem('isPaidUser') === 'true';
 
-        // تقييد جميع الصفحات ما عدا التواصل
-        if ((type === 'materials' || type === 'exams' || type === 'lectures') && !isPaid) {
+        // [تعديل] تقييد الملازم والامتحانات فقط، السماح بالمحاضرات للجميع (حسب نوع الدورة)
+        if ((type === 'materials' || type === 'exams') && !isPaid) {
             showUpgradeModal();
             return;
         }
@@ -1737,13 +1618,15 @@
             renderExams(allExams);
             navigate('exams');
         } else {
-            // إذا كان lectures (المحاضرات)، اذهب لصفحة المدرسين/الدورات
+            // [تعديل] إذا كان lectures (المحاضرات/الرئيسية)
             if (isPaid) {
-               // [معدل] عرض الدورات المدفوعة فقط
+               // إذا كان مدفوع: عرض كل شيء أو الدورات المدفوعة
+               // (يمكنك تغيير هذا لعرض الدورات المدفوعة فقط إذا أردت)
+               // حالياً سنعرض المدفوعة فقط لتمييزها
                const paidCourses = allTeachers.filter(t => t.isPaid !== false);
                renderTeachers(paidCourses);
             } else {
-               // الوضع المجاني
+               // الوضع المجاني: عرض الدورات المجانية فقط
                renderTeachers(allTeachers.filter(t => t.isPaid === false));
             }
             navigate('home'); 
@@ -1821,7 +1704,6 @@
         })
         .then(codesFromServer => {
           const codeStatus = codesFromServer[userCode];
-          // [معدل] يتم الطرد إذا الكود غير موجود أو إذا تم تعطيله (used: false)
           if (!codeStatus || codeStatus.used === false) { 
               localStorage.removeItem('userAccessCode');
               localStorage.removeItem('isPaidUser');
@@ -1843,19 +1725,16 @@
       periodicCheckInterval = setInterval(checkRevocationStatus, fiveMinutesInMs);
     }
     
-    // ** [معدل] منطق الدخول المجاني/المدفوع **
-    
     // دالة الدخول للوضع المجاني
     function enterFreeMode() {
-        // [تعديل] حفظ الموافقة على التحذير لمنع ظهوره مرة أخرى
         localStorage.setItem('hasAgreedToWarning', 'true');
 
-        closeModal('warningModal'); // إغلاق مودال التحذير
+        closeModal('warningModal'); 
         document.getElementById('appContent').style.display = 'block';
         document.body.style.overflow = 'auto';
 
         loadData().then(() => {
-             // عرض الدورات التي تم تحديدها كـ (مجانية) فقط
+             // عرض الدورات المجانية فقط
              const freeCourses = allTeachers.filter(t => t.isPaid === false);
              renderTeachers(freeCourses); 
              // المستخدم المجاني لا يرى الملازم أو الامتحانات
@@ -1865,7 +1744,6 @@
              allExams = []; 
         });
         
-        // تفعيل زر المحاضرات واختيار الصفحة
         navButtons.forEach(btn => btn.classList.remove('active'));
         const activeBtn = document.querySelector('.nav-btn[onclick="loadContent(\'lectures\')]');
         if (activeBtn) activeBtn.classList.add('active');
@@ -1873,7 +1751,7 @@
         navigate('home');
         document.getElementById('studentCounter').style.display = 'none';
         document.getElementById('floatingContactBtn').style.display = 'flex';
-        document.getElementById('showLoginModalBtn').style.display = 'block'; // التأكد من إظهار زر التفعيل
+        document.getElementById('showLoginModalBtn').style.display = 'block';
     }
 
     // رسالة الترقية (عند الضغط على الملازم/الامتحانات في الوضع المجاني)
@@ -1881,7 +1759,7 @@
         openModal('upgradeModal');
     }
 
-    // ** منطق حماية الدخول (مرتبط بـ codes.json) **
+    // ** منطق حماية الدخول **
     let accessCodeDatabase = {};
     const DEMO_CODE = 'DEMO'; 
     
@@ -1909,20 +1787,18 @@
              renderMaterials(allMaterials);
              renderExams(allExams);
              
-             // تفعيل زر المحاضرات واختيار الصفحة
              navButtons.forEach(btn => btn.classList.remove('active'));
              const activeBtn = document.querySelector('.nav-btn[onclick="loadContent(\'lectures\')]');
              if (activeBtn) activeBtn.classList.add('active');
 
              navigate('home');
              
-             // تحديث العلامة المائية في حالة تشغيل الفيديو
+             // تحديث العلامة المائية
              const watermark = document.getElementById('videoWatermark');
              if (watermark) {
                  watermark.textContent = `${name} - ${phone}`;
              }
              
-             // بدء التحقق الدوري للطرد
              startPeriodicCheck();
         });
     }
@@ -1933,7 +1809,6 @@
         const savedCode = localStorage.getItem('userAccessCode');
         const hasAgreed = localStorage.getItem('hasAgreedToWarning') === 'true';
         
-        // 1. إذا كان المستخدم مدفوعاً ولديه كود محفوظ
         if (isPaid && savedCode) {
             
             if (savedCode === DEMO_CODE && window.location.protocol === 'file:') {
@@ -1950,18 +1825,17 @@
                 if (codeDetails.used === true) {
                     console.log('دخول تلقائي ناجح (مستخدم مُفعّل).');
                     loginSuccess(savedCode, savedName, savedPhone);
-                    return; // تم الدخول بنجاح
+                    return; 
                 }
             }
         }
         
-        // 2. [جديد] إذا لم يكن مدفوعاً، لكنه وافق مسبقاً على التحذير -> ادخل للوضع المجاني مباشرة
+        // [تعديل] إذا لم يكن مدفوعاً، لكنه وافق مسبقاً على التحذير -> ادخل للوضع المجاني مباشرة
         if (hasAgreed) {
             enterFreeMode();
             return;
         }
 
-        // 3. إذا لم يوافق مسبقاً ولم يكن مسجلاً -> اعرض التحذير
         openModal('warningModal');
     }
     
@@ -1994,7 +1868,6 @@
             })
             .catch(err => {
                 console.error('خطأ فادح في تحميل الأكواد:', err);
-                // في حالة الخطأ، نعتمد على حالة الموافقة المحلية فقط
                 checkAutoLogin();
                 if (counterElement) counterElement.style.display = 'none';
             });
@@ -2020,6 +1893,8 @@
         errorElement.style.display = 'none';
         
         if (enteredCode === DEMO_CODE && window.location.protocol === 'file:') {
+            // [تعديل] رسالة النجاح
+            alert("تم تسجيل الدخول بنجاح! سيتم تحويلك للمحتوى المدفوع.");
             loginSuccess(enteredCode, studentName, studentPhone);
             return;
         }
@@ -2031,8 +1906,8 @@
                 errorElement.innerText = 'الكود مُستخدَم بالفعل على جهاز آخر.';
                 errorElement.style.display = 'block';
             } else {
-                
-                alert(`تم تفعيل الكود بنجاح. تواصل مع المدرس لتأكيد التفعيل النهائي للكود.`);
+                // [تعديل] رسالة النجاح والتحويل المباشر
+                alert(`تم تفعيل الكود بنجاح. أهلاً بك يا ${studentName}`);
                 loginSuccess(enteredCode, studentName, studentPhone);
             }
         } else {
