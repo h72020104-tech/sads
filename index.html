@@ -560,6 +560,22 @@
       width: 100%;
       padding-bottom: 56.25%; /* 16:9 */
       height: 0;
+      transition: all 0.3s ease;
+    }
+
+    /* --- FIX: Fullscreen Support --- */
+    /* When in fullscreen, remove the ratio hack and force full width/height */
+    .video-container:fullscreen,
+    .video-container:-webkit-full-screen,
+    .video-container:-moz-full-screen,
+    .video-container:-ms-fullscreen {
+        padding-bottom: 0 !important;
+        height: 100vh !important;
+        width: 100vw !important;
+        border-radius: 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Make video and iframe fill the container */
@@ -597,11 +613,37 @@
         z-index: 100; /* Must be on top of iframe */
         display: none;
         cursor: default; /* Doesn't show hand cursor */
-        /* background: rgba(255, 0, 0, 0.3); */ /* Uncomment to test position */
     }
 
     .video-container.drive-mode #driveMask {
         display: block; /* Only show when Drive is active */
+    }
+    
+    /* --- Custom Fullscreen Button for Drive --- */
+    #customFsBtn {
+        display: none; /* Hidden by default */
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        z-index: 110;
+        background: rgba(0,0,0,0.6);
+        border: 2px solid rgba(255,255,255,0.5);
+        color: white;
+        padding: 8px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: all 0.3s;
+    }
+    
+    /* Only show custom button in Drive mode */
+    .video-container.drive-mode #customFsBtn {
+        display: block;
+    }
+    
+    #customFsBtn:hover {
+        background: var(--primary);
+        border-color: var(--primary);
     }
     /* ------------------------------------------- */
 
@@ -975,6 +1017,51 @@
         font-size: 1.5rem;
       }
     }
+
+    /* --- FIX: Screen Rotation (Landscape on Mobile) --- */
+    @media (orientation: landscape) and (max-height: 500px) {
+        header {
+            padding: 0.5rem 1rem;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        
+        .site-title {
+            font-size: 1.2rem;
+        }
+        .site-logo {
+            width: 30px;
+            height: 30px;
+        }
+        
+        /* Hide cluttered elements in landscape for better view */
+        .subscription-container, #studentCounter, .nav-buttons {
+            display: none;
+        }
+        
+        /* Adjust page padding */
+        .page {
+            padding: 1rem;
+        }
+        
+        /* Make Video Container fit the screen height better */
+        #videoPage .video-container {
+             /* Remove fixed aspect ratio for better fit */
+             padding-bottom: 0;
+             height: 80vh; /* Takes 80% of screen height */
+             width: 100%;
+        }
+        
+        /* Hide description to focus on video */
+        #videoPage .video-details {
+            display: none;
+        }
+        
+        .back-button {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+    }
   </style>
  </head>
  <body> 
@@ -1124,11 +1211,14 @@
 
     <div id="videoPage" class="page">
         <div class="video-page">
-            <div class="video-container">
+            <div class="video-container" id="videoContainer">
                 <video id="player" playsinline controls></video>
                 <iframe id="driveFrame" sandbox="allow-scripts allow-same-origin allow-presentation" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 <div id="videoWatermark" class="video-watermark"></div>
                 <div id="driveMask"></div>
+                <button id="customFsBtn" onclick="toggleCustomFullscreen()">
+                    <i class="fas fa-expand"></i>
+                </button>
             </div>
             <div class="video-details">
                 <h2 id="videoTitle"></h2>
@@ -1280,6 +1370,43 @@
     }
     /* ========================================= */
 
+    // دالة تكبير الشاشة اليدوية لوضع Drive
+    function toggleCustomFullscreen() {
+        const container = document.getElementById('videoContainer');
+        const btnIcon = document.querySelector('#customFsBtn i');
+        
+        if (!document.fullscreenElement) {
+            if (container.requestFullscreen) {
+                container.requestFullscreen();
+            } else if (container.webkitRequestFullscreen) { /* Safari */
+                container.webkitRequestFullscreen();
+            } else if (container.msRequestFullscreen) { /* IE11 */
+                container.msRequestFullscreen();
+            }
+            btnIcon.classList.remove('fa-expand');
+            btnIcon.classList.add('fa-compress');
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
+            btnIcon.classList.remove('fa-compress');
+            btnIcon.classList.add('fa-expand');
+        }
+    }
+
+    // مراقبة تغيير حالة ملء الشاشة لتحديث الأيقونة
+    document.addEventListener('fullscreenchange', () => {
+         const btnIcon = document.querySelector('#customFsBtn i');
+         if (!document.fullscreenElement) {
+             btnIcon.classList.remove('fa-compress');
+             btnIcon.classList.add('fa-expand');
+         }
+    });
+
     // إعداد مشغل الفيديو
     let hls;
     let player;
@@ -1293,7 +1420,9 @@
             controls: ['play-large', 'rewind', 'play', 'fast-forward', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'airplay', 'fullscreen'],
             settings: ['speed', 'quality'],
             speed: { selected: 1, options: [0.5, 1, 1.25, 1.5, 2] },
-            seekTime: 10
+            seekTime: 10,
+            // هام: التأكد من أن Plyr يستخدم الحاوية الصحيحة للتكبير
+            fullscreen: { enabled: true, fallback: true, iosNative: true, container: '.video-container' }
         };
 
         // إعدادات إضافية لليوتيوب
@@ -1361,6 +1490,16 @@
         const watermark = document.getElementById('videoWatermark');
         if (watermark) {
           watermark.textContent = '';
+        }
+        
+        // إعادة أيقونة التكبير لحالتها الأصلية
+        const btnIcon = document.querySelector('#customFsBtn i');
+        if(btnIcon) {
+            btnIcon.classList.remove('fa-compress');
+            btnIcon.classList.add('fa-expand');
+        }
+        if (document.fullscreenElement) {
+             document.exitFullscreen().catch(err => {});
         }
       }
 
