@@ -600,33 +600,42 @@
       gap: 2rem;
     }
 
-    /* === Video Container Modifications for Drive & Plyr === */
+    /* === Video Container Modifications [FIXED] === */
     .video-container {
       position: relative;
       background: black;
       border-radius: 15px;
       overflow: hidden;
       box-shadow: var(--shadow-hover);
-      /* Force 16:9 Aspect Ratio to support iframe responsiveness */
+      /* تم حذف إجبار نسبة 16:9 هنا */
       width: 100%;
-      padding-bottom: 56.25%; /* 16:9 */
-      height: 0;
+      height: auto; /* السماح للحاوية بالتكيف مع الفيديو */
+      min-height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Make video and iframe fill the container */
-    .plyr, #driveFrame {
-      position: absolute !important;
-      top: 0;
-      left: 0;
+    /* Make video and iframe fill the container appropriately */
+    .plyr {
       width: 100% !important;
-      height: 100% !important;
+      height: auto !important; /* السماح للمشغل بأخذ الطول الأصلي */
+      position: relative !important;
+    }
+
+    /* ضمان أن الفيديو لا يتم قصه داخل المشغل */
+    .plyr video {
+        object-fit: contain;
     }
 
     /* Drive Iframe styling */
     #driveFrame {
         display: none;
         border: none;
-        z-index: 5; /* Below watermark */
+        width: 100%;
+        position: relative !important; /* ليس absolute */
+        height: 60vh; /* ارتفاع ثابت للآي فريم لأننا لا نعرف أبعاده */
+        max-height: 600px;
     }
 
     /* When Drive Mode is active */
@@ -642,17 +651,16 @@
     #driveMask {
         position: absolute;
         top: 0;
-        right: 0; /* Right because Drive controls are usually top-right */
-        width: 150px; /* Covers the top right area width */
-        height: 80px; /* Covers the top bar height */
-        z-index: 100; /* Must be on top of iframe */
+        right: 0; 
+        width: 150px; 
+        height: 80px; 
+        z-index: 100; 
         display: none;
-        cursor: default; /* Doesn't show hand cursor */
-        /* background: rgba(255, 0, 0, 0.3); */ /* Uncomment to test position */
+        cursor: default; 
     }
 
     .video-container.drive-mode #driveMask {
-        display: block; /* Only show when Drive is active */
+        display: block; 
     }
     /* ------------------------------------------- */
 
