@@ -938,14 +938,26 @@
       transform: scale(1.1);
       box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* ترتيب العناصر عمودياً في الموبايل */
+    padding: 1rem;
+    gap: 1.5rem;
+    align-items: center;
+  }
 
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        padding: 1rem;
-        gap: 1rem;
-      }
+  .subscription-container {
+    width: 100%; /* تمدد حاوية الأزرار لتشمل العرض كاملاً */
+    justify-content: center; /* توسيط الأزرار */
+    gap: 0.5rem;
+  }
 
+  .header-btn {
+    flex: 1; /* جعل الأزرار متساوية في الحجم ومرتبة بجانب بعضها */
+    font-size: 0.85rem;
+    padding: 0.8rem 0.5rem;
+  }
+}
       .site-title {
         font-size: 1.5rem;
       }
@@ -2023,3 +2035,4 @@ if ("serviceWorker" in navigator) {
 </script>
  </body>
 </html>
+
