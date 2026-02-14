@@ -100,8 +100,9 @@
         100% { transform: rotate(0deg); }
     }
 
-    /* Show warning only in landscape AND when NOT fullscreen */
-    @media screen and (orientation: landscape) {
+    /* Show warning only in landscape AND when NOT fullscreen AND ONLY ON MOBILE (Max width 900px) */
+    /* تم التعديل هنا: التحذير يظهر فقط إذا كان العرض أقل من 900 بكسل (للهواتف) لكي لا يؤثر على الحاسوب */
+    @media screen and (orientation: landscape) and (max-width: 900px) {
         #rotate-warning {
             display: flex;
         }
