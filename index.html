@@ -108,8 +108,11 @@
         100% { transform: rotate(0deg); }
     }
 
-    /* Show warning only in landscape AND when NOT fullscreen */
-    @media screen and (orientation: landscape) {
+    /* تعديل مهم: إظهار التحذير فقط إذا كان الجهاز في الوضع الأفقي 
+       AND عرض الشاشة أقل من 1024 بكسل (أي الموبايلات والتابلت فقط).
+       اللابتوب والكمبيوتر لن يظهر لهم التحذير لأن عرضهم أكبر.
+    */
+    @media screen and (orientation: landscape) and (max-width: 1024px) {
         #rotate-warning {
             display: flex;
         }
@@ -600,16 +603,15 @@
       gap: 2rem;
     }
 
-    /* === Video Container Modifications [FIXED] === */
+    /* === Video Container Modifications === */
     .video-container {
       position: relative;
       background: black;
       border-radius: 15px;
       overflow: hidden;
       box-shadow: var(--shadow-hover);
-      /* تم حذف إجبار نسبة 16:9 هنا */
       width: 100%;
-      height: auto; /* السماح للحاوية بالتكيف مع الفيديو */
+      height: auto; /* تكيف تلقائي */
       min-height: 300px;
       display: flex;
       justify-content: center;
@@ -619,11 +621,10 @@
     /* Make video and iframe fill the container appropriately */
     .plyr {
       width: 100% !important;
-      height: auto !important; /* السماح للمشغل بأخذ الطول الأصلي */
+      height: auto !important; 
       position: relative !important;
     }
 
-    /* ضمان أن الفيديو لا يتم قصه داخل المشغل */
     .plyr video {
         object-fit: contain;
     }
@@ -633,8 +634,8 @@
         display: none;
         border: none;
         width: 100%;
-        position: relative !important; /* ليس absolute */
-        height: 60vh; /* ارتفاع ثابت للآي فريم لأننا لا نعرف أبعاده */
+        position: relative !important;
+        height: 60vh; 
         max-height: 600px;
     }
 
