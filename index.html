@@ -4,6 +4,13 @@
   <link rel="manifest" href="manifest.json">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="منصة حيدر الطائي">
+  <link rel="apple-touch-icon" href="https://j.top4top.io/p_3598vdrdp1.jpg">
+  <link rel="icon" type="image/jpg" href="https://j.top4top.io/p_3598vdrdp1.jpg">
+
   <title> منصة حيدر علي الطائي</title>
   <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css">
@@ -68,6 +75,7 @@
       line-height: 1.6;
       overflow-x: hidden;
       min-height: 100vh;
+      -webkit-tap-highlight-color: transparent; /* لإزالة التظليل عند النقر في الموبايل */
     }
 
     /* === Rotation Lock Styles === */
@@ -100,9 +108,8 @@
         100% { transform: rotate(0deg); }
     }
 
-    /* Show warning only in landscape AND when NOT fullscreen AND ONLY ON MOBILE (Max width 900px) */
-    /* تم التعديل هنا: التحذير يظهر فقط إذا كان العرض أقل من 900 بكسل (للهواتف) لكي لا يؤثر على الحاسوب */
-    @media screen and (orientation: landscape) and (max-width: 900px) {
+    /* Show warning only in landscape AND when NOT fullscreen */
+    @media screen and (orientation: landscape) {
         #rotate-warning {
             display: flex;
         }
@@ -1757,21 +1764,18 @@
     const fiveMinutesInMs = 5 * 60 * 1000;
 
     // التحقق الدوري من حالة الكود (للطرد)
+    // [تم تعديل اسم الملف هنا للتمويه]
     function checkRevocationStatus() {
       const userCode = localStorage.getItem('userAccessCode');
       if (!userCode) return; // لا يوجد مستخدم مسجل
 
-      fetch('codes.json?t=' + Date.now())
+      fetch('sys-config-v2.json?t=' + Date.now()) // <--- تم تغيير الاسم
         .then(response => {
-          if (!response.ok) throw new Error('Codes file not found');
+          if (!response.ok) throw new Error('System config file not found');
           return response.json();
         })
         .then(codesFromServer => {
           const codeStatus = codesFromServer[userCode];
-          // المنطق هنا: إذا كان الكود غير موجود أو إذا كانت حالته "False" (أي لم يتم استخدامه وتفعيله بعد في السيرفر)
-          // ملاحظة: بما أنك طلبت منطق "False to True"، فإن الكود في JSON يكون False.
-          // إذا أصبح True في JSON (بمعنى استخدمه شخص آخر)، يجب طرد المستخدم الحالي إذا لم يكن هو.
-          // ولكن بما أننا لا نملك قاعدة بيانات، سنكتفي بالتحقق من وجود الكود.
           if (!codeStatus) { 
               localStorage.removeItem('userAccessCode');
               localStorage.removeItem('isPaidUser');
@@ -1783,7 +1787,7 @@
           }
         })
         .catch(error => {
-          console.error('فشل في جلب ملف الرموز للتحقق الدوري:', error);
+          console.error('فشل في التحقق الدوري:', error);
         });
     }
 
@@ -1891,9 +1895,6 @@
                  const savedName = localStorage.getItem('studentName') || 'N/A';
                  const savedPhone = localStorage.getItem('studentPhone') || 'N/A';
 
-                 // هنا المنطق المعكوس: إذا كان False في القاعدة (كما طلبت في JSON)، يعني أنه "مسموح" له بالدخول
-                 // أو إذا كان True (مستخدم) وكان هذا هو نفس الجهاز (نحتاج تخزين محلي).
-                 // للتبسيط: سنسمح بالدخول إذا الكود موجود.
                  console.log('دخول تلقائي ناجح.');
                  loginSuccess(savedCode, savedName, savedPhone);
                  return; 
@@ -1909,6 +1910,7 @@
         openModal('warningModal');
     }
     
+    // [تم تعديل اسم الملف هنا للتمويه]
     function loadAccessCodes() {
         const isLocalFile = window.location.protocol === 'file:';
         const counterElement = document.getElementById('studentCounter');
@@ -1923,21 +1925,22 @@
             return;
         }
 
-        fetch('codes.json?t=' + Date.now())
+        // تم تغيير codes.json إلى sys-config-v2.json
+        fetch('sys-config-v2.json?t=' + Date.now())
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('فشل تحميل ملف codes.json.');
+                    throw new Error('فشل تحميل ملف الإعدادات (sys-config-v2.json).');
                 }
                 return response.json();
             })
             .then(data => {
                 accessCodeDatabase = data;
-                console.log('تم تحميل ملف الأكواد بنجاح.');
+                console.log('تم تحميل قاعدة البيانات بنجاح.');
                 updateStudentCounter(data);
                 checkAutoLogin();
             })
             .catch(err => {
-                console.error('خطأ فادح في تحميل الأكواد:', err);
+                console.error('خطأ فادح في تحميل البيانات:', err);
                 checkAutoLogin();
                 if (counterElement) counterElement.style.display = 'none';
             });
@@ -1972,19 +1975,11 @@
         if (accessCodeDatabase.hasOwnProperty(enteredCode)) {
             const codeDetails = accessCodeDatabase[enteredCode];
 
-            // المنطق المطلوب: "خليه كون طلعه فولس وخليه ترو"
-            // يعني: نبحث عنه، إذا كان Active = False (غير مستخدم)، نسمح له.
-            // إذا كان Active = True (مستخدم)، نرفضه.
-
+            // المنطق: إذا كان false (غير مستخدم) -> اسمح
             if (codeDetails.active === false) {
-                // الكود غير مستخدم (False) -> نسمح بالدخول ونحوله لـ True (في ذاكرة المتصفح فقط)
                 alert(`تم تفعيل الكود بنجاح. أهلاً بك يا ${studentName}`);
-                
-                // ملاحظة: لا يمكننا تعديل ملف codes.json فعلياً هنا، 
-                // ولكننا نسجل الدخول بنجاح في المتصفح.
                 loginSuccess(enteredCode, studentName, studentPhone);
             } else {
-                // الكود مستخدم بالفعل (True)
                 errorElement.innerText = 'هذا الكود مستخدم بالفعل من قبل طالب آخر.';
                 errorElement.style.display = 'block';
             }
@@ -1995,7 +1990,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // محاولة قفل التدوير عند البدء (قد لا تعمل في بعض المتصفحات بدون وضع ملء الشاشة)
+      // محاولة قفل التدوير عند البدء
       if (screen.orientation && screen.orientation.lock) {
           try {
              screen.orientation.lock('portrait').catch(e => {});
