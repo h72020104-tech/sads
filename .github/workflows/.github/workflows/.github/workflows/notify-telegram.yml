@@ -1,0 +1,23 @@
+name: Notify Telegram on New Lecture
+
+on:
+  push:
+    paths:
+      - "lectures/**"  # أي تعديل على ملفات المحاضرات
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Send Telegram Notification
+        uses: appleboy/telegram-action@v0.0.7
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            🚀 <b>تم إضافة محاضرة جديدة!</b>
+            تحقق منها في المنصة.
+          parse_mode: HTML
