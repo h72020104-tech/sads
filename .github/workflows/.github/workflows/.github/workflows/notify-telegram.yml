@@ -15,8 +15,8 @@ jobs:
       - name: Send Telegram Notification
         uses: appleboy/telegram-action@v0.0.7
         with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          to: ${{ 8459673075 }}
+          token: ${{ 8459673075:AAEMbWsll0KPyUzOY-DKaJQ11bYZAXRvC7A }}
           message: |
             🚀 <b>تم إضافة محاضرة جديدة!</b>
             تحقق منها في المنصة.
