@@ -1079,13 +1079,19 @@
             <h4 style="color: var(--primary); margin-bottom: 0.5rem;">الأستاذ: حيدر علي الطائي (Hayder Ali Al-Ta'ee)</h4>
             <p style="font-weight: bold; color: var(--text-color); margin-bottom: 1rem;">جميع حقوق المنصة محفوظة.</p>
             <p style="color: var(--error); font-weight: 600;">
-                تحذير قانوني: يمنع منعاً باتاً تسريب أو مشاركة أي محتوى من هذه المنصة. في حال محاولة اختراق، أو تسريب، أو تخريب المنصة أو التلاعب بها، فإنك تعرض نفسك للمسائلة القانونية الصارمة أمام الجهات المختصة.
+                تحذير قانوني: يمنع منعاً باتاً تسريب أو مشاركة أي محتوى من هذه المنصة.
             </p>
         </div>
-        <p>بالنقر على "أوافق"، أنت تقرأ وتوافق على هذه الشروط.</p>
         
-        <button id="agreeButton" class="download-btn" onclick="enterFreeMode()">
-            <i class="fas fa-check"></i> أوافق وأدخل للقسم المجاني
+        <div style="margin: 1.5rem 0;">
+            <p style="margin-bottom: 0.5rem; color: var(--primary); font-weight: bold;">يرجى كتابة الاسم الثلاثي للدخول:</p>
+            <input type="text" id="welcomeNameInput" class="modal-input" placeholder="اكتب اسمك الثلاثي هنا" required>
+        </div>
+
+        <p>بالنقر على "تسجيل"، أنت توافق على الشروط.</p>
+        
+        <button id="agreeButton" class="download-btn" onclick="validateAndEnter()">
+            <i class="fas fa-check"></i> تسجيل الاسم والدخول
         </button>
     </div>
   </div>
@@ -1095,7 +1101,8 @@
           <button class="close-modal" onclick="closeModal('loginModal')"><i class="fas fa-times"></i></button>
           <img src="https://j.top4top.io/p_3598vdrdp1.jpg" alt="شعار المنصة">
           <h2>تسجيل الدخول - الدورة الإلكترونية</h2>
-          <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">يرجى إدخال اسمك ورقم هاتفك وكود التفعيل الخاص بك للدخول إلى الدورة.</p>
+          <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">يرجى إدخال بياناتك للدخول إلى الدورة المدفوعة.</p>
+          
           <input type="text" id="studentNameInput" class="modal-input" placeholder="الاسم الثلاثي" required>
           <input type="text" id="studentPhoneInput" class="modal-input" placeholder="رقم الهاتف" required>
           <input type="text" id="codeInput" class="modal-input" placeholder="كود التفعيل " required>
@@ -1687,11 +1694,14 @@
       const container = document.querySelector('.video-container');
 
       // إعداد العلامة المائية
+      // هنا نستدعي الاسم المحفوظ (سواء تم إدخاله في الشاشة الأولى أو عبر كود التفعيل)
       const savedName = localStorage.getItem('studentName') || 'طالب منصة التفوق';
-      const savedPhone = localStorage.getItem('studentPhone') || '964770xxxxxxx';
+      // رقم الهاتف يظهر فقط إذا كان محفوظاً
+      const savedPhone = localStorage.getItem('studentPhone') ? ` - ${localStorage.getItem('studentPhone')}` : '';
+      
       const watermark = document.getElementById('videoWatermark');
       if (watermark) {
-          watermark.textContent = `${savedName} - ${savedPhone}`;
+          watermark.textContent = `${savedName}${savedPhone}`;
       }
       
       // إيقاف أي فيديو سابق
@@ -1882,6 +1892,23 @@
       periodicCheckInterval = setInterval(checkRevocationStatus, fiveMinutesInMs);
     }
     
+    // دالة جديدة للتحقق من الاسم قبل الدخول المجاني
+    function validateAndEnter() {
+        const nameInput = document.getElementById('welcomeNameInput');
+        const name = nameInput.value.trim();
+        
+        if (name.length < 5) {
+            alert('يرجى كتابة الاسم الثلاثي بشكل صحيح.');
+            return;
+        }
+        
+        // حفظ الاسم في الذاكرة
+        localStorage.setItem('studentName', name);
+        
+        // الدخول للوضع المجاني
+        enterFreeMode();
+    }
+
     // دالة الدخول للوضع المجاني
     function enterFreeMode() {
         localStorage.setItem('hasAgreedToWarning', 'true');
@@ -1922,6 +1949,7 @@
     function loginSuccess(code, name, phone) {
         localStorage.setItem('userAccessCode', code);
         localStorage.setItem('isPaidUser', 'true');
+        // تحديث الاسم بأحدث البيانات المدخلة
         localStorage.setItem('studentName', name);
         localStorage.setItem('studentPhone', phone);
         
@@ -1946,7 +1974,7 @@
 
              navigate('home');
              
-             // تحديث العلامة المائية
+             // تحديث العلامة المائية فوراً
              const watermark = document.getElementById('videoWatermark');
              if (watermark) {
                  watermark.textContent = `${name} - ${phone}`;
@@ -1962,6 +1990,7 @@
         const savedCode = localStorage.getItem('userAccessCode');
         const hasAgreed = localStorage.getItem('hasAgreedToWarning') === 'true';
         
+        // التحقق من الدخول المدفوع
         if (isPaid && savedCode) {
             
             if (savedCode === DEMO_CODE && window.location.protocol === 'file:') {
@@ -1971,7 +2000,6 @@
             }
             
             if (accessCodeDatabase.hasOwnProperty(savedCode)) {
-                 const codeDetails = accessCodeDatabase[savedCode];
                  const savedName = localStorage.getItem('studentName') || 'N/A';
                  const savedPhone = localStorage.getItem('studentPhone') || 'N/A';
 
@@ -1981,12 +2009,15 @@
             }
         }
         
-        if (hasAgreed) {
-            enterFreeMode();
-            return;
-        }
-
+        // في حال لم يكن مدفوعاً، نعرض نافذة الاسم الإجباري حتى لو دخل سابقاً
+        // لضمان وجود الاسم دائماً للعلامة المائية
         openModal('warningModal');
+        
+        // ملء الحقل إذا كان الاسم محفوظاً مسبقاً
+        const savedName = localStorage.getItem('studentName');
+        if (savedName) {
+            document.getElementById('welcomeNameInput').value = savedName;
+        }
     }
     
     function loadAccessCodes() {
