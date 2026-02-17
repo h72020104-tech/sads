@@ -2117,33 +2117,5 @@ if ("serviceWorker" in navigator) {
     .then(() => console.log("Service Worker Registered"));
 }
 </script>
- <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "7a9b4402-5458-47c7-9f62-970833e798d0", // ضع هنا App ID الخاص بك
-    });
-  });
-</script>
-<script>
-  function sendNotification(title, message, url) {
-    OneSignalDeferred.push(function(OneSignal) {
-      OneSignal.sendSelfNotification(
-        title, 
-        message, 
-        url, 
-        "https://h72020104-tech.github.io/sads/icon.png" // أيقونة صغيرة للإشعار
-      );
-    });
-  }
-
-  // مثال: إرسال إشعار عند تحديث محتوى
-  sendNotification(
-    "محاضرة جديدة!",
-    "تم إضافة وحدة جديدة على الموقع",
-    "https://h72020104-tech.github.io/sads/index.html"
-  );
-</script>
-
  </body>
+</html>
